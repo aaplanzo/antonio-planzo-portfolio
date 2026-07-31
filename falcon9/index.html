@@ -47,6 +47,25 @@ h2{font-size:clamp(1.7rem,3.5vw,2.25rem);margin-bottom:2rem}
 #pad{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;position:relative;padding-top:5.5rem;overflow:hidden}
 #pad .wrap{margin:auto}
 .stars{position:absolute;inset:0;pointer-events:none;opacity:.75}
+#launchGlow{position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:
+    radial-gradient(42% 34% at 68% 92%, rgba(240,151,59,.50), rgba(240,151,59,.16) 45%, transparent 72%),
+    radial-gradient(70% 55% at 62% 100%, rgba(251,227,188,.18), transparent 65%);
+  filter:blur(2px)}
+.launching #launchGlow{animation:padLight 7s ease-out forwards}
+@keyframes padLight{0%{opacity:0;transform:scale(.55);transform-origin:68% 95%}
+  10%{opacity:.55}28%{opacity:1;transform:scale(1.15)}55%{opacity:.8;transform:scale(1.5)}
+  85%{opacity:.25}100%{opacity:0;transform:scale(1.9)}}
+#pad .wrap,#pad .telemetry{position:relative;z-index:2}
+#flameScale{transform-box:fill-box;transform-origin:50% 0%}
+.launching #flameScale{animation:flameGrow 7s ease-out forwards}
+@keyframes flameGrow{0%{transform:scale(.4)}6%{transform:scale(.55)}18%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1.35)}}
+#flicker{transform-box:fill-box;transform-origin:50% 0%}
+.launching #flicker{animation:flameFlick .14s linear infinite}
+@keyframes flameFlick{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.12) scaleX(.94)}}
+@media(max-width:820px){#launchGlow{background:
+    radial-gradient(55% 30% at 50% 96%, rgba(240,151,59,.50), rgba(240,151,59,.16) 45%, transparent 72%),
+    radial-gradient(85% 45% at 50% 100%, rgba(251,227,188,.16), transparent 65%)}}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
 @media(max-width:820px){.hero-grid{grid-template-columns:1fr;gap:.5rem}.scene{height:21vh;min-height:160px}#pad{padding-top:4rem}h1{font-size:clamp(1.9rem,8.5vw,2.4rem)}.hero-sub{font-size:.92rem;margin-top:.9rem}.mission-line{margin-top:1rem;gap:.3rem 1rem;font-size:.66rem}.launch-btn{margin-top:1.1rem;padding:.65rem 1.2rem}.telemetry{margin-top:.75rem}.tcell{padding:.7rem 1rem}}
 .hero-sub{position:relative;color:var(--stone);max-width:32rem;margin-top:1.25rem;font-size:1.05rem}
@@ -66,6 +85,8 @@ h2{font-size:clamp(1.7rem,3.5vw,2.25rem);margin-bottom:2rem}
 .launching #flameGlow{animation:flameOn 7s linear forwards}
 .launching #smoke{animation:smokePuff 3.2s ease-out forwards}
 .launching #strongback{animation:sbRetract 1.4s ease-in forwards}
+.launching .scene svg{animation:igShake .09s linear 8}
+@keyframes igShake{0%,100%{transform:translate(0,0)}25%{transform:translate(1.2px,-.8px)}50%{transform:translate(-1px,.9px)}75%{transform:translate(.8px,1px)}}
 @keyframes ascend{0%{transform:translateY(0)}8%{transform:translateY(-4px)}100%{transform:translateY(-130%)}}
 @keyframes flameOn{0%{opacity:0}6%{opacity:1}96%{opacity:1}100%{opacity:0}}
 @keyframes smokePuff{0%{opacity:0;transform:scale(.4)}12%{opacity:.9}100%{opacity:0;transform:scale(2.6) translateX(6px)}}
@@ -154,7 +175,7 @@ footer a:hover{color:var(--cream)}
 
 @media (prefers-reduced-motion:reduce){
   .launching #rocket,.launching #flame,.launching #flameGlow,.launching #smoke,.launching #strongback,
-  .landing-run #booster,.landing-run #landflame,.landing-run #legs-l,.landing-run #legs-r,.landing-run #touchdust{animation:none!important}
+  .landing-run #booster,.landing-run #landflame,.landing-run #legs-l,.landing-run #legs-r,.landing-run #touchdust,.launching #launchGlow,.launching #flameScale,.launching #flicker,.launching .scene svg{animation:none!important}
   .launching #rocket{transform:translateY(-130%)}
   .landing-run #booster{transform:translateY(0)}
   .landing-run #legs-l{transform:rotate(-38deg)}
@@ -189,6 +210,7 @@ footer a:hover{color:var(--cream)}
 <!-- ============ HERO / LAUNCH ============ -->
 <section id="pad">
   <canvas class="stars" id="starfield" aria-hidden="true"></canvas>
+  <div id="launchGlow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-grid">
       <div>
@@ -223,11 +245,12 @@ footer a:hover{color:var(--cream)}
           <!-- rocket -->
           <g id="rocket">
             <!-- flame -->
+            <g id="flameScale"><g id="flicker">
             <g id="flameGlow"><ellipse cx="160" cy="512" rx="16" ry="34" fill="#F0973B" opacity=".25"/></g>
             <g id="flame">
               <path d="M152 492 L160 540 L168 492 Z" fill="#F0973B"/>
               <path d="M155 492 L160 522 L165 492 Z" fill="#FBE3BC"/>
-            </g>
+            </g></g></g>
             <!-- first stage -->
             <rect x="150" y="340" width="20" height="152" fill="#EDEBE6"/>
             <rect x="150" y="340" width="20" height="152" fill="url(#shade)" opacity=".25"/>
@@ -292,7 +315,8 @@ footer a:hover{color:var(--cream)}
 
 <!-- ============ LANDING ============ -->
 <section id="landing">
-  <div class="wrap">
+  <canvas class="stars" id="starfield2" aria-hidden="true" style="opacity:.45"></canvas>
+  <div class="wrap" style="position:relative;z-index:2">
     <div class="land-grid">
       <div>
         <p class="eyebrow reveal">T+ 8 Minutes · Landing Zone 1</p>
@@ -375,23 +399,166 @@ footer a:hover{color:var(--cream)}
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- starfield ---------- */
-  var cv = document.getElementById('starfield');
-  function drawStars(){
-    var dpr = Math.min(window.devicePixelRatio||1,2);
-    cv.width = cv.offsetWidth*dpr; cv.height = cv.offsetHeight*dpr;
-    var ctx = cv.getContext('2d'); ctx.scale(dpr,dpr);
-    ctx.clearRect(0,0,cv.offsetWidth,cv.offsetHeight);
-    for(var i=0;i<110;i++){
-      var x=Math.random()*cv.offsetWidth, y=Math.random()*cv.offsetHeight*0.85;
-      ctx.globalAlpha = 0.15+Math.random()*0.5;
-      ctx.fillStyle = '#F7F6F3';
-      ctx.fillRect(x,y,Math.random()<0.15?1.6:1,Math.random()<0.15?1.6:1);
+  /* ---------- deep-space cosmos ---------- */
+  var pointerX=0.5, pointerY=0.35;
+  window.addEventListener('pointermove', function(e){
+    pointerX = e.clientX/innerWidth; pointerY = e.clientY/innerHeight;
+  }, {passive:true});
+  window.__launchT = 0; /* set at ignition for star-streak effect */
+
+  function cosmos(cv, opts){
+    var ctx = cv.getContext('2d');
+    var W=0,H=0,dpr=1, layers=[], band=[], bright=[], shoot=null;
+    var nextShoot = performance.now()+3000+Math.random()*4000;
+    var px=0.5, py=0.35;
+    var COLORS=['#F7F6F3','#DDE6FF','#FFE9C9','#CFE0FF','#FFD9A8','#F7F6F3'];
+
+    function gauss(){ return (Math.random()+Math.random()+Math.random()-1.5)/1.5; }
+
+    function size(){
+      dpr=Math.min(window.devicePixelRatio||1,2);
+      W=cv.offsetWidth; H=cv.offsetHeight;
+      cv.width=W*dpr; cv.height=H*dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      layers=[];
+      var defs=[ {n:opts.density,     r:[0.6,1.0], depth:0.25, tw:[0.06,0.28]},
+                 {n:opts.density*0.5|0, r:[0.9,1.5], depth:0.55, tw:[0.10,0.40]},
+                 {n:opts.density*0.22|0,r:[1.3,2.1], depth:1.0,  tw:[0.15,0.55]} ];
+      defs.forEach(function(d){
+        var stars=[];
+        for(var i=0;i<d.n;i++) stars.push({
+          x:Math.random()*W, y:Math.random()*H,
+          r:d.r[0]+Math.random()*(d.r[1]-d.r[0]),
+          c:COLORS[Math.random()*COLORS.length|0],
+          base:0.10+Math.random()*0.40, amp:d.tw[0]+Math.random()*(d.tw[1]-d.tw[0]),
+          sp:0.3+Math.random()*1.6, ph:Math.random()*6.283
+        });
+        stars.depth=d.depth; layers.push(stars);
+      });
+      /* milky way band: particles scattered along a diagonal */
+      band=[];
+      if(opts.milkyway){
+        var n=Math.min(520, W*0.45|0), ang=-0.5, cx=W*0.55, cy=H*0.38;
+        for(var i=0;i<n;i++){
+          var along=(Math.random()-0.5)*W*1.6, off=gauss()*H*0.09;
+          band.push({
+            x:cx+along*Math.cos(ang)-off*Math.sin(ang),
+            y:cy+along*Math.sin(ang)+off*Math.cos(ang),
+            r:Math.random()<0.85?0.7:1.1,
+            a:0.03+Math.random()*0.10,
+            sp:0.2+Math.random()*0.6, ph:Math.random()*6.283
+          });
+        }
+      }
+      /* feature stars with diffraction glints */
+      bright=[];
+      for(var i=0;i<opts.bright;i++) bright.push({
+        x:W*(0.06+Math.random()*0.88), y:H*(0.04+Math.random()*0.55),
+        r:1.6+Math.random()*1.2, len:7+Math.random()*9,
+        c:COLORS[Math.random()*COLORS.length|0],
+        sp:0.25+Math.random()*0.5, ph:Math.random()*6.283
+      });
     }
-    ctx.globalAlpha = 1;
+
+    function frame(now){
+      var t=now/1000;
+      px+=(pointerX-px)*0.03; py+=(pointerY-py)*0.03;
+      ctx.clearRect(0,0,W,H);
+
+      /* nebulae */
+      if(opts.nebula){
+        var g1=ctx.createRadialGradient(W*0.20+Math.sin(t*0.05)*34,H*0.32,0, W*0.20,H*0.32,W*0.45);
+        g1.addColorStop(0,'rgba(96,112,158,0.11)'); g1.addColorStop(1,'rgba(96,112,158,0)');
+        ctx.fillStyle=g1; ctx.fillRect(0,0,W,H);
+        var g2=ctx.createRadialGradient(W*0.82+Math.cos(t*0.04)*26,H*0.16,0, W*0.82,H*0.16,W*0.38);
+        g2.addColorStop(0,'rgba(158,116,96,0.08)'); g2.addColorStop(1,'rgba(158,116,96,0)');
+        ctx.fillStyle=g2; ctx.fillRect(0,0,W,H);
+      }
+      /* milky way dust + particles */
+      if(band.length){
+        var gg=ctx.createLinearGradient(0,H*0.7,W,H*0.05);
+        gg.addColorStop(0,'rgba(210,215,235,0)');
+        gg.addColorStop(0.45,'rgba(210,215,235,0.045)');
+        gg.addColorStop(0.6,'rgba(210,215,235,0.045)');
+        gg.addColorStop(1,'rgba(210,215,235,0)');
+        ctx.fillStyle=gg; ctx.fillRect(0,0,W,H);
+        ctx.fillStyle='#E8EAF2';
+        for(var i=0;i<band.length;i++){
+          var q=band[i];
+          ctx.globalAlpha=Math.max(0.015, q.a + Math.sin(t*q.sp+q.ph)*0.02);
+          ctx.fillRect(q.x, q.y, q.r, q.r);
+        }
+        ctx.globalAlpha=1;
+      }
+      /* launch streak factor: stars stretch downward while rocket ascends */
+      var streak=0;
+      if(window.__launchT){
+        var lp=(now-window.__launchT)/7000;
+        if(lp>0&&lp<1) streak=Math.sin(Math.min(1,lp*1.4)*Math.PI)* (opts.streak||0);
+      }
+      /* star layers with pointer parallax */
+      for(var L=0;L<layers.length;L++){
+        var stars=layers[L], depth=stars.depth;
+        var ox=(px-0.5)*-22*depth, oy=(py-0.5)*-12*depth;
+        for(var i=0;i<stars.length;i++){
+          var st=stars[i];
+          var a=Math.max(0.04, st.base+Math.sin(t*st.sp+st.ph)*st.amp);
+          ctx.globalAlpha=a; ctx.fillStyle=st.c;
+          var sl=streak*depth*26;
+          if(sl>1){ ctx.fillRect(st.x+ox, st.y+oy, st.r*0.8, st.r+sl); }
+          else { ctx.fillRect(st.x+ox, st.y+oy, st.r, st.r); }
+        }
+      }
+      ctx.globalAlpha=1;
+      /* feature stars: glow + cross glint */
+      for(var i=0;i<bright.length;i++){
+        var bsr=bright[i], pulse=0.55+0.45*Math.sin(t*bsr.sp+bsr.ph);
+        var ox2=(px-0.5)*-22, oy2=(py-0.5)*-12;
+        var bx=bsr.x+ox2, by=bsr.y+oy2;
+        var rg=ctx.createRadialGradient(bx,by,0,bx,by,bsr.len*1.6);
+        rg.addColorStop(0,'rgba(247,246,243,'+(0.30*pulse)+')');
+        rg.addColorStop(1,'rgba(247,246,243,0)');
+        ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(bx,by,bsr.len*1.6,0,6.283); ctx.fill();
+        ctx.strokeStyle='rgba(247,246,243,'+(0.5*pulse)+')'; ctx.lineWidth=0.8;
+        ctx.beginPath();
+        ctx.moveTo(bx-bsr.len*pulse,by); ctx.lineTo(bx+bsr.len*pulse,by);
+        ctx.moveTo(bx,by-bsr.len*pulse); ctx.lineTo(bx,by+bsr.len*pulse);
+        ctx.stroke();
+        ctx.fillStyle=bsr.c; ctx.globalAlpha=0.9;
+        ctx.fillRect(bx-bsr.r/2,by-bsr.r/2,bsr.r,bsr.r);
+        ctx.globalAlpha=1;
+      }
+      /* shooting star with glowing head */
+      if(shoot){
+        var sp2=(now-shoot.t0)/750;
+        if(sp2>=1){ shoot=null; nextShoot=now+5000+Math.random()*7000; }
+        else{
+          var sx=shoot.x+shoot.dx*sp2, sy=shoot.y+shoot.dy*sp2, fade=1-sp2;
+          var tail=ctx.createLinearGradient(sx,sy,sx-shoot.dx*0.18,sy-shoot.dy*0.18);
+          tail.addColorStop(0,'rgba(255,246,230,'+(0.9*fade)+')');
+          tail.addColorStop(1,'rgba(255,246,230,0)');
+          ctx.strokeStyle=tail; ctx.lineWidth=1.6; ctx.lineCap='round';
+          ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(sx-shoot.dx*0.18,sy-shoot.dy*0.18); ctx.stroke();
+          var hg=ctx.createRadialGradient(sx,sy,0,sx,sy,7);
+          hg.addColorStop(0,'rgba(255,250,240,'+(0.8*fade)+')'); hg.addColorStop(1,'rgba(255,250,240,0)');
+          ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(sx,sy,7,0,6.283); ctx.fill();
+        }
+      } else if(now>nextShoot){
+        shoot={t0:now, x:W*(0.1+Math.random()*0.7), y:H*(0.04+Math.random()*0.28),
+               dx:(150+Math.random()*190)*(Math.random()<0.5?1:-1), dy:70+Math.random()*90};
+      }
+      requestAnimationFrame(frame);
+    }
+    size();
+    window.addEventListener('resize', size);
+    if(reduced){
+      ctx.clearRect(0,0,W,H); ctx.fillStyle='#F7F6F3';
+      layers.forEach(function(stars){ stars.forEach(function(st){ ctx.globalAlpha=st.base; ctx.fillRect(st.x,st.y,st.r,st.r); }); });
+      ctx.globalAlpha=1;
+    } else { requestAnimationFrame(frame); }
   }
-  drawStars();
-  window.addEventListener('resize', drawStars);
+  cosmos(document.getElementById('starfield'), {density:150, nebula:true, milkyway:true, bright:5, streak:0});
+  cosmos(document.getElementById('starfield2'), {density:80, nebula:false, milkyway:false, bright:3, streak:0});
 
   /* ---------- eased auto-scroll (matches main site) ---------- */
   var autoScrolling = false, userTookOver = false;
@@ -489,6 +656,7 @@ footer a:hover{color:var(--cream)}
     btn.setAttribute('disabled','');
     btn.innerHTML='<span class="dot"></span>Vehicle is supersonic';
     pad.classList.add('launching');
+    window.__launchT = performance.now();
     /* phase 1: ascent to stage sep (7s of animation covers T-10 to ~T+2:37) */
     playTelemetry(reduced?0:7000, 0, 4, function(){
       btn.innerHTML='<span class="dot"></span>Stage 1 returning';
