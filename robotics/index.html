@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Humanoid Robotics Thesis | Antonio Planzo</title>
+<meta name="description" content="A research thesis on where value accrues in humanoid robotics and autonomy: actuators, AI and training data, robotaxis, and the companies building them. By Antonio Planzo." />
+<meta property="og:title" content="Humanoid robots, priced from the joints out" />
+<meta property="og:description" content="A research thesis on humanoid robotics and autonomy by Antonio Planzo." />
+<meta property="og:type" content="article" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#FFFFFF;
+  --panel:#F3F5F8;
+  --grid:#E9EDF2;
+  --hair:#DCE0E6;
+  --ink:#15171C;
+  --graphite:#596070;
+  --mute:#8A909C;
+  --flame:#F0973B;
+  --flame-ink:#B4580F;
+  --flame-wash:rgba(240,151,59,.12);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --measure:40rem;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--flame);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.5rem}
+.prose{max-width:var(--measure)}
+.prose p{color:var(--graphite);margin-bottom:1.15rem}
+.prose p strong{color:var(--ink);font-weight:600}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--mute)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--ink);letter-spacing:-.012em}
+h1{font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:1.02}
+h2{font-size:clamp(1.85rem,3.6vw,2.6rem);line-height:1.12;margin:.6rem 0 1.4rem;max-width:22ch}
+h3{font-size:1.3rem;line-height:1.25;margin-bottom:.4rem}
+.cite{font-family:var(--mono);font-size:.72rem;color:var(--mute);text-decoration:none;border-bottom:1px solid var(--hair);white-space:nowrap}
+.cite:hover{color:var(--flame-ink);border-color:var(--flame)}
+
+/* progress + header */
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--flame);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--hair)}
+header nav{max-width:74rem;margin:0 auto;padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:var(--serif);font-weight:500;font-size:1rem;text-decoration:none}
+.navlinks{display:flex;gap:1.6rem}
+.navlinks a{font-family:var(--mono);font-size:.74rem;color:var(--graphite);text-decoration:none;padding:.2rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.navlinks a:hover,.navlinks a.on{color:var(--ink);border-color:var(--flame)}
+@media(max-width:760px){.navlinks a.opt{display:none}.navlinks{gap:1rem}}
+
+/* sections */
+section{padding:7rem 0;position:relative}
+section + section{border-top:1px solid var(--hair)}
+.sec-head{display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;align-items:baseline}
+.sec-num{font-family:var(--mono);font-size:.78rem;color:var(--flame-ink)}
+@media(max-width:820px){.sec-head{grid-template-columns:1fr;gap:.2rem}section{padding:4.5rem 0}}
+
+/* blueprint grid backdrop */
+.grid-bg{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px;background-position:-1px -1px}
+
+/* ---------- hero ---------- */
+#top{min-height:100vh;padding:6.5rem 0 0;display:flex;flex-direction:column;border-bottom:1px solid var(--hair)}
+.hero{flex:1;display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center}
+.hero-sub{position:relative;color:var(--graphite);font-size:1.12rem;max-width:34rem;margin-top:1.4rem}
+.hero-type{position:absolute;inset:0}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--flame);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.byline{font-family:var(--mono);font-size:.76rem;color:var(--graphite);margin-top:1.4rem}
+.byline b{color:var(--ink);font-weight:500}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.8rem;padding:.85rem 1.35rem;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{background:#2A2D35}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--hair)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn .dot{width:7px;height:7px;border-radius:50%;background:var(--flame)}
+.btn.running .dot{animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.btn[aria-pressed="true"]{background:var(--flame-ink);border-color:var(--flame-ink)}
+.status{font-family:var(--mono);font-size:.74rem;color:var(--flame-ink);min-height:1.3em;margin-top:.9rem}
+.stage{position:relative;height:min(74vh,640px);min-height:420px}
+.stage svg{position:absolute;inset:0;width:100%;height:100%}
+.robot .co{opacity:0;transition:opacity .7s ease}
+.robot .co.in{opacity:1}
+.robot .co rect{fill:rgba(255,255,255,.94);stroke:var(--hair)}
+.robot .co line{stroke:var(--mute);stroke-width:.9}
+.robot .co circle{fill:var(--flame)}
+.robot .co text{font-family:var(--mono);font-size:14px;fill:var(--graphite)}
+.robot .co tspan.b{fill:var(--ink);font-weight:500}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.stage{height:46vh;min-height:300px;order:-1}#top{padding-top:4.8rem}.robot .co{display:none}}
+
+/* readout strip */
+.readout{border-top:1px solid var(--hair);background:rgba(255,255,255,.94);margin-top:2rem}
+.readout-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:74rem;margin:0 auto}
+.cell{padding:1.15rem 1.5rem;border-left:1px solid var(--hair)}
+.cell:first-child{border-left:none}
+.cell .v{font-family:var(--mono);font-size:clamp(1.15rem,2.4vw,1.7rem);color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
+.cell .k{font-size:.82rem;color:var(--graphite);margin-top:.2rem;line-height:1.35}
+@media(max-width:760px){.readout-inner{grid-template-columns:1fr 1fr}.cell:nth-child(3){border-left:none}.cell{border-top:1px solid var(--hair);padding:.9rem 1rem}}
+
+/* reveal (used sparingly) */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- thesis claims ---------- */
+.claims{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.5rem;border-top:1px solid var(--ink)}
+.claim{padding:1.6rem 1.6rem 1.6rem 0;border-right:1px solid var(--hair)}
+.claim + .claim{padding-left:1.6rem}
+.claim:last-child{border-right:none}
+.claim .n{font-family:var(--mono);font-size:.78rem;color:var(--flame-ink)}
+.claim h3{margin:.5rem 0 .6rem}
+.claim p{color:var(--graphite);font-size:.98rem}
+.implication{margin-top:2.6rem;padding:1.4rem 1.6rem;background:var(--panel);border-left:3px solid var(--flame);max-width:52rem}
+.implication p{color:var(--ink);font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+@media(max-width:900px){.claims{grid-template-columns:1fr}.claim,.claim + .claim{padding:1.4rem 0;border-right:none;border-bottom:1px solid var(--hair)}}
+
+/* ---------- ARK views ---------- */
+.views{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1rem}
+.view{padding:1.4rem 0;border-top:1px solid var(--hair)}
+.view .when{font-family:var(--mono);font-size:.74rem;color:var(--mute)}
+.view q{display:block;font-family:var(--serif);font-size:1.3rem;line-height:1.4;color:var(--ink);margin:.4rem 0 .5rem;quotes:none}
+.view p{color:var(--graphite);font-size:.96rem}
+@media(max-width:820px){.views{grid-template-columns:1fr;gap:0}}
+
+/* ---------- said vs shipped ---------- */
+.ledger{margin-top:2.5rem;position:relative}
+.ledger-row{display:grid;grid-template-columns:7.5rem 1fr 1fr;gap:2rem;padding:1.4rem 0;border-top:1px solid var(--hair);position:relative}
+.ledger-row:last-child{border-bottom:1px solid var(--hair)}
+.ledger-head{border-top:1px solid var(--ink);padding:.7rem 0}
+.ledger-head span{font-family:var(--mono);font-size:.74rem;color:var(--mute)}
+.ledger-row .d{font-family:var(--mono);font-size:.82rem;color:var(--ink)}
+.ledger-row .said{font-family:var(--serif);font-size:1.12rem;line-height:1.45}
+.ledger-row .shipped{color:var(--graphite);font-size:.96rem}
+.ledger-row .shipped b{color:var(--flame-ink);font-weight:600}
+.ledger-row .src{display:block;margin-top:.4rem}
+@media(max-width:820px){.ledger-row{grid-template-columns:1fr;gap:.4rem}.ledger-head{display:none}.ledger-row .shipped::before{content:'What happened: ';font-family:var(--mono);font-size:.72rem;color:var(--mute)}}
+
+/* ---------- payback calculator ---------- */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start}
+.ctrl{margin-bottom:1.8rem}
+.ctrl label{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.6rem;font-size:.96rem;color:var(--graphite)}
+.ctrl label output{font-family:var(--mono);font-size:1rem;color:var(--ink)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--ink) var(--fill,50%),var(--hair) var(--fill,50%))}
+input[type=range]::-moz-range-track{height:2px;background:var(--hair)}
+input[type=range]::-moz-range-progress{height:2px;background:var(--ink)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-8px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);transition:border-color .15s}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+input[type=range]:hover::-webkit-slider-thumb{border-color:var(--flame-ink)}
+.result{background:var(--panel);padding:1.8rem;border:1px solid var(--hair)}
+.result .big{font-family:var(--serif);font-size:clamp(3rem,6vw,4.4rem);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.result .big small{font-size:.4em;color:var(--graphite);margin-left:.3rem}
+.result .sub{color:var(--graphite);margin-top:.6rem;font-size:.95rem}
+.track{position:relative;height:44px;margin-top:1.6rem}
+.track .base{position:absolute;left:0;right:0;top:14px;height:8px;background:#fff;border:1px solid var(--hair)}
+.track .bar{position:absolute;left:0;top:14px;height:8px;background:var(--flame);transition:width .45s cubic-bezier(.3,.7,.2,1)}
+.track .tick{position:absolute;top:8px;height:20px;border-left:1px dashed var(--mute)}
+.track .tick span{position:absolute;top:22px;left:-1.2rem;width:2.4rem;text-align:center;font-family:var(--mono);font-size:.66rem;color:var(--mute)}
+.formula{font-family:var(--mono);font-size:.76rem;color:var(--graphite);margin-top:1.4rem;line-height:1.7}
+.estimates{margin-top:4rem}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th{font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--mute);text-align:left;padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--ink)}
+td{padding:.9rem .8rem .9rem 0;border-bottom:1px solid var(--hair);vertical-align:top;color:var(--graphite)}
+td:first-child{color:var(--ink)}
+td.num{font-family:var(--mono);color:var(--ink);white-space:nowrap}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.note{font-size:.9rem;color:var(--graphite);margin-top:1rem;max-width:var(--measure)}
+@media(max-width:900px){.calc{grid-template-columns:1fr;gap:1.5rem}}
+
+/* ---------- value chain scrollytelling ---------- */
+#chain{padding-bottom:3rem}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.chain-sticky{position:sticky;top:5rem;height:calc(100vh - 6rem);display:flex;flex-direction:column}
+.chain-sticky .stage{flex:1;height:auto;min-height:0}
+.meter{border-top:1px solid var(--hair);padding-top:1rem;display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;align-items:center}
+.meter .who{font-family:var(--serif);font-size:1.25rem;min-width:12rem}
+.meter .share{font-family:var(--mono);font-size:.82rem;color:var(--graphite);text-align:right}
+.meter .scale{grid-column:1/-1;position:relative;height:10px;background:var(--panel);margin-top:.5rem}
+.meter .range{position:absolute;top:0;bottom:0;background:var(--flame);transition:left .5s cubic-bezier(.3,.7,.2,1),width .5s cubic-bezier(.3,.7,.2,1)}
+.meter .ticks{grid-column:1/-1;display:flex;justify-content:space-between;font-family:var(--mono);font-size:.64rem;color:var(--mute)}
+.step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:2rem 0;opacity:.35;transition:opacity .4s}
+.step.active{opacity:1}
+.step .pri{font-family:var(--mono);font-size:.74rem;display:inline-block;padding:.2rem .5rem;border:1px solid var(--hair);color:var(--graphite);margin-bottom:.8rem;align-self:flex-start}
+.step .pri.first{border-color:var(--flame);color:var(--flame-ink);background:var(--flame-wash)}
+.step h3{font-size:1.7rem;margin-bottom:.8rem}
+.step p{color:var(--graphite);margin-bottom:.9rem;max-width:34rem}
+.step dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.2rem;font-size:.92rem;margin-top:.4rem;max-width:34rem}
+.step dt{font-family:var(--mono);font-size:.74rem;color:var(--mute);padding-top:.15rem}
+.step dd{color:var(--ink)}
+.verdict{margin-top:2rem}
+@media(max-width:900px){
+  .chain{grid-template-columns:1fr;gap:0}
+  .chain-sticky{top:3.6rem;height:42vh;z-index:5;background:var(--paper);border-bottom:1px solid var(--hair);isolation:isolate;box-shadow:0 12px 16px -12px rgba(21,23,28,.08)}
+  .meter{padding:.5rem 0}
+  .meter .who{font-size:1.05rem;min-width:0}
+  .step{min-height:70vh}
+}
+
+/* robot styling */
+.robot .ln{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.robot .fl{fill:var(--paper)}
+.robot .thin{stroke-width:1}
+.robot .jt{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
+.robot .jt.sm{stroke-width:1.1}
+.robot .dim{stroke:var(--mute);stroke-width:.8;stroke-dasharray:3 3;fill:none}
+.robot g{transition:opacity .45s}
+.robot .ln,.robot .jt{transition:stroke .45s,fill .45s}
+.robot[data-focus] g.part{opacity:.28}
+.robot[data-focus="actuators"] g.actuators,
+.robot[data-focus="ai"] g.compute,.robot[data-focus="ai"] g.sensing,
+.robot[data-focus="magnets"] g.actuators,
+.robot[data-focus="sensing"] g.sensing,
+.robot[data-focus="compute"] g.compute,
+.robot[data-focus="battery"] g.battery,
+.robot[data-focus="structure"] g.structure{opacity:1}
+.robot[data-focus="actuators"] g.actuators .jt,
+.robot[data-focus="magnets"] g.actuators .jt{stroke:var(--flame-ink);fill:var(--flame-wash)}
+.robot[data-focus="magnets"] g.actuators .core{fill:var(--flame)}
+.robot .core{fill:transparent;transition:fill .45s}
+.robot[data-focus="sensing"] g.sensing .ln,.robot[data-focus="ai"] g.sensing .ln{stroke:var(--flame-ink)}
+.robot[data-focus="sensing"] g.sensing .jt,.robot[data-focus="ai"] g.sensing .jt{stroke:var(--flame-ink);fill:var(--flame-wash)}
+.robot[data-focus="compute"] g.compute .ln,.robot[data-focus="ai"] g.compute .ln{stroke:var(--flame-ink)}
+.robot[data-focus="compute"] g.compute .fillme,.robot[data-focus="ai"] g.compute .fillme{fill:var(--flame-wash)}
+.robot[data-focus="battery"] g.battery .ln{stroke:var(--flame-ink)}
+.robot[data-focus="battery"] g.battery .fillme{fill:var(--flame-wash)}
+.robot .fillme{fill:var(--paper);transition:fill .45s}
+.robot.drawing .s{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.5s cubic-bezier(.65,0,.25,1) forwards;animation-delay:var(--d,0s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.robot .fire{animation:fire 1.1s ease-out forwards}
+@keyframes fire{0%{stroke:var(--flame-ink);fill:var(--flame)}100%{stroke:var(--ink);fill:var(--paper)}}
+
+/* ---------- autonomy ---------- */
+.versus{display:grid;grid-template-columns:1fr 1fr;margin-top:2.5rem;border-top:1px solid var(--ink)}
+.side{padding:1.8rem 2rem 1.8rem 0}
+.side + .side{padding:1.8rem 0 1.8rem 2rem;border-left:1px solid var(--hair)}
+.side .who{font-family:var(--serif);font-size:1.6rem}
+.side .lead{font-size:.95rem;color:var(--flame-ink);font-family:var(--mono);margin:.2rem 0 1.2rem}
+.kv{display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;padding:.75rem 0;border-top:1px solid var(--hair)}
+.kv .k{color:var(--graphite);font-size:.94rem}
+.kv .v{font-family:var(--mono);color:var(--ink);text-align:right}
+.side p.small{font-size:.9rem;color:var(--graphite);margin-top:1rem}
+.ark-auto{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.ark-auto .fig{font-family:var(--serif);font-size:2.1rem;line-height:1.1}
+.ark-auto p{color:var(--graphite);font-size:.94rem;margin-top:.4rem}
+.road{height:2px;margin-top:3rem;background:repeating-linear-gradient(90deg,var(--ink) 0 28px,transparent 28px 52px);opacity:.25}
+.road.run{animation:road 1.2s linear infinite}
+@keyframes road{to{background-position:52px 0}}
+@media(max-width:820px){.versus{grid-template-columns:1fr}.side,.side + .side{padding:1.4rem 0;border-left:none}.side + .side{border-top:1px solid var(--hair)}.ark-auto{grid-template-columns:1fr;gap:1.4rem}}
+
+/* ---------- watch list ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:2rem 0 1.2rem}
+.chip{font-family:var(--mono);font-size:.76rem;padding:.45rem .85rem;border:1px solid var(--hair);background:var(--paper);color:var(--graphite);cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+tr[hidden]{display:none}
+.role{font-family:var(--mono);font-size:.74rem;color:var(--graphite)}
+.role.leader{color:var(--flame-ink)}
+.ark{font-family:var(--mono);font-size:.7rem;padding:.1rem .35rem;border:1px solid var(--flame);color:var(--flame-ink);margin-left:.4rem;white-space:nowrap}
+
+/* ---------- risks ---------- */
+.risks{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.risk{padding:1.1rem 0;border-top:1px solid var(--hair)}
+.risk h3{font-size:1.15rem}
+.risk p{color:var(--graphite);font-size:.95rem}
+.signals{list-style:none;margin-top:.6rem}
+.signals li{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;padding:1rem 0;border-top:1px solid var(--hair);color:var(--ink)}
+.signals li::before{content:'';width:16px;height:16px;border:1.5px solid var(--ink);margin-top:.3rem}
+@media(max-width:820px){.risks{grid-template-columns:1fr;gap:1rem}}
+
+/* ---------- video ---------- */
+#video{background:var(--panel)}
+.video-frame{position:relative;padding-top:56.25%;border:1px solid var(--hair);background:var(--paper);margin-top:2rem;overflow:hidden}
+.video-frame > *{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-frame.ready{cursor:pointer}
+.video-frame .thumb{object-fit:cover}
+.placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:1.5rem}
+.placeholder svg{width:min(34%,190px);height:auto;opacity:.9}
+.placeholder p{font-family:var(--serif);font-size:1.35rem}
+.placeholder span{font-family:var(--mono);font-size:.74rem;color:var(--mute)}
+.play{position:absolute;inset:auto;top:50%;left:50%;width:72px;height:72px;transform:translate(-50%,-50%);border-radius:50%;background:var(--paper);border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .25s,background .25s}
+.video-frame.ready:hover .play{transform:translate(-50%,-50%) scale(1.06);background:var(--flame)}
+
+/* ---------- sources + footer ---------- */
+.sources{columns:2;column-gap:3rem;margin-top:2rem;font-size:.9rem}
+.sources h3{font-family:var(--mono);font-size:.76rem;font-weight:400;color:var(--mute);margin:1.2rem 0 .5rem;break-after:avoid}
+.sources h3:first-child{margin-top:0}
+.sources ul{list-style:none}
+.sources li{break-inside:avoid;padding:.35rem 0;border-top:1px solid var(--hair)}
+.sources a{color:var(--graphite);text-decoration:none}
+.sources a:hover{color:var(--flame-ink)}
+.disclaimer{font-size:.84rem;color:var(--mute);margin-top:2.5rem;max-width:var(--measure)}
+@media(max-width:760px){.sources{columns:1}}
+footer{border-top:1px solid var(--hair);padding:2.2rem 0 3rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{font-family:var(--mono);font-size:.76rem;color:var(--graphite);text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .robot.drawing .s{animation:none;stroke-dasharray:none}
+  .robot .fire,.road.run,.caret,.btn.running .dot{animation:none}
+  .track .bar,.meter .range,.step{transition:none}
+}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header>
+  <nav aria-label="Primary">
+    <a class="brand" href="../">Antonio Planzo</a>
+    <div class="navlinks">
+      <a class="opt" href="../">Portfolio</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#chain">Value chain</a>
+      <a class="opt" href="#autonomy">Autonomy</a>
+      <a href="#video">Video</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section id="top" class="grid-bg">
+  <div class="wrap hero">
+    <div>
+      <p class="label">Research thesis, autonomous technology and robotics</p>
+      <h1 style="margin-top:1rem">Humanoid robots, priced from the joints out.</h1>
+      <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">Where value will accrue as robots leave the lab: the actuators they move with, the AI they think with, the robotaxis already earning revenue, and the companies building each layer.</span><span class="hero-type" aria-label="Where value will accrue as robots leave the lab: the actuators they move with, the AI they think with, the robotaxis already earning revenue, and the companies building each layer."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
+      <p class="byline">By <b>Antonio Planzo</b>, St. Petersburg, FL. Data as of October 13, 2026.</p>
+      <div class="actions">
+        <button class="btn" id="briefBtn" type="button" aria-pressed="false"><span class="dot"></span><span id="briefLabel">Start the briefing</span></button>
+        <a class="btn ghost" href="#calc">Run the payback model</a>
+      </div>
+      <p class="status" id="status" aria-live="polite"></p>
+    </div>
+    <div class="stage" id="heroStage" aria-hidden="true">
+      <svg class="robot" id="heroRobot" viewBox="-150 20 700 560" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+  </div>
+  <div class="readout" role="group" aria-label="Key figures">
+    <div class="readout-inner">
+      <div class="cell"><div class="v" data-count="26" data-fmt="tn">$0T</div><div class="k">ARK's humanoid robotics opportunity</div></div>
+      <div class="cell"><div class="v" data-count="60" data-fmt="range">0&ndash;0%</div><div class="k">Actuators' share of unit cost</div></div>
+      <div class="cell"><div class="v" data-count="0.65" data-fmt="yr">0.00 yr</div><div class="k">Payback at $30k, half a worker's output</div></div>
+      <div class="cell"><div class="v" data-count="1.48" data-fmt="m">0.00M</div><div class="k">Tesla FSD subscriptions, Q2 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THESIS ============ -->
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">The thesis</span>
+      <div>
+        <h2>The prize is real. The edge is in who ships to factories first.</h2>
+        <div class="prose"><p>Humanoid robotics is the largest opportunity in ARK's Autonomous Technology and Robotics strategy. In 2026, though, the investable edge sits with industrial-first private humanoid makers and the component suppliers every one of them needs. Factory payback already works on paper; the consumer timeline keeps slipping.</p></div>
+      </div>
+    </div>
+    <div class="claims">
+      <div class="claim reveal">
+        <span class="n">Claim 1</span>
+        <h3>The market is large</h3>
+        <p>ARK sizes humanoid robotics as a potential $26 trillion opportunity. Elon Musk told investors in April 2026 that Optimus will be Tesla's biggest product.</p>
+      </div>
+      <div class="claim reveal">
+        <span class="n">Claim 2</span>
+        <h3>Timelines are slipping</h3>
+        <p>Tesla targeted several thousand Optimus units in 2025. Its July 2026 shareholder update said production had still not started, so value shifts to whoever ships to factories first.</p>
+      </div>
+      <div class="claim reveal">
+        <span class="n">Claim 3</span>
+        <h3>Industrial buyers adopt first</h3>
+        <p>At Musk's $20,000&ndash;$30,000 target price, a robot doing half a U.S. worker's output pays back in under a year. Capability, not price, is the gate.</p>
+      </div>
+    </div>
+    <div class="implication reveal">
+      <p>For ARK: weight private-market sourcing toward humanoid makers with signed industrial pilots, and toward the actuator, AI and rare-earth supply chain that every maker needs regardless of who wins.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARK VIEW ============ -->
+<section id="ark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">ARK's view</span>
+      <div>
+        <h2>Cathie Wood calls humanoids the biggest embodied-AI opportunity.</h2>
+        <div class="prose"><p>ARK treats humanoids as the step beyond specialized industrial automation: one general-purpose form that can work in spaces built for people. Its published research and Wood's own statements line up.</p></div>
+      </div>
+    </div>
+    <div class="views">
+      <div class="view reveal">
+        <span class="when">February 14, 2026, on X</span>
+        <q>Humanoids are 200,000 times more complex to develop than robotaxis.</q>
+        <p>Wood still projected Optimus would begin transforming factory life, then home life, in 2028&ndash;2029. <a class="cite" href="https://finviz.com/news/311256/cathie-wood-says-teslas-optimus-could-transform-factory-home-life-by-2028-2029" target="_blank" rel="noopener">Benzinga</a></p>
+      </div>
+      <div class="view reveal">
+        <span class="when">Big Ideas 2026</span>
+        <q>Five platforms converging: AI, robotics, energy storage, multiomics and blockchain.</q>
+        <p>The report gives humanoids their own section on the shift from structured industrial robots to generalizable ones. <a class="cite" href="https://www.interactivebrokers.com/campus/trading-course/ark-invest-big-ideas-2026/" target="_blank" rel="noopener">IBKR Campus</a></p>
+      </div>
+      <div class="view reveal">
+        <span class="when">ARK Venture Fund, July 20, 2026</span>
+        <q>Apptronik is positioned for a potentially $26 trillion opportunity.</q>
+        <p>Tasha Keeney, Director of Research for Autonomous Technology and Robotics, on a fund holding with Mercedes-Benz and GXO pilots. <a class="cite" href="https://www.ark-funds.com/articles/venture-fund/apptronik-investment-thesis" target="_blank" rel="noopener">ARK</a></p>
+      </div>
+      <div class="view reveal">
+        <span class="when">ARK research, June 17, 2025</span>
+        <q>Household dishwashing alone is a roughly $250 billion yearly U.S. market.</q>
+        <p>ARK argues humanoids convert unpaid labor into GDP and help small businesses most. <a class="cite" href="https://www.ark-funds.com/articles/etf/humanoid-robotics" target="_blank" rel="noopener">ARK</a></p>
+      </div>
+    </div>
+    <p class="note">Quotes on this page are paraphrased summaries of the cited sources unless shown otherwise.</p>
+  </div>
+</section>
+
+<!-- ============ SAID VS SHIPPED ============ -->
+<section id="ledger">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Said vs. shipped</span>
+      <div>
+        <h2>Musk's targets have slipped at least a year.</h2>
+        <div class="prose"><p>Musk frames humanoids as the most valuable product in history: about 80% of Tesla's value, by his September 2025 post. Set against Tesla's own filings, the market may be real while the schedule is not.</p></div>
+      </div>
+    </div>
+    <div class="ledger">
+      <div class="ledger-row ledger-head"><span>Date</span><span>What was said</span><span>What happened</span></div>
+      <div class="ledger-row reveal">
+        <span class="d">Jan 2025</span>
+        <span class="said">Several thousand Optimus units in 2025; 50,000&ndash;100,000 in 2026.</span>
+        <span class="shipped">Neither target was met. <a class="cite src" href="https://fortune.com/2025/09/02/elon-musk-optimus-robots-tesla-master-plan" target="_blank" rel="noopener">Fortune</a></span>
+      </div>
+      <div class="ledger-row reveal">
+        <span class="d">Sep 2025</span>
+        <span class="said">About 80% of Tesla's value will be Optimus.</span>
+        <span class="shipped">Posted alongside Master Plan Part IV, Tesla's first plan to feature robots. <a class="cite src" href="https://x.com/elonmusk/status/1962618811141812475" target="_blank" rel="noopener">Musk on X</a></span>
+      </div>
+      <div class="ledger-row reveal">
+        <span class="d">Apr 2026</span>
+        <span class="said">Optimus will be Tesla's biggest product; Fremont production starts around late July or August.</span>
+        <span class="shipped">CFO guides 2026 capex <b>above $25B</b>, with negative free cash flow for the rest of the year. <a class="cite src" href="https://www.marketbeat.com/earnings/reports/2026-4-22-tesla-inc-stock/" target="_blank" rel="noopener">Q1 2026 call</a></span>
+      </div>
+      <div class="ledger-row reveal">
+        <span class="d">Jul 2026</span>
+        <span class="said">First-generation Optimus lines being installed; production later this year.</span>
+        <span class="shipped">Q2 capex <b>$5.79B</b>, up 142%; free cash flow <b>&minus;$1.09B</b>. First builds go to an internal academy to collect training data. <a class="cite src" href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf" target="_blank" rel="noopener">Q2 2026 Update</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAYBACK ============ -->
+<section id="calc" class="grid-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Unit economics</span>
+      <div>
+        <h2>How fast does a humanoid pay for itself?</h2>
+        <div class="prose"><p>Payback equals robot price divided by the labor it replaces. ARK's benchmark is the BLS employer cost of $46.21 an hour, over 40-hour weeks and 50-week years: <strong>$92,420 a year</strong>. Move the sliders.</p></div>
+      </div>
+    </div>
+    <div class="calc">
+      <div>
+        <div class="ctrl">
+          <label for="price">Robot price <output id="priceOut">$30,000</output></label>
+          <input type="range" id="price" min="10000" max="150000" step="5000" value="30000" />
+        </div>
+        <div class="ctrl">
+          <label for="share">Share of one worker's output <output id="shareOut">50%</output></label>
+          <input type="range" id="share" min="10" max="100" step="5" value="50" />
+        </div>
+        <p class="note" style="margin-top:0">Musk's long-run target is $20,000&ndash;$30,000. McKinsey puts typical humanoid bills of materials at $30,000&ndash;$150,000 today.</p>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="big" id="payback">0.65<small>years</small></div>
+        <p class="sub" id="paybackSub">About 8 months to recover the purchase price.</p>
+        <div class="track" aria-hidden="true">
+          <div class="base"></div>
+          <div class="bar" id="paybackBar"></div>
+          <div class="tick" style="left:20%"><span>1 yr</span></div>
+          <div class="tick" style="left:60%"><span>3 yr</span></div>
+          <div class="tick" style="left:100%"><span>5 yr</span></div>
+        </div>
+        <p class="formula" id="formula">$30,000 &divide; (50% &times; $92,420) = 0.65 years</p>
+      </div>
+    </div>
+    <p class="note">The model leaves out maintenance, power, software fees and integration, so real payback runs longer. Even at $100,000, a robot matching one worker recovers its cost in about a year, so price is not the binding constraint. Reliable task capability is.</p>
+
+    <div class="estimates">
+      <h3>Published size estimates measure different things</h3>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Source</th><th>Estimate</th><th>What it measures</th></tr></thead>
+        <tbody>
+          <tr><td>ARK (Keeney), Jul 2026 <a class="cite" href="https://www.ark-funds.com/articles/venture-fund/apptronik-investment-thesis" target="_blank" rel="noopener">link</a></td><td class="num">~$26T</td><td>Humanoid robotics opportunity</td></tr>
+          <tr><td>ARK Tesla model, Jun 2024 <a class="cite" href="https://www.ark-invest.com/articles/valuation-models/arks-tesla-price-target-2029" target="_blank" rel="noopener">link</a></td><td class="num">~$24T</td><td>Generalizable humanoid robots</td></tr>
+          <tr><td>Elon Musk, early 2025 <a class="cite" href="https://fortune.com/2025/09/02/elon-musk-optimus-robots-tesla-master-plan" target="_blank" rel="noopener">link</a></td><td class="num">&gt;$10T</td><td>Long-term Optimus revenue</td></tr>
+          <tr><td>Morgan Stanley <a class="cite" href="https://fortune.com/2025/09/02/elon-musk-optimus-robots-tesla-master-plan" target="_blank" rel="noopener">link</a></td><td class="num">$5T by 2050</td><td>Humanoid market, about 1 billion robots</td></tr>
+          <tr><td>ARK, Jun 2025 <a class="cite" href="https://www.ark-funds.com/articles/etf/humanoid-robotics" target="_blank" rel="noopener">link</a></td><td class="num">~$250B/yr</td><td>U.S. household dishwashing as new GDP</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUE CHAIN ============ -->
+<section id="chain">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">The value chain</span>
+      <div>
+        <h2>Prioritize the joints and the brain.</h2>
+        <div class="prose"><p>Actuators are the largest cost pool and the tightest supply bottleneck. Robot AI and training data are the real gate on adoption. Both earn returns whichever humanoid maker wins. Scroll through the robot.</p></div>
+      </div>
+    </div>
+    <div class="chain">
+      <div class="chain-sticky">
+        <div class="stage" aria-hidden="true">
+          <svg class="robot" id="chainRobot" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <div class="meter" aria-live="polite">
+          <span class="who" id="meterWho">Actuators</span>
+          <span class="share" id="meterShare">40&ndash;60% of unit cost</span>
+          <div class="scale"><div class="range" id="meterRange" style="left:40%;width:20%"></div></div>
+          <div class="ticks"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="steps">
+        <article class="step" data-focus="actuators" data-who="Actuators" data-low="40" data-high="60" data-label="40&ndash;60% of unit cost">
+          <span class="pri first">Priority: first</span>
+          <h3>Actuators and the precision drivetrain</h3>
+          <p>The motors, harmonic drives and planetary roller screws that move every joint. Inside each actuator, the gearbox alone is 30&ndash;50% of the cost, and Tesla's Gen 3 Optimus hands carry about 50 actuators against 28 in the rest of the body.</p>
+          <p>This is where Wright's Law cost declines will be won or lost, since bills of materials must fall from $30,000+ to under $20,000.</p>
+          <dl><dt>Supply risk</dt><dd>High. China makes ~35% of motors and ~40% of precision bearings.</dd><dt>Source</dt><dd><a class="cite" href="https://www.mckinsey.com/br/en/our-insights/turning-humanoid-supply-chain-constraints-into-billion-dollar-wins" target="_blank" rel="noopener">McKinsey, Apr 2026</a></dd></dl>
+        </article>
+        <article class="step" data-focus="ai" data-who="AI and training data" data-low="10" data-high="15" data-label="Compute: 10&ndash;15% of cost">
+          <span class="pri first">Priority: first</span>
+          <h3>Robot AI models and training data</h3>
+          <p>The payback model shows a robot pays for itself once it can actually do the work, so capability is the gate and data is the scarce input. NVIDIA generated 780,000 synthetic trajectories in 11 hours, equal to about 6,500 hours of human demonstrations. Mixing synthetic with real data improved its GR00T N1 humanoid model by 40%.</p>
+          <p>Tesla's first Optimus builds go to data collection, and its Cortex 2 cluster trains both vehicle and humanoid autonomy.</p>
+          <dl><dt>ARK exposure</dt><dd>Figure AI and Apptronik in the ARK Venture Fund.</dd><dt>Sources</dt><dd><a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-isaac-gr00t-n1-open-humanoid-robot-foundation-model-simulation-frameworks" target="_blank" rel="noopener">NVIDIA</a> <a class="cite" href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf" target="_blank" rel="noopener">Tesla Q2 2026</a></dd></dl>
+        </article>
+        <article class="step" data-focus="magnets" data-who="Rare-earth magnets" data-low="0" data-high="90" data-label="~90% processed in China">
+          <span class="pri">Priority: second, as a strategic hedge</span>
+          <h3>Rare-earth permanent magnets</h3>
+          <p>Every motor in every joint depends on them. Rare-earth export controls already delayed Optimus motor production once. McKinsey estimates an Optimus Gen 2 bill of materials at about $46,000 with Chinese suppliers versus about $131,000 without.</p>
+          <dl><dt>Supply risk</dt><dd>Very high. China processes ~90% of permanent magnets and mines ~69% of rare earths.</dd><dt>Source</dt><dd><a class="cite" href="https://www.mckinsey.com/br/en/our-insights/turning-humanoid-supply-chain-constraints-into-billion-dollar-wins" target="_blank" rel="noopener">McKinsey, Apr 2026</a></dd></dl>
+        </article>
+        <article class="step" data-focus="sensing" data-who="Sensing" data-low="10" data-high="20" data-label="10&ndash;20% of unit cost">
+          <span class="pri">Priority: second</span>
+          <h3>Force, torque and tactile sensing</h3>
+          <p>Cameras give a robot sight; fingertip and foot sensors give it touch and balance. Six-axis force sensors and tactile skins are among the components McKinsey flags as supply-constrained.</p>
+          <dl><dt>Supply risk</dt><dd>High.</dd></dl>
+        </article>
+        <article class="step" data-focus="compute" data-who="Compute and control" data-low="10" data-high="15" data-label="10&ndash;15% of unit cost">
+          <span class="pri">Priority: third</span>
+          <h3>Compute and control</h3>
+          <p>The bottleneck here is systems integration, not chip supply. ARK already owns this layer through NVIDIA, and the ARK Venture Fund holds Tenstorrent.</p>
+          <dl><dt>Supply risk</dt><dd>Integration, not capacity.</dd></dl>
+        </article>
+        <article class="step" data-focus="battery" data-who="Battery modules" data-low="5" data-high="10" data-label="5&ndash;10% of unit cost">
+          <span class="pri">Priority: lowest</span>
+          <h3>Battery modules</h3>
+          <p>Battery cells are not expected to be supply-constrained through 2035, and solid-state humanoid packs are on suppliers' roadmaps for 2027.</p>
+          <dl><dt>Supply risk</dt><dd>Low.</dd></dl>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTONOMY ============ -->
+<section id="autonomy" class="grid-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Autonomy</span>
+      <div>
+        <h2>Robotaxis are the robot already earning revenue.</h2>
+        <div class="prose"><p>ARK's $2,600 Tesla target places nearly 90% of Tesla's 2029 enterprise value in robotaxis, and the AI that drives a car also trains a humanoid. Tesla leads on fleet data and vehicle cost. Waymo leads today on paid driverless service.</p></div>
+      </div>
+    </div>
+    <div class="versus">
+      <div class="side reveal">
+        <div class="who">Tesla</div>
+        <div class="lead">Leads on data and cost</div>
+        <div class="kv"><span class="k">FSD (Supervised) subscriptions, Q2 2026</span><span class="v">1.48M</span></div>
+        <div class="kv"><span class="k">Growth, year over year</span><span class="v">+56%</span></div>
+        <div class="kv"><span class="k">Metros ramping unsupervised rides</span><span class="v">6</span></div>
+        <div class="kv"><span class="k">Cybercab installed capacity</span><span class="v">&gt;125k/yr</span></div>
+        <p class="small">Austin, Dallas, Houston, Miami, Orlando and Tampa. Tesla's own filing notes FSD (Supervised) still needs an attentive driver. <a class="cite" href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf" target="_blank" rel="noopener">Q2 2026 Update</a></p>
+      </div>
+      <div class="side reveal">
+        <div class="who">Waymo</div>
+        <div class="lead">Leads on driverless service</div>
+        <div class="kv"><span class="k">Paid rides a week, early 2026</span><span class="v">~500k</span></div>
+        <div class="kv"><span class="k">Target by end of 2026</span><span class="v">1M/wk</span></div>
+        <div class="kv"><span class="k">Fully driverless U.S. cities</span><span class="v">11</span></div>
+        <div class="kv"><span class="k">Fleet</span><span class="v">~3,500</span></div>
+        <p class="small">Las Vegas went fully driverless on July 8, 2026. <a class="cite" href="https://electrek.co/2026/07/08/waymo-driverless-las-vegas-four-new-cities/" target="_blank" rel="noopener">Electrek</a></p>
+      </div>
+    </div>
+    <div class="road" id="road" aria-hidden="true"></div>
+    <div class="ark-auto">
+      <div class="reveal"><div class="fig">$603B&ndash;$951B</div><p>ARK's 2029 estimate of Tesla's net autonomous ride-hail revenue, at a 32% EBITDA margin. <a class="cite" href="https://www.ark-invest.com/articles/valuation-models/arks-tesla-price-target-2029" target="_blank" rel="noopener">ARK</a></p></div>
+      <div class="reveal"><div class="fig">~$500B</div><p>Autonomous logistics revenue by 2030, per ARK analyst Daniel Maguire at the May 2026 Big Ideas Summit. <a class="cite" href="https://www.businessobserverfl.com/news/2026/may/22/robotaxis-rockets-living-forever-ark-big-ideas-report/" target="_blank" rel="noopener">Business Observer</a></p></div>
+      <div class="reveal"><div class="fig">6 holdings</div><p>Wayve, Kodiak AI, Gatik, Outrider, Shield AI and Zipline: autonomy names already in the ARK Venture Fund. <a class="cite" href="https://www.ark-funds.com/portfolio" target="_blank" rel="noopener">ARK</a></p></div>
+    </div>
+    <div class="prose" style="margin-top:3rem"><p><strong>Why it belongs here.</strong> Driving data, training compute and autonomy software carry straight over to humanoids. Robotaxis are where the AI-and-data priority can be checked against real revenue now, two to three years before humanoids reach customers.</p></div>
+  </div>
+</section>
+
+<!-- ============ WATCH LIST ============ -->
+<section id="watch">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Who to watch</span>
+      <div>
+        <h2>Leaders, enablers and beneficiaries.</h2>
+        <div class="prose"><p>The strongest private setups pair a humanoid maker with signed industrial pilots and investors who are also customers. The screen: a named industrial buyer, strategic investors who buy, and a cost roadmap into the $20,000&ndash;$30,000 band.</p></div>
+      </div>
+    </div>
+    <div class="filters" role="group" aria-label="Filter companies by role">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="leader" aria-pressed="false">Leaders</button>
+      <button class="chip" type="button" data-filter="enabler" aria-pressed="false">Enablers</button>
+      <button class="chip" type="button" data-filter="beneficiary" aria-pressed="false">Beneficiaries</button>
+    </div>
+    <div class="tscroll">
+    <table id="watchTable">
+      <thead><tr><th>Company</th><th>Role</th><th>Status</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr data-role="leader"><td>Apptronik<span class="ark">ARK holding</span></td><td><span class="role leader">Leader</span></td><td>Private</td><td>~$1B raised, ~$5B valuation (Feb 2026); Mercedes-Benz pilot; GXO proof of concept; Google DeepMind partnership</td></tr>
+        <tr data-role="leader"><td>Figure AI<span class="ark">ARK holding</span></td><td><span class="role leader">Leader</span></td><td>Private</td><td>Raised &gt;$700M since 2022; reported talks at ~$40B valuation (Feb 2025)</td></tr>
+        <tr data-role="leader"><td>Tesla (Optimus)<span class="ark">ARK holding</span></td><td><span class="role leader">Leader</span></td><td>Public</td><td>Fremont S/X lines replaced by Optimus lines; Texas Optimus building under construction; no customer deliveries yet</td></tr>
+        <tr data-role="leader"><td>Boston Dynamics</td><td><span class="role leader">Leader</span></td><td>Hyundai-owned</td><td>Enterprise Atlas confirmed at CES 2026, first deployments at Hyundai; early access to NVIDIA GR00T</td></tr>
+        <tr data-role="leader"><td>UBTech</td><td><span class="role leader">Leader</span></td><td>Public (HK)</td><td>Walker S2 robots bought by Airbus for production sites</td></tr>
+        <tr data-role="enabler"><td>NVIDIA<span class="ark">ARK holding</span></td><td><span class="role">Enabler</span></td><td>Public</td><td>Open GR00T N1 humanoid foundation model; Jetson and Isaac robotics platforms</td></tr>
+        <tr data-role="enabler"><td>AMD</td><td><span class="role">Enabler</span></td><td>Public</td><td>CPUs and GPUs for robot compute</td></tr>
+        <tr data-role="enabler"><td>Rare-earth magnet suppliers</td><td><span class="role">Enabler</span></td><td>Mixed</td><td>China processes ~90% of permanent magnets; non-China capacity carries a scarcity premium</td></tr>
+        <tr data-role="beneficiary"><td>Amazon, Symbotic</td><td><span class="role">Beneficiary</span></td><td>Public</td><td>Warehouse automation amid labor constraints</td></tr>
+        <tr data-role="beneficiary"><td>Small and mid-size businesses</td><td><span class="role">Beneficiary</span></td><td>&mdash;</td><td>ARK argues humanoids are the first automation small firms can realistically adopt</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RISKS ============ -->
+<section id="risks">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Risks</span>
+      <div><h2>The main risk is time, not market size.</h2></div>
+    </div>
+    <div class="risks">
+      <div>
+        <div class="risk"><h3>Capability gap</h3><p>ARK puts humanoids at 200,000 times the development complexity of robotaxis, and some public Optimus demos relied on remote teleoperation.</p></div>
+        <div class="risk"><h3>Manufacturing and cash burn</h3><p>Tesla guides 2026 capex above $25B with negative free cash flow, and Musk says Optimus needs a totally new supply chain.</p></div>
+        <div class="risk"><h3>Supply chain exposure</h3><p>Rare-earth export controls already delayed Optimus motors once.</p></div>
+        <div class="risk"><h3>Price compression</h3><p>HSBC sees Chinese humanoid commercialization moving faster than overseas peers, and K-Scale Labs priced a bot at $9,000.</p></div>
+        <div class="risk"><h3>Private valuations</h3><p>Round prices like Figure's reported ~$40B assume success well before revenue.</p></div>
+      </div>
+      <div>
+        <h3>What would change this thesis</h3>
+        <ul class="signals">
+          <li>No humanoid maker shipping more than 10,000 units a year to outside customers by end of 2028, the start of Wood's window</li>
+          <li>Industrial pilots at Mercedes, GXO, Airbus or Hyundai not converting to fleet orders</li>
+          <li>Real-world payback, including maintenance and integration, running above three years</li>
+          <li>Chinese makers reaching sub-$10,000 prices with comparable capability</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section id="video">
+  <div class="wrap" style="max-width:62rem">
+    <div class="sec-head">
+      <span class="sec-num">Watch</span>
+      <div><h2 id="videoTitle">The thesis in motion</h2></div>
+    </div>
+    <div class="video-frame" id="videoFrame" aria-labelledby="videoTitle">
+      <div class="placeholder" id="videoPlaceholder">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><rect x="1" y="1" width="118" height="118" fill="none" stroke="#DCE0E6"/><circle cx="60" cy="60" r="26" fill="none" stroke="#15171C" stroke-width="1.5"/><path d="M53 47 L75 60 L53 73 Z" fill="none" stroke="#15171C" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <p>Video coming soon</p>
+        <span>A short walkthrough of this thesis will play here.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Sources</span>
+      <div><h2>Primary research first.</h2></div>
+    </div>
+    <div class="sources">
+      <h3>ARK</h3>
+      <ul>
+        <li><a href="https://www.ark-funds.com/articles/venture-fund/apptronik-investment-thesis" target="_blank" rel="noopener">How To Invest In Apptronik, Jul 20, 2026</a></li>
+        <li><a href="https://www.ark-funds.com/articles/etf/humanoid-robotics" target="_blank" rel="noopener">Humanoid Robotics And The Next Frontier Of Automation, Jun 17, 2025</a></li>
+        <li><a href="https://www.ark-invest.com/articles/valuation-models/arks-tesla-price-target-2029" target="_blank" rel="noopener">ARK's Expected Value For Tesla In 2029, Jun 12, 2024</a></li>
+        <li><a href="https://www.ark-funds.com/portfolio" target="_blank" rel="noopener">ARK Venture Fund portfolio</a></li>
+        <li><a href="https://www.interactivebrokers.com/campus/trading-course/ark-invest-big-ideas-2026/" target="_blank" rel="noopener">Big Ideas 2026 course, IBKR Campus</a></li>
+      </ul>
+      <h3>Filings and earnings</h3>
+      <ul>
+        <li><a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf" target="_blank" rel="noopener">Tesla Q2 2026 Update</a></li>
+        <li><a href="https://www.marketbeat.com/earnings/reports/2026-4-22-tesla-inc-stock/" target="_blank" rel="noopener">Tesla Q1 2026 earnings call transcript</a></li>
+        <li><a href="https://x.com/elonmusk/status/1962618811141812475" target="_blank" rel="noopener">Elon Musk on X, Sep 1, 2025</a></li>
+        <li><a href="https://nvidianews.nvidia.com/news/nvidia-isaac-gr00t-n1-open-humanoid-robot-foundation-model-simulation-frameworks" target="_blank" rel="noopener">NVIDIA Isaac GR00T N1 announcement, Mar 18, 2025</a></li>
+      </ul>
+      <h3>Industry research</h3>
+      <ul>
+        <li><a href="https://www.mckinsey.com/br/en/our-insights/turning-humanoid-supply-chain-constraints-into-billion-dollar-wins" target="_blank" rel="noopener">McKinsey: humanoid supply chain constraints, Apr 17, 2026</a></li>
+      </ul>
+      <h3>News coverage</h3>
+      <ul>
+        <li><a href="https://finviz.com/news/311256/cathie-wood-says-teslas-optimus-could-transform-factory-home-life-by-2028-2029" target="_blank" rel="noopener">Benzinga: Cathie Wood on Optimus, Feb 14, 2026</a></li>
+        <li><a href="https://www.mexc.com/news/144990" target="_blank" rel="noopener">CoinCentral: Wood on embodied AI</a></li>
+        <li><a href="https://www.businessobserverfl.com/news/2026/may/22/robotaxis-rockets-living-forever-ark-big-ideas-report/" target="_blank" rel="noopener">Business Observer: ARK Big Ideas Summit, May 22, 2026</a></li>
+        <li><a href="https://fortune.com/2025/09/02/elon-musk-optimus-robots-tesla-master-plan" target="_blank" rel="noopener">Fortune: Optimus and Tesla's value, Sep 2, 2025</a></li>
+        <li><a href="https://electrek.co/2026/07/08/waymo-driverless-las-vegas-four-new-cities/" target="_blank" rel="noopener">Electrek: Waymo in Las Vegas, Jul 8, 2026</a></li>
+        <li><a href="https://www.cmcmarkets.com/en/optox/humanoid-robots-which-stocks-are-leading-the-way" target="_blank" rel="noopener">CMC Markets: humanoid leaders</a></li>
+      </ul>
+    </div>
+    <p class="disclaimer">A personal research project by Antonio Planzo. Not affiliated with or endorsed by ARK Investment Management, Tesla, or any company named. Nothing here is investment advice.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../">Back to portfolio</a>
+    <a href="../falcon9/">Falcon 9 field notes</a>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<script>
+/* ---------- video: set ONE of these when the video is ready ---------- */
+var VIDEO = {
+  youtubeId: '',          /* e.g. 'dQw4w9WgXcQ' from a YouTube link */
+  file: '',               /* or a file in this folder, e.g. 'thesis.mp4' */
+  poster: ''              /* optional still image for a local file */
+};
+
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  /* ---------- robot blueprint ---------- */
+  function el(tag, attrs, parent){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function capsule(x1,y1,x2,y2,r){
+    var dx=x2-x1, dy=y2-y1, L=Math.hypot(dx,dy), nx=-dy/L*r, ny=dx/L*r;
+    var a=[x1+nx,y1+ny], b=[x2+nx,y2+ny], c=[x2-nx,y2-ny], d=[x1-nx,y1-ny];
+    return 'M'+a+' L'+b+' A'+r+' '+r+' 0 0 0 '+c+' L'+d+' A'+r+' '+r+' 0 0 0 '+a+' Z';
+  }
+  function buildRobot(svg){
+    var order = 0;
+    function stroke(node){ node.classList.add('s'); node.setAttribute('pathLength','1'); node.style.setProperty('--d',(0.04*order++)+'s'); return node; }
+    /* dimension guides */
+    var guides = el('g',{class:'guides'},svg);
+    el('line',{x1:30,y1:40,x2:30,y2:560,class:'dim'},guides);
+    el('line',{x1:24,y1:40,x2:36,y2:40,class:'dim'},guides);
+    el('line',{x1:24,y1:560,x2:36,y2:560,class:'dim'},guides);
+    var structure = el('g',{class:'part structure'},svg);
+    var battery = el('g',{class:'part battery'},svg);
+    var compute = el('g',{class:'part compute'},svg);
+    var sensing = el('g',{class:'part sensing'},svg);
+    var actuators = el('g',{class:'part actuators'},svg);
+
+    /* limbs: [x1,y1,x2,y2,r] */
+    var limbs = [
+      [136,138,116,232,13],[264,138,284,232,13],
+      [116,232,108,318,11],[284,232,292,318,11],
+      [178,302,172,422,16],[222,302,228,422,16],
+      [172,422,170,530,13],[228,422,230,530,13]
+    ];
+    limbs.forEach(function(l){ stroke(el('path',{d:capsule(l[0],l[1],l[2],l[3],l[4]),class:'ln fl'},structure)); });
+    /* torso, pelvis, head, neck */
+    stroke(el('path',{d:'M144 122 Q200 110 256 122 L266 150 L242 262 L158 262 L134 150 Z',class:'ln fl'},structure));
+    stroke(el('path',{d:'M160 272 L240 272 L248 304 L152 304 Z',class:'ln fl'},structure));
+    stroke(el('rect',{x:192,y:100,width:16,height:18,rx:3,class:'ln fl'},structure));
+    stroke(el('rect',{x:170,y:36,width:60,height:68,rx:20,class:'ln fl'},structure));
+    /* feet */
+    stroke(el('path',{d:'M150 538 L186 538 Q194 538 194 546 L194 552 L140 552 L140 546 Q140 538 150 538 Z',class:'ln fl'},structure));
+    stroke(el('path',{d:'M214 538 L250 538 Q260 538 260 546 L260 552 L206 552 L206 546 Q206 538 214 538 Z',class:'ln fl'},structure));
+    /* hands: palms + fingers */
+    var hands = [[108,318,-1],[292,318,1]];
+    var fingerTips = [], fingerJoints = [];
+    hands.forEach(function(h){
+      var x=h[0], y=h[1];
+      stroke(el('rect',{x:x-12,y:y+8,width:24,height:26,rx:6,class:'ln fl'},structure));
+      for (var i=0;i<4;i++){
+        var fx = x-9+i*6;
+        stroke(el('line',{x1:fx,y1:y+34,x2:fx,y2:y+52,class:'ln thin'},structure));
+        fingerJoints.push([fx,y+42]);
+        fingerTips.push([fx,y+54]);
+      }
+      var tx = x + (h[2]<0 ? 14 : -14);
+      stroke(el('line',{x1:x+(h[2]<0?10:-10),y1:y+14,x2:tx+(h[2]<0?4:-4),y2:y+30,class:'ln thin'},structure));
+    });
+    /* battery pack */
+    stroke(el('rect',{x:174,y:196,width:52,height:52,rx:5,class:'ln fillme'},battery));
+    [186,200,214].forEach(function(cx){ stroke(el('line',{x1:cx,y1:204,x2:cx,y2:240,class:'ln thin'},battery)); });
+    stroke(el('rect',{x:194,y:192,width:12,height:4,rx:1,class:'ln thin'},battery));
+    /* compute: chip in chest */
+    stroke(el('rect',{x:184,y:140,width:32,height:32,rx:3,class:'ln fillme'},compute));
+    stroke(el('rect',{x:192,y:148,width:16,height:16,rx:1,class:'ln thin'},compute));
+    [146,154,162,170].forEach(function(py){ if(py<172){ stroke(el('line',{x1:178,y1:py,x2:184,y2:py,class:'ln thin'},compute)); stroke(el('line',{x1:216,y1:py,x2:222,y2:py,class:'ln thin'},compute)); }});
+    /* sensing: visor cameras, fingertip tactile, foot force plates */
+    stroke(el('rect',{x:178,y:58,width:44,height:16,rx:8,class:'ln fl'},sensing));
+    el('circle',{cx:190,cy:66,r:3.5,class:'jt sm'},sensing);
+    el('circle',{cx:210,cy:66,r:3.5,class:'jt sm'},sensing);
+    fingerTips.forEach(function(p){ el('circle',{cx:p[0],cy:p[1],r:1.9,class:'jt sm'},sensing); });
+    stroke(el('line',{x1:146,y1:556,x2:188,y2:556,class:'ln'},sensing));
+    stroke(el('line',{x1:212,y1:556,x2:254,y2:556,class:'ln'},sensing));
+    /* actuators: body joints + finger joints */
+    var joints = [[200,112],[136,138],[264,138],[116,232],[284,232],[108,318],[292,318],[200,267],[178,302],[222,302],[172,422],[228,422],[170,530],[230,530]];
+    var jointEls = [];
+    joints.forEach(function(j){
+      var g = el('g',{},actuators);
+      jointEls.push(el('circle',{cx:j[0],cy:j[1],r:7.5,class:'jt'},g));
+      el('circle',{cx:j[0],cy:j[1],r:3,class:'core'},g);
+    });
+    fingerJoints.forEach(function(p){ jointEls.push(el('circle',{cx:p[0],cy:p[1],r:2.4,class:'jt sm'},actuators)); });
+    svg.__joints = jointEls;
+  }
+
+  var heroRobot = document.getElementById('heroRobot');
+  var chainRobot = document.getElementById('chainRobot');
+  buildRobot(heroRobot); buildRobot(chainRobot);
+
+  /* callouts drawn in robot coordinates so they stay pinned to the parts */
+  function addCallout(svg, ax, ay, bx, w, parts, side){
+    var g = el('g',{class:'co'},svg);
+    var x = side==='left' ? bx - w : bx;
+    el('line',{x1:ax,y1:ay,x2:bx,y2:ay},g);
+    el('circle',{cx:ax,cy:ay,r:2.5},g);
+    el('rect',{x:x,y:ay-16,width:w,height:32},g);
+    var t = el('text',{x:x+10,y:ay+5},g);
+    parts.forEach(function(p){ var s = el('tspan',p[1]?{class:'b'}:{},t); s.textContent = p[0]; });
+    return g;
+  }
+  var callouts = [
+    addCallout(heroRobot, 100, 372, 46, 176, [['~50','b'],[' hand actuators']], 'left'),
+    addCallout(heroRobot, 291, 232, 336, 142, [['28','b'],[' body joints']], 'right'),
+    addCallout(heroRobot, 235, 422, 268, 264, [['Gearbox: '],['30–50%','b'],[' of joint cost']], 'right')
+  ];
+  var mq = window.matchMedia('(max-width: 900px)');
+  function fitHero(){ heroRobot.setAttribute('viewBox', mq.matches ? '0 0 400 600' : '-150 20 700 560'); }
+  fitHero(); (mq.addEventListener ? mq.addEventListener('change', fitHero) : mq.addListener(fitHero));
+
+  /* ---------- hero load sequence: draw, fire joints, callouts ---------- */
+  function fireJoints(svg, done){
+    var js = svg.__joints, i = 0;
+    if (reduced){ done && done(); return; }
+    (function next(){
+      if (i >= js.length){ done && done(); return; }
+      var j = js[i++]; j.classList.remove('fire'); void j.getBoundingClientRect(); j.classList.add('fire');
+      setTimeout(next, 55);
+    })();
+  }
+  function heroSequence(){
+    if (!reduced) heroRobot.classList.add('drawing');
+    setTimeout(function(){
+      fireJoints(heroRobot, function(){
+        callouts.forEach(function(c,k){ setTimeout(function(){ c.classList.add('in'); }, k*350); });
+      });
+    }, reduced ? 0 : 1900);
+  }
+  heroSequence();
+
+  /* ---------- typewriter ---------- */
+  var heroType = document.querySelector('.hero-type');
+  var heroStr = heroType.getAttribute('aria-label');
+  var heroEl = document.getElementById('heroTyped'), caret = document.getElementById('heroCaret');
+  if (reduced){ heroEl.textContent = heroStr; caret.style.display = 'none'; }
+  else {
+    var ti = 0;
+    setTimeout(function tick(){
+      heroEl.textContent = heroStr.slice(0, ++ti);
+      if (ti < heroStr.length) setTimeout(tick, 15); else setTimeout(function(){ caret.style.display='none'; }, 1400);
+    }, 400);
+  }
+
+  /* ---------- readout counters ---------- */
+  function fmt(v, kind, target){
+    if (kind==='tn') return '$'+Math.round(v)+'T';
+    if (kind==='range'){ var lo = Math.round(v*40/60); return lo+'–'+Math.round(v)+'%'; }
+    if (kind==='yr') return v.toFixed(2)+' yr';
+    if (kind==='m') return v.toFixed(2)+'M';
+    return String(v);
+  }
+  document.querySelectorAll('[data-count]').forEach(function(node, k){
+    var target = parseFloat(node.dataset.count), kind = node.dataset.fmt;
+    if (reduced){ node.textContent = fmt(target, kind); return; }
+    setTimeout(function(){
+      var t0 = performance.now(), dur = 1600;
+      (function frame(now){
+        var p = Math.min((now-t0)/dur,1), e = 1-Math.pow(1-p,3);
+        node.textContent = fmt(target*e, kind);
+        if (p<1) requestAnimationFrame(frame);
+      })(t0);
+    }, 900 + k*180);
+  });
+
+  /* ---------- scroll progress + nav state ---------- */
+  var bar = document.getElementById('progress');
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.navlinks a[href^="#"]'));
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (h>0 ? scrollY/h : 0) + ')';
+    var cur = null;
+    navLinks.forEach(function(a){ var s = document.querySelector(a.getAttribute('href')); if (s && s.getBoundingClientRect().top < innerHeight*0.4) cur = a; });
+    navLinks.forEach(function(a){ a.classList.toggle('on', a===cur); });
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- reveal ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(n){ io.observe(n); });
+
+  /* ---------- payback calculator ---------- */
+  var LABOR = 46.21*40*50;
+  var price = document.getElementById('price'), share = document.getElementById('share');
+  function money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+  function setFill(r){ var p = (r.value-r.min)/(r.max-r.min)*100; r.style.setProperty('--fill', p+'%'); }
+  function calc(){
+    var P = +price.value, S = +share.value/100, yrs = P/(S*LABOR), months = yrs*12;
+    document.getElementById('priceOut').textContent = money(P);
+    document.getElementById('shareOut').textContent = Math.round(S*100)+'%';
+    document.getElementById('payback').innerHTML = yrs.toFixed(2)+'<small>years</small>';
+    document.getElementById('paybackSub').textContent = months < 24
+      ? 'About '+Math.max(1,Math.round(months))+' months to recover the purchase price.'
+      : 'About '+yrs.toFixed(1)+' years to recover the purchase price.';
+    document.getElementById('paybackBar').style.width = Math.min(yrs/5,1)*100+'%';
+    document.getElementById('formula').textContent = money(P)+' ÷ ('+Math.round(S*100)+'% × '+money(LABOR)+') = '+yrs.toFixed(2)+' years';
+    setFill(price); setFill(share);
+  }
+  price.addEventListener('input', calc); share.addEventListener('input', calc); calc();
+
+  /* ---------- value chain scrollytelling ---------- */
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var who = document.getElementById('meterWho'), shr = document.getElementById('meterShare'), rng = document.getElementById('meterRange');
+  function activate(step){
+    steps.forEach(function(s){ s.classList.toggle('active', s===step); });
+    chainRobot.setAttribute('data-focus', step.dataset.focus);
+    who.textContent = step.dataset.who;
+    shr.innerHTML = step.dataset.label;
+    rng.style.left = step.dataset.low+'%';
+    rng.style.width = (step.dataset.high-step.dataset.low)+'%';
+  }
+  var sio = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting) activate(en.target); });
+  }, {rootMargin: mq.matches ? '-62% 0px -30% 0px' : '-45% 0px -45% 0px'});
+  steps.forEach(function(s){ sio.observe(s); });
+  activate(steps[0]);
+
+  /* ---------- autonomy road ---------- */
+  var road = document.getElementById('road');
+  new IntersectionObserver(function(en){ if(!reduced) road.classList.toggle('run', en[0].isIntersecting); }).observe(road);
+
+  /* ---------- watch list filter ---------- */
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(o){ o.setAttribute('aria-pressed', o===c ? 'true' : 'false'); });
+      var f = c.dataset.filter;
+      document.querySelectorAll('#watchTable tbody tr').forEach(function(r){ r.hidden = !(f==='all' || r.dataset.role===f); });
+    });
+  });
+
+  /* ---------- guided briefing (eased auto-scroll, stops when the reader scrolls) ---------- */
+  var btn = document.getElementById('briefBtn'), lbl = document.getElementById('briefLabel'), status = document.getElementById('status');
+  var running = false, timer = null, raf = null;
+  var stops = [
+    ['#thesis', 'The thesis, in three claims', 5200],
+    ['#ark', "ARK's view on humanoids", 5600],
+    ['#ledger', 'Targets against filings', 6000],
+    ['#calc', 'Unit economics: try the sliders after the briefing', 5600],
+    ['#chain', 'The value chain', 0],
+    ['#autonomy', 'Robotaxis, the robot already earning revenue', 6000],
+    ['#watch', 'Who to watch', 5000],
+    ['#video', 'Briefing complete', 0]
+  ];
+  function glide(target, dur, done){
+    var start = scrollY, dist = target - start, t0 = performance.now();
+    if (reduced){ scrollTo(0, target); done && done(); return; }
+    (function step(now){
+      if (!running) return;
+      var p = Math.min((now-t0)/dur,1), e = p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2;
+      scrollTo(0, start + dist*e);
+      if (p<1) raf = requestAnimationFrame(step); else done && done();
+    })(t0);
+  }
+  function topOf(sel){ return document.querySelector(sel).getBoundingClientRect().top + scrollY - 56; }
+  function stopBriefing(msg){
+    running = false; clearTimeout(timer); cancelAnimationFrame(raf);
+    btn.classList.remove('running'); btn.setAttribute('aria-pressed','false');
+    lbl.textContent = 'Resume the briefing';
+    status.textContent = msg || '';
+    removeEventListener('wheel', userTook); removeEventListener('touchstart', userTook); removeEventListener('keydown', keyTook);
+  }
+  function userTook(){ stopBriefing('Briefing paused. You have the controls.'); }
+  function keyTook(e){ if (['ArrowDown','ArrowUp','PageDown','PageUp','Space',' ','Home','End'].indexOf(e.key) > -1) userTook(); }
+  function runFrom(i){
+    if (!running || i >= stops.length){ if (running){ stopBriefing('Briefing complete.'); lbl.textContent = 'Replay the briefing'; nextIndex = 0; } return; }
+    nextIndex = i;
+    var s = stops[i];
+    status.textContent = s[1];
+    if (s[0] === '#chain'){
+      /* walk the value-chain steps one by one */
+      glide(topOf('#chain'), 1600, function(){
+        var k = 0;
+        (function nextStep(){
+          if (!running) return;
+          if (k >= steps.length){ runFrom(i+1); return; }
+          var st = steps[k++];
+          var y = st.getBoundingClientRect().top + scrollY - innerHeight*(mq.matches ? 0.66 : 0.5) + st.offsetHeight*0.5;
+          glide(y, 1300, function(){ timer = setTimeout(nextStep, 3200); });
+        })();
+      });
+      return;
+    }
+    glide(topOf(s[0]), 1700, function(){ if (s[2]) timer = setTimeout(function(){ runFrom(i+1); }, s[2]); else runFrom(i+1); });
+  }
+  var nextIndex = 0;
+  btn.addEventListener('click', function(){
+    if (running){ stopBriefing('Briefing paused.'); return; }
+    running = true; btn.classList.add('running'); btn.setAttribute('aria-pressed','true'); lbl.textContent = 'Pause the briefing';
+    addEventListener('wheel', userTook, {passive:true}); addEventListener('touchstart', userTook, {passive:true}); addEventListener('keydown', keyTook);
+    runFrom(nextIndex);
+  });
+
+  /* ---------- video ---------- */
+  var vf = document.getElementById('videoFrame');
+  if (VIDEO.youtubeId || VIDEO.file){
+    vf.innerHTML = '';
+    if (VIDEO.youtubeId){
+      vf.classList.add('ready'); vf.setAttribute('role','button'); vf.tabIndex = 0;
+      vf.setAttribute('aria-label','Play the video');
+      var img = document.createElement('img'); img.className = 'thumb'; img.alt = '';
+      img.src = 'https://img.youtube.com/vi/'+VIDEO.youtubeId+'/maxresdefault.jpg';
+      img.onerror = function(){ this.onerror = null; this.src = 'https://img.youtube.com/vi/'+VIDEO.youtubeId+'/hqdefault.jpg'; };
+      var play = document.createElement('span'); play.className = 'play';
+      play.innerHTML = '<svg viewBox="0 0 24 24" width="26" height="26" fill="#15171C" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+      vf.appendChild(img); vf.appendChild(play);
+      var go = function(){
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/'+VIDEO.youtubeId+'?autoplay=1&rel=0';
+        f.title = 'Humanoid robotics thesis video';
+        f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+        vf.innerHTML = ''; vf.classList.remove('ready'); vf.removeAttribute('role'); vf.appendChild(f);
+      };
+      vf.addEventListener('click', go);
+      vf.addEventListener('keydown', function(e){ if (e.key==='Enter' || e.key===' '){ e.preventDefault(); go(); } });
+    } else {
+      var v = document.createElement('video');
+      v.src = VIDEO.file; v.controls = true; v.preload = 'metadata'; v.playsInline = true;
+      if (VIDEO.poster) v.poster = VIDEO.poster;
+      vf.appendChild(v);
+    }
+  }
+})();
+</script>
+</body>
+</html>

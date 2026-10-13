@@ -35,8 +35,8 @@
         font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
         color:#B9B5AC;opacity:0;transform:translateX(-6px);transition:opacity .7s ease,transform .7s ease;pointer-events:none}
       .f9-hint.on{opacity:1;transform:translateX(0)}
-      .f9-hint .f9-arrow{color:#F0973B;animation:f9nudge 1.6s ease-in-out infinite}
-      @keyframes f9nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
+      .f9-hint .f9-arrow{display:inline-block;color:#F0973B;animation:f9nudge 1.6s ease-in-out infinite}
+      @keyframes f9nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
       @media (prefers-reduced-motion:reduce){.f9-dot{animation:none}.f9-rkt,.f9-flame{transition:none}.f9-hint{transition:none}.f9-hint .f9-arrow{animation:none}}
     </style>
     <script>
@@ -55,8 +55,16 @@
           var hint = document.createElement('span');
           hint.className = 'f9-hint';
           hint.setAttribute('aria-hidden','true');
-          hint.innerHTML = '<span class="f9-arrow">&#8592;</span>View the launch &middot; interactive work sample';
+          hint.innerHTML = '<span class="f9-arrow">&#8593;</span>Interactive work samples';
           row.appendChild(hint);
+          var rb = document.createElement('a');
+          rb.href = './robotics/';
+          rb.className = 'btn-outline focus-ring f9-btn';
+          rb.setAttribute('aria-label','Robotics thesis: view the humanoid robotics research page');
+          rb.innerHTML = '<span class="f9-dot"></span>Robotics Thesis'
+            + '<svg class="f9-rkt" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F0973B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="7" rx="3"/><path d="M8 11h8l1 6H7z"/><path d="M5 12l2 4M19 12l-2 4M10 17v5M14 17v5"/></svg>'
+            + '<span class="f9-flame"></span>';
+          row.insertBefore(rb, a);
           var tries = 0;
           (function waitFade(){
             var op = parseFloat(getComputedStyle(row).opacity);
