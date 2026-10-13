@@ -691,7 +691,7 @@ footer a:hover{color:var(--ink)}
   <div class="wrap" style="max-width:62rem">
     <div class="sec-head">
       <span class="sec-num">Watch</span>
-      <div><h2 id="videoTitle">The thesis in motion</h2></div>
+      <div><h2 id="videoTitle">Will robots take our jobs? ARK debates it.</h2><div class="prose"><p>Chief Futurist Brett Winton, Sam Korus and Nick Grous on whether humanoids are overhyped or underhyped, U.S.&ndash;China competition, and the future of work.</p></div></div>
     </div>
     <div class="video-frame" id="videoFrame" aria-labelledby="videoTitle">
       <div class="placeholder" id="videoPlaceholder">
@@ -700,6 +700,7 @@ footer a:hover{color:var(--ink)}
         <span>A short walkthrough of this thesis will play here.</span>
       </div>
     </div>
+    <p class="note">The Brainstorm EP 120, February 25, 2026. Video courtesy of <a class="cite" href="https://www.ark-invest.com/podcast/the-brainstorm-ep-120" target="_blank" rel="noopener">ARK Invest</a>; shown here for commentary, not affiliated.</p>
   </div>
 </section>
 
@@ -756,7 +757,7 @@ footer a:hover{color:var(--ink)}
 <script>
 /* ---------- video: set ONE of these when the video is ready ---------- */
 var VIDEO = {
-  youtubeId: 'kND0iGErBk8', /* from a YouTube link */
+  youtubeId: '4m6y6ZYvG84', /* from a YouTube link */
   file: '',               /* or a file in this folder, e.g. 'thesis.mp4' */
   poster: ''              /* optional still image for a local file */
 };
@@ -1073,7 +1074,7 @@ var VIDEO = {
       var go = function(){
         var f = document.createElement('iframe');
         f.src = 'https://www.youtube-nocookie.com/embed/'+VIDEO.youtubeId+'?autoplay=1&rel=0';
-        f.title = 'Humanoid robotics thesis video';
+        f.title = 'Will Robots Take Our Jobs? The Brainstorm EP 120, ARK Invest';
         f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
         vf.innerHTML = ''; vf.classList.remove('ready'); vf.removeAttribute('role'); vf.appendChild(f);
       };
