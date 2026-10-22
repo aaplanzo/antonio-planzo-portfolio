@@ -87,7 +87,6 @@
       .vn-chart .ln{fill:none;stroke:#F0973B;stroke-width:2;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset .25s ease}
       .vn-chart .ar{opacity:0;transition:opacity .2s}
       .vn-chart .pt{fill:#F0973B;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0);transition:opacity .15s,transform .15s}
-      .vn-chart .gd{stroke:rgba(17,17,16,.08);stroke-width:1}
       .vn-btn:hover .vn-chart .ln,.vn-btn:focus-visible .vn-chart .ln{stroke-dashoffset:0;transition:stroke-dashoffset 1.1s cubic-bezier(.45,0,.2,1)}
       .vn-btn:hover .vn-chart .ar,.vn-btn:focus-visible .vn-chart .ar{opacity:1;transition:opacity .6s .6s}
       .vn-btn:hover .vn-chart .pt,.vn-btn:focus-visible .vn-chart .pt{opacity:1;transform:scale(1);transition:opacity .2s 1.05s,transform .35s cubic-bezier(.3,1.8,.5,1) 1.05s}
@@ -174,7 +173,6 @@
             var NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS,'svg');
             svg.setAttribute('class','vn-chart'); svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.setAttribute('preserveAspectRatio','none'); svg.setAttribute('aria-hidden','true');
             svg.innerHTML = '<defs><linearGradient id="vnFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0973B" stop-opacity=".22"/><stop offset="1" stop-color="#F0973B" stop-opacity="0"/></linearGradient></defs>'
-              + [.33,.66].map(function(f){ return '<line class="gd" x1="0" x2="'+W+'" y1="'+(H*f).toFixed(1)+'" y2="'+(H*f).toFixed(1)+'"/>'; }).join('')
               + '<path class="ar" fill="url(#vnFill)" d="'+d+' L'+last[0]+','+H+' L'+pts[0][0]+','+H+' Z"/>'
               + '<path class="ln" pathLength="1" d="'+d+'"/>'
               + '<circle class="pt" r="3" cx="'+last[0]+'" cy="'+last[1]+'"/>';
