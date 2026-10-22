@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>155 mm Rollout Kit | Antonio Planzo</title>
+<meta name="description" content="A public affairs work sample by Antonio Planzo: a full rollout kit for a published Department of War Inspector General evaluation of 155 mm artillery ammunition production." />
+<meta property="og:title" content="155 mm, from report to release" />
+<meta property="og:description" content="Six public affairs products built from one published Inspector General evaluation. A work sample by Antonio Planzo." />
+<meta property="og:type" content="article" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#FFFFFF;
+  --panel:#F3F5F8;
+  --hair:#DCE0E6;
+  --ink:#15171C;
+  --graphite:#555C6B;
+  --mute:#656B77;
+  --flame:#F0973B;
+  --flame-ink:#A9520E;
+  --flame-wash:rgba(240,151,59,.13);
+  --night:#111110;
+  --cream:#F7F6F3;
+  --stone:#B9B5AC;
+  --line:rgba(247,246,243,.12);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --measure:40rem;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light;scroll-padding-top:4.5rem}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--flame);outline-offset:3px}
+button{font:inherit;color:inherit}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.5rem}
+.prose{max-width:var(--measure)}
+.prose p{color:var(--graphite);margin-bottom:1.1rem}
+.prose p strong{color:var(--ink);font-weight:600}
+.label{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--mute)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
+h1{font-size:clamp(2.6rem,6.2vw,4.5rem);line-height:1.02}
+h2{font-size:clamp(1.85rem,3.6vw,2.6rem);line-height:1.12;margin:.5rem 0 1.3rem;max-width:24ch}
+h3{font-size:1.3rem;line-height:1.25;margin-bottom:.4rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--flame);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(17,17,16,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:background .3s,border-color .3s}
+header.light{background:rgba(255,255,255,.9);border-color:var(--hair)}
+header nav{max-width:74rem;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:var(--serif);font-weight:500;font-size:1rem;text-decoration:none;color:var(--cream);transition:color .3s}
+header.light .brand{color:var(--ink)}
+.navlinks{display:flex;gap:1.4rem;align-items:center}
+.navlinks a{font-family:var(--mono);font-size:.76rem;color:var(--stone);text-decoration:none;padding:.2rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+header.light .navlinks a{color:var(--graphite)}
+.navlinks a:hover,.navlinks a.on{color:var(--cream);border-color:var(--flame)}
+header.light .navlinks a:hover,header.light .navlinks a.on{color:var(--ink)}
+.a11y-toggle{font-family:var(--mono);font-size:.72rem;padding:.35rem .65rem;border:1px solid var(--line);background:transparent;color:var(--stone);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;transition:border-color .2s,color .2s}
+header.light .a11y-toggle{border-color:var(--hair);color:var(--graphite)}
+.a11y-toggle:hover{border-color:var(--flame)}
+.a11y-toggle[aria-pressed="true"]{border-color:var(--flame);color:var(--flame-ink);background:var(--flame-wash)}
+header:not(.light) .a11y-toggle[aria-pressed="true"]{color:var(--flame)}
+@media(max-width:820px){.navlinks a.opt{display:none}.navlinks{gap:.9rem}}
+@media(max-width:480px){.a11y-toggle .t{display:none}}
+
+/* sections */
+section{padding:3.4rem 0;position:relative}
+section + section{border-top:1px solid var(--hair)}
+.sec-head{display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;align-items:baseline}
+.sec-num{font-family:var(--mono);font-size:.8rem;color:var(--flame-ink)}
+@media(max-width:820px){.sec-head{grid-template-columns:1fr;gap:.2rem}section{padding:2.6rem 0}}
+
+/* ---------- hero ---------- */
+#top{background:var(--night);color:var(--cream);padding:6.4rem 0 0;min-height:100vh;display:flex;flex-direction:column;border-top:none}
+#top h1{color:var(--cream)}
+#top .label{color:var(--stone)}
+.hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding-bottom:2.5rem}
+.hero-sub{position:relative;color:var(--stone);font-size:1.12rem;max-width:34rem;margin-top:1.4rem}
+.hero-type{position:absolute;inset:0}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--flame);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.byline{font-family:var(--mono);font-size:.78rem;color:var(--stone);margin-top:1.4rem;line-height:1.7}
+.byline b{color:var(--cream);font-weight:500}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.8rem;padding:.85rem 1.3rem;border:1px solid var(--cream);background:var(--cream);color:var(--night);cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{background:#E3E1DB}
+.btn.ghost{background:transparent;color:var(--cream);border-color:rgba(247,246,243,.35)}
+.btn.ghost:hover{border-color:var(--cream)}
+.btn .dot{width:7px;height:7px;border-radius:50%;background:var(--flame)}
+.btn.running .dot{animation:pulse 1.1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+/* rack */
+.rack-wrap{border:1px solid var(--line);padding:1.4rem 1.4rem 1.1rem;background:linear-gradient(rgba(247,246,243,.03) 1px,transparent 1px) 0 0/100% 24px}
+.rack-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.rack-head .label{color:var(--stone)}
+.rack-val{font-family:var(--mono);font-size:clamp(1.9rem,4vw,2.7rem);color:var(--cream);font-variant-numeric:tabular-nums;line-height:1.1}
+.rack-val small{font-size:.38em;color:var(--stone);margin-left:.4rem}
+#rack{width:100%;height:auto;display:block;margin:1.1rem 0 .8rem}
+#rack .case{fill:none;stroke:rgba(247,246,243,.28);stroke-width:1.3}
+#rack .proj{fill:none;stroke:var(--stone);stroke-width:1.3;stroke-dasharray:3 3;opacity:0;transition:opacity .4s}
+#rack .fill{fill:var(--flame)}
+#rack .goal-line{stroke:var(--cream);stroke-width:1;stroke-dasharray:2 4}
+#rack text{font-family:var(--mono);font-size:11px;fill:var(--stone)}
+.rack-legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.84rem;color:var(--stone)}
+.rack-legend span{display:inline-flex;align-items:center;gap:.45rem}
+.sw{width:12px;height:12px;display:inline-block;border:1px solid rgba(247,246,243,.35)}
+.sw.f{background:var(--flame);border-color:var(--flame)}
+.sw.p{border:1px dashed var(--stone)}
+.seg{display:inline-flex;border:1px solid var(--line);margin-top:1rem;flex-wrap:wrap}
+.seg button{font-family:var(--mono);font-size:.74rem;padding:.5rem .8rem;background:transparent;border:none;border-right:1px solid var(--line);color:var(--stone);cursor:pointer}
+.seg button:last-child{border-right:none}
+.seg button[aria-pressed="true"]{background:var(--cream);color:var(--night)}
+.rack-note{font-size:.86rem;color:var(--stone);margin-top:.8rem;min-height:2.8em}
+@media(max-width:940px){.hero{grid-template-columns:1fr;gap:2rem}#top{padding-top:5rem}}
+
+/* release sequence */
+.release{border-top:1px solid var(--line)}
+.release-inner{display:grid;grid-template-columns:repeat(6,1fr);max-width:74rem;margin:0 auto}
+.rel{padding:1rem 1.2rem 1.1rem;border-left:1px solid var(--line);transition:background .4s}
+.rel:first-child{border-left:none}
+.rel .t{font-family:var(--mono);font-size:.74rem;color:var(--stone)}
+.rel .n{color:var(--cream);font-size:.92rem;margin-top:.15rem;line-height:1.35}
+.rel.lit{background:rgba(240,151,59,.12)}
+.rel.lit .t{color:var(--flame)}
+.rel a{text-decoration:none}
+.rel a:hover .n{text-decoration:underline;text-decoration-color:var(--flame)}
+@media(max-width:900px){.release-inner{grid-template-columns:repeat(3,1fr)}.rel:nth-child(4){border-left:none}.rel{border-top:1px solid var(--line)}}
+@media(max-width:520px){.release-inner{grid-template-columns:1fr 1fr}.rel:nth-child(odd){border-left:none}.rel:nth-child(4){border-left:1px solid var(--line)}}
+
+/* notice */
+.notice{background:var(--panel);border-bottom:1px solid var(--hair)}
+.notice p{max-width:74rem;margin:0 auto;padding:1rem 1.5rem;font-size:.92rem;color:var(--graphite)}
+.notice b{color:var(--ink);font-weight:600}
+
+/* ---------- report ---------- */
+.chart-box{margin-top:2.4rem;border-top:1px solid var(--ink);padding-top:1.2rem}
+.chart-tools{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.8rem}
+.chart-tools h3{font-size:1.2rem}
+.linkbtn{font-family:var(--mono);font-size:.76rem;background:none;border:none;border-bottom:1px solid var(--hair);color:var(--graphite);cursor:pointer;padding:.1rem 0}
+.linkbtn:hover{color:var(--flame-ink);border-color:var(--flame)}
+#bneck{width:100%;height:auto;display:block}
+.chart-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:640px){#bneck{min-width:600px}}
+#bneck text{font-family:var(--sans);font-size:13px;fill:var(--graphite)}
+#bneck .val{font-family:var(--mono);font-size:12px;fill:var(--ink)}
+#bneck .grp{font-family:var(--serif);font-size:16px;fill:var(--ink)}
+#bneck .axis{font-family:var(--mono);font-size:11px;fill:var(--mute)}
+#bneck .bar{transition:width .9s cubic-bezier(.3,.7,.2,1)}
+.data-table{display:none;margin-top:1rem}
+.data-table.on{display:block}
+table{width:100%;border-collapse:collapse;font-size:.94rem}
+th{font-family:var(--mono);font-size:.74rem;font-weight:400;color:var(--mute);text-align:left;padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--ink)}
+td{padding:.8rem .8rem .8rem 0;border-bottom:1px solid var(--hair);vertical-align:top;color:var(--graphite)}
+td:first-child{color:var(--ink)}
+td.num{font-family:var(--mono);color:var(--ink);white-space:nowrap}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.note{font-size:.88rem;color:var(--graphite);margin-top:.9rem;max-width:var(--measure)}
+
+/* timeline */
+.tl{margin-top:3.2rem}
+.tl-track{position:relative;display:flex;justify-content:space-between;margin:1.4rem 0 0;padding:0 .5rem}
+.tl-track::before{content:'';position:absolute;left:.5rem;right:.5rem;top:50%;height:1px;background:var(--hair)}
+.tl-fill{position:absolute;left:.5rem;top:50%;height:2px;margin-top:-.5px;background:var(--flame);width:0;transition:width .5s cubic-bezier(.3,.7,.2,1)}
+.tl-dot{position:relative;width:22px;height:22px;border-radius:50%;background:var(--paper);border:1.5px solid var(--graphite);cursor:pointer;display:grid;place-items:center;padding:0}
+.tl-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:transparent;transition:background .2s}
+.tl-dot.past{border-color:var(--flame-ink)}
+.tl-dot.past::after{background:var(--flame)}
+.tl-dot[aria-selected="true"]{border-color:var(--ink);box-shadow:0 0 0 4px var(--flame-wash)}
+.tl-dot[aria-selected="true"]::after{background:var(--ink)}
+.tl-ends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:var(--mute);margin-top:.6rem}
+.tl-card{margin-top:1.4rem;display:grid;grid-template-columns:10rem 1fr;gap:1.5rem;padding:1.3rem 0;border-top:1px solid var(--hair);min-height:7.5rem}
+.tl-card .d{font-family:var(--mono);font-size:.9rem;color:var(--flame-ink)}
+.tl-card h4{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.3;margin-bottom:.35rem}
+.tl-card p{color:var(--graphite);max-width:var(--measure)}
+.tl-nav{display:flex;gap:.6rem;margin-top:.4rem}
+.tl-nav button{font-family:var(--mono);font-size:.74rem;padding:.45rem .8rem;border:1px solid var(--hair);background:var(--paper);cursor:pointer}
+.tl-nav button:hover{border-color:var(--ink)}
+@media(max-width:700px){.tl-card{grid-template-columns:1fr;gap:.3rem}.tl-dot{width:18px;height:18px}.tl-dot::after{width:6px;height:6px}}
+
+/* ---------- kit ---------- */
+.tabs{display:flex;border-bottom:1px solid var(--ink);margin-top:2.2rem;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;font-family:var(--mono);font-size:.8rem;padding:.85rem 1.1rem;background:transparent;border:none;border-bottom:3px solid transparent;margin-bottom:-1px;color:var(--graphite);cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--flame)}
+.tab .k{color:var(--mute);margin-right:.4rem}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) 19rem;gap:3rem;padding-top:2rem}
+.panel[hidden]{display:none}
+.notes{border-left:1px solid var(--hair);padding-left:1.6rem;font-size:.92rem;color:var(--graphite)}
+.notes h3{font-size:1.1rem;margin-bottom:.6rem}
+.notes .meta{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;margin-bottom:1.3rem}
+.notes .meta dt{font-family:var(--mono);font-size:.74rem;color:var(--mute);padding-top:.15rem}
+.notes .meta dd{color:var(--ink)}
+.notes ol{padding-left:1.2rem}
+.notes li{margin-bottom:.6rem}
+.notes li::marker{font-family:var(--mono);color:var(--flame-ink);font-size:.82rem}
+.toggle-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.2rem}
+.chip{font-family:var(--mono);font-size:.74rem;padding:.45rem .8rem;border:1px solid var(--hair);background:var(--paper);color:var(--graphite);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip[aria-pressed="true"]{border-color:var(--flame-ink);color:var(--flame-ink);background:var(--flame-wash)}
+@media(max-width:980px){.panel{grid-template-columns:1fr;gap:2rem}.notes{border-left:none;border-top:1px solid var(--hair);padding:1.4rem 0 0}}
+
+/* document sheets */
+.sheet{background:var(--paper);border:1px solid var(--hair);box-shadow:0 1px 0 var(--hair),0 18px 40px -28px rgba(21,23,28,.35);padding:2.4rem clamp(1.2rem,4vw,3rem) 2.6rem;position:relative}
+.sheet::before{content:attr(data-stamp);position:absolute;top:1rem;right:1rem;font-family:var(--mono);font-size:.68rem;color:var(--flame-ink);border:1px solid var(--flame);padding:.2rem .45rem;background:var(--paper)}
+.sheet .kicker{font-family:var(--mono);font-size:.76rem;color:var(--mute);margin-bottom:1rem;padding-right:7rem}
+.sheet h3.hl{font-size:clamp(1.5rem,3vw,2rem);line-height:1.18;margin-bottom:.6rem;max-width:30ch}
+.sheet .dek{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--graphite);margin-bottom:1.5rem;max-width:38rem}
+.sheet p{max-width:38rem;margin-bottom:1rem;color:var(--ink)}
+.sheet .end{text-align:center;font-family:var(--mono);color:var(--mute);margin-top:1.6rem}
+.ph{background:var(--panel);font-family:var(--mono);font-size:.86em;padding:.05rem .3rem;color:var(--graphite)}
+mark.ap{background:transparent;color:inherit;border-bottom:1px solid transparent;transition:background .2s,border-color .2s}
+.show-ap mark.ap{background:var(--flame-wash);border-bottom-color:var(--flame)}
+mark.ap sup{display:none;font-family:var(--mono);font-size:.62em;color:var(--flame-ink);margin-left:.1rem}
+.show-ap mark.ap sup{display:inline}
+
+/* plain language */
+.pl-meter{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--hair);margin-bottom:1.6rem}
+.pl-meter>div{padding:1rem 1.1rem;border-left:1px solid var(--hair)}
+.pl-meter>div:first-child{border-left:none}
+.pl-meter .v{font-family:var(--mono);font-size:1.6rem;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.15}
+.pl-meter .v.good{color:var(--flame-ink)}
+.pl-meter .k{font-size:.82rem;color:var(--graphite)}
+.pl-block{display:grid;grid-template-columns:7.5rem 1fr;gap:1.2rem;padding:1.1rem 0;border-top:1px solid var(--hair)}
+.pl-block .h{font-family:var(--mono);font-size:.76rem;color:var(--mute);padding-top:.3rem}
+.pl-block .txt{font-size:1.04rem;color:var(--ink);max-width:38rem}
+.pl-block .txt.orig{font-family:var(--serif);font-size:1.06rem;color:var(--graphite)}
+.pl-block .gl{display:block;font-family:var(--mono);font-size:.74rem;color:var(--flame-ink);margin-top:.4rem}
+@media(max-width:640px){.pl-block{grid-template-columns:1fr;gap:.2rem}.pl-meter{grid-template-columns:1fr 1fr 1fr}.pl-meter .v{font-size:1.25rem}.pl-meter>div{padding:.8rem .7rem}}
+
+/* social */
+.posts{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
+.post{border:1px solid var(--hair);padding:1.2rem 1.3rem;display:flex;flex-direction:column}
+.post .ch{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:.76rem;color:var(--mute);margin-bottom:.8rem}
+.post .ch b{color:var(--ink);font-weight:500}
+.post .body{white-space:pre-line;font-size:.97rem;color:var(--ink);flex:1}
+.count{font-variant-numeric:tabular-nums}
+.count.over{color:#B42318}
+.post.graphic{grid-column:1/-1}
+.card-graphic{width:100%;height:auto;display:block;background:var(--night)}
+.alt{display:none;margin-top:.8rem;font-size:.9rem;color:var(--graphite);border-left:3px solid var(--flame);padding:.5rem .8rem;background:var(--panel)}
+.alt.on{display:block}
+@media(max-width:760px){.posts{grid-template-columns:1fr}}
+
+/* q&a */
+.qa details{border-top:1px solid var(--hair)}
+.qa details:last-child{border-bottom:1px solid var(--hair)}
+.qa summary{list-style:none;cursor:pointer;padding:1rem 2rem 1rem 0;position:relative;font-family:var(--serif);font-size:1.18rem;line-height:1.35}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';position:absolute;right:.2rem;top:.9rem;font-family:var(--mono);color:var(--flame-ink);font-size:1.1rem}
+.qa details[open] summary::after{content:'\2212'}
+.qa .tag{font-family:var(--mono);font-size:.7rem;color:var(--flame-ink);border:1px solid var(--flame);padding:.05rem .35rem;margin-left:.5rem;vertical-align:.15em;white-space:nowrap}
+.qa .ans{padding:0 0 1.2rem;max-width:40rem}
+.qa .ans p{color:var(--ink);margin-bottom:.7rem}
+.qa .ans .lbl{font-family:var(--mono);font-size:.74rem;color:var(--mute);display:block;margin-bottom:.15rem}
+.qa .ans .avoid{color:var(--graphite);font-size:.95rem;border-left:3px solid var(--hair);padding-left:.8rem}
+.qa.tough-only details:not([data-tough]){display:none}
+
+/* email */
+.email .hdr{display:grid;grid-template-columns:4.5rem 1fr;gap:.25rem .8rem;font-size:.92rem;padding-bottom:1rem;margin-bottom:1.4rem;border-bottom:1px solid var(--hair);padding-right:7rem}
+.email .hdr dt{font-family:var(--mono);font-size:.74rem;color:var(--mute);padding-top:.15rem}
+.email ul{max-width:38rem;margin:0 0 1rem 1.2rem}
+.email li{margin-bottom:.4rem}
+
+/* monitoring */
+.mon-sum{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--hair);margin-bottom:1.6rem}
+.mon-sum>div{padding:1rem 1.1rem;border-left:1px solid var(--hair)}
+.mon-sum>div:first-child{border-left:none}
+.mon-sum .v{font-family:var(--mono);font-size:1.5rem;line-height:1.15}
+.mon-sum .k{font-size:.82rem;color:var(--graphite)}
+@media(max-width:640px){.mon-sum{grid-template-columns:1fr 1fr}.mon-sum>div:nth-child(3){border-left:none}.mon-sum>div:nth-child(n+3){border-top:1px solid var(--hair)}}
+.clip{display:grid;grid-template-columns:6.5rem 1fr;gap:1.2rem;padding:1.2rem 0;border-top:1px solid var(--hair)}
+.clip .d{font-family:var(--mono);font-size:.8rem;color:var(--ink)}
+.clip .tone{display:inline-block;font-family:var(--mono);font-size:.7rem;margin-top:.4rem;padding:.1rem .4rem;border:1px solid var(--hair);color:var(--graphite)}
+.clip .tone.crit{border-color:var(--flame);color:var(--flame-ink)}
+.clip h4{font-family:var(--serif);font-weight:500;font-size:1.15rem;line-height:1.3}
+.clip h4 a{text-decoration:none;border-bottom:1px solid var(--hair)}
+.clip h4 a:hover{border-color:var(--flame)}
+.clip .src{font-family:var(--mono);font-size:.76rem;color:var(--mute);margin:.2rem 0 .5rem}
+.clip p{color:var(--graphite);font-size:.95rem;max-width:40rem}
+.clip .flag{margin-top:.5rem;font-size:.92rem;color:var(--ink);padding-left:.8rem;border-left:3px solid var(--flame)}
+.clip .flag b{font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--flame-ink);margin-right:.3rem}
+.clip.hide{display:none}
+@media(max-width:640px){.clip{grid-template-columns:1fr;gap:.3rem}}
+.takeaways{margin-top:2rem;background:var(--panel);padding:1.4rem 1.6rem;border-left:3px solid var(--flame)}
+.takeaways h4{font-family:var(--serif);font-weight:500;font-size:1.25rem;margin-bottom:.6rem}
+.takeaways li{margin:0 0 .5rem 1.1rem;color:var(--ink)}
+
+/* method */
+.method{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1.5rem}
+.method h3{font-size:1.2rem;margin-bottom:.6rem}
+.method p,.method li{color:var(--graphite)}
+.method ul{margin-left:1.1rem}
+.method li{margin-bottom:.5rem}
+.sources{margin-top:2.4rem;columns:2;column-gap:3rem;font-size:.9rem}
+.sources li{break-inside:avoid;margin:0 0 .6rem 1.1rem;color:var(--graphite)}
+.sources a{text-decoration:none;border-bottom:1px solid var(--hair)}
+.sources a:hover{color:var(--flame-ink);border-color:var(--flame)}
+@media(max-width:820px){.method{grid-template-columns:1fr;gap:1.8rem}.sources{columns:1}}
+
+footer{border-top:1px solid var(--hair);padding:2.2rem 0 3rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{font-family:var(--mono);font-size:.78rem;color:var(--graphite);text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+/* ---------- accessibility view ---------- */
+.a11y-panel{display:none;position:fixed;right:1rem;bottom:1rem;z-index:70;width:min(22rem,calc(100vw - 2rem));background:var(--paper);border:1px solid var(--ink);box-shadow:0 18px 40px -20px rgba(21,23,28,.45);padding:1.1rem 1.2rem;font-size:.88rem;color:var(--graphite);max-height:70vh;overflow:auto}
+body.a11y .a11y-panel{display:block}
+.a11y-panel h3{font-size:1.1rem;color:var(--ink);margin-bottom:.4rem}
+.a11y-panel table{font-size:.82rem;margin:.6rem 0}
+.a11y-panel td,.a11y-panel th{padding:.35rem .5rem .35rem 0}
+.a11y-panel .pass{font-family:var(--mono);color:#1F6F43}
+.a11y-panel .sw2{display:inline-block;width:.9rem;height:.9rem;vertical-align:-.15rem;border:1px solid var(--hair);margin-right:.2rem}
+.a11y-panel ul{margin-left:1rem}
+.a11y-panel li{margin-bottom:.3rem}
+.a11y-close{position:absolute;top:.6rem;right:.6rem;background:none;border:1px solid var(--hair);font-family:var(--mono);font-size:.72rem;padding:.15rem .4rem;cursor:pointer}
+body.a11y h1,body.a11y h2,body.a11y h3,body.a11y h4{outline:1px dashed var(--flame);outline-offset:4px}
+body.a11y h1::before,body.a11y h2::before,body.a11y h3::before,body.a11y h4::before{font-family:var(--mono);font-size:.62rem;font-weight:500;font-style:normal;letter-spacing:0;background:var(--flame);color:var(--night);padding:.1rem .3rem;margin-right:.5rem;vertical-align:.4em}
+body.a11y h1::before{content:'H1'}body.a11y h2::before{content:'H2'}body.a11y h3::before{content:'H3'}body.a11y h4::before{content:'H4'}
+body.a11y [role="img"]{outline:1px dashed var(--flame);outline-offset:3px}
+.alt-reveal{display:none;font-family:var(--mono);font-size:.74rem;line-height:1.5;color:var(--night);background:var(--flame);padding:.4rem .6rem;margin-top:.5rem}
+body.a11y .alt-reveal{display:block}
+body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outline-offset:-1px}
+body.a11y header nav::before,body.a11y footer .wrap::before{font-family:var(--mono);font-size:.62rem;background:var(--ink);color:var(--cream);padding:.1rem .3rem}
+body.a11y header nav::before{content:'nav'}
+body.a11y footer .wrap::before{content:'footer'}
+
+@media (prefers-reduced-motion:reduce){
+  .caret,.btn.running .dot{animation:none}
+  #bneck .bar,.tl-fill,.rel,#rack .proj{transition:none}
+}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <nav aria-label="Primary">
+    <a class="brand" href="../">Antonio Planzo</a>
+    <div class="navlinks">
+      <a class="opt" href="../">Portfolio</a>
+      <a href="#report">The report</a>
+      <a href="#kit">The kit</a>
+      <a class="opt" href="#method">Method</a>
+      <button class="a11y-toggle" id="a11yBtn" type="button" aria-pressed="false" aria-controls="a11yPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5l7 1.5 7-1.5M12 10v5m0 0l-3.5 6.5M12 15l3.5 6.5"/></svg><span class="t">Accessibility view</span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="label">Public affairs work sample, report rollout</p>
+      <h1 style="margin-top:1rem">155 mm, from report to release.</h1>
+      <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">How I would roll out a published Inspector General evaluation of Army artillery production: the press release, a plain-language web summary, social posts, spokesperson prep, a note to the workforce, and the media monitoring brief that follows.</span><span class="hero-type" aria-label="How I would roll out a published Inspector General evaluation of Army artillery production: the press release, a plain-language web summary, social posts, spokesperson prep, a note to the workforce, and the media monitoring brief that follows."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
+      <p class="byline">By <b>Antonio Planzo</b>, St. Petersburg, FL<br/>Source: DoW OIG evaluation DOWIG-2026-095, July 9, 2026</p>
+      <div class="actions">
+        <button class="btn" id="relBtn" type="button"><span class="dot"></span><span id="relLabel">Run the release day</span></button>
+        <a class="btn ghost" href="#kit">Open the kit</a>
+      </div>
+    </div>
+
+    <div class="rack-wrap">
+      <div class="rack-head">
+        <span class="label" id="rackLabel">Rounds per month, March 2026</span>
+        <span class="rack-val"><span id="rackNum">0</span><small>of 100,000</small></span>
+      </div>
+      <svg id="rack" viewBox="0 0 520 210" role="img" aria-labelledby="rackDesc"><desc id="rackDesc">Twenty shell outlines, each standing for 5,000 rounds a month. As of March 2026, 7.2 are filled, for 36,000 rounds. Existing plants are projected to reach 71,000, or 14.2 shells. The goal is all 20, or 100,000 rounds.</desc></svg>
+      <div class="rack-legend" aria-hidden="true">
+        <span><i class="sw f"></i>Produced</span>
+        <span><i class="sw p"></i>Projected, existing plants</span>
+        <span><i class="sw"></i>Gap to goal</span>
+      </div>
+      <div class="seg" role="group" aria-label="Choose a production milestone">
+        <button type="button" data-m="0" aria-pressed="false">2022 baseline</button>
+        <button type="button" data-m="1" aria-pressed="true">March 2026</button>
+        <button type="button" data-m="2" aria-pressed="false">Sept. 2026 projected</button>
+      </div>
+      <p class="rack-note" id="rackNote" aria-live="polite"></p>
+      <p class="alt-reveal">Alt text: Twenty shell outlines, each worth 5,000 rounds a month, filled to show 36,000 produced in March 2026, 71,000 projected and 100,000 as the goal.</p>
+    </div>
+  </div>
+
+  <div class="release" role="group" aria-label="Sample release-day timeline">
+    <div class="release-inner">
+      <div class="rel"><a href="#kit" data-tab="0"><div class="t">08:00</div><div class="n">Press release</div></a></div>
+      <div class="rel"><a href="#kit" data-tab="1"><div class="t">08:05</div><div class="n">Web summary live</div></a></div>
+      <div class="rel"><a href="#kit" data-tab="2"><div class="t">08:15</div><div class="n">Social posts</div></a></div>
+      <div class="rel"><a href="#kit" data-tab="4"><div class="t">08:30</div><div class="n">Workforce note</div></a></div>
+      <div class="rel"><a href="#kit" data-tab="3"><div class="t">All day</div><div class="n">Spokesperson on call</div></a></div>
+      <div class="rel"><a href="#kit" data-tab="5"><div class="t">+1 week</div><div class="n">Coverage brief</div></a></div>
+    </div>
+  </div>
+</section>
+
+<div class="notice" role="note"><p><b>Portfolio work sample.</b> Built only from portions marked (U) in the publicly released evaluation. Not an official Department of War Office of Inspector General product. Quotes and contacts are placeholders for leadership review.</p></div>
+
+<!-- ============ REPORT ============ -->
+<section id="report">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">The report</span>
+      <div>
+        <h2>Output more than doubled. One new plant made nothing usable.</h2>
+        <div class="prose">
+          <p>The Department of War set a goal of 100,000 rounds of 155 mm artillery ammunition a month by Oct. 1, 2025. The Inspector General evaluated how close the Army got, and why it fell short.</p>
+          <p>Every round is built in two stages. A metal parts plant makes the shell body. A second plant fills it with explosives, assembles it and packs it. <strong>The first stage is the bottleneck</strong>, and most of that gap traces to one contractor-run plant in Mesquite, Texas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-tools">
+        <h3>Where the 100,000-round goal breaks down</h3>
+        <button class="linkbtn" id="tblBtn" type="button" aria-expanded="false" aria-controls="bneckTable">Show as a table</button>
+      </div>
+      <div class="chart-scroll"><svg id="bneck" viewBox="0 0 760 330" role="img" aria-labelledby="bneckDesc"><desc id="bneckDesc">Horizontal bar chart. Shell bodies: 46,000 a month in March 2026, projected 71,000 by September 2026, short of the 100,000 goal. Filling and packing: 36,000 in March 2026, projected 63,000 by September 2026 and 140,000 by December 2027, above the goal.</desc></svg></div>
+      <div class="data-table" id="bneckTable">
+        <div class="tscroll"><table>
+          <thead><tr><th>Stage</th><th>March 2026</th><th>Sept. 2026, projected</th><th>Dec. 2027, projected</th></tr></thead>
+          <tbody>
+            <tr><td>Shell bodies (projectile metal parts)</td><td class="num">46,000</td><td class="num">71,000</td><td>Not projected without Mesquite</td></tr>
+            <tr><td>Filling, assembly and packing</td><td class="num">36,000</td><td class="num">63,000</td><td class="num">140,000</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <p class="alt-reveal">Alt text: Bar chart comparing the two production stages with the 100,000-round goal. Shell bodies stay below the goal; filling and packing passes it by December 2027.</p>
+      <p class="note">Monthly capacity, from the evaluation's unclassified text and Figure 2. The filling and packing plants are on track to exceed the goal by 40,000 rounds, so shell bodies set the ceiling.</p>
+    </div>
+
+    <div class="tl">
+      <div class="chart-tools"><h3>The Mesquite contract, step by step</h3><span class="label">Use the arrow keys to move along the timeline</span></div>
+      <div class="tl-track" id="tlTrack" role="tablist" aria-label="Mesquite contract timeline"><span class="tl-fill" id="tlFill"></span></div>
+      <div class="tl-ends" aria-hidden="true"><span>Nov. 2022</span><span>July 2026</span></div>
+      <div class="tl-card" id="tlCard" role="tabpanel" aria-live="polite">
+        <div><div class="d" id="tlDate"></div><div class="tl-nav"><button type="button" id="tlPrev" aria-label="Previous event">Prev</button><button type="button" id="tlNext" aria-label="Next event">Next</button></div></div>
+        <div><h4 id="tlTitle"></h4><p id="tlText"></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KIT ============ -->
+<section id="kit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">The kit</span>
+      <div>
+        <h2>Six products, one set of facts.</h2>
+        <div class="prose"><p>Each product carries the same numbers and wording as the report, written for a different audience and channel. The notes beside each one explain the choices: AP style, plain language, accessibility and what the spokesperson should not say.</p></div>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Rollout products">
+      <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true" tabindex="0"><span class="k">1</span>Press release</button>
+      <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1"><span class="k">2</span>Plain-language summary</button>
+      <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span class="k">3</span>Social posts</button>
+      <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="k">4</span>Spokesperson Q&amp;A</button>
+      <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="k">5</span>Workforce note</button>
+      <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><span class="k">6</span>Coverage brief</button>
+    </div>
+
+    <!-- 1 press release -->
+    <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0" tabindex="0">
+      <div>
+        <div class="toggle-row"><button class="chip" type="button" id="apBtn" aria-pressed="false">Show AP style edits</button></div>
+        <article class="sheet" id="release" data-stamp="Sample">
+          <p class="kicker">For immediate release, July 9, 2026</p>
+          <h3 class="hl">Army more than doubled 155 mm artillery output but missed its 100,000-round goal, evaluation finds</h3>
+          <p class="dek">A new plant in Texas has not produced a part that meets specifications after $469 million in spending.</p>
+          <p><mark class="ap">ALEXANDRIA, Va.<sup>1</sup></mark> — The Department of War Office of Inspector General on <mark class="ap">July 9<sup>3</sup></mark> released an evaluation finding that the Army raised monthly production of <mark class="ap">155 mm<sup>2</sup></mark> artillery ammunition from 14,000 to 36,000 rounds but did not reach its goal of 100,000 rounds a month by <mark class="ap">Oct. 1, 2025<sup>3</sup></mark>.</p>
+          <p>Most of the shortfall traces to a contractor-owned, contractor-operated plant in Mesquite, Texas, that the Army planned to supply 30,000 shell bodies a month. As of March 2026, the plant had not produced a single part that met contract specifications. The Army spent <mark class="ap">$469 million<sup>4</sup></mark> to establish the plant from December 2022 through December 2025.</p>
+          <p>Without Mesquite, the Army's three other shell-body plants are projected to support 71,000 rounds a month, or <mark class="ap">71%<sup>4</sup></mark> of the goal.</p>
+          <p>The evaluation found that <mark class="ap">Army acquisition officials<sup>6</sup></mark> accepted the risk of a contractor plan to buy and adapt equipment built for an older shell, the M107, to make the newer M795. The equipment had not been proven to meet U.S. specifications.</p>
+          <p>The Inspector General made three recommendations. The Army should find and carry out a way to produce the 29,000 additional shell bodies a month it still needs; review how the $469 million was spent and whether any of it can be recovered; and determine whether the Mesquite contract was properly issued under an existing contract for the Scranton Army Ammunition Plant.</p>
+          <p>Army officials agreed with all three recommendations. The Inspector General considers two resolved and one unresolved, because the Army's production plan did not say how or when the new sources would reach the required rate.</p>
+          <p>"<span class="ph">Placeholder quote: one or two sentences from the designated spokesperson, restating the finding and its stakes for readiness. For leadership review.</span>" <mark class="ap">said<sup>5</sup></mark> <span class="ph">[name], [title]</span>.</p>
+          <p>The full evaluation, report No. DOWIG-2026-095, is available on Oversight.gov.</p>
+          <p>Media contact: <span class="ph">[Public Affairs contact]</span></p>
+          <p class="end">###</p>
+        </article>
+      </div>
+      <aside class="notes" aria-label="Notes on the press release">
+        <h3>Why it reads this way</h3>
+        <dl class="meta"><dt>Audience</dt><dd>Reporters, congressional staff</dd><dt>Channel</dt><dd>Email to media list, website</dd><dt>Length</dt><dd id="relWords">—</dd></dl>
+        <ol>
+          <li><b>Dateline.</b> City in capitals plus the AP state abbreviation, "Va."</li>
+          <li><b>"155 mm."</b> AP uses "mm" with a space for weapons and no hyphen. The report writes "155-mm."</li>
+          <li><b>Dates.</b> Month abbreviated with a specific date ("Oct. 1"); year dropped when it's the current year.</li>
+          <li><b>Numbers.</b> Numerals for 10 and up, "$469 million," and the % sign.</li>
+          <li><b>Attribution.</b> "Said," never "stated" or "noted."</li>
+          <li><b>No acronym soup.</b> "Capability Program Executive Ammunition &amp; Energetics" becomes "Army acquisition officials."</li>
+        </ol>
+        <p style="margin-top:.8rem">The lede leads with progress and the miss in one sentence, so the release is accurate even if a reader stops there.</p>
+      </aside>
+    </div>
+
+    <!-- 2 plain language -->
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" tabindex="0" hidden>
+      <div>
+        <div class="toggle-row"><button class="chip" type="button" id="plBtn" aria-pressed="false">Show the report's original wording</button></div>
+        <div class="pl-meter" aria-live="polite">
+          <div><div class="v" id="plGrade">—</div><div class="k">Reading grade level</div></div>
+          <div><div class="v" id="plSent">—</div><div class="k">Words per sentence</div></div>
+          <div><div class="v" id="plWords">—</div><div class="k">Total words</div></div>
+        </div>
+        <article class="sheet" data-stamp="Sample web page" id="plSheet">
+          <p class="kicker">Oversight.gov summary page, draft</p>
+          <h3 class="hl">The Army is making more artillery shells, but not as many as it planned</h3>
+          <div id="plBlocks"></div>
+        </article>
+      </div>
+      <aside class="notes" aria-label="Notes on the plain-language summary">
+        <h3>Plain language, measured</h3>
+        <dl class="meta"><dt>Audience</dt><dd>The public</dd><dt>Target</dt><dd>Grade 8 or below</dd><dt>Standard</dt><dd>Federal Plain Language Guidelines</dd></dl>
+        <ol>
+          <li><b>One idea per sentence.</b> The longest sentence in these report passages runs 53 words.</li>
+          <li><b>Everyday words.</b> "Projectile metal parts" becomes "shell bodies," defined once.</li>
+          <li><b>Active voice.</b> Say who did what: "Army officials chose."</li>
+          <li><b>Headings that answer questions</b> a reader would ask: what, why, what next.</li>
+        </ol>
+        <p style="margin-top:.8rem">The grade level is a Flesch-Kincaid score, computed live in your browser from the text shown.</p>
+      </aside>
+    </div>
+
+    <!-- 3 social -->
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" tabindex="0" hidden>
+      <div>
+        <div class="posts">
+          <div class="post"><div class="ch"><b>X</b><span class="count" data-max="280" data-for="sx">0 / 280</span></div><p class="body" id="sx">The Army more than doubled its monthly 155 mm artillery output, from 14,000 to 36,000 rounds.
+
+But a $469 million plant in Texas has not made a part that meets specs, so the Army missed its 100,000-round goal.
+
+Full evaluation: [link]</p></div>
+          <div class="post"><div class="ch"><b>Facebook</b><span class="count" data-max="500" data-for="sf">0</span></div><p class="body" id="sf">The Army set a goal of making 100,000 artillery rounds a month by October 2025. It reached 36,000.
+
+Our new evaluation explains why: a new plant in Texas that was supposed to supply 30,000 shell bodies a month hasn't made one that meets the contract's standards.
+
+Here's what we found and what we recommended: [link]</p></div>
+          <div class="post"><div class="ch"><b>LinkedIn</b><span class="count" data-max="3000" data-for="sl">0 / 3,000</span></div><p class="body" id="sl">Our latest evaluation looked at how the Army is expanding 155 mm artillery ammunition production.
+
+What we found:
+• Output more than doubled, from 14,000 to 36,000 rounds a month as of March 2026.
+• A new plant in Mesquite, Texas, has not produced a part that meets contract specifications after $469 million in spending.
+• Without it, existing plants are projected to reach 71,000 rounds a month, or 71% of the 100,000-round goal.
+
+We made three recommendations, including a review of whether any of the $469 million can be recovered.
+
+Read the full evaluation: [link]</p></div>
+          <div class="post"><div class="ch"><b>Thread follow-up</b><span class="count" data-max="280" data-for="sx2">0 / 280</span></div><p class="body" id="sx2">Why the gap? Every round is built in two stages. The plants that fill and pack shells are on track to exceed the goal. The plants that make the shell bodies are not, and that sets the ceiling.</p></div>
+          <div class="post graphic">
+            <div class="ch"><b>Shareable graphic, 1200 × 675</b><button class="linkbtn" type="button" id="altBtn" aria-expanded="false" aria-controls="altText">Show alt text</button></div>
+            <svg class="card-graphic" viewBox="0 0 1200 675" role="img" aria-labelledby="cgDesc"><desc id="cgDesc">Graphic: 36,000 of 100,000. Army 155 mm artillery production per month, March 2026. A bar shows 36,000 filled, a dashed section to 71,000 projected for September 2026 and the rest empty to the 100,000 goal.</desc>
+              <rect width="1200" height="675" fill="#111110"/>
+              <text x="80" y="120" fill="#B9B5AC" font-family="IBM Plex Mono, monospace" font-size="26">155 mm artillery rounds per month</text>
+              <text x="74" y="290" fill="#F7F6F3" font-family="Newsreader, Georgia, serif" font-size="170">36,000</text>
+              <text x="80" y="360" fill="#B9B5AC" font-family="Newsreader, Georgia, serif" font-size="46">of a 100,000 goal, as of March 2026</text>
+              <rect x="80" y="440" width="1040" height="44" fill="none" stroke="#55534E" stroke-width="2"/>
+              <rect x="80" y="440" width="374" height="44" fill="#F0973B"/>
+              <rect x="454" y="440" width="364" height="44" fill="none" stroke="#B9B5AC" stroke-width="2" stroke-dasharray="8 8"/>
+              <text x="80" y="530" fill="#F7F6F3" font-family="IBM Plex Mono, monospace" font-size="22">Produced 36,000</text>
+              <text x="470" y="530" fill="#B9B5AC" font-family="IBM Plex Mono, monospace" font-size="22">Projected 71,000 by Sept. 2026</text>
+              <text x="1120" y="530" fill="#B9B5AC" font-family="IBM Plex Mono, monospace" font-size="22" text-anchor="end">Goal 100,000</text>
+              <text x="80" y="615" fill="#7A766E" font-family="IBM Plex Mono, monospace" font-size="20">Source: DoW OIG evaluation DOWIG-2026-095 · Sample graphic</text>
+            </svg>
+            <p class="alt" id="altText">36,000 of 100,000. The Army produced 36,000 rounds of 155 mm artillery ammunition a month as of March 2026. Existing plants are projected to reach 71,000 by September 2026, short of the 100,000-round goal. Source: DoW OIG evaluation DOWIG-2026-095.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="notes" aria-label="Notes on the social posts">
+        <h3>Built for each feed</h3>
+        <dl class="meta"><dt>Audience</dt><dd>Public, media, defense community</dd><dt>Link</dt><dd>Counted as 23 characters on X</dd></dl>
+        <ol>
+          <li><b>Lead with the number</b> people will repeat, then the reason.</li>
+          <li><b>Same facts, different register.</b> Facebook is conversational; LinkedIn uses scannable bullets.</li>
+          <li><b>Alt text says what the graphic says</b>, including every number, so a screen reader user gets the full post.</li>
+          <li><b>No hashtags</b> that add nothing; no emoji standing in for words.</li>
+        </ol>
+      </aside>
+    </div>
+
+    <!-- 4 q&a -->
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" tabindex="0" hidden>
+      <div>
+        <div class="toggle-row"><button class="chip" type="button" id="toughBtn" aria-pressed="false">Show only the tough questions</button><button class="chip" type="button" id="openAll" aria-pressed="false">Expand all</button></div>
+        <div class="qa" id="qa">
+          <details data-tough><summary>Did the Army waste $469 million?<span class="tag">Tough</span></summary><div class="ans">
+            <p><span class="lbl">Answer</span>The evaluation found the Army spent $469 million to set up the Mesquite plant and that, as of March 2026, it had not produced a part meeting specifications. We said that money could have gone to other Army priorities, and we recommended the Army review how it was spent and whether any of it can be recovered.</p>
+            <p><span class="lbl">Bridge</span>The more important point for readiness is the 29,000 shell bodies a month the Army still needs, and that's what our first recommendation addresses.</p>
+            <p class="avoid"><span class="lbl">Don't</span>Use the word "waste" or characterize the money as lost. The recovery review is still open.</p>
+          </div></details>
+          <details data-tough><summary>Who is the contractor?<span class="tag">Tough</span></summary><div class="ans">
+            <p><span class="lbl">Answer</span>The finding refers to "the contractor." The Army's written comments, published with the report, identify the company it reached a settlement with. I'd refer you to those comments and to the Army for anything about the company.</p>
+            <p class="avoid"><span class="lbl">Don't</span>Characterize the company's performance beyond what the report says. The contractor reviewed the report, and a footnote records its position that its performance met or exceeded requirements.</p>
+          </div></details>
+          <details data-tough><summary>Why wasn't the work competed?<span class="tag">Tough</span></summary><div class="ans">
+            <p><span class="lbl">Answer</span>The Army issued the Mesquite work as task orders under an existing property management contract for the Scranton Army Ammunition Plant. Plant officials raised concerns that it wasn't opened to competition, so we recommended the Army determine whether it was issued properly. The Army reviewed it and says it was within scope. That recommendation stays open until we receive the documentation.</p>
+          </div></details>
+          <details data-tough><summary>Is the money coming back?<span class="tag">Tough</span></summary><div class="ans">
+            <p><span class="lbl">Answer</span>The Army told us it negotiated a confidential settlement in April 2026 and realigned production to northeastern Pennsylvania at a lower price and higher quantity. We consider that recommendation resolved but open until we see documentation of the review and the planned recovery of funds.</p>
+            <p class="avoid"><span class="lbl">Don't</span>Discuss settlement terms. They're confidential; refer questions to the Army.</p>
+          </div></details>
+          <details data-tough><summary>Why do you call one recommendation unresolved if the Army agreed?<span class="tag">Tough</span></summary><div class="ans">
+            <p><span class="lbl">Answer</span>Agreeing isn't the same as a plan. The Army said it will produce 20,000 shell bodies a month at Mesquite and 9,000 from other industrial base sources by December 2028, but it didn't explain how a plant that couldn't make the part as of March 2026 will get there. When it gives us those details, we can resolve it.</p>
+          </div></details>
+          <details><summary>Did you find fraud or wrongdoing?</summary><div class="ans">
+            <p><span class="lbl">Answer</span>No. This was an evaluation of production capability. It found that officials accepted a known risk that didn't pay off. It doesn't allege fraud.</p>
+            <p class="avoid"><span class="lbl">Don't</span>Speculate about other investigations, open or closed.</p>
+          </div></details>
+          <details><summary>What does this mean for readiness, and for Ukraine?</summary><div class="ans">
+            <p><span class="lbl">Answer</span>We found that falling short of 100,000 rounds a month could reduce readiness and raise the risk of not meeting U.S., allied and partner needs in a future conflict. For context, the report notes the Department's 155 mm inventory dropped by more than 3.6 million rounds over four years, mostly through presidential drawdowns to Ukraine.</p>
+            <p class="avoid"><span class="lbl">Don't</span>Comment on current stockpile levels. This report doesn't assess them; refer to the Army.</p>
+          </div></details>
+          <details><summary>When will the Army hit 100,000 a month?</summary><div class="ans">
+            <p><span class="lbl">Answer</span>The plants that fill and pack shells are on track for 140,000 a month by December 2027. Shell bodies are the limit: existing plants are projected to reach 71,000 by September 2026, and the Army's plan for the rest runs to December 2028. For the Army's own timeline, I'd refer you to the Army.</p>
+          </div></details>
+          <details><summary>What about 120 mm tank ammunition?</summary><div class="ans">
+            <p><span class="lbl">Answer</span>That's part of the same evaluation project. We're issuing a separate report on it.</p>
+            <p class="avoid"><span class="lbl">Don't</span>Give a release date or preview findings.</p>
+          </div></details>
+        </div>
+      </div>
+      <aside class="notes" aria-label="Notes on the spokesperson Q&amp;A">
+        <h3>Prep for the hard calls</h3>
+        <dl class="meta"><dt>Audience</dt><dd>Agency spokesperson</dd><dt>Use</dt><dd>Interview and phone prep</dd></dl>
+        <ol>
+          <li><b>Answer from the report, then stop.</b> Every answer maps to a sentence in the evaluation.</li>
+          <li><b>Bridge to what matters</b>: the open recommendations, not the headline number.</li>
+          <li><b>Know the lines.</b> Each "Don't" marks something outside the Inspector General's lane: settlement terms, stockpiles, the company.</li>
+        </ol>
+      </aside>
+    </div>
+
+    <!-- 5 workforce note -->
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" tabindex="0" hidden>
+      <div>
+        <article class="sheet email" data-stamp="Sample">
+          <dl class="hdr">
+            <dt>To</dt><dd>All OIG employees</dd>
+            <dt>From</dt><dd><span class="ph">[Public Affairs]</span></dd>
+            <dt>Subject</dt><dd>Released today: 155 mm artillery ammunition evaluation</dd>
+          </dl>
+          <p>Team,</p>
+          <p>This morning we released our evaluation of the Army's effort to increase 155 mm artillery ammunition production (DOWIG-2026-095). The short version:</p>
+          <ul>
+            <li>The Army more than doubled monthly output, from 14,000 to 36,000 rounds, but missed its goal of 100,000 by October 2025.</li>
+            <li>A new plant in Mesquite, Texas, has not produced a part that meets specifications after $469 million in spending.</li>
+            <li>We made three recommendations. The Army agreed with all three; one remains unresolved.</li>
+          </ul>
+          <p>We expect press interest. If a reporter contacts you, please don't comment. Forward the request to <span class="ph">[Public Affairs inbox]</span> and we'll respond within the day.</p>
+          <p>Thank you to the evaluation team, who spent nearly a year on this work, including site visits to Picatinny Arsenal, Scranton, the Iowa Army Ammunition Plant and Mesquite.</p>
+          <p>The report, web summary and social posts are linked on the intranet.</p>
+          <p><span class="ph">[Name]</span><br/>Public Affairs</p>
+        </article>
+      </div>
+      <aside class="notes" aria-label="Notes on the workforce note">
+        <h3>Inform the people first</h3>
+        <dl class="meta"><dt>Audience</dt><dd>OIG workforce</dd><dt>Timing</dt><dd>Within 30 minutes of release</dd></dl>
+        <ol>
+          <li><b>Employees shouldn't learn about their own work from the news.</b></li>
+          <li><b>One clear ask:</b> route media inquiries to Public Affairs.</li>
+          <li><b>Credit the team</b> by function and effort, not by name.</li>
+        </ol>
+      </aside>
+    </div>
+
+    <!-- 6 coverage brief -->
+    <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" tabindex="0" hidden>
+      <div>
+        <p class="label" style="margin-bottom:.8rem">Coverage July 14 to 20, 2026, prepared for OIG leadership</p>
+        <div class="mon-sum">
+          <div><div class="v">5</div><div class="k">Items tracked</div></div>
+          <div><div class="v">4</div><div class="k">Critical in tone</div></div>
+          <div><div class="v">0</div><div class="k">Errors needing correction</div></div>
+          <div><div class="v">4</div><div class="k">Imprecisions flagged</div></div>
+        </div>
+        <div class="toggle-row" role="group" aria-label="Filter coverage"><button class="chip" type="button" data-f="all" aria-pressed="true">All coverage</button><button class="chip" type="button" data-f="flag" aria-pressed="false">Only items with flags</button></div>
+        <div id="clips">
+          <div class="clip" data-flag="1"><div><div class="d">July 14</div><span class="tone crit">Critical</span></div><div>
+            <h4><a href="https://www.defensenews.com/news/your-military/2026/07/14/manufacturing-woes-hamper-us-155-mm-ammo-production/" target="_blank" rel="noopener">Manufacturing woes hamper US 155-mm ammo production</a></h4>
+            <p class="src">Defense News · Michael Peck · also on Military Times</p>
+            <p>Frames the shortfall as a manufacturing failure tied to the Army's acceptance of risk on unproven equipment. Covers the recovery recommendation and adds context on Ukraine and the new filling plants in Kansas and Arkansas. Accurate to the report.</p>
+            <p class="flag"><b>Note</b>No named officials quoted; relies on the report alone. Likely the reference version other outlets follow.</p>
+          </div></div>
+          <div class="clip" data-flag="1"><div><div class="d">July 14</div><span class="tone crit">Critical</span></div><div>
+            <h4><a href="https://www.twz.com/land/new-500m-artillery-shell-plant-failed-to-produce-any-155mm-parts" target="_blank" rel="noopener">New $500M Artillery Shell Plant Failed To Produce Any 155mm Parts</a></h4>
+            <p class="src">The War Zone · Howard Altman · updated July 15</p>
+            <p>Calls the report "scathing." Names the contractor, adds an Army official's earlier testimony to Congress and a Bloomberg report on the company's new investment, and carries a company statement.</p>
+            <p class="flag"><b>Flag</b>Headline rounds $469 million up to $500 million.</p>
+          </div></div>
+          <div class="clip" data-flag="1"><div><div class="d">July 14</div><span class="tone crit">Critical</span></div><div>
+            <h4><a href="https://taskandpurpose.com/news/texas-ammo-factory-zero-shells/" target="_blank" rel="noopener">A Texas factory cost nearly $500 million but has produced zero artillery shells</a></h4>
+            <p class="src">Task &amp; Purpose · Matt White</p>
+            <p>Centers on cost and missed deadlines; notes other plants reached shell-body capacity for 46,000 rounds a month while Mesquite sat idle.</p>
+            <p class="flag"><b>Flag</b>Says the report doesn't name the contractor; the findings don't, but the Army's published comments do. Says output isn't expected before September; that timing isn't in the public report.</p>
+          </div></div>
+          <div class="clip" data-flag="1"><div><div class="d">July 15</div><span class="tone">Neutral</span></div><div>
+            <h4><a href="https://ukranews.com/en/news/1163285-us-unable-to-increase-production-of-155-mm-shells-to-100-000-per-month-in-two-years-cbs-news" target="_blank" rel="noopener">US unable to increase production of 155-mm shells to 100,000 per month in two years</a></h4>
+            <p class="src">Ukrainian News, relaying CBS News</p>
+            <p>Leads with the Ukraine angle: more than 3 million of the 3.6 million rounds drawn from inventory went to Ukraine. Notes the report doesn't give current stockpile levels.</p>
+            <p class="flag"><b>Flag</b>Secondary relay; the original CBS piece wasn't reviewed. Dates the report July 13; it is dated July 9.</p>
+          </div></div>
+          <div class="clip" data-flag="1"><div><div class="d">July 20</div><span class="tone crit">Critical</span></div><div>
+            <h4><a href="https://www.manufacturing.net/operations/video/22970813/ammo-factory-fails-to-produce-any-shells-after-469m-army-investment" target="_blank" rel="noopener">Ammo Factory Fails to Produce Any Shells After $469M Army Investment</a></h4>
+            <p class="src">Manufacturing.net · video</p>
+            <p>Sardonic trade-press take aimed at manufacturers. Repeats the core figures correctly.</p>
+            <p class="flag"><b>Flag</b>Calls Mesquite's product "shells"; it was built to make shell bodies only. Says the plant was offline from October 2025; the stop-work order began Aug. 1, 2025, on two of three lines.</p>
+          </div></div>
+        </div>
+        <div class="takeaways">
+          <h4>For leadership</h4>
+          <ul>
+            <li>The dominant frame is "$469 million, zero output." Progress (output more than doubled; filling capacity on track for 140,000) appears lower in most stories.</li>
+            <li>No factual errors warrant a correction request. If contacted, offer background on the difference between shell bodies and finished rounds.</li>
+            <li>Watch for follow-ups at the September 2026 production milestone and when the separate 120 mm tank ammunition report is released.</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes" aria-label="Notes on the coverage brief">
+        <h3>Read it like the boss will</h3>
+        <dl class="meta"><dt>Audience</dt><dd>OIG leadership</dd><dt>Window</dt><dd>First week after release</dd></dl>
+        <ol>
+          <li><b>Check every story against the report</b>, and separate errors from imprecision.</li>
+          <li><b>Name the frame</b> the coverage settled on, not just the tone.</li>
+          <li><b>End with decisions</b>: correct or not, and what's coming next.</li>
+        </ol>
+        <p style="margin-top:.8rem">Coverage summarized in my own words; headlines link to the original stories.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Method</span>
+      <div>
+        <h2>How this kit was built.</h2>
+      </div>
+    </div>
+    <div class="method">
+      <div>
+        <h3>Only what's releasable</h3>
+        <p>The public version of the evaluation carries Controlled Unclassified Information markings, with controlled portions redacted. Every number and quotation here comes from paragraphs and figures marked (U), unclassified, or from management comments published with the report. Where the report and the press disagreed, the report won.</p>
+      </div>
+      <div>
+        <h3>Standards applied</h3>
+        <ul>
+          <li>AP Stylebook for the press release, posts and coverage brief</li>
+          <li>Federal Plain Language Guidelines for the web summary</li>
+          <li>WCAG 2.2 AA: contrast, keyboard access, headings, alt text and reduced motion. Turn on the accessibility view to check this page.</li>
+        </ul>
+      </div>
+    </div>
+    <ul class="sources">
+      <li><a href="https://www.oversight.gov/sites/default/files/documents/reports/2026-07/DOWIG-2026-095%20155-mm_Redacted_Secure.pdf" target="_blank" rel="noopener">DoW OIG, Evaluation of the DoW's Capability and Capacity to Produce 155-Millimeter Artillery Ammunition, DOWIG-2026-095, July 9, 2026</a></li>
+      <li><a href="https://www.oversight.gov/reports/evaluation-dows-capability-and-capacity-produce-155-millimeter-artillery-ammunition" target="_blank" rel="noopener">Oversight.gov, recommendation status for DOWIG-2026-095</a></li>
+      <li><a href="https://www.defensenews.com/news/your-military/2026/07/14/manufacturing-woes-hamper-us-155-mm-ammo-production/" target="_blank" rel="noopener">Defense News, July 14, 2026</a></li>
+      <li><a href="https://www.twz.com/land/new-500m-artillery-shell-plant-failed-to-produce-any-155mm-parts" target="_blank" rel="noopener">The War Zone, July 14, 2026</a></li>
+      <li><a href="https://taskandpurpose.com/news/texas-ammo-factory-zero-shells/" target="_blank" rel="noopener">Task &amp; Purpose, July 14, 2026</a></li>
+      <li><a href="https://www.manufacturing.net/operations/video/22970813/ammo-factory-fails-to-produce-any-shells-after-469m-army-investment" target="_blank" rel="noopener">Manufacturing.net, July 20, 2026</a></li>
+      <li><a href="https://www.plainlanguage.gov/guidelines/" target="_blank" rel="noopener">Federal Plain Language Guidelines</a></li>
+      <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">W3C, Web Content Accessibility Guidelines 2.2</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../">Back to portfolio</a>
+    <a href="../robotics-thesis/">Robotics thesis</a>
+    <a href="../falcon9-crs20/">Falcon 9 field notes</a>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<aside class="a11y-panel" id="a11yPanel" aria-label="Accessibility checks">
+  <button class="a11y-close" type="button" id="a11yClose">Close</button>
+  <h3>Accessibility view</h3>
+  <p>Headings, landmarks and image descriptions are now outlined on the page. Contrast is measured live from this page's colors.</p>
+  <table><thead><tr><th>Pair</th><th>Ratio</th><th>AA</th></tr></thead><tbody id="ctBody"></tbody></table>
+  <ul>
+    <li>Every chart has a text description and a data table or alt text.</li>
+    <li>Tabs, timeline and toggles work with a keyboard.</li>
+    <li>Motion stops when your system asks for reduced motion.</li>
+  </ul>
+</aside>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+  function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+
+  /* ---------- header + progress ---------- */
+  var hdr=document.getElementById('hdr'), prog=document.getElementById('progress'), top=document.getElementById('top');
+  function onScroll(){
+    var h=document.documentElement; var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+    prog.style.transform='scaleX('+p+')';
+    hdr.classList.toggle('light', top.getBoundingClientRect().bottom < 60);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- hero typing ---------- */
+  var typed=document.getElementById('heroTyped'), caret=document.getElementById('heroCaret');
+  var full=typed.parentNode.getAttribute('aria-label');
+  if(reduced){ typed.textContent=full; caret.style.display='none'; }
+  else { var i=0; (function tick(){ i+=2; typed.textContent=full.slice(0,i); if(i<full.length) setTimeout(tick,18); else setTimeout(function(){caret.style.display='none';},1600); })(); }
+
+  /* ---------- rack ---------- */
+  var rack=document.getElementById('rack');
+  var PER=5000, COLS=10, SW=40, SH=78, GX=52, GY=104, OX=4, OY=8;
+  function shellPath(x,y){ var w=SW,h=SH; return 'M'+x+','+(y+h)+' L'+x+','+(y+h*.42)+' Q'+x+','+(y+h*.08)+' '+(x+w/2)+','+y+' Q'+(x+w)+','+(y+h*.08)+' '+(x+w)+','+(y+h*.42)+' L'+(x+w)+','+(y+h)+' Z'; }
+  var defs=el('defs',{},rack), fills=[], projs=[];
+  for(var s=0;s<20;s++){
+    var cx=OX+(s%COLS)*GX, cy=OY+Math.floor(s/COLS)*GY, d=shellPath(cx,cy);
+    var cp=el('clipPath',{id:'sc'+s},defs); el('path',{d:d},cp);
+    el('path',{d:d,class:'case'},rack);
+    var p=el('path',{d:d,class:'proj'},rack); projs.push(p);
+    var g=el('g',{'clip-path':'url(#sc'+s+')'},rack);
+    var r=el('rect',{x:cx,y:cy,width:0,height:SH,class:'fill'},g); fills.push({r:r,x:cx});
+    el('line',{x1:cx+3,y1:cy+SH*.62,x2:cx+SW-3,y2:cy+SH*.62,stroke:'#111110','stroke-width':1.2,opacity:.35},rack);
+  }
+  el('text',{x:OX,y:204},rack).textContent='Each shell = 5,000 rounds a month';
+  el('text',{x:OX+COLS*GX-12,y:204,'text-anchor':'end'},rack).textContent='Goal: 20 shells';
+  var M=[
+    {v:14000,proj:0,label:'Rounds per month, 2022 baseline',note:'Before 2022 the Army made about 14,000 rounds a month. The goal was set at 100,000 by Oct. 1, 2025.'},
+    {v:36000,proj:71000,label:'Rounds per month, March 2026',note:'36,000 a month as of March 2026, more than double the baseline. Dashed shells show the 71,000 that existing plants can reach.'},
+    {v:71000,proj:71000,label:'Projected, September 2026',note:'Without Mesquite, existing plants top out at 71,000, or 71% of the goal. The Army needs 29,000 more shell bodies a month.'}
+  ];
+  var cur=0, rackNum=document.getElementById('rackNum');
+  function setRack(m, animate){
+    var t=M[m]; document.getElementById('rackLabel').textContent=t.label; document.getElementById('rackNote').textContent=t.note;
+    var units=t.v/PER, pu=t.proj/PER;
+    fills.forEach(function(f,idx){ var amt=Math.max(0,Math.min(1,units-idx)); f.r.style.transition=animate&&!reduced?'width .5s ease '+(idx*0.04)+'s':'none'; f.r.setAttribute('width',SW*amt); });
+    projs.forEach(function(p,idx){ p.style.opacity=(idx<Math.ceil(pu) && idx>=Math.floor(units))?1:0; });
+    var from=cur, to=t.v, t0=null; cur=to;
+    if(!animate||reduced){ rackNum.textContent=fmt(to); return; }
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min(1,(ts-t0)/900); var e=1-Math.pow(1-k,3); rackNum.textContent=fmt(from+(to-from)*e); if(k<1) requestAnimationFrame(step); })(performance.now());
+  }
+  var segBtns=document.querySelectorAll('.seg button');
+  segBtns.forEach(function(b){ b.addEventListener('click',function(){ segBtns.forEach(function(x){x.setAttribute('aria-pressed','false');}); b.setAttribute('aria-pressed','true'); setRack(+b.dataset.m,true); }); });
+  setTimeout(function(){ setRack(1,true); }, reduced?0:500);
+
+  /* ---------- release-day sequence ---------- */
+  var relBtn=document.getElementById('relBtn'), rels=document.querySelectorAll('.rel'), relLabel=document.getElementById('relLabel'), running=false;
+  relBtn.addEventListener('click',function(){
+    if(running) return; running=true; relBtn.classList.add('running'); relLabel.textContent='Releasing';
+    rels.forEach(function(r){r.classList.remove('lit');});
+    rels.forEach(function(r,i){ setTimeout(function(){ r.classList.add('lit'); if(i===rels.length-1){ running=false; relBtn.classList.remove('running'); relLabel.textContent='Run it again'; } }, reduced?0:(i+1)*520); });
+  });
+
+  /* ---------- bottleneck chart ---------- */
+  var bn=document.getElementById('bneck'), L=210, R=730, MAX=140000;
+  function X(v){ return L+(R-L)*v/MAX; }
+  [0,50000,100000,140000].forEach(function(v){ el('line',{x1:X(v),y1:20,x2:X(v),y2:292,stroke:v===100000?'#15171C':'#DCE0E6','stroke-width':v===100000?1.2:1,'stroke-dasharray':v===100000?'4 4':''},bn); el('text',{x:X(v),y:312,'text-anchor':'middle',class:'axis'},bn).textContent=v?fmt(v/1000)+'K':'0'; });
+  el('text',{x:X(100000)+6,y:32,class:'axis'},bn).textContent='Goal';
+  var rows=[
+    {g:'Shell bodies',y:48},
+    {l:'March 2026',v:46000,y:70,c:'#F0973B'},
+    {l:'Sept. 2026 projected',v:71000,y:104,c:'#F0973B',p:1},
+    {g:'Filling and packing',y:160},
+    {l:'March 2026',v:36000,y:182,c:'#15171C'},
+    {l:'Sept. 2026 projected',v:63000,y:216,c:'#15171C',p:1},
+    {l:'Dec. 2027 projected',v:140000,y:250,c:'#15171C',p:1}
+  ];
+  var bars=[];
+  rows.forEach(function(r){
+    if(r.g){ el('text',{x:0,y:r.y,class:'grp'},bn).textContent=r.g; return; }
+    el('text',{x:0,y:r.y+16},bn).textContent=r.l;
+    var b=el('rect',{x:L,y:r.y,width:0,height:24,fill:r.p?'none':r.c,stroke:r.c,'stroke-width':r.p?1.5:0,'stroke-dasharray':r.p?'5 4':'',class:'bar'},bn);
+    if(r.p){ el('rect',{x:L,y:r.y,width:0,height:24,fill:r.c,opacity:.12,class:'bar'},bn); }
+    var t=el('text',{x:L+6,y:r.y+16,class:'val',opacity:0},bn); t.textContent=fmt(r.v);
+    bars.push({r:r,t:t});
+  });
+  el('rect',{x:X(71000),y:110,width:X(100000)-X(71000),height:12,fill:'none'},bn);
+  var gapT=el('text',{x:X(85500),y:140,'text-anchor':'middle',class:'axis',opacity:0},bn); gapT.textContent='29K short';
+  el('line',{x1:X(71000),y1:128,x2:X(100000),y2:128,stroke:'#A9520E','stroke-width':1.5,'marker-end':''},bn);
+  function drawBars(){
+    var rects=bn.querySelectorAll('rect.bar'), i=0;
+    bars.forEach(function(b){ var w=X(b.r.v)-L; var mine=[rects[i++]]; if(b.r.p) mine.push(rects[i++]); mine.forEach(function(m){ m.setAttribute('width',w); }); if(b.r.v>120000){ b.t.setAttribute('x',L+w-10); b.t.setAttribute('text-anchor','end'); } else b.t.setAttribute('x',L+w+8); setTimeout(function(){ b.t.setAttribute('opacity',1); }, reduced?0:700); });
+    setTimeout(function(){ gapT.setAttribute('opacity',1); }, reduced?0:900);
+  }
+  if('IntersectionObserver' in window && !reduced){
+    var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ drawBars(); io.disconnect(); } },{threshold:.35}); io.observe(bn);
+  } else drawBars();
+  var tblBtn=document.getElementById('tblBtn'), tbl=document.getElementById('bneckTable');
+  tblBtn.addEventListener('click',function(){ var on=tbl.classList.toggle('on'); tblBtn.setAttribute('aria-expanded',on); tblBtn.textContent=on?'Hide the table':'Show as a table'; });
+
+  /* ---------- timeline ---------- */
+  var EV=[
+    {d:'Nov. 23, 2022',t:'Army orders a new shell-body line',x:'Army Contracting Command issues the first of three task orders, under the Scranton plant\'s existing contract, for U.S. production lines meant to add 30,000 shell bodies a month. The other two follow in February and June 2023.'},
+    {d:'June 30, 2023',t:'First warning',x:'Seven months in, the contractor has missed early milestones. The contracting officer sends a letter of schedule inquiry.'},
+    {d:'June 24, 2024',t:'Second schedule inquiry',x:'Milestones keep slipping. The contractor answers each letter with explanations and revised schedules.'},
+    {d:'Oct.–Dec. 2024',t:'Two letters of concern',x:'The contracting officer raises concern about task order completion and about the contractor\'s communication on problems at the plant.'},
+    {d:'June 13, 2025',t:'Show-cause letter',x:'The contracting officer sends a show-cause letter, the formal step that can come before terminating a contract for default.'},
+    {d:'Aug. 1, 2025',t:'Stop-work order',x:'A 90-day stop-work order halts two of the three lines while the government evaluates whether the contractor can produce 10,000 parts per line each month. The Inspector General begins its evaluation the same month.'},
+    {d:'Oct. 1, 2025',t:'Goal deadline passes',x:'The deadline for 100,000 rounds a month arrives. The Army has not reached it.'},
+    {d:'Nov. 3, 2025',t:'Stop-work order extended',x:'The order is extended to April 30, 2026. As part of the agreement, the government resumes progress payments: $26.3 million for lines 2 and 3 in December 2025.'},
+    {d:'March 2026',t:'Still no usable part',x:'The plant has not produced a single shell body that meets contract specifications. The Army has spent $469 million on it since December 2022.'},
+    {d:'April 3, 2026',t:'Confidential settlement',x:'According to the Army\'s comments, the government and the contractor sign a confidential settlement. On April 24, production orders move from Mesquite to northeastern Pennsylvania at a lower price and higher quantity.'},
+    {d:'July 9, 2026',t:'Evaluation released',x:'The Inspector General publishes three recommendations. The Army agrees with all three; one remains unresolved.'}
+  ];
+  var track=document.getElementById('tlTrack'), fill=document.getElementById('tlFill'), dots=[], cur2=0;
+  EV.forEach(function(e,i){ var b=document.createElement('button'); b.type='button'; b.className='tl-dot'; b.setAttribute('role','tab'); b.setAttribute('aria-label',e.d+': '+e.t); b.setAttribute('aria-controls','tlCard'); b.addEventListener('click',function(){ selectEv(i,true); }); b.addEventListener('keydown',function(k){ if(k.key==='ArrowRight'||k.key==='ArrowDown'){k.preventDefault();selectEv(Math.min(EV.length-1,cur2+1),true);} if(k.key==='ArrowLeft'||k.key==='ArrowUp'){k.preventDefault();selectEv(Math.max(0,cur2-1),true);} if(k.key==='Home'){k.preventDefault();selectEv(0,true);} if(k.key==='End'){k.preventDefault();selectEv(EV.length-1,true);} }); track.appendChild(b); dots.push(b); });
+  function selectEv(i,focus){
+    cur2=i; var e=EV[i];
+    document.getElementById('tlDate').textContent=e.d; document.getElementById('tlTitle').textContent=e.t; document.getElementById('tlText').textContent=e.x;
+    dots.forEach(function(d,j){ d.setAttribute('aria-selected',j===i); d.tabIndex=j===i?0:-1; d.classList.toggle('past',j<i); });
+    var a=dots[0].getBoundingClientRect(), b=dots[i].getBoundingClientRect(), tr=track.getBoundingClientRect();
+    fill.style.width=Math.max(0,(b.left+b.width/2)-(a.left+a.width/2))+'px';
+    if(focus) dots[i].focus();
+  }
+  document.getElementById('tlPrev').addEventListener('click',function(){ selectEv(Math.max(0,cur2-1)); });
+  document.getElementById('tlNext').addEventListener('click',function(){ selectEv(Math.min(EV.length-1,cur2+1)); });
+  selectEv(0); window.addEventListener('resize',function(){ selectEv(cur2); });
+
+  /* ---------- tabs ---------- */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function showTab(i,focus){
+    tabs.forEach(function(t,j){ var on=j===i; t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; document.getElementById('p'+j).hidden=!on; });
+    if(focus) tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){ showTab(i); });
+    t.addEventListener('keydown',function(e){ var n=null; if(e.key==='ArrowRight') n=(i+1)%tabs.length; if(e.key==='ArrowLeft') n=(i-1+tabs.length)%tabs.length; if(e.key==='Home') n=0; if(e.key==='End') n=tabs.length-1; if(n!==null){ e.preventDefault(); showTab(n,true); } });
+  });
+  document.querySelectorAll('.rel a[data-tab]').forEach(function(a){ a.addEventListener('click',function(){ showTab(+a.dataset.tab); }); });
+
+  /* ---------- AP toggle + word count ---------- */
+  var apBtn=document.getElementById('apBtn'), rel=document.getElementById('release');
+  apBtn.addEventListener('click',function(){ var on=rel.classList.toggle('show-ap'); apBtn.setAttribute('aria-pressed',on); apBtn.textContent=on?'Hide AP style edits':'Show AP style edits'; });
+  function words(t){ return (t.match(/[A-Za-z0-9$%][A-Za-z0-9$%,.'\-]*/g)||[]).length; }
+  var relClone=rel.cloneNode(true); relClone.querySelectorAll('sup,.kicker,.end').forEach(function(n){n.remove();});
+  document.getElementById('relWords').textContent=words(relClone.textContent)+' words';
+
+  /* ---------- plain language ---------- */
+  var PL=[
+    {h:'What we found',o:'The DoW increased its capability and capacity to produce 155-mm artillery ammunition but did not reach the 2025 National Defense Industrialization Strategy Implementation Plan goal of 100,000 rounds per month by October 2025.',n:'The Army now makes more than twice as many 155 mm artillery rounds as it did in 2022. But it missed its goal of 100,000 rounds a month by October 2025.',gl:''},
+    {h:'The problem',o:'However, at a contractor-owned, contractor-operated facility in Mesquite, Texas, the contractor has been unable to produce any projectile metal parts that meet contract specifications. The Army planned for the Mesquite Texas facility to produce 30,000 rounds per month.',n:'A new plant in Mesquite, Texas, was supposed to make 30,000 shell bodies a month. So far, it has not made one that meets the contract\'s standards.',gl:'Shell body: the metal casing that is later filled with explosives.'},
+    {h:'Why it happened',o:'This occurred because officials at the Army\'s Capability Program Executive Ammunition & Energetics issued the contract and accepted the risk associated with purchasing and adapting unique production equipment which had not been proven to meet U.S. specifications.',n:'Army officials chose to adapt machines built for an older shell instead of buying new ones. They expected it to be faster. The machines had never been proven to meet U.S. standards, and the plan did not work.',gl:''},
+    {h:'Why it matters',o:'The DoW\'s inability to increase capability and capacity to produce 155-mm artillery ammunition at its goal of 100,000 rounds per month could decrease the DoW\'s readiness and increase its risk of not meeting the operational needs of the United States, allies, and partner nations in potential future conflicts.',n:'Making fewer rounds than planned could leave the U.S. and its allies short of artillery ammunition in a future conflict.',gl:''},
+    {h:'What we asked for',o:'We made three recommendations to Army officials to: identify and implement a solution to meet the Army\'s goal for producing 155-mm ammunition, review the contract for the Mesquite facility to determine how the money was spent and whether the DoW can recoup any funds, and determine whether the Mesquite contract was appropriately issued.',n:'We asked the Army to do three things. Find another way to make the missing shell bodies. Find out how the $469 million was spent and whether any can be recovered. Check whether the Mesquite contract was awarded properly.',gl:''}
+  ];
+  var plBox=document.getElementById('plBlocks'), plOrig=false;
+  function syl(w){ w=w.toLowerCase().replace(/[^a-z]/g,''); if(!w) return 0; if(w.length<=3) return 1; w=w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/,'').replace(/^y/,''); var m=w.match(/[aeiouy]{1,2}/g); return m?m.length:1; }
+  function stats(text){
+    var sents=text.split(/[.!?]+(?=\s|$)/).filter(function(s){return /[A-Za-z0-9]/.test(s);});
+    var ws=text.replace(/\$?\d[\d,]*(\.\d+)?%?/g,' num ').match(/[A-Za-z']+/g)||[];
+    var sy=ws.reduce(function(a,w){ return a+(w==='num'?2:syl(w)); },0);
+    var wc=ws.length, sc=Math.max(1,sents.length);
+    return {grade:0.39*(wc/sc)+11.8*(sy/Math.max(1,wc))-15.59, wps:wc/sc, wc:wc};
+  }
+  function renderPL(){
+    plBox.innerHTML=''; var all='';
+    PL.forEach(function(p){
+      var d=document.createElement('div'); d.className='pl-block';
+      var h=document.createElement('div'); h.className='h'; h.textContent=p.h;
+      var t=document.createElement('div'); t.className='txt'+(plOrig?' orig':''); t.textContent=plOrig?p.o:p.n;
+      if(!plOrig&&p.gl){ var g=document.createElement('span'); g.className='gl'; g.textContent=p.gl; t.appendChild(g); }
+      d.appendChild(h); d.appendChild(t); plBox.appendChild(d); all+=' '+(plOrig?p.o:p.n);
+    });
+    var s=stats(all);
+    var gEl=document.getElementById('plGrade'); gEl.textContent=s.grade.toFixed(1); gEl.classList.toggle('good',!plOrig);
+    document.getElementById('plSent').textContent=s.wps.toFixed(1);
+    document.getElementById('plWords').textContent=s.wc;
+  }
+  var plBtn=document.getElementById('plBtn');
+  plBtn.addEventListener('click',function(){ plOrig=!plOrig; plBtn.setAttribute('aria-pressed',plOrig); plBtn.textContent=plOrig?'Show the plain-language rewrite':'Show the report\'s original wording'; renderPL(); });
+  renderPL();
+
+  /* ---------- social counts ---------- */
+  document.querySelectorAll('.count').forEach(function(c){
+    var body=document.getElementById(c.dataset.for).textContent, max=+c.dataset.max;
+    var n=body.replace(/\[link\]/g,'x'.repeat(23)).length;
+    if(c.dataset.for==='sf'){ c.textContent=n+' characters'; return; }
+    c.textContent=n.toLocaleString('en-US')+' / '+max.toLocaleString('en-US'); c.classList.toggle('over',n>max);
+  });
+  var altBtn=document.getElementById('altBtn'), alt=document.getElementById('altText');
+  altBtn.addEventListener('click',function(){ var on=alt.classList.toggle('on'); altBtn.setAttribute('aria-expanded',on); altBtn.textContent=on?'Hide alt text':'Show alt text'; });
+
+  /* ---------- Q&A ---------- */
+  var qa=document.getElementById('qa'), toughBtn=document.getElementById('toughBtn'), openAll=document.getElementById('openAll');
+  toughBtn.addEventListener('click',function(){ var on=qa.classList.toggle('tough-only'); toughBtn.setAttribute('aria-pressed',on); });
+  openAll.addEventListener('click',function(){ var on=openAll.getAttribute('aria-pressed')!=='true'; qa.querySelectorAll('details').forEach(function(d){ d.open=on; }); openAll.setAttribute('aria-pressed',on); openAll.textContent=on?'Collapse all':'Expand all'; });
+
+  /* ---------- coverage filter ---------- */
+  var fBtns=document.querySelectorAll('[data-f]');
+  fBtns.forEach(function(b){ b.addEventListener('click',function(){ fBtns.forEach(function(x){x.setAttribute('aria-pressed','false');}); b.setAttribute('aria-pressed','true'); var only=b.dataset.f==='flag'; document.querySelectorAll('.clip').forEach(function(c){ c.classList.toggle('hide', only && !c.querySelector('.flag b') ); if(only){ var lb=c.querySelector('.flag b'); c.classList.toggle('hide', !lb || lb.textContent!=='Flag'); } }); }); });
+
+  /* ---------- accessibility view ---------- */
+  var aBtn=document.getElementById('a11yBtn'), aClose=document.getElementById('a11yClose');
+  function lum(hex){ var c=hex.replace('#',''); var rgb=[0,2,4].map(function(i){ var v=parseInt(c.substr(i,2),16)/255; return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4); }); return 0.2126*rgb[0]+0.7152*rgb[1]+0.0722*rgb[2]; }
+  function ratio(a,b){ var A=lum(a),B=lum(b); return (Math.max(A,B)+0.05)/(Math.min(A,B)+0.05); }
+  var cs=getComputedStyle(document.documentElement); function v(n){ return cs.getPropertyValue(n).trim(); }
+  var pairs=[['Body text','--ink','--paper'],['Secondary text','--graphite','--paper'],['Labels','--mute','--paper'],['Accent text','--flame-ink','--paper'],['Hero text','--cream','--night'],['Hero secondary','--stone','--night']];
+  var ct=document.getElementById('ctBody');
+  pairs.forEach(function(p){ var fg=v(p[1]), bg=v(p[2]), r=ratio(fg,bg); var tr=document.createElement('tr'); tr.innerHTML='<td><span class="sw2" style="background:'+bg+'"></span><span class="sw2" style="background:'+fg+'"></span>'+p[0]+'</td><td style="font-family:var(--mono)">'+r.toFixed(1)+':1</td><td class="pass">'+(r>=4.5?'Pass':'Large text only')+'</td>'; ct.appendChild(tr); });
+  function setA11y(on){ document.body.classList.toggle('a11y',on); aBtn.setAttribute('aria-pressed',on); }
+  aBtn.addEventListener('click',function(){ setA11y(!document.body.classList.contains('a11y')); });
+  aClose.addEventListener('click',function(){ setA11y(false); aBtn.focus(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && document.body.classList.contains('a11y')) setA11y(false); });
+})();
+</script>
+</body>
+</html>

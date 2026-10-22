@@ -55,6 +55,24 @@
       @keyframes rbscan{to{transform:translateX(100%)}}
       @media (prefers-reduced-motion:reduce){.rb-bot .eye,.rb-btn:hover .rb-scan{animation:none}.rb-bot .jt{transition:none}}
       @media (prefers-reduced-motion:reduce){.f9-dot{animation:none}.f9-rkt,.f9-flame{transition:none}.f9-hint{transition:none}.f9-hint .f9-arrow{animation:none}}
+      /* résumé link retired: hidden, not removed, so React's tree stays intact */
+      #top a[href$="Antonio-Planzo-Resume.pdf"]{display:none!important}
+      /* 155 mm rollout kit button: press-room slab with a broadcast mark */
+      .rk-btn{position:relative;display:inline-flex;align-items:center;gap:.7rem;overflow:hidden;
+        font-family:'IBM Plex Mono',ui-monospace,monospace!important;letter-spacing:.16em;text-transform:uppercase;
+        border:1px solid rgba(247,246,243,.42)!important;color:#F7F6F3!important;background-color:#1C1C1A!important;
+        background-image:radial-gradient(rgba(247,246,243,.09) 1px,transparent 1.2px)!important;background-size:6px 6px!important;
+        transition:border-color .25s,box-shadow .25s,transform .25s!important}
+      .rk-btn:hover{border-color:#F0973B!important;box-shadow:0 0 24px rgba(240,151,59,.22)}
+      .rk-ico{flex:none;overflow:visible}
+      .rk-ico .doc{stroke:#F7F6F3}
+      .rk-ico .arc{stroke:#7A766E;transition:stroke .2s}
+      .rk-btn:hover .rk-ico .arc{stroke:#F0973B;animation:rkwave 1.2s ease-in-out infinite}
+      .rk-btn:hover .rk-ico .a2{animation-delay:.15s}.rk-btn:hover .rk-ico .a3{animation-delay:.3s}
+      @keyframes rkwave{0%,100%{opacity:1}50%{opacity:.25}}
+      .rk-mark{position:absolute;left:1.2rem;right:1.2rem;bottom:.55rem;height:1px;background:#F0973B;transform:scaleX(0);transform-origin:0 50%;transition:transform .45s cubic-bezier(.3,.6,.3,1);pointer-events:none}
+      .rk-btn:hover .rk-mark{transform:scaleX(1)}
+      @media (prefers-reduced-motion:reduce){.rk-btn:hover .rk-ico .arc{animation:none}.rk-mark{transition:none}}
     </style>
     <script>
       (function(){
@@ -81,6 +99,16 @@
           rb.innerHTML = '<svg class="rb-bot" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111110" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="1.5" width="12" height="8" rx="3"/><circle class="eye" cx="10" cy="5.5" r="1.1" stroke="none"/><circle class="eye" cx="14" cy="5.5" r="1.1" stroke="none"/><path d="M8 11.5h8l1 6H7z"/><path d="M7 12.5L4 17M17 12.5l3 4.5M10 17.5v5M14 17.5v5"/><circle class="jt" cx="7" cy="12.5" r="1.3"/><circle class="jt" cx="17" cy="12.5" r="1.3"/><circle class="jt" cx="10" cy="20" r="1.3"/><circle class="jt" cx="14" cy="20" r="1.3"/></svg>'
             + 'Robotics Thesis<span class="rb-scan"></span>';
           row.insertBefore(rb, a);
+          var rk = document.createElement('a');
+          rk.href = './artillery-kit/';
+          rk.className = 'btn-outline focus-ring rk-btn';
+          rk.setAttribute('aria-label','155 mm rollout kit: view the public affairs work sample');
+          rk.innerHTML = '<svg class="rk-ico" width="20" height="18" viewBox="0 0 26 22" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+            + '<path class="doc" d="M2 3.5h9l3 3V20H2z"/><path class="doc" d="M5 10h6M5 13h6M5 16h4"/>'
+            + '<path class="arc a1" d="M17 9.5a3 3 0 0 1 0 5"/><path class="arc a2" d="M19.5 7a6.5 6.5 0 0 1 0 10"/><path class="arc a3" d="M22 4.5a10 10 0 0 1 0 15"/></svg>'
+            + '155 mm Rollout Kit<span class="rk-mark"></span>';
+          var cv = row.querySelector('a[href$="Antonio-Planzo-Resume.pdf"]');
+          row.insertBefore(rk, cv || rb);
           var tries = 0;
           (function waitFade(){
             var op = parseFloat(getComputedStyle(row).opacity);
