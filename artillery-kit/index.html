@@ -83,6 +83,16 @@ section + section{border-top:1px solid var(--hair)}
 #top .label{color:var(--stone)}
 .hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding-bottom:2.5rem}
 .hero-sub{position:relative;color:var(--stone);font-size:1.12rem;max-width:34rem;margin-top:1.4rem}
+/* title fires in: quick, under a second */
+h1.fire{position:relative}
+h1.fire .w{display:inline-block;animation:fireIn .38s cubic-bezier(.15,.85,.3,1) both}
+h1.fire .w{animation-delay:var(--d,0s)}
+@keyframes fireIn{0%{opacity:0;transform:translateX(-.9em) skewX(-14deg);filter:blur(7px)}60%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none;filter:none}}
+h1.fire .tracer{position:absolute;left:0;bottom:-.12em;height:2px;width:100%;background:linear-gradient(90deg,transparent,var(--flame) 70%,#FBE3BC);transform-origin:0 50%;transform:scaleX(0);opacity:0;animation:tracer .5s cubic-bezier(.2,.8,.3,1) .05s both;pointer-events:none}
+@keyframes tracer{0%{opacity:1;transform:scaleX(0)}55%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
+h1.fire .flash{position:absolute;left:-.45em;top:.05em;width:.9em;height:.9em;border-radius:50%;background:radial-gradient(closest-side,rgba(251,227,188,.95),rgba(240,151,59,.55),transparent);opacity:0;animation:muzzle .22s ease-out both;pointer-events:none}
+@keyframes muzzle{0%{opacity:1;transform:scale(.5)}100%{opacity:0;transform:scale(1.6)}}
+@media (prefers-reduced-motion:reduce){h1.fire .w,h1.fire .tracer,h1.fire .flash{animation:none}h1.fire .tracer,h1.fire .flash{display:none}}
 .hero-type{position:absolute;inset:0}
 .caret{display:inline-block;width:2px;height:1.05em;background:var(--flame);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
@@ -375,7 +385,7 @@ body.a11y footer .wrap::before{content:'footer'}
   <div class="wrap hero">
     <div>
       <p class="label">Public affairs work sample, report rollout</p>
-      <h1 style="margin-top:1rem">155 mm, from report to release.</h1>
+      <h1 class="fire" style="margin-top:1rem"><span class="flash" aria-hidden="true"></span><span class="w" style="--d:0.000s">155&nbsp;mm,</span> <span class="w" style="--d:0.045s">from</span> <span class="w" style="--d:0.090s">report</span> <span class="w" style="--d:0.135s">to</span> <span class="w" style="--d:0.180s">release.</span><span class="tracer" aria-hidden="true"></span></h1>
       <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">How I would roll out a published Inspector General evaluation of Army artillery production: the press release, a plain-language web summary, social posts, spokesperson prep, a note to the workforce, and the media monitoring brief that follows.</span><span class="hero-type" aria-label="How I would roll out a published Inspector General evaluation of Army artillery production: the press release, a plain-language web summary, social posts, spokesperson prep, a note to the workforce, and the media monitoring brief that follows."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
       <p class="byline">By <b>Antonio Planzo</b><br/>Source: DoW OIG evaluation DOWIG-2026-095, July 9, 2026</p>
       <div class="actions">
