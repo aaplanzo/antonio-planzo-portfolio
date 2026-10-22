@@ -83,16 +83,19 @@ section + section{border-top:1px solid var(--hair)}
 #top .label{color:var(--stone)}
 .hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding-bottom:2.5rem}
 .hero-sub{position:relative;color:var(--stone);font-size:1.12rem;max-width:34rem;margin-top:1.4rem}
-/* title fires in: quick, under a second */
+/* title: each line's letters fire out like rounds, lines in parallel */
 h1.fire{position:relative}
-h1.fire .w{display:inline-block;animation:fireIn .38s cubic-bezier(.15,.85,.3,1) both}
-h1.fire .w{animation-delay:var(--d,0s)}
-@keyframes fireIn{0%{opacity:0;transform:translateX(-.9em) skewX(-14deg);filter:blur(7px)}60%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none;filter:none}}
-h1.fire .tracer{position:absolute;left:0;bottom:-.12em;height:2px;width:100%;background:linear-gradient(90deg,transparent,var(--flame) 70%,#FBE3BC);transform-origin:0 50%;transform:scaleX(0);opacity:0;animation:tracer .5s cubic-bezier(.2,.8,.3,1) .05s both;pointer-events:none}
-@keyframes tracer{0%{opacity:1;transform:scaleX(0)}55%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
-h1.fire .flash{position:absolute;left:-.45em;top:.05em;width:.9em;height:.9em;border-radius:50%;background:radial-gradient(closest-side,rgba(251,227,188,.95),rgba(240,151,59,.55),transparent);opacity:0;animation:muzzle .22s ease-out both;pointer-events:none}
-@keyframes muzzle{0%{opacity:1;transform:scale(.5)}100%{opacity:0;transform:scale(1.6)}}
-@media (prefers-reduced-motion:reduce){h1.fire .w,h1.fire .tracer,h1.fire .flash{animation:none}h1.fire .tracer,h1.fire .flash{display:none}}
+h1.fire .tw{display:inline-block;white-space:nowrap}
+h1.fire .tc{display:inline-block}
+h1.fire.go .tc{opacity:0;animation:round .3s cubic-bezier(.15,.9,.3,1) var(--d,0s) forwards}
+@keyframes round{0%{opacity:0;transform:translateX(-1.3em) scaleX(1.9);filter:blur(3px)}55%{opacity:1;transform:translateX(.05em) scaleX(.96);filter:none}100%{opacity:1;transform:none}}
+h1.fire .muzzle{position:absolute;width:.8em;height:.8em;margin:-.05em 0 0 -.55em;border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,rgba(251,227,188,.95),rgba(240,151,59,.6),transparent);animation:muzzle .5s steps(4) forwards}
+@keyframes muzzle{0%,50%{opacity:1;transform:scale(.7)}25%,75%{opacity:.35;transform:scale(1.2)}100%{opacity:0;transform:scale(1.4)}}
+h1.fire .trace{position:absolute;height:2px;pointer-events:none;transform-origin:0 50%;opacity:0;
+  background:linear-gradient(90deg,transparent,var(--flame) 75%,#FBE3BC);animation:trace .55s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes trace{0%{opacity:1;transform:scaleX(0)}55%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){h1.fire.go .tc{animation:none;opacity:1}h1.fire .muzzle,h1.fire .trace{display:none}}
 .hero-type{position:absolute;inset:0}
 .caret{display:inline-block;width:2px;height:1.05em;background:var(--flame);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
@@ -385,7 +388,7 @@ body.a11y footer .wrap::before{content:'footer'}
   <div class="wrap hero">
     <div>
       <p class="label">Public affairs work sample, report rollout</p>
-      <h1 class="fire" style="margin-top:1rem"><span class="flash" aria-hidden="true"></span><span class="w" style="--d:0.000s">155&nbsp;mm,</span> <span class="w" style="--d:0.045s">from</span> <span class="w" style="--d:0.090s">report</span> <span class="w" style="--d:0.135s">to</span> <span class="w" style="--d:0.180s">release.</span><span class="tracer" aria-hidden="true"></span></h1>
+      <h1 class="fire" style="margin-top:1rem">155&nbsp;mm, from report to release.</h1>
       <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">How I would roll out a published Inspector General evaluation of Army artillery production: the press release, a plain-language web summary, social posts, spokesperson prep, a note to the workforce, and the media monitoring brief that follows.</span><span class="hero-type" aria-label="How I would roll out a published Inspector General evaluation of Army artillery production: the press release, a plain-language web summary, social posts, spokesperson prep, a note to the workforce, and the media monitoring brief that follows."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
       <p class="byline">By <b>Antonio Planzo</b><br/>Source: DoW OIG evaluation DOWIG-2026-095, July 9, 2026</p>
       <div class="actions">
@@ -839,6 +842,34 @@ Read the full evaluation: [link]</p></div>
     hdr.classList.toggle('light', top.getBoundingClientRect().bottom < 60);
   }
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- title: letters fire out, every line at once ---------- */
+  function splitTitle(h){
+    var txt=h.textContent.replace(/\s+/g,' ').trim(); h.setAttribute('aria-label',txt);
+    var box=document.createElement('span'); box.className='tt'; box.setAttribute('aria-hidden','true');
+    txt.split(' ').forEach(function(w,wi){
+      if(wi) box.appendChild(document.createTextNode(' '));
+      var ws=document.createElement('span'); ws.className='tw';
+      w.split('').forEach(function(c){ var cs=document.createElement('span'); cs.className='tc'; cs.textContent=c; ws.appendChild(cs); });
+      box.appendChild(ws);
+    });
+    h.textContent=''; h.appendChild(box); return box;
+  }
+  (function(){
+    var h=document.querySelector('h1.fire'); if(!h||reduced) return;
+    var box=splitTitle(h), chars=[].slice.call(box.querySelectorAll('.tc'));
+    var hr=h.getBoundingClientRect(), lines=[];
+    chars.forEach(function(c){ var t=Math.round(c.offsetTop); var L=lines.filter(function(l){return Math.abs(l.top-t)<6;})[0]; if(!L){ L={top:t,chars:[]}; lines.push(L);} L.chars.push(c); });
+    lines.forEach(function(L){
+      L.chars.forEach(function(c,i){ c.style.setProperty('--d',(i*0.024)+'s'); });
+      var first=L.chars[0].getBoundingClientRect(), last=L.chars[L.chars.length-1].getBoundingClientRect();
+      var m=document.createElement('span'); m.className='muzzle'; m.setAttribute('aria-hidden','true');
+      m.style.left=(first.left-hr.left)+'px'; m.style.top=(first.top-hr.top+first.height*.25)+'px'; h.appendChild(m);
+      var tr=document.createElement('span'); tr.className='trace'; tr.setAttribute('aria-hidden','true');
+      tr.style.left=(first.left-hr.left)+'px'; tr.style.top=(first.bottom-hr.top-2)+'px'; tr.style.width=(last.right-first.left)+'px'; h.appendChild(tr);
+    });
+    h.classList.add('go');
+  })();
 
   /* ---------- hero typing ---------- */
   var typed=document.getElementById('heroTyped'), caret=document.getElementById('heroCaret');

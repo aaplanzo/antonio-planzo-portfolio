@@ -303,6 +303,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 footer a{font-family:var(--mono);font-size:.76rem;color:var(--graphite);text-decoration:none}
 footer a:hover{color:var(--ink)}
 
+/* title assembles from blueprint outline: parts rotate in, lock, then fill */
+h1.assemble .tw{display:inline-block;white-space:nowrap}
+h1.assemble .tc{display:inline-block}
+h1.assemble.go .tc{opacity:0;transform-origin:50% 100%;animation:part .7s cubic-bezier(.3,1.4,.5,1) var(--d,0s) forwards}
+@keyframes part{
+  0%{opacity:0;color:transparent;-webkit-text-stroke:1px var(--flame);transform:perspective(400px) rotateY(-95deg) translateY(.25em) scale(.7)}
+  45%{opacity:1;color:transparent;-webkit-text-stroke:1px var(--flame);transform:perspective(400px) rotateY(8deg)}
+  62%{color:transparent;-webkit-text-stroke:1px var(--flame-ink);transform:none}
+  100%{opacity:1;color:var(--ink);-webkit-text-stroke:0 transparent;transform:none}}
+h1.assemble .joint{position:absolute;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--flame);pointer-events:none;opacity:0;animation:joint .9s ease-out var(--d,0s) forwards}
+@keyframes joint{0%{opacity:0;transform:scale(0)}25%{opacity:1;transform:scale(1.4)}60%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.6)}}
+@media (prefers-reduced-motion:reduce){
+  h1.assemble.go .tc{animation:none;opacity:1}h1.assemble .joint{display:none}
+}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
   .robot.drawing .s{animation:none;stroke-dasharray:none}
@@ -333,7 +347,7 @@ footer a:hover{color:var(--ink)}
   <div class="wrap hero">
     <div>
       <p class="label">Research thesis, autonomous technology and robotics</p>
-      <h1 style="margin-top:1rem">Humanoid robots, priced from the joints out.</h1>
+      <h1 class="assemble" style="margin-top:1rem">Humanoid robots, priced from the joints out.</h1>
       <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">Where value will accrue as robots leave the lab: the actuators they move with, the AI they think with, the robotaxis already earning revenue, and the companies building each layer.</span><span class="hero-type" aria-label="Where value will accrue as robots leave the lab: the actuators they move with, the AI they think with, the robotaxis already earning revenue, and the companies building each layer."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
       <p class="byline">By <b>Antonio Planzo</b>, St. Petersburg, FL. Data as of October 13, 2026.</p>
       <div class="actions">
@@ -898,6 +912,33 @@ var VIDEO = {
   /* ---------- typewriter ---------- */
   var heroType = document.querySelector('.hero-type');
   var heroStr = heroType.getAttribute('aria-label');
+  /* title assembles letter by letter, with joints flashing at word breaks */
+  function splitTitle(h){
+    var txt=h.textContent.replace(/\s+/g,' ').trim(); h.setAttribute('aria-label',txt);
+    var box=document.createElement('span'); box.className='tt'; box.setAttribute('aria-hidden','true');
+    txt.split(' ').forEach(function(w,wi){
+      if(wi) box.appendChild(document.createTextNode(' '));
+      var ws=document.createElement('span'); ws.className='tw';
+      w.split('').forEach(function(c){ var cs=document.createElement('span'); cs.className='tc'; cs.textContent=c; ws.appendChild(cs); });
+      box.appendChild(ws);
+    });
+    h.textContent=''; h.appendChild(box); return box;
+  }
+  (function(){
+    var h=document.querySelector('h1.assemble'); if(!h||reduced) return;
+    h.style.position='relative';
+    var box=splitTitle(h), chars=[].slice.call(box.querySelectorAll('.tc'));
+    chars.forEach(function(c,i){ c.style.setProperty('--d',(i*0.03)+'s'); });
+    var hr=h.getBoundingClientRect(), n=0;
+    [].slice.call(box.querySelectorAll('.tw')).forEach(function(w,wi,all){
+      if(wi===all.length-1) return;
+      var lc=w.lastChild.getBoundingClientRect(); n+=w.children.length;
+      var j=document.createElement('span'); j.className='joint'; j.setAttribute('aria-hidden','true');
+      j.style.left=(lc.right-hr.left+6)+'px'; j.style.top=(lc.top-hr.top+lc.height*.55)+'px';
+      j.style.setProperty('--d',(n*0.03+.2)+'s'); h.appendChild(j);
+    });
+    h.classList.add('go');
+  })();
   var heroEl = document.getElementById('heroTyped'), caret = document.getElementById('heroCaret');
   if (reduced){ heroEl.textContent = heroStr; caret.style.display = 'none'; }
   else {
