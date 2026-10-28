@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Open Season Social Campaign | Antonio Planzo</title>
+<meta name="description" content="A social media work sample by Antonio Planzo: a 30-day, multi-platform campaign plan for TRICARE Open Season 2026, with an editorial calendar, platform-native posts, a measurement plan and stakeholder coordination." />
+<meta property="og:title" content="Open season, without the fine print" />
+<meta property="og:description" content="A multi-platform social media campaign plan for TRICARE Open Season 2026. A work sample by Antonio Planzo." />
+<meta property="og:type" content="article" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#FFFFFF;
+  --panel:#F3F5F8;
+  --hair:#DCE0E6;
+  --ink:#15171C;
+  --graphite:#555C6B;
+  --mute:#656B77;
+  --flame:#F0973B;
+  --flame-ink:#A9520E;
+  --flame-wash:rgba(240,151,59,.13);
+  --night:#111110;
+  --cream:#F7F6F3;
+  --stone:#B9B5AC;
+  --line:rgba(247,246,243,.14);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --measure:40rem;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light;scroll-padding-top:4.5rem}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--flame);outline-offset:3px}
+button{font:inherit;color:inherit}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.5rem}
+.prose{max-width:var(--measure)}
+.prose p{color:var(--graphite);margin-bottom:1.1rem}
+.prose p strong{color:var(--ink);font-weight:600}
+.label{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--mute)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
+h1{font-size:clamp(2.6rem,6.2vw,4.5rem);line-height:1.02}
+h2{font-size:clamp(1.85rem,3.6vw,2.6rem);line-height:1.12;margin:.5rem 0 1.3rem;max-width:24ch}
+h3{font-size:1.3rem;line-height:1.25;margin-bottom:.4rem}
+h4{font-size:1.12rem;line-height:1.3;margin-bottom:.3rem}
+
+/* header */
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--flame);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(17,17,16,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:background .3s,border-color .3s}
+header.light{background:rgba(255,255,255,.92);border-color:var(--hair)}
+header nav{max-width:74rem;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:var(--serif);font-weight:500;font-size:1rem;text-decoration:none;color:var(--cream);transition:color .3s}
+header.light .brand{color:var(--ink)}
+.navlinks{display:flex;gap:1.4rem;align-items:center}
+.navlinks a{font-family:var(--mono);font-size:.76rem;color:var(--stone);text-decoration:none;padding:.2rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+header.light .navlinks a{color:var(--graphite)}
+.navlinks a:hover{color:var(--cream);border-color:var(--flame)}
+header.light .navlinks a:hover{color:var(--ink)}
+.a11y-toggle{font-family:var(--mono);font-size:.72rem;padding:.35rem .65rem;border:1px solid var(--line);background:transparent;color:var(--stone);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;transition:border-color .2s,color .2s}
+header.light .a11y-toggle{border-color:var(--hair);color:var(--graphite)}
+.a11y-toggle:hover{border-color:var(--flame)}
+.a11y-toggle[aria-pressed="true"]{border-color:var(--flame);color:var(--flame-ink);background:var(--flame-wash)}
+header:not(.light) .a11y-toggle[aria-pressed="true"]{color:var(--flame)}
+@media(max-width:820px){.navlinks a.opt{display:none}.navlinks{gap:.9rem}}
+@media(max-width:480px){.a11y-toggle .t{display:none}}
+
+/* sections */
+section{padding:3.4rem 0;position:relative}
+section + section{border-top:1px solid var(--hair)}
+.sec-head{display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;align-items:baseline}
+.sec-num{font-family:var(--mono);font-size:.8rem;color:var(--flame-ink)}
+@media(max-width:820px){.sec-head{grid-template-columns:1fr;gap:.2rem}section{padding:2.6rem 0}}
+
+/* ---------- hero ---------- */
+#top{background:var(--night);color:var(--cream);padding:6.4rem 0 0;min-height:100vh;display:flex;flex-direction:column;border-top:none}
+#top h1{color:var(--cream)}
+#top .label{color:var(--stone)}
+.hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding-bottom:2.5rem}
+.hero-sub{position:relative;color:var(--stone);font-size:1.12rem;max-width:34rem;margin-top:1.4rem}
+.hero-type{position:absolute;inset:0}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--flame);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.byline{font-family:var(--mono);font-size:.78rem;color:var(--stone);margin-top:1.4rem;line-height:1.7}
+.byline b{color:var(--cream);font-weight:500}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.8rem;padding:.85rem 1.3rem;border:1px solid var(--cream);background:var(--cream);color:var(--night);cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{background:#E3E1DB}
+.btn.ghost{background:transparent;color:var(--cream);border-color:rgba(247,246,243,.35)}
+.btn.ghost:hover{border-color:var(--cream)}
+.btn .dot{width:7px;height:7px;border-radius:50%;background:var(--flame)}
+.btn.running .dot{animation:pulse 1.1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+/* title: calendar-tile flip */
+h1.flip .tw{display:inline-block;white-space:nowrap}
+h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;transform-origin:50% 0}
+@keyframes tile{0%{opacity:0;transform:perspective(600px) rotateX(-95deg)}60%{opacity:1}100%{opacity:1;transform:none}}
+
+/* season card */
+.season{border:1px solid var(--line);padding:1.3rem 1.3rem 1.1rem;background:rgba(247,246,243,.025)}
+.season-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
+.season-head .label{color:var(--stone)}
+.count{font-family:var(--mono);color:var(--cream);font-variant-numeric:tabular-nums;line-height:1.1;font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.count small{display:block;font-size:.34em;color:var(--stone);margin-top:.3rem}
+.dow{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:1.1rem 0 .3rem;font-family:var(--mono);font-size:.66rem;color:var(--stone);text-align:center}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.day{position:relative;aspect-ratio:1.3/1;min-height:2.4rem;border:1px solid rgba(247,246,243,.18);background:transparent;color:var(--cream);font-family:var(--mono);font-size:.74rem;padding:.25rem .3rem;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;transition:background .25s,border-color .25s}
+.day:hover{border-color:var(--flame)}
+.day.ext{border-style:dashed;color:var(--stone)}
+.day.blank{border:none;cursor:default;pointer-events:none}
+.day .mk{display:flex;gap:2px;flex-wrap:wrap}
+.day .mk i{display:block;width:6px;height:6px;background:var(--stone)}
+.day .mk i.p-F{background:#F7F6F3}.day .mk i.p-I{background:var(--flame)}.day .mk i.p-X{background:#8C8577;border-radius:50%}.day .mk i.p-Y{background:transparent;border:1px solid var(--flame)}.day .mk i.p-R{background:transparent;border:1px dashed var(--stone)}
+.day[aria-pressed="true"]{background:var(--cream);color:var(--night);border-color:var(--cream)}
+.day[aria-pressed="true"] .mk i.p-F{background:var(--night)}
+.day.lit{background:rgba(240,151,59,.2);border-color:var(--flame)}
+.day.today::after{content:'';position:absolute;top:3px;right:3px;width:5px;height:5px;border-radius:50%;background:var(--flame)}
+.legend{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-size:.8rem;color:var(--stone);margin-top:.9rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.legend i{display:inline-block;width:8px;height:8px}
+.day-note{margin-top:.9rem;border-top:1px solid var(--line);padding-top:.8rem;min-height:5.2rem;font-size:.9rem;color:var(--stone)}
+.day-note b{color:var(--cream);font-weight:500;font-family:var(--mono);font-size:.8rem}
+.day-note ul{list-style:none;margin-top:.3rem}
+.day-note li{padding:.15rem 0}
+.day-note li em{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--flame);margin-right:.4rem}
+@media(max-width:940px){.hero{grid-template-columns:1fr;gap:2rem}#top{padding-top:5rem}}
+@media(max-width:420px){.day{font-size:.66rem;padding:.15rem .2rem;min-height:2rem}.day .mk i{width:5px;height:5px}}
+
+/* phase strip */
+.phases{border-top:1px solid var(--line)}
+.phases-inner{display:grid;grid-template-columns:repeat(6,1fr);max-width:74rem;margin:0 auto}
+.ph{padding:1rem 1.2rem 1.1rem;border-left:1px solid var(--line);transition:background .4s}
+.ph:first-child{border-left:none}
+.ph .t{font-family:var(--mono);font-size:.72rem;color:var(--stone)}
+.ph .n{color:var(--cream);font-size:.92rem;margin-top:.15rem;line-height:1.35}
+.ph.lit{background:rgba(240,151,59,.12)}
+.ph.lit .t{color:var(--flame)}
+@media(max-width:900px){.phases-inner{grid-template-columns:repeat(3,1fr)}.ph:nth-child(4){border-left:none}.ph{border-top:1px solid var(--line)}}
+@media(max-width:520px){.phases-inner{grid-template-columns:1fr 1fr}.ph:nth-child(odd){border-left:none}.ph:nth-child(4){border-left:1px solid var(--line)}}
+
+/* notice */
+.notice{background:var(--panel);border-bottom:1px solid var(--hair)}
+.notice p{max-width:74rem;margin:0 auto;padding:1rem 1.5rem;font-size:.92rem;color:var(--graphite)}
+.notice b{color:var(--ink);font-weight:600}
+
+/* ---------- brief: who needs to act ---------- */
+.who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:2.5rem;margin-top:2.2rem;align-items:start}
+.who-list{display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+.who-opt{text-align:left;background:transparent;border:none;border-bottom:1px solid var(--hair);padding:.95rem 2rem .95rem 0;cursor:pointer;position:relative;font-size:1rem;color:var(--graphite);transition:color .2s}
+.who-opt::after{content:'';position:absolute;right:.4rem;top:50%;width:8px;height:8px;border-right:1.5px solid var(--mute);border-top:1.5px solid var(--mute);transform:translateY(-50%) rotate(45deg);transition:border-color .2s}
+.who-opt:hover{color:var(--ink)}
+.who-opt[aria-checked="true"]{color:var(--ink);font-weight:600}
+.who-opt[aria-checked="true"]::after{border-color:var(--flame-ink)}
+.who-opt[aria-checked="true"]::before{content:'';position:absolute;left:-1rem;top:.9rem;bottom:.9rem;width:3px;background:var(--flame)}
+.who-card{background:var(--panel);border-left:3px solid var(--flame);padding:1.5rem 1.6rem;min-height:15rem}
+.who-card .verdict{font-family:var(--mono);font-size:.78rem;color:var(--flame-ink);margin-bottom:.5rem}
+.who-card h3{font-size:1.5rem;margin-bottom:.6rem}
+.who-card p{color:var(--ink);max-width:34rem;margin-bottom:.7rem}
+.who-card .why{font-size:.92rem;color:var(--graphite)}
+@media(max-width:860px){.who{grid-template-columns:1fr;gap:1.4rem}.who-opt[aria-checked="true"]::before{left:-.7rem}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--hair);margin-top:2.6rem}
+.facts>div{padding:1.1rem 1.2rem;border-left:1px solid var(--hair)}
+.facts>div:first-child{border-left:none}
+.facts .v{font-family:var(--mono);font-size:1.15rem;color:var(--ink);line-height:1.25}
+.facts .k{font-size:.84rem;color:var(--graphite);margin-top:.25rem}
+@media(max-width:760px){.facts{grid-template-columns:1fr 1fr}.facts>div:nth-child(3){border-left:none}.facts>div:nth-child(n+3){border-top:1px solid var(--hair)}}
+
+/* ---------- kit ---------- */
+.tabs{display:flex;position:relative;margin-top:2.2rem;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform-origin:0 50%}
+.tab{flex:none;font-family:var(--mono);font-size:.8rem;padding:.85rem 1.1rem;background:transparent;border:none;border-bottom:3px solid transparent;margin-bottom:-1px;color:var(--graphite);cursor:pointer;white-space:nowrap;position:relative;z-index:1}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--flame)}
+.tab .k{color:var(--mute);margin-right:.4rem}
+#kit.armed .tabs::after{transition:transform .6s cubic-bezier(.6,0,.2,1)}
+#kit.armed .tab{transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1);transition-delay:calc(.25s + var(--i,0)*.07s)}
+#kit.armed .panel{transition:clip-path 1s cubic-bezier(.7,0,.2,1) .7s,transform 1s cubic-bezier(.2,.8,.2,1) .7s,opacity .4s ease .7s}
+#kit.sealed .tabs::after{transform:scaleX(0)}
+#kit.sealed .tab{opacity:0;transform:translateY(12px)}
+#kit.sealed .panel{clip-path:inset(0 0 100% 0);transform:translateY(28px);opacity:0}
+#kit:focus{outline:none}
+#kit .open-flash{position:absolute;left:0;right:0;height:2px;background:var(--flame);transform:scaleX(0);transform-origin:0 50%;pointer-events:none;opacity:0}
+#kit.armed .open-flash{animation:flash 1.1s cubic-bezier(.6,0,.2,1) .7s both}
+@keyframes flash{0%{opacity:1;transform:scaleX(0)}55%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) 18rem;gap:3rem;padding-top:2rem}
+.panel[hidden]{display:none}
+.notes{border-left:1px solid var(--hair);padding-left:1.6rem;font-size:.92rem;color:var(--graphite)}
+.notes h3{font-size:1.1rem;margin-bottom:.6rem}
+.notes .meta{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;margin-bottom:1.3rem}
+.notes .meta dt{font-family:var(--mono);font-size:.74rem;color:var(--mute);padding-top:.15rem}
+.notes .meta dd{color:var(--ink)}
+.notes ul{list-style:none}
+.notes li{margin-bottom:.7rem;padding-left:1rem;position:relative}
+.notes li::before{content:'';position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--flame-ink)}
+@media(max-width:980px){.panel{grid-template-columns:1fr;gap:2rem}.notes{border-left:none;border-top:1px solid var(--hair);padding:1.4rem 0 0}}
+.toggle-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.chip{font-family:var(--mono);font-size:.74rem;padding:.45rem .8rem;border:1px solid var(--hair);background:var(--paper);color:var(--graphite);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip[aria-pressed="true"]{border-color:var(--flame-ink);color:var(--flame-ink);background:var(--flame-wash)}
+
+/* sheets */
+.sheet{background:var(--paper);border:1px solid var(--hair);box-shadow:0 1px 0 var(--hair),0 18px 40px -28px rgba(21,23,28,.35);padding:2.2rem clamp(1.2rem,4vw,2.8rem) 2.4rem;position:relative}
+.sheet::before{content:attr(data-stamp);position:absolute;top:1rem;right:1rem;font-family:var(--mono);font-size:.68rem;color:var(--flame-ink);border:1px solid var(--flame);padding:.2rem .45rem;background:var(--paper)}
+.sheet .kicker{font-family:var(--mono);font-size:.76rem;color:var(--mute);margin-bottom:.9rem;padding-right:7rem}
+.sheet h3.hl{font-size:clamp(1.4rem,2.8vw,1.85rem);line-height:1.2;margin-bottom:1.2rem;max-width:30ch}
+.sheet p{max-width:40rem;margin-bottom:1rem;color:var(--ink)}
+.sheet h4{margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--hair)}
+.sheet h4:first-of-type{border-top:none;padding-top:0;margin-top:.4rem}
+.ph-text{background:var(--panel);font-family:var(--mono);font-size:.86em;padding:.05rem .3rem;color:var(--graphite)}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th{font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--mute);text-align:left;padding:.55rem .8rem .55rem 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:.75rem .8rem .75rem 0;border-bottom:1px solid var(--hair);vertical-align:top;color:var(--graphite)}
+td:first-child{color:var(--ink)}
+td .pri{font-family:var(--mono);font-size:.72rem;color:var(--flame-ink);white-space:nowrap}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.msgs{counter-reset:m;list-style:none;margin:.4rem 0 1rem}
+.msgs li{counter-increment:m;position:relative;padding:.6rem 0 .6rem 2.2rem;border-bottom:1px solid var(--hair);max-width:40rem}
+.msgs li::before{content:counter(m);position:absolute;left:0;top:.55rem;font-family:var(--mono);font-size:.8rem;color:var(--flame-ink);width:1.5rem;height:1.5rem;border:1px solid var(--flame);display:grid;place-items:center}
+.msgs li b{display:block;font-weight:600}
+.msgs li span{color:var(--graphite);font-size:.95rem}
+
+/* editorial calendar */
+.ec-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.4rem}
+.week{border-top:1px solid var(--ink);margin-top:1.4rem}
+.week:first-of-type{margin-top:0}
+.week-h{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;font-family:var(--mono);font-size:.76rem;color:var(--mute)}
+.week-h b{color:var(--ink);font-weight:500}
+.slot{display:grid;grid-template-columns:5.8rem 6.6rem minmax(0,1fr) 7rem;gap:1rem;padding:.75rem 0;border-top:1px solid var(--hair);align-items:baseline;font-size:.95rem}
+.slot .d{font-family:var(--mono);font-size:.8rem;color:var(--ink)}
+.slot .pf{font-family:var(--mono);font-size:.74rem;color:var(--graphite);display:inline-flex;align-items:center;gap:.4rem}
+.slot .pf i{display:inline-block;width:8px;height:8px;flex:none}
+.slot .ttl{color:var(--ink)}
+.slot .ttl small{display:block;color:var(--graphite);font-size:.88rem;margin-top:.15rem}
+.slot .ow{font-family:var(--mono);font-size:.72rem;color:var(--mute);text-align:right}
+.slot.hold .ttl{color:var(--graphite);font-style:italic}
+.slot.hide{display:none}
+@media(max-width:700px){.slot{grid-template-columns:4.6rem minmax(0,1fr);gap:.2rem .8rem}.slot .pf{grid-column:2}.slot .ttl{grid-column:2}.slot .ow{grid-column:2;text-align:left}.slot .d{grid-row:1/4}}
+i.p-F{background:var(--ink)}i.p-I{background:var(--flame)}i.p-X{background:#8C8577;border-radius:50%}i.p-Y{border:1.5px solid var(--flame-ink)}i.p-R{border:1px dashed var(--mute)}i.p-A{background:var(--hair)}
+
+/* posts */
+.posts{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
+.post{border:1px solid var(--hair);padding:1.2rem 1.3rem;display:flex;flex-direction:column}
+.post .ch{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;font-family:var(--mono);font-size:.74rem;color:var(--mute);margin-bottom:.8rem;flex-wrap:wrap}
+.post .ch b{color:var(--ink);font-weight:500}
+.post .body{white-space:pre-line;font-size:.97rem;color:var(--ink)}
+.post .stats{display:flex;gap:1rem;font-family:var(--mono);font-size:.72rem;color:var(--mute);margin-top:.9rem;padding-top:.7rem;border-top:1px solid var(--hair)}
+.post .stats .g{color:var(--flame-ink)}
+.over{color:#B42318}
+.post.wide{grid-column:1/-1}
+@media(max-width:760px){.posts{grid-template-columns:1fr}}
+.carousel{position:relative}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:.8rem;padding-bottom:.6rem;scrollbar-width:thin}
+.slide{flex:0 0 min(17rem,78%);aspect-ratio:4/5;scroll-snap-align:start;background:var(--night);color:var(--cream);padding:1.2rem 1.2rem 1rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.slide .n{font-family:var(--mono);font-size:.7rem;color:var(--stone)}
+.slide .big{font-family:var(--serif);font-size:1.55rem;line-height:1.15}
+.slide .big em{font-style:normal;color:var(--flame)}
+.slide .sm{font-size:.86rem;color:var(--stone);line-height:1.45}
+.slide .src{font-family:var(--mono);font-size:.62rem;color:#8C8577}
+.slide.s1{background:var(--flame);color:var(--night)}
+.slide.s1 .n,.slide.s1 .src,.slide.s1 .sm{color:rgba(17,17,16,.7)}
+.slide .tag{position:absolute;right:-1.6rem;top:1.2rem;transform:rotate(90deg);transform-origin:center;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:rgba(247,246,243,.35)}
+.alt{display:none;margin-top:.8rem;font-size:.9rem;color:var(--graphite);border-left:3px solid var(--flame);padding:.5rem .8rem;background:var(--panel)}
+.alt.on{display:block}
+.alt ol{margin-left:1.2rem}
+.linkbtn{font-family:var(--mono);font-size:.74rem;background:none;border:none;border-bottom:1px solid var(--hair);color:var(--graphite);cursor:pointer;padding:.1rem 0}
+.linkbtn:hover{color:var(--flame-ink);border-color:var(--flame)}
+.script td:first-child{font-family:var(--mono);font-size:.8rem;white-space:nowrap}
+.replies{border-top:1px solid var(--ink)}
+.reply{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:1.4rem;padding:.9rem 0;border-bottom:1px solid var(--hair);font-size:.94rem}
+.reply .q{color:var(--graphite)}
+.reply .q b{display:block;font-family:var(--mono);font-size:.7rem;font-weight:400;color:var(--mute);margin-bottom:.2rem}
+.reply .a{color:var(--ink)}
+.reply .a b{display:block;font-family:var(--mono);font-size:.7rem;font-weight:400;color:var(--flame-ink);margin-bottom:.2rem}
+@media(max-width:700px){.reply{grid-template-columns:1fr;gap:.5rem}}
+
+/* measurement */
+.sim{margin-top:2rem;border:1px solid var(--hair)}
+.sim-q{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 1.1rem;border-bottom:1px solid var(--hair);background:var(--panel)}
+.sim-a{padding:1.2rem 1.3rem;min-height:8rem}
+.sim-a .lbl{font-family:var(--mono);font-size:.72rem;color:var(--mute);display:block;margin-bottom:.15rem}
+.sim-a p{margin-bottom:.8rem;max-width:42rem}
+.sim-a .act{color:var(--ink);border-left:3px solid var(--flame);padding-left:.8rem}
+
+/* memo verdicts */
+.verd{font-family:var(--mono);font-size:.72rem;padding:.12rem .45rem;border:1px solid var(--hair);white-space:nowrap}
+.verd.adopt{border-color:#1F6F43;color:#1F6F43}
+.verd.pilot{border-color:var(--flame);color:var(--flame-ink)}
+.verd.skip{border-color:var(--mute);color:var(--mute)}
+.memo .hdr{display:grid;grid-template-columns:4.5rem 1fr;gap:.25rem .8rem;font-size:.92rem;padding-bottom:1rem;margin-bottom:1.4rem;border-bottom:1px solid var(--hair);padding-right:7rem}
+.memo .hdr dt{font-family:var(--mono);font-size:.74rem;color:var(--mute);padding-top:.15rem}
+
+/* coordination flow */
+.flow{list-style:none;counter-reset:f;margin:.6rem 0 1.4rem}
+.flow li{counter-increment:f;display:grid;grid-template-columns:2.4rem 1fr;gap:.8rem;padding:.75rem 0;border-bottom:1px solid var(--hair);position:relative}
+.flow li::before{content:counter(f);font-family:var(--mono);font-size:.8rem;width:1.8rem;height:1.8rem;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;background:var(--paper);position:relative;z-index:1}
+.flow li::after{content:'';position:absolute;left:.88rem;top:2.6rem;bottom:-.7rem;width:1px;background:var(--hair)}
+.flow li:last-child::after{display:none}
+.flow b{display:block;font-weight:600}
+.flow span{color:var(--graphite);font-size:.94rem}
+.flow .when{font-family:var(--mono);font-size:.72rem;color:var(--flame-ink)}
+
+/* method */
+.method{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1.5rem}
+.method h3{font-size:1.2rem;margin-bottom:.6rem}
+.method p,.method li{color:var(--graphite)}
+.method ul{margin-left:1.1rem}
+.method li{margin-bottom:.5rem}
+.sources{margin-top:2.4rem;columns:2;column-gap:3rem;font-size:.9rem}
+.sources li{break-inside:avoid;margin:0 0 .6rem 1.1rem;color:var(--graphite)}
+.sources a{text-decoration:none;border-bottom:1px solid var(--hair)}
+.sources a:hover{color:var(--flame-ink);border-color:var(--flame)}
+@media(max-width:820px){.method{grid-template-columns:1fr;gap:1.8rem}.sources{columns:1}}
+
+footer{border-top:1px solid var(--hair);padding:2.2rem 0 3rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{font-family:var(--mono);font-size:.78rem;color:var(--graphite);text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+/* accessibility view */
+.a11y-panel{display:none;position:fixed;right:1rem;bottom:1rem;z-index:70;width:min(22rem,calc(100vw - 2rem));background:var(--paper);border:1px solid var(--ink);box-shadow:0 18px 40px -20px rgba(21,23,28,.45);padding:1.1rem 1.2rem;font-size:.88rem;color:var(--graphite);max-height:70vh;overflow:auto}
+body.a11y .a11y-panel{display:block}
+.a11y-panel h3{font-size:1.1rem;color:var(--ink);margin-bottom:.4rem}
+.a11y-panel table{font-size:.82rem;margin:.6rem 0}
+.a11y-panel td,.a11y-panel th{padding:.35rem .5rem .35rem 0}
+.a11y-panel .pass{font-family:var(--mono);color:#1F6F43}
+.a11y-panel .sw2{display:inline-block;width:.9rem;height:.9rem;vertical-align:-.15rem;border:1px solid var(--hair);margin-right:.2rem}
+.a11y-panel ul{margin-left:1rem}
+.a11y-panel li{margin-bottom:.3rem}
+.a11y-close{position:absolute;top:.6rem;right:.6rem;background:none;border:1px solid var(--hair);font-family:var(--mono);font-size:.72rem;padding:.15rem .4rem;cursor:pointer}
+body.a11y h1,body.a11y h2,body.a11y h3,body.a11y h4{outline:1px dashed var(--flame);outline-offset:4px}
+body.a11y h1::before,body.a11y h2::before,body.a11y h3::before,body.a11y h4::before{font-family:var(--mono);font-size:.62rem;font-weight:500;font-style:normal;letter-spacing:0;background:var(--flame);color:var(--night);padding:.1rem .3rem;margin-right:.5rem;vertical-align:.4em}
+body.a11y h1::before{content:'H1'}body.a11y h2::before{content:'H2'}body.a11y h3::before{content:'H3'}body.a11y h4::before{content:'H4'}
+body.a11y [role="img"]{outline:1px dashed var(--flame);outline-offset:3px}
+.alt-reveal{display:none;font-family:var(--mono);font-size:.74rem;line-height:1.5;color:var(--night);background:var(--flame);padding:.4rem .6rem;margin-top:.5rem}
+body.a11y .alt-reveal{display:block}
+body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outline-offset:-1px}
+
+@media (prefers-reduced-motion:reduce){
+  .caret,.btn.running .dot{animation:none}
+  h1.flip.go .tw{animation:none}
+  .day,.ph{transition:none}
+}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <nav aria-label="Primary">
+    <a class="brand" href="../">Antonio Planzo</a>
+    <div class="navlinks">
+      <a class="opt" href="../">Portfolio</a>
+      <a href="#brief">The brief</a>
+      <a href="#kit">The campaign</a>
+      <a class="opt" href="#method">Method</a>
+      <button class="a11y-toggle" id="a11yBtn" type="button" aria-pressed="false" aria-controls="a11yPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5l7 1.5 7-1.5M12 10v5m0 0l-3.5 6.5M12 15l3.5 6.5"/></svg><span class="t">Accessibility view</span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="label">Social media work sample, multi-platform campaign</p>
+      <h1 class="flip" style="margin-top:1rem">Open season, without the fine print.</h1>
+      <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">A 30-day social media campaign for TRICARE Open Season 2026: who needs to act, what each channel posts and when, how the results get measured and who signs off.</span><span class="hero-type" aria-label="A 30-day social media campaign for TRICARE Open Season 2026: who needs to act, what each channel posts and when, how the results get measured and who signs off."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
+      <p class="byline">By <b>Antonio Planzo</b><br/>Facts from TRICARE.mil open season guidance, updated Oct. 27, 2026</p>
+      <div class="actions">
+        <button class="btn" id="playBtn" type="button"><span class="dot"></span><span id="playLabel">Play the campaign</span></button>
+        <a class="btn ghost" href="#kit">Open the campaign</a>
+      </div>
+    </div>
+
+    <div class="season" role="group" aria-labelledby="seasonLbl">
+      <div class="season-head">
+        <span class="label" id="seasonLbl">TRICARE Open Season, Nov. 9–Dec. 8, 2026</span>
+        <span class="count" id="countdown" aria-live="polite">&nbsp;</span>
+      </div>
+      <div class="dow" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+      <div class="cal" id="cal" aria-label="Campaign calendar. Select a day to see what posts."></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:#F7F6F3"></i>Facebook</span>
+        <span><i style="background:#F0973B"></i>Instagram</span>
+        <span><i style="background:#8C8577;border-radius:50%"></i>X</span>
+        <span><i style="border:1px solid #F0973B"></i>YouTube</span>
+        <span><i style="border:1px dashed #B9B5AC"></i>Report</span>
+        <span><i style="border:1px dashed #B9B5AC;width:14px"></i>Dental and vision only</span>
+      </div>
+      <div class="day-note" id="dayNote" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="phases" role="group" aria-label="Campaign phases">
+    <div class="phases-inner">
+      <div class="ph" data-from="2026-11-02" data-to="2026-11-08"><div class="t">Nov. 2–8</div><div class="n">Prep and teasers</div></div>
+      <div class="ph" data-from="2026-11-09" data-to="2026-11-09"><div class="t">Nov. 9</div><div class="n">Launch, all channels</div></div>
+      <div class="ph" data-from="2026-11-10" data-to="2026-11-29"><div class="t">Nov. 10–29</div><div class="n">Explain and answer</div></div>
+      <div class="ph" data-from="2026-11-30" data-to="2026-12-08"><div class="t">Nov. 30–Dec. 8</div><div class="n">Final push</div></div>
+      <div class="ph" data-from="2026-12-09" data-to="2026-12-14"><div class="t">Dec. 9–14</div><div class="n">Dental and vision close</div></div>
+      <div class="ph" data-from="2027-01-01" data-to="2027-01-01"><div class="t">Jan. 1, 2027</div><div class="n">Changes take effect</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="notice" role="note"><p><b>Portfolio work sample.</b> Not an official Department of War, War Media Activity or TRICARE product, and not affiliated with them. Facts come from TRICARE.mil as published Oct. 27, 2026; account names, links and approvals are placeholders.</p></div>
+
+<!-- ============ BRIEF ============ -->
+<section id="brief">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">The brief</span>
+      <div>
+        <h2>Most people should do nothing. A few can't afford to.</h2>
+        <div class="prose">
+          <p>TRICARE Open Season runs <strong>Nov. 9 through Dec. 8, 2026</strong>, and any change takes effect Jan. 1, 2027. Beneficiaries who are enrolled and happy with their plan keep it automatically. Those who want to switch plans, or move between individual and family enrollment, have 30 days.</p>
+          <p>The people the campaign most needs to reach are the ones who are eligible but not enrolled. If they do nothing, they can get care only at a military hospital or clinic when space is available. Outside open season, changes require a qualifying life event.</p>
+          <p>So the campaign has two jobs: get the right people to act, and tell everyone else they can relax.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="who">
+      <div>
+        <h3 id="whoLbl">Who needs to act? Pick a situation.</h3>
+        <div class="who-list" role="radiogroup" aria-labelledby="whoLbl" id="whoList"></div>
+      </div>
+      <div class="who-card" id="whoCard" aria-live="polite"></div>
+    </div>
+    <p class="note" style="font-size:.88rem;color:var(--graphite);margin-top:1rem;max-width:var(--measure)">This sorter is the campaign's core idea: one question, six answers. The same structure becomes the Instagram carousel and the YouTube explainer.</p>
+
+    <div class="facts">
+      <div><div class="v">Nov. 9–Dec. 8</div><div class="k">TRICARE Open Season</div></div>
+      <div><div class="v">Jan. 1, 2027</div><div class="k">Changes take effect</div></div>
+      <div><div class="v">Nov. 9–Dec. 14</div><div class="k">Dental and vision (FEDVIP)</div></div>
+      <div><div class="v">milConnect</div><div class="k">Online enrollment; phone and mail also accepted</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KIT ============ -->
+<section id="kit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">The campaign</span>
+      <div>
+        <h2>Four channels, one set of facts.</h2>
+        <div class="prose"><p>A plan a department-level social team could run: the strategy, a day-by-day calendar, the posts themselves, how success gets measured, which new formats to try and how it all gets coordinated and approved.</p></div>
+      </div>
+    </div>
+
+    <div class="kit-stage" style="position:relative"><span class="open-flash" aria-hidden="true"></span>
+    <div class="tabs" role="tablist" aria-label="Campaign products">
+      <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true" tabindex="0"><span class="k">1</span>Campaign plan</button>
+      <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1"><span class="k">2</span>Editorial calendar</button>
+      <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span class="k">3</span>Posts</button>
+      <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="k">4</span>Measurement</button>
+      <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="k">5</span>New tools</button>
+      <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><span class="k">6</span>Coordination</button>
+    </div>
+
+    <!-- 1 plan -->
+    <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0" tabindex="0">
+      <article class="sheet" data-stamp="Sample">
+        <p class="kicker">Campaign plan, TRICARE Open Season 2026</p>
+        <h3 class="hl">Get eligible, unenrolled beneficiaries enrolled by Dec. 8, without alarming everyone else</h3>
+        <h4>Objective</h4>
+        <p>By Dec. 8, every eligible beneficiary who needs to act knows how, and everyone who doesn't knows they can keep their coverage as is.</p>
+        <h4>Audiences, by priority</h4>
+        <div class="tscroll"><table>
+          <thead><tr><th>Audience</th><th>What they need to hear</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td>Eligible but not enrolled</td><td>Enroll by Dec. 8, or care is limited to military hospitals and clinics when space is available.</td><td><span class="pri">1</span></td></tr>
+            <tr><td>Enrolled and considering a change</td><td>You can switch plans, or between individual and family enrollment, until Dec. 8. Compare first.</td><td><span class="pri">2</span></td></tr>
+            <tr><td>Enrolled and satisfied</td><td>Do nothing. Coverage continues in 2027.</td><td><span class="pri">3</span></td></tr>
+            <tr><td>Not covered by open season</td><td>Active-duty members, TRICARE For Life, TRICARE Reserve Select, Retired Reserve and Young Adult: this doesn't apply to you.</td><td><span class="pri">4</span></td></tr>
+            <tr><td>Amplifiers</td><td>Service and installation public affairs, family readiness programs and military-connected organizations get a ready-to-post toolkit.</td><td><span class="pri">Toolkit</span></td></tr>
+          </tbody>
+        </table></div>
+        <h4>Key messages</h4>
+        <ol class="msgs">
+          <li><b>Happy with your plan? Do nothing.</b><span>Coverage continues automatically in 2027 if you're still eligible.</span></li>
+          <li><b>Want a change? Make it by Dec. 8.</b><span>Switch plans or enrollment type on milConnect, by phone or by mail. Changes start Jan. 1.</span></li>
+          <li><b>Eligible but not enrolled? This is your window.</b><span>Without a plan, care is limited to military hospitals and clinics when space is available.</span></li>
+        </ol>
+        <h4>Channel roles</h4>
+        <div class="tscroll"><table>
+          <thead><tr><th>Channel</th><th>Job in this campaign</th><th>Lead format</th></tr></thead>
+          <tbody>
+            <tr><td>Facebook</td><td>Reach families and spouses; answer questions in comments</td><td>Plain-language posts, live Q&amp;A</td></tr>
+            <tr><td>Instagram</td><td>Make the decision visual and saveable</td><td>"Which one are you?" carousel, Stories countdown</td></tr>
+            <tr><td>X</td><td>Dates, deadlines and fast replies</td><td>Short posts, one launch thread</td></tr>
+            <tr><td>YouTube</td><td>Explain once, reuse everywhere</td><td>60-second explainer, cut into Shorts</td></tr>
+          </tbody>
+        </table></div>
+        <h4>Beyond social</h4>
+        <p>The same three messages and dates run in the department's broader program: radio and TV spots for overseas audiences, Service news stories and installation newspapers, and a toolkit for public affairs offices so local posts match the department's.</p>
+        <h4>Calls to action</h4>
+        <p>Every post points to one of two places: the TRICARE Plan Finder to compare plans, or milConnect to enroll or make a change. Individual questions go to the regional contractor, never to a comment thread.</p>
+      </article>
+      <aside class="notes" aria-label="Notes on the campaign plan">
+        <h3>Why it's built this way</h3>
+        <dl class="meta"><dt>Window</dt><dd>Nov. 2–Dec. 14, 2026</dd><dt>Channels</dt><dd>Facebook, Instagram, X, YouTube</dd><dt>Approver</dt><dd>Department public affairs</dd></dl>
+        <ul>
+          <li><b>Prioritize by consequence.</b> Most people need no action; the unenrolled group has the most to lose.</li>
+          <li><b>"Do nothing" is a message.</b> Telling satisfied beneficiaries they're fine prevents unneeded changes and calls.</li>
+          <li><b>One fact set.</b> Every channel, toolkit and broadcast spot uses the same dates and wording.</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- 2 calendar -->
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" tabindex="0" hidden>
+      <div>
+        <div class="ec-head">
+          <div class="toggle-row" role="group" aria-label="Filter by channel" id="ecFilters">
+            <button class="chip" type="button" data-p="all" aria-pressed="true">All</button>
+            <button class="chip" type="button" data-p="F" aria-pressed="false"><i class="p-F" style="display:inline-block;width:8px;height:8px"></i>Facebook</button>
+            <button class="chip" type="button" data-p="I" aria-pressed="false"><i class="p-I" style="display:inline-block;width:8px;height:8px"></i>Instagram</button>
+            <button class="chip" type="button" data-p="X" aria-pressed="false"><i class="p-X" style="display:inline-block;width:8px;height:8px"></i>X</button>
+            <button class="chip" type="button" data-p="Y" aria-pressed="false"><i class="p-Y" style="display:inline-block;width:8px;height:8px"></i>YouTube</button>
+            <button class="chip" type="button" data-p="R" aria-pressed="false"><i class="p-R" style="display:inline-block;width:8px;height:8px"></i>Internal</button>
+          </div>
+        </div>
+        <div id="ecList"></div>
+      </div>
+      <aside class="notes" aria-label="Notes on the editorial calendar">
+        <h3>Reading the calendar</h3>
+        <dl class="meta"><dt>Posts</dt><dd id="ecCount">—</dd><dt>Reviews</dt><dd>Every Monday</dd></dl>
+        <ul>
+          <li><b>Front-load and back-load.</b> Launch week and the final week carry the most posts; the middle answers questions.</li>
+          <li><b>Hold days are deliberate.</b> Veterans Day and Thanksgiving belong to other content.</li>
+          <li><b>One video, many cuts.</b> The YouTube explainer becomes Shorts, Reels and Facebook video.</li>
+          <li><b>Monday reviews</b> can move, cut or add posts based on the measurement plan.</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- 3 posts -->
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" tabindex="0" hidden>
+      <div>
+        <div class="posts">
+          <div class="post"><div class="ch"><b>X, launch</b><span>Nov. 9</span></div><p class="body" data-max="280">TRICARE Open Season is open through Dec. 8.
+
+Happy with your plan? You don't need to do anything.
+
+Want to switch plans or enroll? Make the change by Dec. 8. It takes effect Jan. 1.
+
+Compare plans: [link]</p></div>
+          <div class="post"><div class="ch"><b>X, last day</b><span>Dec. 8</span></div><p class="body" data-max="280">Last day: TRICARE Open Season ends today, Dec. 8.
+
+Eligible but not enrolled? Without a plan, you can get care only at a military hospital or clinic when space is available.
+
+Enroll on milConnect: [link]</p></div>
+          <div class="post wide"><div class="ch"><b>Facebook, launch</b><span>Nov. 9</span></div><p class="body">TRICARE Open Season starts today and runs through Dec. 8. Here's the short version:
+
+• Already in a plan and happy with it? Do nothing. Your coverage continues in 2027.
+• Want to change plans, or switch between individual and family enrollment? Do it by Dec. 8.
+• Eligible but not enrolled? This is your window. Without a plan, you can get care only at military hospitals and clinics when space is available.
+
+Changes take effect Jan. 1. Not sure which plan fits? Try the TRICARE Plan Finder: [link]
+
+Questions about your own coverage? Please don't post personal details here. Your regional contractor can help: [link]</p></div>
+
+          <div class="post wide carousel">
+            <div class="ch"><b>Instagram carousel, "Which one are you?"</b><span>Nov. 9 · 5 slides, 4:5</span><button class="linkbtn" type="button" id="altBtn" aria-expanded="false" aria-controls="altText">Show alt text</button></div>
+            <div class="slides" role="img" aria-label="Five-slide carousel: Which one are you? Happy with your plan, do nothing. Want a different plan, switch by Dec. 8. Eligible but not enrolled, enroll by Dec. 8. Open season doesn't apply to active duty, TRICARE For Life and premium-based plans.">
+              <div class="slide s1"><span class="n">1 / 5</span><div class="big">TRICARE Open Season<br/>Nov. 9–Dec. 8<br/><br/>Which one<br/>are you?</div><span class="src">Swipe</span></div>
+              <div class="slide"><span class="n">2 / 5</span><div><div class="big">Happy with your plan?<br/><em>Do nothing.</em></div><p class="sm" style="margin-top:.6rem">Your coverage continues in 2027 if you're still eligible.</p></div><span class="src">TRICARE.mil/openseason</span></div>
+              <div class="slide"><span class="n">3 / 5</span><div><div class="big">Want a different plan?<br/><em>Switch by Dec. 8.</em></div><p class="sm" style="margin-top:.6rem">Changes start Jan. 1. Use milConnect, call or mail a form.</p></div><span class="src">TRICARE.mil/openseason</span></div>
+              <div class="slide"><span class="n">4 / 5</span><div><div class="big">Eligible, not enrolled?<br/><em>Enroll by Dec. 8.</em></div><p class="sm" style="margin-top:.6rem">Without a plan, care is limited to military hospitals and clinics when space is available.</p></div><span class="src">TRICARE.mil/openseason</span></div>
+              <div class="slide"><span class="n">5 / 5</span><div><div class="big" style="font-size:1.25rem">Open season doesn't apply to:</div><p class="sm" style="margin-top:.6rem">Active-duty members · TRICARE For Life · TRICARE Reserve Select · TRICARE Retired Reserve · TRICARE Young Adult</p></div><span class="src">Details: link in bio</span></div>
+            </div>
+            <p class="alt" id="altText"><b>Alt text, slide by slide:</b></p>
+            <ol class="alt" id="altList" style="padding-left:2rem">
+              <li>TRICARE Open Season, Nov. 9 to Dec. 8. Which one are you?</li>
+              <li>Happy with your plan? Do nothing. Your coverage continues in 2027 if you're still eligible.</li>
+              <li>Want a different plan? Switch by Dec. 8. Changes start Jan. 1. Use milConnect, call or mail a form.</li>
+              <li>Eligible, not enrolled? Enroll by Dec. 8. Without a plan, care is limited to military hospitals and clinics when space is available.</li>
+              <li>Open season doesn't apply to active-duty members, TRICARE For Life, TRICARE Reserve Select, TRICARE Retired Reserve or TRICARE Young Adult.</li>
+            </ol>
+            <p class="body" style="margin-top:.9rem;font-size:.95rem">Caption: TRICARE Open Season is Nov. 9–Dec. 8. Most people don't need to do anything. Swipe to see if you do. Changes take effect Jan. 1. Link in bio.</p>
+          </div>
+
+          <div class="post wide"><div class="ch"><b>YouTube explainer, 60 seconds</b><span>Nov. 9 · cut to Shorts, Reels and Facebook video</span></div>
+            <div class="tscroll"><table class="script">
+              <thead><tr><th>Time</th><th>Voice-over</th><th>On screen</th></tr></thead>
+              <tbody>
+                <tr><td>0:00–0:05</td><td>Do you need to do anything this TRICARE Open Season? Probably not. Here's how to tell.</td><td>"Do you need to act?" Dates: Nov. 9–Dec. 8</td></tr>
+                <tr><td>0:05–0:18</td><td>If you're in a TRICARE plan and you're happy with it, you're done. Your coverage continues next year.</td><td>"Happy? Do nothing."</td></tr>
+                <tr><td>0:18–0:32</td><td>Want a different plan, or to switch between individual and family enrollment? Make the change by December 8. It starts January 1.</td><td>"Switch by Dec. 8. Starts Jan. 1." milConnect screen</td></tr>
+                <tr><td>0:32–0:47</td><td>Eligible but not enrolled? This is the one to act on. Without a plan, you can get care only at a military hospital or clinic when space is available.</td><td>"Not enrolled? Enroll by Dec. 8."</td></tr>
+                <tr><td>0:47–0:55</td><td>Open season doesn't apply to active-duty members, TRICARE For Life, or the premium-based plans.</td><td>List of exceptions</td></tr>
+                <tr><td>0:55–1:00</td><td>Compare plans at TRICARE dot mil slash open season.</td><td>URL, sample label</td></tr>
+              </tbody>
+            </table></div>
+            <p class="stats"><span>Captions burned in and uploaded as a file</span><span>Audio description in the voice-over</span></p>
+          </div>
+
+          <div class="post wide"><div class="ch"><b>Comment reply bank</b><span>All channels · approved in advance</span></div>
+            <div class="replies">
+              <div class="reply"><div class="q"><b>Question</b>How do I switch from Prime to Select?</div><div class="a"><b>Reply</b>Through Dec. 8, you can switch on milConnect, by phone with your regional contractor or by mailing an enrollment form: [link]</div></div>
+              <div class="reply"><div class="q"><b>Question</b>I'm active duty. Do I need to do anything?</div><div class="a"><b>Reply</b>Open season doesn't apply to active-duty service members. Your eligible family members can review their options through Dec. 8.</div></div>
+              <div class="reply"><div class="q"><b>Question</b>My claim was denied. Can you help?</div><div class="a"><b>Reply</b>Sorry for the trouble. We can't look up individual claims here, so please don't post personal information. Your regional contractor can help: Humana Military in the East Region, TriWest Healthcare Alliance in the West: [link]</div></div>
+              <div class="reply"><div class="q"><b>Question</b>What about dental and vision?</div><div class="a"><b>Reply</b>Dental and vision coverage through FEDVIP has its own enrollment period, Nov. 9–Dec. 14. Details on BENEFEDS: [link]</div></div>
+              <div class="reply"><div class="q"><b>Misinformation</b>You have to re-enroll every year or you lose coverage.</div><div class="a"><b>Reply</b>Good question to clear up: if you're enrolled and still eligible, your coverage continues automatically. You only need to act to change plans or to enroll.</div></div>
+              <div class="reply"><div class="q"><b>Question</b>I missed the deadline. Now what?</div><div class="a"><b>Reply</b>Outside open season, you can enroll or change plans after a qualifying life event, such as getting married or having a baby. More here: [link]</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="notes" aria-label="Notes on the posts">
+        <h3>Written for each feed</h3>
+        <dl class="meta"><dt>Reading level</dt><dd>Shown under each post, computed live</dd><dt>Links</dt><dd>Counted as 23 characters on X</dd></dl>
+        <ul>
+          <li><b>Lead with the answer</b> most people need: do nothing.</li>
+          <li><b>Same three messages</b> on every channel, in that channel's format.</li>
+          <li><b>Alt text and captions</b> carry every number, so no one misses the dates.</li>
+          <li><b>Replies protect privacy.</b> Personal questions go to the contractor, not the comments.</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- 4 measurement -->
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" tabindex="0" hidden>
+      <div>
+        <article class="sheet" data-stamp="Sample">
+          <p class="kicker">Measurement plan</p>
+          <h3 class="hl">Measure what each post was supposed to do, then act on it every Monday</h3>
+          <div class="tscroll"><table>
+            <thead><tr><th>Goal</th><th>Metric</th><th>Source</th><th>Decision rule</th></tr></thead>
+            <tbody>
+              <tr><td>Reach the priority audience</td><td>Reach on posts aimed at unenrolled beneficiaries</td><td>Native platform analytics</td><td>If a priority post reaches fewer people than the channel's typical post, re-cut it as a short video within 48 hours.</td></tr>
+              <tr><td>Understanding</td><td>Saves and shares on explainers; repeated questions in comments</td><td>Platform analytics, comment tagging</td><td>If the same question appears three or more times in a day, add it to the reply bank and answer it in a post within 24 hours.</td></tr>
+              <tr><td>Action</td><td>Clicks to Plan Finder and milConnect</td><td>Tagged links (UTM)</td><td>Compare clicks by format each Monday; give the final week to the two best performers.</td></tr>
+              <tr><td>Video attention</td><td>Share of viewers who reach the key message</td><td>YouTube and Reels retention</td><td>If most viewers leave before 0:18, move "do nothing" into the first five seconds.</td></tr>
+              <tr><td>Sentiment</td><td>Comments tagged confused, negative, positive or misinformation</td><td>Social listening, manual tags</td><td>If negative comments cluster on one issue, alert TRICARE communications and department public affairs the same day.</td></tr>
+              <tr><td>Outcome</td><td>Enrollment changes during the season</td><td>Defense Health Agency data, after the season</td><td>Used in the after-action report. Social metrics can't measure this directly, so the report says so.</td></tr>
+            </tbody>
+          </table></div>
+          <h4>Weekly report to leadership</h4>
+          <p>One page, every Monday: what ran, what moved people to Plan Finder and milConnect, what people were confused about, what changes this week and why. Numbers are compared with the campaign's own first week, not with unrelated campaigns.</p>
+        </article>
+
+        <div class="sim" id="sim">
+          <div class="sim-q" role="group" aria-label="Choose a result to see the recommended action" id="simQ"></div>
+          <div class="sim-a" id="simA" aria-live="polite"></div>
+        </div>
+      </div>
+      <aside class="notes" aria-label="Notes on measurement">
+        <h3>Metrics that change decisions</h3>
+        <dl class="meta"><dt>Review</dt><dd>Mondays, plus same-day alerts</dd><dt>Results</dt><dd>None shown; no real data exists</dd></dl>
+        <ul>
+          <li><b>Every metric has a rule.</b> If a number can't change what we do, it isn't tracked.</li>
+          <li><b>Outputs aren't outcomes.</b> Clicks show interest; enrollments come from health agency data.</li>
+          <li><b>The scenarios</b> below show the recommendations I'd make from typical mid-campaign results.</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- 5 new tools -->
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" tabindex="0" hidden>
+      <div>
+        <article class="sheet memo" data-stamp="Sample memo">
+          <dl class="hdr">
+            <dt>To</dt><dd>Chief, Social Media</dd>
+            <dt>From</dt><dd>Antonio Planzo</dd>
+            <dt>Subject</dt><dd>New formats for the open season campaign: adopt, pilot or skip</dd>
+          </dl>
+          <p>I looked at four formats against three tests: does it serve the campaign's goal, will it still matter next year, and can we run it within our approval, accessibility and records rules?</p>
+          <div class="tscroll"><table>
+            <thead><tr><th>Format</th><th>Recommendation</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td>Vertical short-form explainers</td><td><span class="verd adopt">Adopt</span></td><td>One 60-second edit runs as YouTube Shorts, Instagram Reels and Facebook video. A durable format, not a trend, and it reuses work we're already doing.</td></tr>
+              <tr><td>Live Q&amp;A with TRICARE experts</td><td><span class="verd pilot">Pilot</span></td><td>Run once in the final week. Answers the questions people actually have, but needs expert time, live moderation and a plan for questions that require personal details.</td></tr>
+              <tr><td>"Which one are you?" web sorter</td><td><span class="verd pilot">Pilot</span></td><td>Turns the carousel into a tool hosted on an official site. Needs an accessibility review and an owner to keep it accurate next year.</td></tr>
+              <tr><td>AI chatbot for benefits questions</td><td><span class="verd skip">Skip for now</span></td><td>Benefits answers depend on each person's situation, and a wrong answer has real consequences. Privacy and records rules also apply to health questions. Revisit with the health agency once accuracy can be guaranteed.</td></tr>
+            </tbody>
+          </table></div>
+          <h4>Barriers and how to clear them</h4>
+          <p>Live events need expert time booked two weeks out. The web sorter needs a content owner at the health agency. Both need comment moderation coverage on evenings and weekends.</p>
+          <h4>Sharing what we learn</h4>
+          <p>After the season, a short lessons-learned brief goes to Service and command social media managers: which formats moved people to act, the reply bank and the decision rules that worked.</p>
+        </article>
+      </div>
+      <aside class="notes" aria-label="Notes on the memo">
+        <h3>Separating tools from trends</h3>
+        <dl class="meta"><dt>Tests</dt><dd>Goal, durability, compliance</dd></dl>
+        <ul>
+          <li><b>"Skip" is a real answer.</b> Not every new tool fits a benefits campaign.</li>
+          <li><b>Pilots have limits:</b> one live event, one sorter, measured before scaling.</li>
+          <li><b>Lessons go out</b> to the Services so the next campaign starts ahead.</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- 6 coordination -->
+    <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" tabindex="0" hidden>
+      <div>
+        <article class="sheet" data-stamp="Sample">
+          <p class="kicker">Coordination and approval</p>
+          <h3 class="hl">Who owns what, and how a post gets from draft to published</h3>
+          <div class="tscroll"><table>
+            <thead><tr><th>Partner</th><th>Role in the campaign</th></tr></thead>
+            <tbody>
+              <tr><td>Office of the Secretary of War, Public Affairs</td><td>Approves the plan and key messages; sets priority against other department news</td></tr>
+              <tr><td>Defense Health Agency, TRICARE communications</td><td>Owns the facts; reviews every post; supplies experts for the live Q&amp;A; runs its own channels, which we amplify rather than duplicate</td></tr>
+              <tr><td>Military Services and combatant command public affairs</td><td>Post the toolkit to their audiences, including overseas, and report local questions back</td></tr>
+              <tr><td>Regional contractors: Humana Military (East), TriWest Healthcare Alliance (West)</td><td>Where individual questions are routed; told in advance when posts go out so call centers can plan</td></tr>
+              <tr><td>Office of Personnel Management, BENEFEDS</td><td>Owns the dental and vision (FEDVIP) facts and dates</td></tr>
+            </tbody>
+          </table></div>
+          <h4>Approval flow</h4>
+          <ol class="flow">
+            <li><div><span class="when">By Oct. 30</span><b>Draft</b><span>Social team drafts the plan, posts, graphics and reply bank.</span></div></li>
+            <li><div><span class="when">By Nov. 3</span><b>Fact check</b><span>TRICARE communications confirms every date, term and link.</span></div></li>
+            <li><div><span class="when">By Nov. 4</span><b>Approve</b><span>Department public affairs approves messages and the reply bank.</span></div></li>
+            <li><div><span class="when">Nov. 4</span><b>Share the toolkit</b><span>Services and commands get posts, graphics, alt text and the reply bank, five days before launch.</span></div></li>
+            <li><div><span class="when">Nov. 9</span><b>Launch and monitor</b><span>Posts go live; comments are monitored daily, with same-day escalation for anything off-script.</span></div></li>
+          </ol>
+          <h4>Rules that keep messaging consistent</h4>
+          <p>Same dates and wording everywhere. Link to TRICARE.mil or milConnect, never to third-party summaries. Never ask for personal information in comments. Anything not in the reply bank goes to TRICARE communications before we answer.</p>
+        </article>
+      </div>
+      <aside class="notes" aria-label="Notes on coordination">
+        <h3>Diplomacy, written down</h3>
+        <dl class="meta"><dt>Owner of facts</dt><dd>TRICARE communications</dd><dt>Owner of tone</dt><dd>Department public affairs</dd></dl>
+        <ul>
+          <li><b>Amplify, don't compete</b> with the health agency's own channels.</li>
+          <li><b>Warn the call centers</b> before a post that drives calls.</li>
+          <li><b>One escalation path</b> for anything the reply bank doesn't cover.</li>
+        </ul>
+      </aside>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">Method</span>
+      <div><h2>How this campaign was built.</h2></div>
+    </div>
+    <div class="method">
+      <div>
+        <h3>Facts from the source</h3>
+        <p>Every date, eligibility rule and enrollment option comes from TRICARE.mil as published Oct. 27, 2026. Where secondary sources disagreed, the official page won. One September news article listed dental and vision enrollment as ending Dec. 7; TRICARE.mil lists Dec. 14. No performance numbers appear here, because none exist yet.</p>
+      </div>
+      <div>
+        <h3>Standards applied</h3>
+        <ul>
+          <li>AP Stylebook for posts, captions and the reply bank</li>
+          <li>Federal Plain Language Guidelines throughout</li>
+          <li>WCAG 2.2 AA: contrast, keyboard access, alt text, captions and reduced motion. Turn on the accessibility view to check this page.</li>
+        </ul>
+      </div>
+    </div>
+    <ul class="sources">
+      <li><a href="https://www.tricare.mil/About/Changes/OpenSeason" target="_blank" rel="noopener">TRICARE.mil, TRICARE Open Season (updated Oct. 27, 2026)</a></li>
+      <li><a href="https://tricare.mil/Plans/Enroll/OpenSeason" target="_blank" rel="noopener">TRICARE.mil, Enrolling during open season</a></li>
+      <li><a href="https://tricare.mil/FAQs/General/T5_Who" target="_blank" rel="noopener">TRICARE.mil, East and West Region contractors</a></li>
+      <li><a href="https://www.moaa.org/content/publications-and-media/news-articles/2026-news-articles/benefits/tricare,-medicare,-fedvip-open-season-dates-set/" target="_blank" rel="noopener">MOAA, open season dates set, Sept. 22, 2026</a></li>
+      <li><a href="https://www.plainlanguage.gov/guidelines/" target="_blank" rel="noopener">Federal Plain Language Guidelines</a></li>
+      <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">W3C, Web Content Accessibility Guidelines 2.2</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../">Back to portfolio</a>
+    <a href="../robotics-thesis/">Robotics thesis</a>
+    <a href="../falcon9-crs20/">Falcon 9 field notes</a>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<aside class="a11y-panel" id="a11yPanel" aria-label="Accessibility checks">
+  <button class="a11y-close" type="button" id="a11yClose">Close</button>
+  <h3>Accessibility view</h3>
+  <p>Headings, landmarks and image descriptions are now outlined on the page. Contrast is measured live from this page's colors.</p>
+  <table><thead><tr><th>Pair</th><th>Ratio</th><th>AA</th></tr></thead><tbody id="ctBody"></tbody></table>
+  <ul>
+    <li>The calendar, sorter, tabs and filters work with a keyboard.</li>
+    <li>Graphics have alt text; the video script includes captions and audio description.</li>
+    <li>Motion stops when your system asks for reduced motion.</li>
+  </ul>
+</aside>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MONTHS=['Jan.','Feb.','March','April','May','June','July','Aug.','Sept.','Oct.','Nov.','Dec.'];
+  function D(s){ var p=s.split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function iso(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function ap(d){ return MONTHS[d.getMonth()]+' '+d.getDate(); }
+  var PNAME={F:'Facebook',I:'Instagram',X:'X',Y:'YouTube',R:'Internal',A:'All channels'};
+
+  /* ---------- content: editorial calendar ---------- */
+  var POSTS=[
+    {d:'2026-11-02',p:'R',t:'Fact check and approval begin',s:'Draft posts, graphics and reply bank to TRICARE communications.',o:'Social team'},
+    {d:'2026-11-04',p:'R',t:'Toolkit to Services and commands',s:'Posts, graphics, alt text and reply bank, five days before launch.',o:'Social team'},
+    {d:'2026-11-05',p:'F',t:'Teaser: open season starts Monday',s:'"Most people won\'t need to do anything. Here\'s how to know."',o:'Social team'},
+    {d:'2026-11-06',p:'I',t:'Story: save the dates',s:'Nov. 9–Dec. 8, with a reminder sticker.',o:'Social team'},
+    {d:'2026-11-09',p:'X',t:'Launch post',s:'Dates, "do nothing" message and Plan Finder link.',o:'Social team'},
+    {d:'2026-11-09',p:'F',t:'Launch post',s:'Three-point plain-language summary with links.',o:'Social team'},
+    {d:'2026-11-09',p:'I',t:'"Which one are you?" carousel',s:'Five slides, one per situation.',o:'Social team'},
+    {d:'2026-11-09',p:'Y',t:'60-second explainer',s:'Published with captions; cut into Shorts and Reels.',o:'Video team'},
+    {d:'2026-11-10',p:'X',t:'Thread: three things to know',s:'Do nothing, switch by Dec. 8, enroll if not enrolled.',o:'Social team'},
+    {d:'2026-11-11',p:'A',t:'Hold: Veterans Day',s:'No open season posts; Veterans Day content takes priority.',o:'—',hold:1},
+    {d:'2026-11-12',p:'Y',t:'Short: Prime vs. Select in 30 seconds',s:'Vertical cut; also runs as an Instagram Reel and Facebook video.',o:'Video team'},
+    {d:'2026-11-16',p:'R',t:'Weekly review',s:'Launch-week results, top questions, changes for week 2.',o:'Social team'},
+    {d:'2026-11-16',p:'F',t:'Not enrolled? Here\'s what that means',s:'Priority audience: space-available care only without a plan.',o:'Social team'},
+    {d:'2026-11-18',p:'X',t:'Dental and vision have their own dates',s:'FEDVIP enrollment runs Nov. 9–Dec. 14.',o:'Social team'},
+    {d:'2026-11-19',p:'I',t:'Carousel: three ways to make a change',s:'milConnect, phone or mail.',o:'Social team'},
+    {d:'2026-11-23',p:'R',t:'Weekly review',s:'Midpoint check against decision rules.',o:'Social team'},
+    {d:'2026-11-24',p:'F',t:'Answers to your top questions',s:'Built from the most repeated comments so far.',o:'Social team'},
+    {d:'2026-11-26',p:'A',t:'Hold: Thanksgiving',s:'No campaign posts.',o:'—',hold:1},
+    {d:'2026-11-30',p:'R',t:'Weekly review',s:'Pick the two best formats for the final week.',o:'Social team'},
+    {d:'2026-11-30',p:'F',t:'Live Q&A announcement',s:'TRICARE experts answer questions Wednesday.',o:'Social team'},
+    {d:'2026-12-02',p:'Y',t:'Live Q&A with TRICARE experts',s:'Also streamed to Facebook; captioned replay.',o:'Video team, health agency'},
+    {d:'2026-12-03',p:'I',t:'Story: countdown sticker',s:'"Open season ends Dec. 8."',o:'Social team'},
+    {d:'2026-12-07',p:'R',t:'Weekly review',s:'Final-day plan and same-day staffing for comments.',o:'Social team'},
+    {d:'2026-12-07',p:'X',t:'Tomorrow is the last day',s:'Priority audience reminder.',o:'Social team'},
+    {d:'2026-12-08',p:'X',t:'Last day',s:'"Ends today" post with milConnect link.',o:'Social team'},
+    {d:'2026-12-08',p:'F',t:'Last day',s:'Plain-language reminder for families.',o:'Social team'},
+    {d:'2026-12-08',p:'I',t:'Story: last day',s:'Link sticker to milConnect.',o:'Social team'},
+    {d:'2026-12-09',p:'X',t:'TRICARE closed; dental and vision still open',s:'FEDVIP runs through Dec. 14.',o:'Social team'},
+    {d:'2026-12-14',p:'F',t:'Last day for dental and vision',s:'FEDVIP enrollment ends today.',o:'Social team'},
+    {d:'2026-12-14',p:'X',t:'Last day for dental and vision',s:'FEDVIP enrollment ends today.',o:'Social team'}
+  ];
+  var byDay={}; POSTS.forEach(function(p){ (byDay[p.d]=byDay[p.d]||[]).push(p); });
+
+  /* ---------- header + progress ---------- */
+  var hdr=document.getElementById('hdr'), prog=document.getElementById('progress'), top=document.getElementById('top');
+  function onScroll(){ var h=document.documentElement; prog.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight||1))+')'; hdr.classList.toggle('light', top.getBoundingClientRect().bottom<60); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* ---------- title flip ---------- */
+  (function(){
+    var h=document.querySelector('h1.flip'); if(!h) return;
+    var txt=h.textContent; h.setAttribute('aria-label',txt); h.textContent='';
+    var box=document.createElement('span'); box.setAttribute('aria-hidden','true');
+    txt.split(' ').forEach(function(w,i){ if(i) box.appendChild(document.createTextNode(' ')); var s=document.createElement('span'); s.className='tw'; s.textContent=w; s.style.setProperty('--d',(i*0.07)+'s'); box.appendChild(s); });
+    h.appendChild(box); if(!reduced) h.classList.add('go');
+  })();
+
+  /* ---------- hero typing ---------- */
+  var typed=document.getElementById('heroTyped'), caret=document.getElementById('heroCaret');
+  var full=typed.parentNode.getAttribute('aria-label');
+  if(reduced){ typed.textContent=full; caret.style.display='none'; }
+  else { var ti=0; (function tick(){ ti+=2; typed.textContent=full.slice(0,ti); if(ti<full.length) setTimeout(tick,18); else setTimeout(function(){caret.style.display='none';},1600); })(); }
+
+  /* ---------- countdown ---------- */
+  var OPEN=D('2026-11-09'), CLOSE=D('2026-12-08'), FED=D('2026-12-14');
+  var now=new Date(), today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  function days(a,b){ return Math.round((b-a)/864e5); }
+  var cd=document.getElementById('countdown');
+  if(today<OPEN){ var n=days(today,OPEN); cd.innerHTML=n+(n===1?' day':' days')+'<small>until open season begins</small>'; }
+  else if(today<=CLOSE){ var n2=days(today,CLOSE)+1; cd.innerHTML=n2+(n2===1?' day':' days')+'<small>left, including today</small>'; }
+  else if(today<=FED){ cd.innerHTML='Closed<small>Dental and vision open through Dec. 14</small>'; }
+  else { cd.innerHTML='Closed<small>Changes take effect Jan. 1, 2027</small>'; }
+
+  /* ---------- hero calendar ---------- */
+  var cal=document.getElementById('cal'), note=document.getElementById('dayNote'), cells=[];
+  for(var d=new Date(OPEN); d<=FED; d.setDate(d.getDate()+1)){
+    var k=iso(d), b=document.createElement('button'); b.type='button'; b.className='day'+(d>CLOSE?' ext':''); b.dataset.d=k;
+    var list=byDay[k]||[];
+    b.setAttribute('aria-label',ap(d)+': '+(list.length?list.length+(list.length===1?' item':' items'):'no posts'));
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span>'+d.getDate()+'</span><span class="mk" aria-hidden="true">'+list.filter(function(p){return !p.hold;}).map(function(p){ return '<i class="p-'+(p.p==='A'?'F':p.p)+'"></i>'; }).join('')+'</span>';
+    if(iso(today)===k) b.classList.add('today');
+    cal.appendChild(b); cells.push(b);
+  }
+  // pad final row
+  var rem=cells.length%7; for(var r=0; rem && r<7-rem; r++){ var e=document.createElement('span'); e.className='day blank'; e.setAttribute('aria-hidden','true'); cal.appendChild(e); }
+  function showDay(k){
+    cells.forEach(function(c){ c.setAttribute('aria-pressed', c.dataset.d===k); });
+    var list=byDay[k]||[], dt=D(k);
+    var head='<b>'+ap(dt)+(dt>CLOSE?' · dental and vision only':'')+'</b>';
+    if(!list.length){ note.innerHTML=head+'<ul><li>No posts. Comments are still monitored daily.</li></ul>'; return; }
+    note.innerHTML=head+'<ul>'+list.map(function(p){ return '<li><em>'+PNAME[p.p]+'</em>'+p.t+'</li>'; }).join('')+'</ul>';
+  }
+  cells.forEach(function(c,i){
+    c.addEventListener('click',function(){ showDay(c.dataset.d); });
+    c.addEventListener('keydown',function(e){ var n=null; if(e.key==='ArrowRight') n=i+1; if(e.key==='ArrowLeft') n=i-1; if(e.key==='ArrowDown') n=i+7; if(e.key==='ArrowUp') n=i-7; if(n!==null && cells[n]){ e.preventDefault(); cells[n].focus(); showDay(cells[n].dataset.d); } });
+  });
+  var startDay = (today>=OPEN && today<=FED) ? iso(today) : '2026-11-09';
+  showDay(startDay);
+
+  /* ---------- play the campaign ---------- */
+  var playBtn=document.getElementById('playBtn'), playLabel=document.getElementById('playLabel'), phases=[].slice.call(document.querySelectorAll('.ph')), playing=false;
+  function lightPhases(k){ phases.forEach(function(p){ p.classList.toggle('lit', k>=p.dataset.from && k<=p.dataset.to); }); }
+  playBtn.addEventListener('click',function(){
+    if(playing) return; playing=true; playBtn.classList.add('running'); playLabel.textContent='Playing';
+    cells.forEach(function(c){ c.classList.remove('lit'); });
+    var step=reduced?0:150, i=0;
+    (function next(){
+      if(i>=cells.length){ playing=false; playBtn.classList.remove('running'); playLabel.textContent='Play it again'; lightPhases('2027-01-01'); return; }
+      var c=cells[i++]; c.classList.add('lit'); showDay(c.dataset.d); lightPhases(c.dataset.d);
+      setTimeout(next, step);
+    })();
+  });
+
+  /* ---------- who needs to act ---------- */
+  var WHO=[
+    {k:'Eligible, but not enrolled in a plan',v:'Act by Dec. 8',h:'Enroll by Dec. 8.',p:'If you\'re eligible for TRICARE Prime or TRICARE Select and don\'t enroll, you can get care only at a military hospital or clinic when space is available.',w:'Campaign priority 1. Every final-week post is written for this group.'},
+    {k:'Enrolled, and want a different plan',v:'Act by Dec. 8',h:'Make the change by Dec. 8.',p:'Switch plans, or between individual and family enrollment, on milConnect, by phone with your regional contractor or by mail. The change starts Jan. 1.',w:'Campaign priority 2. Posts point to the Plan Finder before milConnect.'},
+    {k:'Enrolled, and happy with my plan',v:'No action needed',h:'Do nothing.',p:'Your coverage continues automatically in 2027 as long as you\'re still eligible.',w:'Priority 3, and the campaign\'s first message: it prevents unneeded changes and calls.'},
+    {k:'Active-duty service member',v:'Doesn\'t apply',h:'Open season doesn\'t apply to you.',p:'Your eligible family members can review their own options through Dec. 8.',w:'Priority 4. Answered in the reply bank to keep comment threads clear.'},
+    {k:'TRICARE For Life beneficiary',v:'Doesn\'t apply',h:'Open season doesn\'t apply to TRICARE For Life.',p:'Dental and vision coverage through FEDVIP has its own enrollment period, Nov. 9–Dec. 14.',w:'Priority 4, with a separate dental and vision reminder.'},
+    {k:'TRICARE Reserve Select, Retired Reserve or Young Adult',v:'Doesn\'t apply',h:'Open season doesn\'t apply to premium-based plans.',p:'These plans aren\'t part of TRICARE Open Season.',w:'Priority 4. Named on carousel slide 5 so people can find themselves quickly.'}
+  ];
+  var wl=document.getElementById('whoList'), wc=document.getElementById('whoCard'), wopts=[];
+  function pickWho(i,focus){
+    wopts.forEach(function(o,j){ o.setAttribute('aria-checked',j===i); o.tabIndex=j===i?0:-1; });
+    var w=WHO[i]; wc.innerHTML='<p class="verdict">'+w.v+'</p><h3>'+w.h+'</h3><p>'+w.p+'</p><p class="why">'+w.w+'</p>';
+    if(focus) wopts[i].focus();
+  }
+  WHO.forEach(function(w,i){
+    var b=document.createElement('button'); b.type='button'; b.className='who-opt'; b.setAttribute('role','radio'); b.textContent=w.k;
+    b.addEventListener('click',function(){ pickWho(i); });
+    b.addEventListener('keydown',function(e){ var n=null; if(e.key==='ArrowDown'||e.key==='ArrowRight') n=(i+1)%WHO.length; if(e.key==='ArrowUp'||e.key==='ArrowLeft') n=(i-1+WHO.length)%WHO.length; if(n!==null){ e.preventDefault(); pickWho(n,true); } });
+    wl.appendChild(b); wopts.push(b);
+  });
+  pickWho(0);
+
+  /* ---------- editorial calendar list ---------- */
+  var ec=document.getElementById('ecList'), weeks={};
+  function monday(d){ var x=new Date(d); var g=(x.getDay()+6)%7; x.setDate(x.getDate()-g); return x; }
+  POSTS.forEach(function(p){ var m=iso(monday(D(p.d))); (weeks[m]=weeks[m]||[]).push(p); });
+  var WEEKNAME={'2026-11-02':'Prep','2026-11-09':'Launch week','2026-11-16':'Explain','2026-11-23':'Explain','2026-11-30':'Final push','2026-12-07':'Final days','2026-12-14':'Dental and vision close'};
+  Object.keys(weeks).sort().forEach(function(m){
+    var md=D(m), end=new Date(md); end.setDate(end.getDate()+6);
+    var wk=document.createElement('div'); wk.className='week';
+    wk.innerHTML='<div class="week-h"><b>Week of '+ap(md)+'</b><span>'+(WEEKNAME[m]||'')+'</span></div>';
+    weeks[m].forEach(function(p){
+      var s=document.createElement('div'); s.className='slot'+(p.hold?' hold':''); s.dataset.p=p.p;
+      s.innerHTML='<span class="d">'+ap(D(p.d))+'</span><span class="pf"><i class="p-'+p.p+'"></i>'+PNAME[p.p]+'</span><span class="ttl">'+p.t+'<small>'+p.s+'</small></span><span class="ow">'+p.o+'</span>';
+      wk.appendChild(s);
+    });
+    ec.appendChild(wk);
+  });
+  var pubCount=POSTS.filter(function(p){return p.p!=='R'&&!p.hold;}).length;
+  document.getElementById('ecCount').textContent=pubCount+' public posts, '+POSTS.filter(function(p){return p.p==='R';}).length+' internal steps';
+  var fBtns=[].slice.call(document.querySelectorAll('#ecFilters .chip'));
+  fBtns.forEach(function(b){ b.addEventListener('click',function(){
+    fBtns.forEach(function(x){ x.setAttribute('aria-pressed', x===b); });
+    var f=b.dataset.p;
+    ec.querySelectorAll('.slot').forEach(function(s){ s.classList.toggle('hide', f!=='all' && s.dataset.p!==f && s.dataset.p!=='A'); });
+    ec.querySelectorAll('.week').forEach(function(w){ w.style.display = w.querySelector('.slot:not(.hide)') ? '' : 'none'; });
+  }); });
+
+  /* ---------- post stats: characters + reading grade ---------- */
+  function syl(w){ w=w.toLowerCase().replace(/[^a-z]/g,''); if(!w) return 0; if(w.length<=3) return 1; w=w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/,'').replace(/^y/,''); var m=w.match(/[aeiouy]{1,2}/g); return m?m.length:1; }
+  function grade(text){
+    var t=text.replace(/\[link\]/g,'').replace(/•/g,'. ');
+    var sents=t.split(/[.!?:]+(?=\s|$)/).filter(function(s){return /[A-Za-z]/.test(s);});
+    var ws=t.replace(/\$?\d[\d,]*/g,' num ').match(/[A-Za-z']+/g)||[];
+    var sy=ws.reduce(function(a,w){ return a+(w==='num'?2:syl(w)); },0);
+    var g=0.39*(ws.length/Math.max(1,sents.length))+11.8*(sy/Math.max(1,ws.length))-15.59;
+    return Math.max(1,g);
+  }
+  document.querySelectorAll('.post > .body').forEach(function(b){
+    var txt=b.textContent, max=+b.dataset.max||0, n=txt.replace(/\[link\]/g,'x'.repeat(23)).length;
+    var st=document.createElement('p'); st.className='stats';
+    st.innerHTML='<span'+(max&&n>max?' class="over"':'')+'>'+n.toLocaleString('en-US')+(max?' / '+max:'')+' characters</span><span class="g">Grade '+grade(txt).toFixed(1)+' reading level</span>';
+    b.parentNode.appendChild(st);
+  });
+  var altBtn=document.getElementById('altBtn'), altEls=[document.getElementById('altText'),document.getElementById('altList')];
+  altBtn.addEventListener('click',function(){ var on=!altEls[0].classList.contains('on'); altEls.forEach(function(e){ e.classList.toggle('on',on); }); altBtn.setAttribute('aria-expanded',on); altBtn.textContent=on?'Hide alt text':'Show alt text'; });
+
+  /* ---------- measurement scenarios ---------- */
+  var SIM=[
+    {q:'Carousel is saved a lot, but few people click the link',r:'People found it useful but didn\'t act yet. That fits a 30-day window.',a:'Keep the carousel. In the final week, repost slide 4 alone as a Story with a direct link sticker to milConnect.'},
+    {q:'The same question keeps showing up in comments',r:'The posts left a gap, and every repeat question is someone who might not act.',a:'Add the answer to the reply bank today, then answer it in a dedicated post within 24 hours.'},
+    {q:'Most viewers leave the video before the key message',r:'The hook isn\'t holding attention long enough to reach "do nothing."',a:'Re-cut the Short so the answer comes first, in the first five seconds, and test it against the original.'},
+    {q:'Negative comments cluster around contractor phone wait times',r:'This is a service issue the campaign can\'t fix, and it could grow during the final week.',a:'Alert TRICARE communications and department public affairs the same day. Don\'t debate in comments; reply with the approved routing message and point to online options.'}
+  ];
+  var sq=document.getElementById('simQ'), sa=document.getElementById('simA'), sb=[];
+  function pickSim(i){ sb.forEach(function(b,j){ b.setAttribute('aria-pressed',j===i); }); var s=SIM[i]; sa.innerHTML='<span class="lbl">What it means</span><p>'+s.r+'</p><span class="lbl">Recommendation</span><p class="act">'+s.a+'</p>'; }
+  SIM.forEach(function(s,i){ var b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=s.q; b.style.textAlign='left'; b.addEventListener('click',function(){ pickSim(i); }); sq.appendChild(b); sb.push(b); });
+  pickSim(0);
+
+  /* ---------- tabs ---------- */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function showTab(i,focus){ tabs.forEach(function(t,j){ var on=j===i; t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; document.getElementById('p'+j).hidden=!on; }); if(focus) tabs[i].focus(); }
+  tabs.forEach(function(t,i){
+    t.style.setProperty('--i',i);
+    t.addEventListener('click',function(){ showTab(i); });
+    t.addEventListener('keydown',function(e){ var n=null; if(e.key==='ArrowRight') n=(i+1)%tabs.length; if(e.key==='ArrowLeft') n=(i-1+tabs.length)%tabs.length; if(e.key==='Home') n=0; if(e.key==='End') n=tabs.length-1; if(n!==null){ e.preventDefault(); showTab(n,true); } });
+  });
+
+  /* ---------- open the kit ---------- */
+  var kit=document.getElementById('kit'), kitStage=kit.querySelector('.kit-stage'), opened=false, autoScrolling=false;
+  function inView(el,frac){ var r=el.getBoundingClientRect(); return r.top<innerHeight*frac && r.bottom>0; }
+  function openKit(){ if(opened) return; opened=true; kit.classList.remove('sealed'); setTimeout(function(){ kit.classList.remove('armed'); },2300); }
+  if(!reduced && !inView(kitStage,1)){
+    kit.classList.add('armed','sealed');
+    if('IntersectionObserver' in window){ var kio=new IntersectionObserver(function(es){ if(es[0].isIntersecting && !autoScrolling){ openKit(); kio.disconnect(); } },{rootMargin:'0px 0px -30% 0px'}); kio.observe(kitStage); } else openKit();
+  }
+  function glideTo(y,done){
+    var start=scrollY, dist=y-start; if(reduced||Math.abs(dist)<4){ scrollTo(0,y); done&&done(); return; }
+    var dur=Math.min(1400,Math.max(750,Math.abs(dist)*.55)), t0=null; autoScrolling=true;
+    function ease(t){ return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+    function step(ts){ if(!t0)t0=ts; var k=Math.min(1,(ts-t0)/dur); scrollTo(0,start+dist*ease(k)); if(k<1) requestAnimationFrame(step); else { autoScrolling=false; done&&done(); } }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('a[href="#kit"]').forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); var y=kit.getBoundingClientRect().top+scrollY-56;
+      glideTo(y,function(){ openKit(); if(history.replaceState) history.replaceState(null,'','#kit'); kit.setAttribute('tabindex','-1'); kit.focus({preventScroll:true}); }); });
+  });
+
+  /* ---------- accessibility view ---------- */
+  var aBtn=document.getElementById('a11yBtn'), aClose=document.getElementById('a11yClose');
+  function lum(hex){ var c=hex.replace('#',''); var rgb=[0,2,4].map(function(i){ var v=parseInt(c.substr(i,2),16)/255; return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4); }); return 0.2126*rgb[0]+0.7152*rgb[1]+0.0722*rgb[2]; }
+  function ratio(a,b){ var A=lum(a),B=lum(b); return (Math.max(A,B)+0.05)/(Math.min(A,B)+0.05); }
+  var cs=getComputedStyle(document.documentElement); function v(n){ return cs.getPropertyValue(n).trim(); }
+  var pairs=[['Body text','--ink','--paper'],['Secondary text','--graphite','--paper'],['Labels','--mute','--paper'],['Accent text','--flame-ink','--paper'],['Hero text','--cream','--night'],['Hero secondary','--stone','--night']];
+  var ct=document.getElementById('ctBody');
+  pairs.forEach(function(p){ var fg=v(p[1]), bg=v(p[2]), r=ratio(fg,bg); var tr=document.createElement('tr'); tr.innerHTML='<td><span class="sw2" style="background:'+bg+'"></span><span class="sw2" style="background:'+fg+'"></span>'+p[0]+'</td><td style="font-family:var(--mono)">'+r.toFixed(1)+':1</td><td class="pass">'+(r>=4.5?'Pass':'Large text only')+'</td>'; ct.appendChild(tr); });
+  function setA11y(on){ document.body.classList.toggle('a11y',on); aBtn.setAttribute('aria-pressed',on); }
+  aBtn.addEventListener('click',function(){ setA11y(!document.body.classList.contains('a11y')); });
+  aClose.addEventListener('click',function(){ setA11y(false); aBtn.focus(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && document.body.classList.contains('a11y')) setA11y(false); });
+})();
+</script>
+</body>
+</html>

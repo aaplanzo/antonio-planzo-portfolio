@@ -93,30 +93,22 @@
       @media (prefers-reduced-motion:reduce){.vn-chart .ln,.vn-chart .ar,.vn-chart .pt{transition:none!important}}
       /* résumé link retired: hidden, not removed, so React's tree stays intact */
       #top a[href$="Antonio-Planzo-Resume.pdf"]{display:none!important}
-      /* 155 mm rollout kit button: press-room slab with a broadcast mark */
-      .rk-btn{position:relative;display:inline-flex;align-items:center;gap:.7rem;overflow:hidden;
+      /* social campaign button: a calendar fills day by day, then checks off; holds while hovered */
+      .sc-btn{position:relative;display:inline-flex;align-items:center;gap:.7rem;overflow:hidden;
         font-family:'IBM Plex Mono',ui-monospace,monospace!important;letter-spacing:.16em;text-transform:uppercase;
         border:1px solid rgba(247,246,243,.42)!important;color:#F7F6F3!important;background-color:#1C1C1A!important;
         background-image:radial-gradient(rgba(247,246,243,.09) 1px,transparent 1.2px)!important;background-size:6px 6px!important;
         transition:border-color .25s,box-shadow .25s,transform .25s!important}
-      .rk-btn:hover{border-color:#F0973B!important;box-shadow:0 0 24px rgba(240,151,59,.22)}
-      .rk-ico{flex:none;overflow:visible}
-      .rk-ico .doc{stroke:#F7F6F3}
-      .rk-ico .arc{stroke:#7A766E;transition:stroke .2s}
-      .rk-btn:hover .rk-ico .arc{stroke:#F0973B;animation:rkwave 1.2s ease-in-out infinite}
-      .rk-btn:hover .rk-ico .a2{animation-delay:.15s}.rk-btn:hover .rk-ico .a3{animation-delay:.3s}
-      @keyframes rkwave{0%,100%{opacity:1}50%{opacity:.25}}
-      .rk-ammo{position:absolute;left:0;right:0;bottom:6px;height:4px;pointer-events:none}
-      .rk-rnd{position:absolute;top:0;left:-34px;width:9px;height:4px;background:#F0973B;border-radius:0 3px 3px 0;opacity:0}
-      .rk-rnd::after{content:'';position:absolute;left:0;top:0;width:3px;height:4px;background:#C9C3B6}
-      .rk-rnd::before{content:'';position:absolute;right:100%;top:1px;width:28px;height:2px;background:linear-gradient(90deg,transparent,rgba(240,151,59,.85))}
-      .rk-btn:hover .rk-rnd{animation:rkfire .95s cubic-bezier(.2,.75,.4,1) infinite}
-      .rk-btn:hover .rk-rnd:nth-child(2){animation-delay:.16s}.rk-btn:hover .rk-rnd:nth-child(3){animation-delay:.32s}
-      @keyframes rkfire{0%{left:-34px;opacity:1}60%{left:calc(100% + 34px);opacity:1}61%,100%{left:calc(100% + 34px);opacity:0}}
-      .rk-flash{position:absolute;left:-10px;bottom:-4px;width:26px;height:14px;border-radius:50%;background:radial-gradient(closest-side,rgba(251,227,188,.9),rgba(240,151,59,.5),transparent);opacity:0;pointer-events:none}
-      .rk-btn:hover .rk-flash{animation:rkflash .32s steps(2) infinite}
-      @keyframes rkflash{0%{opacity:.9}100%{opacity:0}}
-      @media (prefers-reduced-motion:reduce){.rk-btn:hover .rk-ico .arc,.rk-btn:hover .rk-rnd,.rk-btn:hover .rk-flash{animation:none}}
+      .sc-btn:hover,.sc-btn:focus-visible{border-color:#F0973B!important;box-shadow:0 0 24px rgba(240,151,59,.22)}
+      .sc-ico{flex:none;overflow:visible}
+      .sc-ico .fr{stroke:#F7F6F3}
+      .sc-ico .cel{fill:#55534E;transition:fill .12s}
+      .sc-btn:hover .sc-ico .cel,.sc-btn:focus-visible .sc-ico .cel{fill:#F0973B;transition:fill .12s var(--d,0s)}
+      .sc-ico .ck{fill:none;stroke:#F0973B;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .1s}
+      .sc-btn:hover .sc-ico .ck,.sc-btn:focus-visible .sc-ico .ck{stroke-dashoffset:0;transition:stroke-dashoffset .35s ease .75s}
+      .sc-btn:hover .sc-ico .grid,.sc-btn:focus-visible .sc-ico .grid{opacity:.35;transition:opacity .3s .7s}
+      .sc-ico .grid{transition:opacity .1s}
+      @media (prefers-reduced-motion:reduce){.sc-ico .cel,.sc-ico .ck,.sc-ico .grid{transition:none!important}}
     </style>
     <script>
       (function(){
@@ -153,13 +145,14 @@
             + 'Robotics Thesis<span class="rb-scan"></span><span class="rb-c tl"></span><span class="rb-c tr"></span><span class="rb-c bl"></span><span class="rb-c br"></span>';
           row.insertBefore(rb, a);
           var rk = document.createElement('a');
-          rk.href = './artillery-kit/';
-          rk.className = 'btn-outline focus-ring rk-btn';
-          rk.setAttribute('aria-label','155 mm rollout kit: view the public affairs work sample');
-          rk.innerHTML = '<svg class="rk-ico" width="20" height="18" viewBox="0 0 26 22" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-            + '<path class="doc" d="M2 3.5h9l3 3V20H2z"/><path class="doc" d="M5 10h6M5 13h6M5 16h4"/>'
-            + '<path class="arc a1" d="M17 9.5a3 3 0 0 1 0 5"/><path class="arc a2" d="M19.5 7a6.5 6.5 0 0 1 0 10"/><path class="arc a3" d="M22 4.5a10 10 0 0 1 0 15"/></svg>'
-            + '155 mm Rollout Kit<span class="rk-ammo"><span class="rk-rnd"></span><span class="rk-rnd"></span><span class="rk-rnd"></span><span class="rk-flash"></span></span>';
+          rk.href = './social-campaign/';
+          rk.className = 'btn-outline focus-ring sc-btn';
+          rk.setAttribute('aria-label','Social campaign: view the social media campaign work sample');
+          rk.innerHTML = '<svg class="sc-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+            + '<rect class="fr" x="1.5" y="3.5" width="21" height="19" rx="1.5"/><path class="fr" d="M1.5 7.6h21M7 1.5v4M17 1.5v4"/>'
+            + '<g class="grid" stroke="none"><rect class="cel" x="3.2" y="9.0" width="3.4" height="3" style="--d:0.00s"/><rect class="cel" x="7.8" y="9.0" width="3.4" height="3" style="--d:0.05s"/><rect class="cel" x="12.4" y="9.0" width="3.4" height="3" style="--d:0.10s"/><rect class="cel" x="17.0" y="9.0" width="3.4" height="3" style="--d:0.15s"/><rect class="cel" x="3.2" y="13.2" width="3.4" height="3" style="--d:0.20s"/><rect class="cel" x="7.8" y="13.2" width="3.4" height="3" style="--d:0.25s"/><rect class="cel" x="12.4" y="13.2" width="3.4" height="3" style="--d:0.30s"/><rect class="cel" x="17.0" y="13.2" width="3.4" height="3" style="--d:0.35s"/><rect class="cel" x="3.2" y="17.4" width="3.4" height="3" style="--d:0.40s"/><rect class="cel" x="7.8" y="17.4" width="3.4" height="3" style="--d:0.45s"/><rect class="cel" x="12.4" y="17.4" width="3.4" height="3" style="--d:0.50s"/><rect class="cel" x="17.0" y="17.4" width="3.4" height="3" style="--d:0.55s"/></g>'
+            + '<path class="ck" pathLength="1" d="M7 15.5l3.4 3.4L17.5 11"/></svg>'
+            + 'Social Campaign';
           var cv = row.querySelector('a[href$="Antonio-Planzo-Resume.pdf"]');
           row.insertBefore(rk, cv || rb);
           var vn = row.querySelector('a[href="#audience"]');
