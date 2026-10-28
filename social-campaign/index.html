@@ -78,11 +78,12 @@ section + section{border-top:1px solid var(--hair)}
 @media(max-width:820px){.sec-head{grid-template-columns:1fr;gap:.2rem}section{padding:2.6rem 0}}
 
 /* ---------- hero ---------- */
-#top{background:var(--night);color:var(--cream);padding:5.9rem 0 0;min-height:100vh;display:flex;flex-direction:column;border-top:none}
+#top{background:var(--night);color:var(--cream);padding:4.4rem 0 0;min-height:100vh;display:flex;flex-direction:column;border-top:none}
 #top h1{color:var(--cream)}
 #top .label{color:var(--stone)}
 .hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;padding-top:0;padding-bottom:2.5rem}
-.hero>div:first-child{padding-top:.9rem}
+.hero>div:first-child{padding-top:.5rem}
+#top h1.flip{font-size:clamp(2.2rem,5vw,3.7rem)}
 .hero-sub{position:relative;color:var(--stone);font-size:1.12rem;max-width:34rem;margin-top:1.4rem}
 .hero-type{position:absolute;inset:0}
 .caret{display:inline-block;width:2px;height:1.05em;background:var(--flame);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
@@ -133,6 +134,8 @@ h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;t
 .day[aria-pressed="true"]{background:var(--cream);color:var(--night);border-color:var(--cream)}
 .day[aria-pressed="true"] .mk i.p-F{background:var(--night)}
 .day.lit{background:rgba(240,151,59,.2);border-color:var(--flame)}
+.day.lit[aria-pressed="true"]{background:var(--cream);color:var(--night);border-color:var(--cream)}
+.day.key{box-shadow:0 0 0 2px var(--flame);transition:box-shadow .3s}
 .day.today::after{content:'';position:absolute;top:3px;right:3px;width:5px;height:5px;border-radius:50%;background:var(--flame)}
 .legend{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-size:.8rem;color:var(--stone);margin-top:.9rem}
 .legend span{display:inline-flex;align-items:center;gap:.4rem}
@@ -142,7 +145,7 @@ h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;t
 .day-note ul{list-style:none;margin-top:.3rem}
 .day-note li{padding:.15rem 0}
 .day-note li em{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--flame);margin-right:.4rem}
-@media(max-width:940px){.hero{grid-template-columns:minmax(0,1fr);gap:2rem}#top{padding-top:5rem}}
+@media(max-width:940px){.hero{grid-template-columns:minmax(0,1fr);gap:2rem}#top{padding-top:3.9rem}}
 .hero>*{min-width:0}.cal{grid-template-columns:repeat(7,minmax(0,1fr))}
 @media(max-width:420px){.day{font-size:.66rem;padding:.15rem .2rem;min-height:2rem}.day .mk i{width:5px;height:5px}}
 
@@ -418,7 +421,6 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
       <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">A five-week social media campaign explaining the Autonomous Warfare Command: what's decided, what isn't, what each channel posts and when, how to respond when news breaks and who signs off.</span><span class="hero-type" aria-label="A five-week social media campaign explaining the Autonomous Warfare Command: what's decided, what isn't, what each channel posts and when, how to respond when news breaks and who signs off."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
       <p class="byline">By <b>Antonio Planzo</b><br/>Facts from department announcements and defense press coverage, Sept. 30–Oct. 22, 2026</p>
       <div class="actions">
-        <button class="btn" id="playBtn" type="button"><span class="dot"></span><span id="playLabel">Play the campaign</span></button>
         <a class="btn ghost" href="#kit">Open the campaign</a>
       </div>
     </div>
@@ -426,7 +428,6 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
     <div class="season" role="group" aria-labelledby="seasonLbl">
       <div class="season-head">
         <div><h2 class="s-title" id="seasonLbl">AUTOWARCOM, explained</h2><span class="label s-date">November–December 2026</span></div>
-        <span class="count" id="countdown" aria-live="polite">&nbsp;</span>
       </div>
       <div class="dow" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
       <div class="cal" id="cal" aria-label="Campaign calendar. Select a day to see what posts."></div>
@@ -994,40 +995,10 @@ Who will lead it, where it will be based and its budget haven't been decided. We
   if(reduced){ typed.textContent=full; caret.style.display='none'; }
   else { var ti=0; (function tick(){ ti+=2; typed.textContent=full.slice(0,ti); if(ti<full.length) setTimeout(tick,18); else setTimeout(function(){caret.style.display='none';},1600); })(); }
 
-  /* ---------- countdown ---------- */
-  var START=D('2026-11-02'), END=D('2026-12-06'), STAND=D('2027-10-01');
+  /* ---------- dates ---------- */
+  var START=D('2026-11-02'), END=D('2026-12-06');
   var now=new Date(), today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   function days(a,b){ return Math.round((b-a)/864e5); }
-  var cd=document.getElementById('countdown');
-  function setCount(n,unitOne,unitMany,sub){
-    var unit=n===1?unitOne:unitMany;
-    cd.setAttribute('aria-label', n+' '+unit+' '+sub);
-    if(reduced){ cd.innerHTML='<span aria-hidden="true">'+n+' '+unit+'</span><small aria-hidden="true">'+sub+'</small>'; return; }
-    cd.innerHTML='<span class="calx" aria-hidden="true"><span class="frame"></span><span class="band"></span><span class="ring r1"></span><span class="ring r2"></span><span class="num"></span></span><span aria-hidden="true">'+unit+'</span><small aria-hidden="true">'+sub+'</small>';
-    var box=cd.querySelector('.calx'), num=box.querySelector('.num');
-    var from=n+18, total=from-n, cur=from;
-    num.textContent=from;
-    if(!total || !box.animate){ num.textContent=n; setTimeout(function(){ box.classList.add('done'); },500); return; }
-    function dur(i){ var t=i/total; return 95+150*Math.pow(t,2); }   /* quick at first, settling on the last pages */
-    var i=0;
-    function flip(){
-      if(cur<=n){ setTimeout(function(){ box.classList.add('done'); },450); return; }
-      i++; var d=dur(i);
-      /* the top page (current number) lifts and flips away over the rings; the next page is already underneath */
-      var leaf=document.createElement('span'); leaf.className='leaf'; leaf.textContent=cur; box.appendChild(leaf);
-      cur--; num.textContent=cur;
-      leaf.animate([
-        {transform:'rotateX(0deg)',filter:'brightness(1)'},
-        {transform:'rotateX(-70deg)',filter:'brightness(1.25)',offset:.55},
-        {transform:'rotateX(-120deg)',filter:'brightness(.5)'}
-      ],{duration:d,easing:'cubic-bezier(.4,0,.6,1)',fill:'forwards'}).onfinish=function(){ leaf.remove(); };
-      num.animate([{filter:'brightness(.45)'},{filter:'brightness(1)'}],{duration:d,easing:'ease-out'});
-      setTimeout(flip,d);
-    }
-    setTimeout(flip,350);
-  }
-  if(today<STAND){ setCount(days(today,STAND),'day','days','until the Oct. 1, 2027, target date'); }
-  else { cd.innerHTML='Target date<small>Oct. 1, 2027</small>'; }
 
   /* ---------- hero calendar ---------- */
   var cal=document.getElementById('cal'), note=document.getElementById('dayNote'), cells=[];
@@ -1056,19 +1027,36 @@ Who will lead it, where it will be based and its budget haven't been decided. We
   var startDay = (today>=START && today<=END) ? iso(today) : '2026-11-09';
   showDay(startDay);
 
-  /* ---------- play the campaign ---------- */
-  var playBtn=document.getElementById('playBtn'), playLabel=document.getElementById('playLabel'), phases=[].slice.call(document.querySelectorAll('.ph')), playing=false;
+  /* ---------- auto-play: sweep the calendar, pausing on key dates ---------- */
+  var phases=[].slice.call(document.querySelectorAll('.ph'));
   function lightPhases(k){ phases.forEach(function(p){ p.classList.toggle('lit', k>=p.dataset.from && k<=p.dataset.to); }); }
-  playBtn.addEventListener('click',function(){
-    if(playing) return; playing=true; playBtn.classList.add('running'); playLabel.textContent='Playing';
-    cells.forEach(function(c){ c.classList.remove('lit'); });
-    var step=reduced?0:150, i=0;
+  var KEY=['2026-11-05','2026-11-06','2026-11-09','2026-11-13','2026-11-16','2026-11-19','2026-11-23','2026-12-02','2026-12-04'];
+  var playTimer=null, playing=false;
+  function stopPlay(){ if(!playing) return; playing=false; clearTimeout(playTimer); note.setAttribute('aria-live','polite'); cells.forEach(function(c){ c.classList.remove('key'); }); }
+  function autoPlay(){
+    playing=true; note.setAttribute('aria-live','off');
+    var i=0, lastKey=cells.length-1;
+    for(var j=cells.length-1;j>=0;j--){ if(KEY.indexOf(cells[j].dataset.d)>-1){ lastKey=j; break; } }
+    function nextKeyFrom(n){ for(var j=n;j<=lastKey;j++){ if(KEY.indexOf(cells[j].dataset.d)>-1) return j; } return lastKey; }
+    var runStart=0;
     (function next(){
-      if(i>=cells.length){ playing=false; playBtn.classList.remove('running'); playLabel.textContent='Play it again'; lightPhases('2027-10-01'); return; }
-      var c=cells[i++]; c.classList.add('lit'); showDay(c.dataset.d); lightPhases(c.dataset.d);
-      setTimeout(next, step);
+      if(!playing) return;
+      var c=cells[i], k=c.dataset.d, isKey=KEY.indexOf(k)>-1;
+      cells.forEach(function(x){ x.classList.remove('key'); });
+      c.classList.add('lit'); if(isKey) c.classList.add('key');
+      showDay(k); lightPhases(k);
+      if(i>=lastKey){ playing=false; note.setAttribute('aria-live','polite'); return; }
+      var d;
+      if(isKey){ d=1900+400*Math.min(3,(byDay[k]||[]).length); runStart=i+1; }
+      else { var nk=nextKeyFrom(i+1), span=Math.max(1,nk-runStart), t=(i-runStart+1)/span; d=110+330*t*t; }   /* quick, then slowing into the next key date */
+      i++; playTimer=setTimeout(next,d);
     })();
-  });
+  }
+  cells.forEach(function(c){ c.addEventListener('pointerdown',stopPlay); c.addEventListener('keydown',stopPlay); });
+  if(reduced){ showDay('2026-11-09'); lightPhases('2026-11-09'); }
+  else if('IntersectionObserver' in window){   /* start when the calendar is on screen, so phones see it too */
+    var started=false, cio=new IntersectionObserver(function(es){ if(es[0].isIntersecting && !started){ started=true; cio.disconnect(); setTimeout(autoPlay,700); } },{threshold:.5}); cio.observe(cal);
+  } else setTimeout(autoPlay,900);
 
   /* ---------- who needs to act ---------- */
   var WHO=[
