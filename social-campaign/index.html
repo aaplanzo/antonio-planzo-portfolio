@@ -78,11 +78,11 @@ section + section{border-top:1px solid var(--hair)}
 @media(max-width:820px){.sec-head{grid-template-columns:1fr;gap:.2rem}section{padding:2.6rem 0}}
 
 /* ---------- hero ---------- */
-#top{background:var(--night);color:var(--cream);padding:6.4rem 0 0;min-height:100vh;display:flex;flex-direction:column;border-top:none}
+#top{background:var(--night);color:var(--cream);padding:5.9rem 0 0;min-height:100vh;display:flex;flex-direction:column;border-top:none}
 #top h1{color:var(--cream)}
 #top .label{color:var(--stone)}
-.hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;padding-top:1.6rem;padding-bottom:2.5rem}
-.hero>div:first-child{padding-top:1.4rem}
+.hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;padding-top:0;padding-bottom:2.5rem}
+.hero>div:first-child{padding-top:.9rem}
 .hero-sub{position:relative;color:var(--stone);font-size:1.12rem;max-width:34rem;margin-top:1.4rem}
 .hero-type{position:absolute;inset:0}
 .caret{display:inline-block;width:2px;height:1.05em;background:var(--flame);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
@@ -107,6 +107,10 @@ h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;t
 .season{border:1px solid var(--line);padding:1.3rem 1.3rem 1.1rem;background:rgba(247,246,243,.025)}
 .season-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
 .season-head .label{color:var(--stone)}
+.s-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.2vw,1.65rem);line-height:1.15;color:var(--cream);margin:0 0 .25rem;max-width:none;letter-spacing:-.01em}
+.count .num{display:inline-block;min-width:1.25em;text-align:right;transform-origin:50% 0;perspective:400px}
+.count .num.flip{animation:page .09s ease-in}
+@keyframes page{0%{transform:rotateX(0)}50%{transform:rotateX(-80deg);opacity:.35}100%{transform:rotateX(0);opacity:1}}
 .count{font-family:var(--mono);color:var(--cream);font-variant-numeric:tabular-nums;line-height:1.1;font-size:clamp(1.6rem,3.4vw,2.3rem)}
 .count small{display:block;font-size:.34em;color:var(--stone);margin-top:.3rem}
 .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:1.1rem 0 .3rem;font-family:var(--mono);font-size:.66rem;color:var(--stone);text-align:center}
@@ -337,6 +341,7 @@ body.a11y .a11y-panel{display:block}
 .a11y-close{position:absolute;top:.6rem;right:.6rem;background:none;border:1px solid var(--hair);font-family:var(--mono);font-size:.72rem;padding:.15rem .4rem;cursor:pointer}
 body.a11y h1,body.a11y h2,body.a11y h3,body.a11y h4{outline:1px dashed var(--flame);outline-offset:4px}
 body.a11y h1::before,body.a11y h2::before,body.a11y h3::before,body.a11y h4::before{font-family:var(--mono);font-size:.62rem;font-weight:500;font-style:normal;letter-spacing:0;background:var(--flame);color:var(--night);padding:.1rem .3rem;margin-right:.5rem;vertical-align:.4em}
+body.a11y .s-title::before{content:'H2'}
 body.a11y h1::before{content:'H1'}body.a11y h2::before{content:'H2'}body.a11y h3::before{content:'H3'}body.a11y h4::before{content:'H4'}
 body.a11y [role="img"]{outline:1px dashed var(--flame);outline-offset:3px}
 .alt-reveal{display:none;font-family:var(--mono);font-size:.74rem;line-height:1.5;color:var(--night);background:var(--flame);padding:.4rem .6rem;margin-top:.5rem}
@@ -383,7 +388,7 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
 
     <div class="season" role="group" aria-labelledby="seasonLbl">
       <div class="season-head">
-        <span class="label" id="seasonLbl">TRICARE Open Season, Nov. 9–Dec. 8, 2026</span>
+        <div><h2 class="s-title" id="seasonLbl">TRICARE Open Season</h2><span class="label">Nov. 9–Dec. 8, 2026</span></div>
         <span class="count" id="countdown" aria-live="polite">&nbsp;</span>
       </div>
       <div class="dow" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
@@ -868,8 +873,20 @@ Questions about your own coverage? Please don't post personal details here. Your
   var now=new Date(), today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   function days(a,b){ return Math.round((b-a)/864e5); }
   var cd=document.getElementById('countdown');
-  if(today<OPEN){ var n=days(today,OPEN); cd.innerHTML=n+(n===1?' day':' days')+'<small>until open season begins</small>'; }
-  else if(today<=CLOSE){ var n2=days(today,CLOSE)+1; cd.innerHTML=n2+(n2===1?' day':' days')+'<small>left, including today</small>'; }
+  function setCount(n,unitOne,unitMany,sub){
+    cd.setAttribute('aria-label', n+' '+(n===1?unitOne:unitMany)+' '+sub);
+    cd.innerHTML='<span class="num" aria-hidden="true">'+n+'</span><span aria-hidden="true">'+(n===1?unitOne.replace('day',' day'):unitMany.replace('days',' days'))+'</span><small aria-hidden="true">'+sub+'</small>';
+    var el=cd.querySelector('.num'); if(reduced) return;
+    var from=Math.min(n+18,99), cur=from, steps=from-n, i=0;
+    el.textContent=from;
+    (function tick(){
+      if(cur<=n){ el.textContent=n; return; }
+      cur--; i++; el.textContent=cur; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip');
+      setTimeout(tick, 28+Math.pow(i/steps,3)*170);
+    })();
+  }
+  if(today<OPEN){ setCount(days(today,OPEN),'day','days','until open season begins'); }
+  else if(today<=CLOSE){ setCount(days(today,CLOSE)+1,'day','days','left, including today'); }
   else if(today<=FED){ cd.innerHTML='Closed<small>Dental and vision open through Dec. 14</small>'; }
   else { cd.innerHTML='Closed<small>Changes take effect Jan. 1, 2027</small>'; }
 
