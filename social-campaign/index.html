@@ -107,10 +107,17 @@ h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;t
 .season{border:1px solid var(--line);padding:1.3rem 1.3rem 1.1rem;background:rgba(247,246,243,.025)}
 .season-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
 .season-head .label{color:var(--stone)}
-.s-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.2vw,1.65rem);line-height:1.15;color:var(--cream);margin:0 0 .25rem;max-width:none;letter-spacing:-.01em}
-.count .num{display:inline-block;min-width:1.25em;text-align:right;transform-origin:50% 0;perspective:400px}
-.count .num.flip{animation:page .09s ease-in}
-@keyframes page{0%{transform:rotateX(0)}50%{transform:rotateX(-80deg);opacity:.35}100%{transform:rotateX(0);opacity:1}}
+.s-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.2vw,1.65rem);line-height:1.1;color:var(--cream);margin:0;max-width:none;letter-spacing:-.01em}
+.s-date{display:block;margin-top:0;line-height:1.3}
+/* countdown: a tear-off calendar flips its pages, then the calendar fades and the number stays */
+.calx{position:relative;display:inline-block;padding:.2em .2em .05em;margin-right:.18em;perspective:500px}
+.calx .frame{position:absolute;inset:0;border:1.5px solid var(--cream);border-radius:.12em;transition:opacity .6s ease}
+.calx .band{position:absolute;left:0;right:0;top:0;height:.15em;background:var(--flame);border-radius:.1em .1em 0 0;transition:opacity .6s ease}
+.calx .ring{position:absolute;top:-.1em;width:.08em;height:.2em;background:var(--cream);border-radius:.04em;transition:opacity .6s ease}
+.calx .r1{left:27%}.calx .r2{right:27%}
+.calx .num{position:relative;display:block;min-width:1.3em;text-align:center}
+.calx .leaf{position:absolute;left:.2em;right:.2em;top:.2em;bottom:.05em;background:#191918;text-align:center;transform-origin:50% 0;backface-visibility:hidden;box-shadow:0 1px 0 rgba(247,246,243,.12)}
+.calx.done .frame,.calx.done .band,.calx.done .ring{opacity:0}
 .count{font-family:var(--mono);color:var(--cream);font-variant-numeric:tabular-nums;line-height:1.1;font-size:clamp(1.6rem,3.4vw,2.3rem)}
 .count small{display:block;font-size:.34em;color:var(--stone);margin-top:.3rem}
 .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:1.1rem 0 .3rem;font-family:var(--mono);font-size:.66rem;color:var(--stone);text-align:center}
@@ -388,7 +395,7 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
 
     <div class="season" role="group" aria-labelledby="seasonLbl">
       <div class="season-head">
-        <div><h2 class="s-title" id="seasonLbl">TRICARE Open Season</h2><span class="label">Nov. 9–Dec. 8, 2026</span></div>
+        <div><h2 class="s-title" id="seasonLbl">TRICARE Open Season</h2><span class="label s-date">November–December 2026</span></div>
         <span class="count" id="countdown" aria-live="polite">&nbsp;</span>
       </div>
       <div class="dow" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
@@ -874,16 +881,25 @@ Questions about your own coverage? Please don't post personal details here. Your
   function days(a,b){ return Math.round((b-a)/864e5); }
   var cd=document.getElementById('countdown');
   function setCount(n,unitOne,unitMany,sub){
-    cd.setAttribute('aria-label', n+' '+(n===1?unitOne:unitMany)+' '+sub);
-    cd.innerHTML='<span class="num" aria-hidden="true">'+n+'</span><span aria-hidden="true">'+(n===1?unitOne.replace('day',' day'):unitMany.replace('days',' days'))+'</span><small aria-hidden="true">'+sub+'</small>';
-    var el=cd.querySelector('.num'); if(reduced) return;
-    var from=Math.min(n+18,99), cur=from, steps=from-n, i=0;
-    el.textContent=from;
-    (function tick(){
-      if(cur<=n){ el.textContent=n; return; }
-      cur--; i++; el.textContent=cur; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip');
-      setTimeout(tick, 28+Math.pow(i/steps,3)*170);
-    })();
+    var unit=n===1?unitOne:unitMany;
+    cd.setAttribute('aria-label', n+' '+unit+' '+sub);
+    if(reduced){ cd.innerHTML='<span aria-hidden="true">'+n+' '+unit+'</span><small aria-hidden="true">'+sub+'</small>'; return; }
+    cd.innerHTML='<span class="calx" aria-hidden="true"><span class="frame"></span><span class="band"></span><span class="ring r1"></span><span class="ring r2"></span><span class="num"></span></span><span aria-hidden="true">'+unit+'</span><small aria-hidden="true">'+sub+'</small>';
+    var box=cd.querySelector('.calx'), num=box.querySelector('.num');
+    var from=Math.max(n,Math.min(n+18,30)), total=from-n, cur=from;
+    num.textContent=from;
+    if(!total || !box.animate){ num.textContent=n; setTimeout(function(){ box.classList.add('done'); },500); return; }
+    function dur(i){ var t=i/total; return 70+150*Math.pow(t,2.2); }   /* quick at first, settling on the last pages */
+    var i=0;
+    function flip(){
+      if(cur<=n){ setTimeout(function(){ box.classList.add('done'); },450); return; }
+      var leaf=document.createElement('span'); leaf.className='leaf'; leaf.textContent=cur; box.appendChild(leaf);
+      cur--; num.textContent=cur; i++;
+      var d=dur(i);
+      leaf.animate([{transform:'rotateX(0deg)',opacity:1,filter:'brightness(1)'},{transform:'rotateX(-105deg)',opacity:0,filter:'brightness(.55)'}],{duration:d*1.6,easing:'cubic-bezier(.45,0,.75,.35)',fill:'forwards'}).onfinish=function(){ leaf.remove(); };
+      setTimeout(flip,d);
+    }
+    setTimeout(flip,350);
   }
   if(today<OPEN){ setCount(days(today,OPEN),'day','days','until open season begins'); }
   else if(today<=CLOSE){ setCount(days(today,CLOSE)+1,'day','days','left, including today'); }
