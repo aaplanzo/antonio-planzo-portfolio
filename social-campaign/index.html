@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light" />
-<title>Open Season Social Campaign | Antonio Planzo</title>
-<meta name="description" content="A social media work sample by Antonio Planzo: a 30-day, multi-platform campaign plan for TRICARE Open Season 2026, with an editorial calendar, platform-native posts, a measurement plan and stakeholder coordination." />
-<meta property="og:title" content="Open season, without the fine print" />
-<meta property="og:description" content="A multi-platform social media campaign plan for TRICARE Open Season 2026. A work sample by Antonio Planzo." />
+<title>AUTOWARCOM Social Campaign | Antonio Planzo</title>
+<meta name="description" content="A social media work sample by Antonio Planzo: a five-week, department-level campaign explaining the Autonomous Warfare Command, with an editorial calendar, platform-native posts, a rapid response playbook, a measurement plan and stakeholder coordination." />
+<meta property="og:title" content="A new command, explained before it exists" />
+<meta property="og:description" content="A multi-platform social media campaign explaining the Autonomous Warfare Command. A work sample by Antonio Planzo." />
 <meta property="og:type" content="article" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -115,7 +115,7 @@ h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;t
 .calx .band{position:absolute;left:0;right:0;top:0;height:.15em;background:var(--flame);border-radius:.1em .1em 0 0;transition:opacity .6s ease}
 .calx .ring{position:absolute;top:-.1em;width:.08em;height:.2em;background:var(--cream);border-radius:.04em;transition:opacity .6s ease}
 .calx .r1{left:27%}.calx .r2{right:27%}
-.calx .num{position:relative;display:block;min-width:1.3em;text-align:center}
+.calx .num{position:relative;display:block;min-width:1.95em;text-align:center}
 .calx .leaf{position:absolute;left:.2em;right:.2em;top:.2em;bottom:.05em;background:linear-gradient(#23231F,#1B1B19);color:var(--cream);text-align:center;transform-origin:50% 0;backface-visibility:hidden;border-radius:0 0 .06em .06em;box-shadow:inset 0 -1px 0 rgba(247,246,243,.28),0 .05em .12em rgba(0,0,0,.5);z-index:2}
 .calx .num{transition:none}
 .calx.done .frame,.calx.done .band,.calx.done .ring{opacity:0}
@@ -142,7 +142,8 @@ h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;t
 .day-note ul{list-style:none;margin-top:.3rem}
 .day-note li{padding:.15rem 0}
 .day-note li em{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--flame);margin-right:.4rem}
-@media(max-width:940px){.hero{grid-template-columns:1fr;gap:2rem}#top{padding-top:5rem}}
+@media(max-width:940px){.hero{grid-template-columns:minmax(0,1fr);gap:2rem}#top{padding-top:5rem}}
+.hero>*{min-width:0}.cal{grid-template-columns:repeat(7,minmax(0,1fr))}
 @media(max-width:420px){.day{font-size:.66rem;padding:.15rem .2rem;min-height:2rem}.day .mk i{width:5px;height:5px}}
 
 /* phase strip */
@@ -212,7 +213,7 @@ h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;t
 .notes ul{list-style:none}
 .notes li{margin-bottom:.7rem;padding-left:1rem;position:relative}
 .notes li::before{content:'';position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--flame-ink)}
-@media(max-width:980px){.panel{grid-template-columns:1fr;gap:2rem}.notes{border-left:none;border-top:1px solid var(--hair);padding:1.4rem 0 0}}
+@media(max-width:980px){.panel{grid-template-columns:minmax(0,1fr);gap:2rem}.notes{border-left:none;border-top:1px solid var(--hair);padding:1.4rem 0 0}}
 .toggle-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
 .chip{font-family:var(--mono);font-size:.74rem;padding:.45rem .8rem;border:1px solid var(--hair);background:var(--paper);color:var(--graphite);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem}
 .chip:hover{border-color:var(--ink);color:var(--ink)}
@@ -267,7 +268,8 @@ i.p-F{background:var(--ink)}i.p-I{background:var(--flame)}i.p-X{background:#8C85
 .post .stats .g{color:var(--flame-ink)}
 .over{color:#B42318}
 .post.wide{grid-column:1/-1}
-@media(max-width:760px){.posts{grid-template-columns:1fr}}
+@media(max-width:760px){.posts{grid-template-columns:minmax(0,1fr)}}
+.posts>*,.panel>*{min-width:0}
 .carousel{position:relative}
 .slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:.8rem;padding-bottom:.6rem;scrollbar-width:thin}
 .slide{flex:0 0 min(17rem,78%);aspect-ratio:4/5;scroll-snap-align:start;background:var(--night);color:var(--cream);padding:1.2rem 1.2rem 1rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
@@ -356,6 +358,33 @@ body.a11y [role="img"]{outline:1px dashed var(--flame);outline-offset:3px}
 body.a11y .alt-reveal{display:block}
 body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outline-offset:-1px}
 
+.ku{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2.4rem 0 2.6rem;border:1px solid var(--hair)}
+.ku-col{padding:1.3rem 1.4rem 1.2rem}
+.ku-col+.ku-col{border-left:1px solid var(--hair);background:var(--panel)}
+.ku h3{font-family:var(--mono);font-size:.78rem;font-weight:500;margin:0 0 .7rem;color:var(--flame-ink)}
+.ku-col.no h3{color:var(--graphite)}
+.ku ul{margin:0;padding-left:1.1rem}
+.ku li{margin:.35rem 0;line-height:1.45}
+@media(max-width:700px){.ku{grid-template-columns:1fr}.ku-col+.ku-col{border-left:none;border-top:1px solid var(--hair)}}
+.mf{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}
+.mf-card{background:var(--night);color:var(--cream);padding:1rem .95rem;display:flex;flex-direction:column;gap:.7rem;min-height:19rem}
+.mf-card .n{font-family:var(--mono);font-size:.68rem;color:var(--stone)}
+.mf-card .claim{font-family:var(--serif);font-size:1.12rem;line-height:1.25;flex:1}
+.mf-card .btns{display:flex;gap:.4rem}
+.mf-card .btns button{flex:1;font-family:var(--mono);font-size:.74rem;padding:.5rem .3rem;background:transparent;color:var(--cream);border:1px solid var(--line);cursor:pointer}
+.mf-card .btns button:hover,.mf-card .btns button:focus-visible{border-color:var(--flame)}
+.mf-card .btns button[aria-pressed="true"]{background:var(--cream);color:var(--night)}
+.mf-card .res{font-size:.84rem;line-height:1.4;color:var(--cream);min-height:0}
+.mf-card .res b{font-family:var(--mono);font-weight:500;color:var(--flame);display:block;font-size:.74rem;margin-bottom:.2rem}
+@media(max-width:900px){.mf{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.mf{grid-template-columns:1fr}.mf-card{aspect-ratio:auto;min-height:0}}
+.reply.esc .q b{color:var(--flame-ink)}
+.hold-post{font-family:var(--mono);font-size:.86rem;line-height:1.55;background:var(--panel);border-left:3px solid var(--flame);padding:.8rem 1rem}
+.rr-list{margin:.2rem 0 0;padding:0;list-style:none}
+.rr-list li{display:grid;grid-template-columns:6.5rem 1fr;gap:.6rem;padding:.4rem 0;border-top:1px solid var(--hair);font-size:.92rem;line-height:1.45}
+.rr-list li:first-child{border-top:none}
+@media(max-width:480px){.rr-list li{grid-template-columns:4.6rem 1fr}}
+.rr-list em{font-style:normal;font-family:var(--mono);font-size:.74rem;color:var(--mute);padding-top:.15rem}
 @media (prefers-reduced-motion:reduce){
   .caret,.btn.running .dot{animation:none}
   h1.flip.go .tw{animation:none}
@@ -384,10 +413,10 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
 <section id="top">
   <div class="wrap hero">
     <div>
-      <p class="label">Social media work sample, multi-platform campaign</p>
-      <h1 class="flip" style="margin-top:1rem">Open season, without the fine print.</h1>
-      <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">A 30-day social media campaign for TRICARE Open Season 2026: who needs to act, what each channel posts and when, how the results get measured and who signs off.</span><span class="hero-type" aria-label="A 30-day social media campaign for TRICARE Open Season 2026: who needs to act, what each channel posts and when, how the results get measured and who signs off."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
-      <p class="byline">By <b>Antonio Planzo</b><br/>Facts from TRICARE.mil open season guidance, updated Oct. 27, 2026</p>
+      <p class="label">Social media work sample, department-level campaign</p>
+      <h1 class="flip" style="margin-top:1rem">A new command, explained before it exists.</h1>
+      <p class="hero-sub"><span aria-hidden="true" style="visibility:hidden">A five-week social media campaign explaining the Autonomous Warfare Command: what's decided, what isn't, what each channel posts and when, how to respond when news breaks and who signs off.</span><span class="hero-type" aria-label="A five-week social media campaign explaining the Autonomous Warfare Command: what's decided, what isn't, what each channel posts and when, how to respond when news breaks and who signs off."><span id="heroTyped"></span><span class="caret" id="heroCaret"></span></span></p>
+      <p class="byline">By <b>Antonio Planzo</b><br/>Facts from department announcements and defense press coverage, Sept. 30–Oct. 22, 2026</p>
       <div class="actions">
         <button class="btn" id="playBtn" type="button"><span class="dot"></span><span id="playLabel">Play the campaign</span></button>
         <a class="btn ghost" href="#kit">Open the campaign</a>
@@ -396,7 +425,7 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
 
     <div class="season" role="group" aria-labelledby="seasonLbl">
       <div class="season-head">
-        <div><h2 class="s-title" id="seasonLbl">TRICARE Open Season</h2><span class="label s-date">November–December 2026</span></div>
+        <div><h2 class="s-title" id="seasonLbl">AUTOWARCOM, explained</h2><span class="label s-date">November–December 2026</span></div>
         <span class="count" id="countdown" aria-live="polite">&nbsp;</span>
       </div>
       <div class="dow" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
@@ -406,8 +435,7 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
         <span><i style="background:#F0973B"></i>Instagram</span>
         <span><i style="background:#8C8577;border-radius:50%"></i>X</span>
         <span><i style="border:1px solid #F0973B"></i>YouTube</span>
-        <span><i style="border:1px dashed #B9B5AC"></i>Report</span>
-        <span><i style="border:1px dashed #B9B5AC;width:14px"></i>Dental and vision only</span>
+        <span><i style="border:1px dashed #B9B5AC"></i>Internal</span>
       </div>
       <div class="day-note" id="dayNote" aria-live="polite"></div>
     </div>
@@ -415,17 +443,17 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
 
   <div class="phases" role="group" aria-label="Campaign phases">
     <div class="phases-inner">
-      <div class="ph" data-from="2026-11-02" data-to="2026-11-08"><div class="t">Nov. 2–8</div><div class="n">Prep and teasers</div></div>
+      <div class="ph" data-from="2026-11-02" data-to="2026-11-06"><div class="t">Nov. 2–6</div><div class="n">Review and toolkit</div></div>
       <div class="ph" data-from="2026-11-09" data-to="2026-11-09"><div class="t">Nov. 9</div><div class="n">Launch, all channels</div></div>
-      <div class="ph" data-from="2026-11-10" data-to="2026-11-29"><div class="t">Nov. 10–29</div><div class="n">Explain and answer</div></div>
-      <div class="ph" data-from="2026-11-30" data-to="2026-12-08"><div class="t">Nov. 30–Dec. 8</div><div class="n">Final push</div></div>
-      <div class="ph" data-from="2026-12-09" data-to="2026-12-14"><div class="t">Dec. 9–14</div><div class="n">Dental and vision close</div></div>
-      <div class="ph" data-from="2027-01-01" data-to="2027-01-01"><div class="t">Jan. 1, 2027</div><div class="n">Changes take effect</div></div>
+      <div class="ph" data-from="2026-11-10" data-to="2026-11-22"><div class="t">Nov. 10–20</div><div class="n">What, why and how</div></div>
+      <div class="ph" data-from="2026-11-23" data-to="2026-11-29"><div class="t">Nov. 23–27</div><div class="n">Your questions</div></div>
+      <div class="ph" data-from="2026-11-30" data-to="2026-12-06"><div class="t">Nov. 30–Dec. 4</div><div class="n">Live Q&amp;A week</div></div>
+      <div class="ph" data-from="2026-12-07" data-to="2027-10-01"><div class="t">To Oct. 1, 2027</div><div class="n">Milestone updates</div></div>
     </div>
   </div>
 </section>
 
-<div class="notice" role="note"><p><b>Portfolio work sample.</b> Not an official Department of War, War Media Activity or TRICARE product, and not affiliated with them. Facts come from TRICARE.mil as published Oct. 27, 2026; account names, links and approvals are placeholders.</p></div>
+<div class="notice" role="note"><p><b>Portfolio work sample.</b> Not an official Department of War or War Media Activity product, and not affiliated with them. Facts come from department announcements and press coverage published Sept. 30–Oct. 22, 2026; account names, links, speakers and approvals are placeholders.</p></div>
 
 <!-- ============ BRIEF ============ -->
 <section id="brief">
@@ -433,29 +461,52 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
     <div class="sec-head">
       <span class="sec-num">The brief</span>
       <div>
-        <h2>Most people should do nothing. A few can't afford to.</h2>
+        <h2>Big news, few details. Say both out loud.</h2>
         <div class="prose">
-          <p>TRICARE Open Season runs <strong>Nov. 9 through Dec. 8, 2026</strong>, and any change takes effect Jan. 1, 2027. Beneficiaries who are enrolled and happy with their plan keep it automatically. Those who want to switch plans, or move between individual and family enrollment, have 30 days.</p>
-          <p>The people the campaign most needs to reach are the ones who are eligible but not enrolled. If they do nothing, they can get care only at a military hospital or clinic when space is available. Outside open season, changes require a qualifying life event.</p>
-          <p>So the campaign has two jobs: get the right people to act, and tell everyone else they can relax.</p>
+          <p>On <strong>Sept. 30, 2026</strong>, at Marine Corps Base Quantico, Secretary of War Pete Hegseth announced the <strong>Autonomous Warfare Command</strong>, or AUTOWARCOM: a planned four-star command to develop, buy and field drones, robots and other autonomous systems across the joint force. The target date is <strong>Oct. 1, 2027</strong>, and Congress has to pass a law to create it. Until then, Project Agincourt is laying the groundwork.</p>
+          <p>Interest is high and details are thin. Nobody has been named to lead it, and its headquarters and budget haven't been announced. That gap fills with speculation, hype and fear unless the department fills it first.</p>
+          <p>So the campaign has one rule: explain what's decided in plain language, and say plainly what isn't decided yet.</p>
         </div>
+      </div>
+    </div>
+
+    <div class="ku">
+      <div class="ku-col yes">
+        <h3>Decided, as announced</h3>
+        <ul>
+          <li>A four-star, functional combatant command, organized around a mission rather than a region</li>
+          <li>Scope: air, land, sea, undersea and space, plus software, sensors and communications</li>
+          <li>Competitions, exercises and combat performance decide which systems advance</li>
+          <li>New military specialties in each military department</li>
+          <li>Target date of Oct. 1, 2027, pending legislation</li>
+        </ul>
+      </div>
+      <div class="ku-col no">
+        <h3>Not decided yet</h3>
+        <ul>
+          <li>Who will lead it</li>
+          <li>Where it will be based</li>
+          <li>Its budget and final authorities</li>
+          <li>Details of the new specialties</li>
+          <li>Technical standards and acquisition priorities</li>
+        </ul>
       </div>
     </div>
 
     <div class="who">
       <div>
-        <h3 id="whoLbl">Who needs to act? Pick a situation.</h3>
+        <h3 id="whoLbl">Who's asking? Pick an audience.</h3>
         <div class="who-list" role="radiogroup" aria-labelledby="whoLbl" id="whoList"></div>
       </div>
       <div class="who-card" id="whoCard" aria-live="polite"></div>
     </div>
-    <p class="note" style="font-size:.88rem;color:var(--graphite);margin-top:1rem;max-width:var(--measure)">This sorter is the campaign's core idea: one question, six answers. The same structure becomes the Instagram carousel and the YouTube explainer.</p>
+    <p class="note" style="font-size:.88rem;color:var(--graphite);margin-top:1rem;max-width:var(--measure)">Same facts, six audiences. Each answer sets what that audience hears first and where its questions go.</p>
 
     <div class="facts">
-      <div><div class="v">Nov. 9–Dec. 8</div><div class="k">TRICARE Open Season</div></div>
-      <div><div class="v">Jan. 1, 2027</div><div class="k">Changes take effect</div></div>
-      <div><div class="v">Nov. 9–Dec. 14</div><div class="k">Dental and vision (FEDVIP)</div></div>
-      <div><div class="v">milConnect</div><div class="k">Online enrollment; phone and mail also accepted</div></div>
+      <div><div class="v">Sept. 30, 2026</div><div class="k">Announced at Marine Corps Base Quantico</div></div>
+      <div><div class="v">Oct. 1, 2027</div><div class="k">Target date; Congress must act first</div></div>
+      <div><div class="v">Four-star</div><div class="k">Functional combatant command</div></div>
+      <div><div class="v">Project Agincourt</div><div class="k">Lays the groundwork until then</div></div>
     </div>
   </div>
 </section>
@@ -467,7 +518,7 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
       <span class="sec-num">The campaign</span>
       <div>
         <h2>Four channels, one set of facts.</h2>
-        <div class="prose"><p>A plan a department-level social team could run: the strategy, a day-by-day calendar, the posts themselves, how success gets measured, which new formats to try and how it all gets coordinated and approved.</p></div>
+        <div class="prose"><p>A plan a department-level social team could run: the strategy, a day-by-day calendar, the posts themselves, a playbook for when news breaks, how success gets measured, which new formats to try and how it all gets coordinated and approved.</p></div>
       </div>
     </div>
 
@@ -476,57 +527,66 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
       <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true" tabindex="0"><span class="k">1</span>Campaign plan</button>
       <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1"><span class="k">2</span>Editorial calendar</button>
       <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span class="k">3</span>Posts</button>
-      <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="k">4</span>Measurement</button>
-      <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="k">5</span>New tools</button>
-      <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><span class="k">6</span>Coordination</button>
+      <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="k">4</span>Rapid response</button>
+      <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="k">5</span>Measurement</button>
+      <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><span class="k">6</span>New tools</button>
+      <button class="tab" role="tab" id="t6" aria-controls="p6" aria-selected="false" tabindex="-1"><span class="k">7</span>Coordination</button>
     </div>
 
     <!-- 1 plan -->
     <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0" tabindex="0">
       <article class="sheet" data-stamp="Sample">
-        <p class="kicker">Campaign plan, TRICARE Open Season 2026</p>
-        <h3 class="hl">Get eligible, unenrolled beneficiaries enrolled by Dec. 8, without alarming everyone else</h3>
+        <p class="kicker">Campaign plan, Autonomous Warfare Command</p>
+        <h3 class="hl">Make the department the clearest source on AUTOWARCOM before others define it</h3>
         <h4>Objective</h4>
-        <p>By Dec. 8, every eligible beneficiary who needs to act knows how, and everyone who doesn't knows they can keep their coverage as is.</p>
+        <p>By Dec. 4, the people most likely to ask about AUTOWARCOM can say what it is, why the department is creating it and when, and they know where official updates will come from as decisions are made.</p>
         <h4>Audiences, by priority</h4>
         <div class="tscroll"><table>
           <thead><tr><th>Audience</th><th>What they need to hear</th><th>Priority</th></tr></thead>
           <tbody>
-            <tr><td>Eligible but not enrolled</td><td>Enroll by Dec. 8, or care is limited to military hospitals and clinics when space is available.</td><td><span class="pri">1</span></td></tr>
-            <tr><td>Enrolled and considering a change</td><td>You can switch plans, or between individual and family enrollment, until Dec. 8. Compare first.</td><td><span class="pri">2</span></td></tr>
-            <tr><td>Enrolled and satisfied</td><td>Do nothing. Coverage continues in 2027.</td><td><span class="pri">3</span></td></tr>
-            <tr><td>Not covered by open season</td><td>Active-duty members, TRICARE For Life, TRICARE Reserve Select, Retired Reserve and Young Adult: this doesn't apply to you.</td><td><span class="pri">4</span></td></tr>
-            <tr><td>Amplifiers</td><td>Service and installation public affairs, family readiness programs and military-connected organizations get a ready-to-post toolkit.</td><td><span class="pri">Toolkit</span></td></tr>
+            <tr><td>Service members</td><td>New specialties are coming in each military department. Details aren't out yet; your service will announce them.</td><td><span class="pri">1</span></td></tr>
+            <tr><td>General public</td><td>What the command is, why it matters, and that it doesn't exist yet.</td><td><span class="pri">2</span></td></tr>
+            <tr><td>Defense industry, including new entrants</td><td>Units will test systems with the companies that build them. Performance, not promises, decides what advances.</td><td><span class="pri">3</span></td></tr>
+            <tr><td>Military families</td><td>Nothing changes for you today. Watch your service's channels for job and assignment news.</td><td><span class="pri">4</span></td></tr>
+            <tr><td>Allies and partners</td><td>The command supports regional combatant commanders, with solutions fitted to each theater.</td><td><span class="pri">5</span></td></tr>
+            <tr><td>Amplifiers</td><td>Military department, Joint Staff and combatant command public affairs get a ready-to-post toolkit.</td><td><span class="pri">Toolkit</span></td></tr>
           </tbody>
         </table></div>
         <h4>Key messages</h4>
         <ol class="msgs">
-          <li><b>Happy with your plan? Do nothing.</b><span>Coverage continues automatically in 2027 if you're still eligible.</span></li>
-          <li><b>Want a change? Make it by Dec. 8.</b><span>Switch plans or enrollment type on milConnect, by phone or by mail. Changes start Jan. 1.</span></li>
-          <li><b>Eligible but not enrolled? This is your window.</b><span>Without a plan, care is limited to military hospitals and clinics when space is available.</span></li>
+          <li><b>What: one command for autonomous warfare.</b><span>A four-star command to scale drones, robots and other autonomous systems across the joint force.</span></li>
+          <li><b>Why: cheap and many can beat expensive and few.</b><span>Spending is judged by whether it lowers the cost of defeating a target or the risk to service members.</span></li>
+          <li><b>When: target date Oct. 1, 2027.</b><span>Congress must act first. Project Agincourt lays the groundwork now, and we'll share details as they're decided.</span></li>
         </ol>
+        <h4>Inform, educate, entertain</h4>
+        <div class="tscroll"><table>
+          <thead><tr><th>Goal</th><th>Content</th></tr></thead>
+          <tbody>
+            <tr><td>Inform</td><td>Launch posts, the "what we know, what we don't" thread and milestone updates</td></tr>
+            <tr><td>Educate</td><td>60-second explainer, five-slide carousel, how systems earn their place</td></tr>
+            <tr><td>Entertain</td><td>"Why Agincourt?" history short and a myth-or-fact Stories quiz, each ending on a current fact</td></tr>
+          </tbody>
+        </table></div>
         <h4>Channel roles</h4>
         <div class="tscroll"><table>
           <thead><tr><th>Channel</th><th>Job in this campaign</th><th>Lead format</th></tr></thead>
           <tbody>
-            <tr><td>Facebook</td><td>Reach families and spouses; answer questions in comments</td><td>Plain-language posts, live Q&amp;A</td></tr>
-            <tr><td>Instagram</td><td>Make the decision visual and saveable</td><td>"Which one are you?" carousel, Stories countdown</td></tr>
-            <tr><td>X</td><td>Dates, deadlines and fast replies</td><td>Short posts, one launch thread</td></tr>
-            <tr><td>YouTube</td><td>Explain once, reuse everywhere</td><td>60-second explainer, cut into Shorts</td></tr>
+            <tr><td>X</td><td>First with official news; corrects false claims fast</td><td>Short posts, one launch thread</td></tr>
+            <tr><td>Facebook</td><td>Reach families and veterans; answer questions in comments</td><td>Plain-language posts, live Q&amp;A simulcast</td></tr>
+            <tr><td>Instagram</td><td>Reach younger service members and potential recruits</td><td>Carousel, Reels, Stories quiz</td></tr>
+            <tr><td>YouTube</td><td>Explain once, reuse everywhere</td><td>60-second explainer, history short, live Q&amp;A</td></tr>
           </tbody>
         </table></div>
-        <h4>Beyond social</h4>
-        <p>The same three messages and dates run in the department's broader program: radio and TV spots for overseas audiences, Service news stories and installation newspapers, and a toolkit for public affairs offices so local posts match the department's.</p>
         <h4>Calls to action</h4>
-        <p>Every post points to one of two places: the TRICARE Plan Finder to compare plans, or milConnect to enroll or make a change. Individual questions go to the regional contractor, never to a comment thread.</p>
+        <p>Every post points to one official page with the announcement, the Project Agincourt letter and updates. Industry questions go to the project's official contact, job questions go to each service, and media questions go to department press operations.</p>
       </article>
       <aside class="notes" aria-label="Notes on the campaign plan">
         <h3>Why it's built this way</h3>
-        <dl class="meta"><dt>Window</dt><dd>Nov. 2–Dec. 14, 2026</dd><dt>Channels</dt><dd>Facebook, Instagram, X, YouTube</dd><dt>Approver</dt><dd>Department public affairs</dd></dl>
+        <dl class="meta"><dt>Window</dt><dd>Nov. 2–Dec. 4, 2026, then milestone updates</dd><dt>Channels</dt><dd>Facebook, Instagram, X, YouTube</dd><dt>Approver</dt><dd>Office of the Secretary of War, Public Affairs</dd></dl>
         <ul>
-          <li><b>Prioritize by consequence.</b> Most people need no action; the unenrolled group has the most to lose.</li>
-          <li><b>"Do nothing" is a message.</b> Telling satisfied beneficiaries they're fine prevents unneeded changes and calls.</li>
-          <li><b>One fact set.</b> Every channel, toolkit and broadcast spot uses the same dates and wording.</li>
+          <li><b>"Not decided yet" is a message.</b> Saying it first leaves less room for rumors.</li>
+          <li><b>Service members first.</b> They have the most at stake: new jobs and new units.</li>
+          <li><b>Entertainment carries facts.</b> The history short and quiz end on something true and current.</li>
         </ul>
       </aside>
     </div>
@@ -550,10 +610,10 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
         <h3>Reading the calendar</h3>
         <dl class="meta"><dt>Posts</dt><dd id="ecCount">—</dd><dt>Reviews</dt><dd>Every Monday</dd></dl>
         <ul>
-          <li><b>Front-load and back-load.</b> Launch week and the final week carry the most posts; the middle answers questions.</li>
+          <li><b>Launch big, then answer.</b> Launch day runs on all four channels; the weeks after answer what people ask.</li>
           <li><b>Hold days are deliberate.</b> Veterans Day and Thanksgiving belong to other content.</li>
-          <li><b>One video, many cuts.</b> The YouTube explainer becomes Shorts, Reels and Facebook video.</li>
-          <li><b>Monday reviews</b> can move, cut or add posts based on the measurement plan.</li>
+          <li><b>One video, many cuts.</b> The explainer becomes Shorts, Reels and Facebook video.</li>
+          <li><b>Breaking news overrides the calendar.</b> The rapid response playbook takes over when a milestone is announced.</li>
         </ul>
       </aside>
     </div>
@@ -562,71 +622,87 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
     <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" tabindex="0" hidden>
       <div>
         <div class="posts">
-          <div class="post"><div class="ch"><b>X, launch</b><span>Nov. 9</span></div><p class="body" data-max="280">TRICARE Open Season is open through Dec. 8.
+          <div class="post"><div class="ch"><b>X, launch</b><span>Nov. 9</span></div><p class="body" data-max="280">The Department of War is building a new four-star command for drones, robots and other autonomous systems: the Autonomous Warfare Command.
 
-Happy with your plan? You don't need to do anything.
+Target date: Oct. 1, 2027. Congress has to act first.
 
-Want to switch plans or enroll? Make the change by Dec. 8. It takes effect Jan. 1.
+What's decided, and what isn't yet: [link]</p></div>
+          <div class="post"><div class="ch"><b>X, thread opener</b><span>Nov. 10</span></div><p class="body" data-max="280">AUTOWARCOM: what's decided, and what isn't.
 
-Compare plans: [link]</p></div>
-          <div class="post"><div class="ch"><b>X, last day</b><span>Dec. 8</span></div><p class="body" data-max="280">Last day: TRICARE Open Season ends today, Dec. 8.
+Decided: a four-star command, new specialties in each military department and a target date of Oct. 1, 2027.
 
-Eligible but not enrolled? Without a plan, you can get care only at a military hospital or clinic when space is available.
+Not decided yet: who leads it, where it's based and its budget.
 
-Enroll on milConnect: [link]</p></div>
-          <div class="post wide"><div class="ch"><b>Facebook, launch</b><span>Nov. 9</span></div><p class="body">TRICARE Open Season starts today and runs through Dec. 8. Here's the short version:
+[link]</p></div>
+          <div class="post wide"><div class="ch"><b>Facebook, launch</b><span>Nov. 9</span></div><p class="body">The Department of War is building a new command for autonomous and robotic systems: drones in the air, uncrewed vehicles on land and autonomous vessels at sea. Here's the short version:
 
-• Already in a plan and happy with it? Do nothing. Your coverage continues in 2027.
-• Want to change plans, or switch between individual and family enrollment? Do it by Dec. 8.
-• Eligible but not enrolled? This is your window. Without a plan, you can get care only at military hospitals and clinics when space is available.
+• What: The Autonomous Warfare Command, a four-star command that would scale these systems across the joint force.
+• Why: Cheap, precise weapons built in large numbers can threaten expensive aircraft, ships and vehicles. The goal is to lower the cost of defeating a target and the risk to service members.
+• When: The target date is Oct. 1, 2027. Congress must pass a law to create the command. Until then, Project Agincourt is laying the groundwork.
 
-Changes take effect Jan. 1. Not sure which plan fits? Try the TRICARE Plan Finder: [link]
-
-Questions about your own coverage? Please don't post personal details here. Your regional contractor can help: [link]</p></div>
+Who will lead it, where it will be based and its budget haven't been decided. We'll share those details here when they're announced: [link]</p></div>
 
           <div class="post wide carousel">
-            <div class="ch"><b>Instagram carousel, "Which one are you?"</b><span>Nov. 9 · 5 slides, 4:5</span><button class="linkbtn" type="button" id="altBtn" aria-expanded="false" aria-controls="altText">Show alt text</button></div>
-            <div class="slides" role="img" aria-label="Five-slide carousel: Which one are you? Happy with your plan, do nothing. Want a different plan, switch by Dec. 8. Eligible but not enrolled, enroll by Dec. 8. Open season doesn't apply to active duty, TRICARE For Life and premium-based plans.">
-              <div class="slide s1"><span class="n">1 / 5</span><div class="big">TRICARE Open Season<br/>Nov. 9–Dec. 8<br/><br/>Which one<br/>are you?</div><span class="src">Swipe</span></div>
-              <div class="slide"><span class="n">2 / 5</span><div><div class="big">Happy with your plan?<br/><em>Do nothing.</em></div><p class="sm" style="margin-top:.6rem">Your coverage continues in 2027 if you're still eligible.</p></div><span class="src">TRICARE.mil/openseason</span></div>
-              <div class="slide"><span class="n">3 / 5</span><div><div class="big">Want a different plan?<br/><em>Switch by Dec. 8.</em></div><p class="sm" style="margin-top:.6rem">Changes start Jan. 1. Use milConnect, call or mail a form.</p></div><span class="src">TRICARE.mil/openseason</span></div>
-              <div class="slide"><span class="n">4 / 5</span><div><div class="big">Eligible, not enrolled?<br/><em>Enroll by Dec. 8.</em></div><p class="sm" style="margin-top:.6rem">Without a plan, care is limited to military hospitals and clinics when space is available.</p></div><span class="src">TRICARE.mil/openseason</span></div>
-              <div class="slide"><span class="n">5 / 5</span><div><div class="big" style="font-size:1.25rem">Open season doesn't apply to:</div><p class="sm" style="margin-top:.6rem">Active-duty members · TRICARE For Life · TRICARE Reserve Select · TRICARE Retired Reserve · TRICARE Young Adult</p></div><span class="src">Details: link in bio</span></div>
+            <div class="ch"><b>Instagram carousel, "Five things to know"</b><span>Nov. 9 · 5 slides, 4:5</span><button class="linkbtn" type="button" id="altBtn" aria-expanded="false" aria-controls="altText">Show alt text</button></div>
+            <div class="slides" role="img" aria-label="Five-slide carousel about the Autonomous Warfare Command: what it is, why now, how systems earn their place, and when, with what isn't decided yet.">
+              <div class="slide s1"><span class="n">1 / 5</span><div class="big">A new command for autonomous warfare<br/><br/>Five things<br/>to know</div><span class="src">Swipe</span></div>
+              <div class="slide"><span class="n">2 / 5</span><div><div class="big">What:<br/><em>one command for drones and robots.</em></div><p class="sm" style="margin-top:.6rem">A four-star command to scale autonomous systems across the joint force.</p></div><span class="src">Sample, not official</span></div>
+              <div class="slide"><span class="n">3 / 5</span><div><div class="big">Why:<br/><em>cheap and many vs. expensive and few.</em></div><p class="sm" style="margin-top:.6rem">Spending is judged by whether it lowers the cost of defeating a target or the risk to troops.</p></div><span class="src">Sample, not official</span></div>
+              <div class="slide"><span class="n">4 / 5</span><div><div class="big">How:<br/><em>systems earn their place.</em></div><p class="sm" style="margin-top:.6rem">Competitions, exercises and combat performance decide what advances.</p></div><span class="src">Sample, not official</span></div>
+              <div class="slide"><span class="n">5 / 5</span><div><div class="big">When:<br/><em>target date Oct. 1, 2027.</em></div><p class="sm" style="margin-top:.6rem">Congress must act first. Not decided yet: who leads it, where it's based, its budget.</p></div><span class="src">Updates: link in bio</span></div>
             </div>
             <p class="alt" id="altText"><b>Alt text, slide by slide:</b></p>
             <ol class="alt" id="altList" style="padding-left:2rem">
-              <li>TRICARE Open Season, Nov. 9 to Dec. 8. Which one are you?</li>
-              <li>Happy with your plan? Do nothing. Your coverage continues in 2027 if you're still eligible.</li>
-              <li>Want a different plan? Switch by Dec. 8. Changes start Jan. 1. Use milConnect, call or mail a form.</li>
-              <li>Eligible, not enrolled? Enroll by Dec. 8. Without a plan, care is limited to military hospitals and clinics when space is available.</li>
-              <li>Open season doesn't apply to active-duty members, TRICARE For Life, TRICARE Reserve Select, TRICARE Retired Reserve or TRICARE Young Adult.</li>
+              <li>A new command for autonomous warfare. Five things to know.</li>
+              <li>What: one command for drones and robots. A four-star command to scale autonomous systems across the joint force.</li>
+              <li>Why: cheap and many versus expensive and few. Spending is judged by whether it lowers the cost of defeating a target or the risk to troops.</li>
+              <li>How: systems earn their place. Competitions, exercises and combat performance decide what advances.</li>
+              <li>When: target date Oct. 1, 2027. Congress must act first. Not decided yet: who leads it, where it's based and its budget.</li>
             </ol>
-            <p class="body" style="margin-top:.9rem;font-size:.95rem">Caption: TRICARE Open Season is Nov. 9–Dec. 8. Most people don't need to do anything. Swipe to see if you do. Changes take effect Jan. 1. Link in bio.</p>
+            <p class="body" style="margin-top:.9rem;font-size:.95rem">Caption: The department is building a new command for drones, robots and other autonomous systems. Swipe for what it is, why and when, and what hasn't been decided yet. Updates at the link in bio.</p>
           </div>
 
           <div class="post wide"><div class="ch"><b>YouTube explainer, 60 seconds</b><span>Nov. 9 · cut to Shorts, Reels and Facebook video</span></div>
             <div class="tscroll"><table class="script">
               <thead><tr><th>Time</th><th>Voice-over</th><th>On screen</th></tr></thead>
               <tbody>
-                <tr><td>0:00–0:05</td><td>Do you need to do anything this TRICARE Open Season? Probably not. Here's how to tell.</td><td>"Do you need to act?" Dates: Nov. 9–Dec. 8</td></tr>
-                <tr><td>0:05–0:18</td><td>If you're in a TRICARE plan and you're happy with it, you're done. Your coverage continues next year.</td><td>"Happy? Do nothing."</td></tr>
-                <tr><td>0:18–0:32</td><td>Want a different plan, or to switch between individual and family enrollment? Make the change by December 8. It starts January 1.</td><td>"Switch by Dec. 8. Starts Jan. 1." milConnect screen</td></tr>
-                <tr><td>0:32–0:47</td><td>Eligible but not enrolled? This is the one to act on. Without a plan, you can get care only at a military hospital or clinic when space is available.</td><td>"Not enrolled? Enroll by Dec. 8."</td></tr>
-                <tr><td>0:47–0:55</td><td>Open season doesn't apply to active-duty members, TRICARE For Life, or the premium-based plans.</td><td>List of exceptions</td></tr>
-                <tr><td>0:55–1:00</td><td>Compare plans at TRICARE dot mil slash open season.</td><td>URL, sample label</td></tr>
+                <tr><td>0:00–0:06</td><td>The military is building a new command just for drones and robots. It doesn't exist yet. Here's what we know.</td><td>"AUTOWARCOM: what we know"</td></tr>
+                <tr><td>0:06–0:20</td><td>It's called the Autonomous Warfare Command: a four-star command for autonomous systems in the air, on land, at sea, undersea and in space.</td><td>Five domains, official footage of current uncrewed systems</td></tr>
+                <tr><td>0:20–0:34</td><td>Why? Cheap, precise weapons built in large numbers can threaten expensive ships, aircraft and vehicles. The goal is to lower the cost of defeating a target and the risk to troops.</td><td>"Cheap and many vs. expensive and few"</td></tr>
+                <tr><td>0:34–0:46</td><td>Systems earn their place. Competitions, exercises and combat performance decide what advances, and units test with the companies that build them.</td><td>Footage of a unit testing a drone, credited</td></tr>
+                <tr><td>0:46–0:56</td><td>The target date is October 1, 2027, and Congress has to act first. Who leads it and where it's based haven't been decided.</td><td>"Target: Oct. 1, 2027" · "Not decided yet"</td></tr>
+                <tr><td>0:56–1:00</td><td>Follow for updates as they're announced.</td><td>Official page URL, sample label</td></tr>
               </tbody>
             </table></div>
-            <p class="stats"><span>Captions burned in and uploaded as a file</span><span>Audio description in the voice-over</span></p>
+            <p class="stats"><span>Captions burned in and uploaded as a file</span><span>Audio description in the voice-over</span><span>Official footage only, credited</span></p>
+          </div>
+
+          <div class="post wide"><div class="ch"><b>YouTube Short, "Why Agincourt?" 45 seconds</b><span>Nov. 23 · also a Reel · entertain</span></div>
+            <div class="tscroll"><table class="script">
+              <thead><tr><th>Time</th><th>Voice-over</th><th>On screen</th></tr></thead>
+              <tbody>
+                <tr><td>0:00–0:05</td><td>Why name a drone project after a battle from 1415?</td><td>"Agincourt, 1415"</td></tr>
+                <tr><td>0:05–0:18</td><td>At Agincourt, an outnumbered English army beat a larger French force with the longbow, a new technology at the time.</td><td>Public-domain artwork of the battle</td></tr>
+                <tr><td>0:18–0:30</td><td>To field enough archers, England recruited widely, and it brought fletchers, the arrow makers, close to the front to keep arrows coming.</td><td>"Fletchers: the arrow makers"</td></tr>
+                <tr><td>0:30–0:40</td><td>Secretary of War Pete Hegseth told this story when he announced Project Agincourt. "We face a very similar moment," he said.</td><td>Announcement footage, Sept. 30, 2026, Quantico</td></tr>
+                <tr><td>0:40–0:45</td><td>Today's version: units testing new systems alongside the companies that build them.</td><td>"Project Agincourt" · official page URL</td></tr>
+              </tbody>
+            </table></div>
+            <p class="stats"><span>Quote checked against the speech transcript before posting</span><span>Captions burned in</span></p>
+          </div>
+
+          <div class="post wide"><div class="ch"><b>Instagram Stories quiz, "Myth or fact?"</b><span>Nov. 13 · 4 frames · try it</span></div>
+            <div class="mf" id="mfQuiz"></div>
           </div>
 
           <div class="post wide"><div class="ch"><b>Comment reply bank</b><span>All channels · approved in advance</span></div>
             <div class="replies">
-              <div class="reply"><div class="q"><b>Question</b>How do I switch from Prime to Select?</div><div class="a"><b>Reply</b>Through Dec. 8, you can switch on milConnect, by phone with your regional contractor or by mailing an enrollment form: [link]</div></div>
-              <div class="reply"><div class="q"><b>Question</b>I'm active duty. Do I need to do anything?</div><div class="a"><b>Reply</b>Open season doesn't apply to active-duty service members. Your eligible family members can review their options through Dec. 8.</div></div>
-              <div class="reply"><div class="q"><b>Question</b>My claim was denied. Can you help?</div><div class="a"><b>Reply</b>Sorry for the trouble. We can't look up individual claims here, so please don't post personal information. Your regional contractor can help: Humana Military in the East Region, TriWest Healthcare Alliance in the West: [link]</div></div>
-              <div class="reply"><div class="q"><b>Question</b>What about dental and vision?</div><div class="a"><b>Reply</b>Dental and vision coverage through FEDVIP has its own enrollment period, Nov. 9–Dec. 14. Details on BENEFEDS: [link]</div></div>
-              <div class="reply"><div class="q"><b>Misinformation</b>You have to re-enroll every year or you lose coverage.</div><div class="a"><b>Reply</b>Good question to clear up: if you're enrolled and still eligible, your coverage continues automatically. You only need to act to change plans or to enroll.</div></div>
-              <div class="reply"><div class="q"><b>Question</b>I missed the deadline. Now what?</div><div class="a"><b>Reply</b>Outside open season, you can enroll or change plans after a qualifying life event, such as getting married or having a baby. More here: [link]</div></div>
+              <div class="reply"><div class="q"><b>Question</b>Can I sign up for one of the new jobs?</div><div class="a"><b>Reply</b>Each military department will create new specialties, and the details haven't been announced yet. Your service will share how to qualify when they are. Follow your service's official channels for updates: [link]</div></div>
+              <div class="reply"><div class="q"><b>Question</b>My company builds drones. How do we get involved?</div><div class="a"><b>Reply</b>Project Agincourt is building a way to connect units directly with commercial developers. We can't take proposals here, so please don't post company or product details. Start with the official page: [link]</div></div>
+              <div class="reply"><div class="q"><b>Question</b>Who's in charge, and where will it be based?</div><div class="a"><b>Reply</b>Those decisions haven't been made yet. We'll post them here when they're announced.</div></div>
+              <div class="reply"><div class="q"><b>Misinformation</b>This command is already running operations.</div><div class="a"><b>Reply</b>Not yet. The target date is Oct. 1, 2027, and Congress must pass a law to create the command. Project Agincourt is doing the groundwork now: [link]</div></div>
+              <div class="reply"><div class="q"><b>Question</b>Is this replacing service members?</div><div class="a"><b>Reply</b>One stated goal is lowering the risk to service members, and each military department will create new specialties for these systems. Details haven't been announced. We'll share them when they are.</div></div>
+              <div class="reply esc"><div class="q"><b>Escalate</b>Will machines decide when to use lethal force?</div><div class="a"><b>Reply</b>Not answered from the reply bank. This policy question is under active debate, so replies use only language cleared by department public affairs, the same day it's asked: [cleared language]</div></div>
             </div>
           </div>
         </div>
@@ -635,33 +711,72 @@ Questions about your own coverage? Please don't post personal details here. Your
         <h3>Written for each feed</h3>
         <dl class="meta"><dt>Reading level</dt><dd>Shown under each post, computed live</dd><dt>Links</dt><dd>Counted as 23 characters on X</dd></dl>
         <ul>
-          <li><b>Lead with the answer</b> most people need: do nothing.</li>
-          <li><b>Same three messages</b> on every channel, in that channel's format.</li>
-          <li><b>Alt text and captions</b> carry every number, so no one misses the dates.</li>
-          <li><b>Replies protect privacy.</b> Personal questions go to the contractor, not the comments.</li>
+          <li><b>Full name first,</b> then AUTOWARCOM, the department's own short form.</li>
+          <li><b>Every post says what isn't decided.</b> It heads off rumor before it starts.</li>
+          <li><b>Official footage only.</b> No renderings or generated images of systems that haven't been chosen.</li>
+          <li><b>Policy questions escalate.</b> The reply bank doesn't improvise on the use of force.</li>
         </ul>
       </aside>
     </div>
 
-    <!-- 4 measurement -->
+    <!-- 4 rapid response -->
     <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" tabindex="0" hidden>
       <div>
         <article class="sheet" data-stamp="Sample">
+          <p class="kicker">Rapid response playbook</p>
+          <h3 class="hl">When a milestone is announced, be first, be accurate and link to the source</h3>
+          <h4>Likely triggers</h4>
+          <div class="tscroll"><table>
+            <thead><tr><th>Milestone</th><th>Status</th><th>First post</th></tr></thead>
+            <tbody>
+              <tr><td>Plan defining command relationships and each service's role</td><td>Due Oct. 30, 2026; release not confirmed</td><td>X post and Facebook summary, only if released publicly</td></tr>
+              <tr><td>A commander is nominated</td><td>Not announced</td><td>X post, Instagram portrait card, Facebook bio post</td></tr>
+              <tr><td>Congress acts on legislation to create the command</td><td>Required before Oct. 1, 2027</td><td>X post stating what passed, sourced to the official release</td></tr>
+              <tr><td>New specialties or headquarters announced</td><td>Not announced</td><td>Service-led posts, amplified by the department</td></tr>
+              <tr><td>A false claim goes viral, such as a video mislabeled as an AUTOWARCOM system</td><td>Any time</td><td>Correct only if it's spreading; never repost the false video</td></tr>
+            </tbody>
+          </table></div>
+          <h4>The first 72 hours, by channel</h4>
+          <div class="sim" id="rr">
+            <div class="sim-q" role="group" aria-label="Choose a point in time to see what happens" id="rrQ"></div>
+            <div class="sim-a" id="rrA" aria-live="polite"></div>
+          </div>
+          <h4>Holding post, approved in advance</h4>
+          <p class="hold-post">The Department of War announced [milestone] today. What it means: [one plain-language sentence]. What's still being decided: [one line]. Full announcement: [link]</p>
+          <h4>Rules for breaking news</h4>
+          <p>Post only after the official release or transcript is live, and link to it. Quote it exactly. Say what isn't decided. Don't speculate about names, places or numbers that haven't been announced, and don't comment on a nomination or a bill beyond the facts.</p>
+        </article>
+      </div>
+      <aside class="notes" aria-label="Notes on rapid response">
+        <h3>Fast, not first at any cost</h3>
+        <dl class="meta"><dt>Target</dt><dd>X within 15 minutes of release</dd><dt>Approver</dt><dd>Department public affairs, on call</dd></dl>
+        <ul>
+          <li><b>Pre-approved templates</b> turn a two-hour review into a 10-minute check.</li>
+          <li><b>X leads, others follow</b> in each platform's own format.</li>
+          <li><b>Corrections are targeted.</b> Answer where the claim is spreading, not everywhere.</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- 5 measurement -->
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" tabindex="0" hidden>
+      <div>
+        <article class="sheet" data-stamp="Sample">
           <p class="kicker">Measurement plan</p>
-          <h3 class="hl">Measure what each post was supposed to do, then act on it every Monday</h3>
+          <h3 class="hl">Measure understanding, not just reach, and act on it every Monday</h3>
           <div class="tscroll"><table>
             <thead><tr><th>Goal</th><th>Metric</th><th>Source</th><th>Decision rule</th></tr></thead>
             <tbody>
-              <tr><td>Reach the priority audience</td><td>Reach on posts aimed at unenrolled beneficiaries</td><td>Native platform analytics</td><td>If a priority post reaches fewer people than the channel's typical post, re-cut it as a short video within 48 hours.</td></tr>
-              <tr><td>Understanding</td><td>Saves and shares on explainers; repeated questions in comments</td><td>Platform analytics, comment tagging</td><td>If the same question appears three or more times in a day, add it to the reply bank and answer it in a post within 24 hours.</td></tr>
-              <tr><td>Action</td><td>Clicks to Plan Finder and milConnect</td><td>Tagged links (UTM)</td><td>Compare clicks by format each Monday; give the final week to the two best performers.</td></tr>
-              <tr><td>Video attention</td><td>Share of viewers who reach the key message</td><td>YouTube and Reels retention</td><td>If most viewers leave before 0:18, move "do nothing" into the first five seconds.</td></tr>
-              <tr><td>Sentiment</td><td>Comments tagged confused, negative, positive or misinformation</td><td>Social listening, manual tags</td><td>If negative comments cluster on one issue, alert TRICARE communications and department public affairs the same day.</td></tr>
-              <tr><td>Outcome</td><td>Enrollment changes during the season</td><td>Defense Health Agency data, after the season</td><td>Used in the after-action report. Social metrics can't measure this directly, so the report says so.</td></tr>
+              <tr><td>Reach priority audiences</td><td>Reach and completion on the explainer and carousel</td><td>Native platform analytics</td><td>If the explainer reaches fewer people than the channel's typical video, re-cut the first five seconds within 48 hours.</td></tr>
+              <tr><td>Understanding</td><td>Repeated questions; share of comments that get the basics wrong</td><td>Comment tagging</td><td>If a question repeats three or more times in a day, add it to the reply bank and answer it in a post within 24 hours.</td></tr>
+              <tr><td>Action</td><td>Clicks to the official page and service job pages</td><td>Tagged links (UTM)</td><td>Compare clicks by format each Monday; give the Q&amp;A week to the two best performers.</td></tr>
+              <tr><td>Attention</td><td>Share of viewers who reach the "not decided yet" line</td><td>YouTube and Reels retention</td><td>If most viewers leave before 0:46, move the target date and "not decided yet" earlier.</td></tr>
+              <tr><td>Sentiment</td><td>Comments tagged curious, supportive, worried or misinformation</td><td>Social listening, manual tags</td><td>If worried comments cluster on one issue, alert department public affairs the same day with examples.</td></tr>
+              <tr><td>Accuracy in the wider conversation</td><td>False claims about status, timing or leadership in coverage and posts</td><td>News and social monitoring</td><td>Track week over week. Social metrics can't prove the campaign caused a change, so the after-action report says so.</td></tr>
             </tbody>
           </table></div>
           <h4>Weekly report to leadership</h4>
-          <p>One page, every Monday: what ran, what moved people to Plan Finder and milConnect, what people were confused about, what changes this week and why. Numbers are compared with the campaign's own first week, not with unrelated campaigns.</p>
+          <p>One page, every Monday: what ran, what people asked, what they got wrong, how sentiment moved and what changes this week and why. Numbers are compared with the campaign's own first week, not with unrelated campaigns.</p>
         </article>
 
         <div class="sim" id="sim">
@@ -674,50 +789,51 @@ Questions about your own coverage? Please don't post personal details here. Your
         <dl class="meta"><dt>Review</dt><dd>Mondays, plus same-day alerts</dd><dt>Results</dt><dd>None shown; no real data exists</dd></dl>
         <ul>
           <li><b>Every metric has a rule.</b> If a number can't change what we do, it isn't tracked.</li>
-          <li><b>Outputs aren't outcomes.</b> Clicks show interest; enrollments come from health agency data.</li>
+          <li><b>Understanding is the outcome.</b> For a command that doesn't exist yet, the goal is accurate public knowledge.</li>
           <li><b>The scenarios</b> below show the recommendations I'd make from typical mid-campaign results.</li>
         </ul>
       </aside>
     </div>
 
-    <!-- 5 new tools -->
-    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" tabindex="0" hidden>
+    <!-- 6 new tools -->
+    <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" tabindex="0" hidden>
       <div>
         <article class="sheet memo" data-stamp="Sample memo">
           <dl class="hdr">
             <dt>To</dt><dd>Chief, Social Media</dd>
             <dt>From</dt><dd>Antonio Planzo</dd>
-            <dt>Subject</dt><dd>New formats for the open season campaign: adopt, pilot or skip</dd>
+            <dt>Subject</dt><dd>New formats for the AUTOWARCOM campaign: adopt, pilot or skip</dd>
           </dl>
-          <p>I looked at four formats against three tests: does it serve the campaign's goal, will it still matter next year, and can we run it within our approval, accessibility and records rules?</p>
+          <p>I looked at five formats against three tests: does it serve the campaign's goal, will it still matter next year, and can we run it within our approval, accessibility and records rules?</p>
           <div class="tscroll"><table>
             <thead><tr><th>Format</th><th>Recommendation</th><th>Why</th></tr></thead>
             <tbody>
-              <tr><td>Vertical short-form explainers</td><td><span class="verd adopt">Adopt</span></td><td>One 60-second edit runs as YouTube Shorts, Instagram Reels and Facebook video. A durable format, not a trend, and it reuses work we're already doing.</td></tr>
-              <tr><td>Live Q&amp;A with TRICARE experts</td><td><span class="verd pilot">Pilot</span></td><td>Run once in the final week. Answers the questions people actually have, but needs expert time, live moderation and a plan for questions that require personal details.</td></tr>
-              <tr><td>"Which one are you?" web sorter</td><td><span class="verd pilot">Pilot</span></td><td>Turns the carousel into a tool hosted on an official site. Needs an accessibility review and an owner to keep it accurate next year.</td></tr>
-              <tr><td>AI chatbot for benefits questions</td><td><span class="verd skip">Skip for now</span></td><td>Benefits answers depend on each person's situation, and a wrong answer has real consequences. Privacy and records rules also apply to health questions. Revisit with the health agency once accuracy can be guaranteed.</td></tr>
+              <tr><td>Vertical short-form explainers</td><td><span class="verd adopt">Adopt</span></td><td>One edit runs as YouTube Shorts, Instagram Reels and Facebook video. A durable format, not a trend, and it reuses work we're already doing.</td></tr>
+              <tr><td>Instagram Stories quiz stickers</td><td><span class="verd adopt">Adopt</span></td><td>Built into the platform, cheap to make and easy to measure. Each wrong answer shows which fact needs more work.</td></tr>
+              <tr><td>Live Q&amp;A with Project Agincourt leaders</td><td><span class="verd pilot">Pilot</span></td><td>Run once, on YouTube with a Facebook simulcast. Answers real questions, but needs speaker time, live moderation and cleared policy language ready.</td></tr>
+              <tr><td>AR filters and 3D models of drones</td><td><span class="verd skip">Skip</span></td><td>Costly to build, short shelf life, and it would put a face on systems that haven't been chosen.</td></tr>
+              <tr><td>AI-generated images or video of autonomous systems</td><td><span class="verd skip">Skip</span></td><td>Generated visuals could be mistaken for real systems in a conversation already full of speculation. Official imagery stays real and credited.</td></tr>
             </tbody>
           </table></div>
           <h4>Barriers and how to clear them</h4>
-          <p>Live events need expert time booked two weeks out. The web sorter needs a content owner at the health agency. Both need comment moderation coverage on evenings and weekends.</p>
+          <p>The live Q&amp;A needs speakers booked two weeks out and cleared answers on the use-of-force question before going live. Quiz results need a weekly export, since Stories data expires from the app.</p>
           <h4>Sharing what we learn</h4>
-          <p>After the season, a short lessons-learned brief goes to Service and command social media managers: which formats moved people to act, the reply bank and the decision rules that worked.</p>
+          <p>After Dec. 4, a short lessons-learned brief goes to military department and combatant command social media managers: which formats built understanding, the reply bank and the decision rules that worked.</p>
         </article>
       </div>
       <aside class="notes" aria-label="Notes on the memo">
         <h3>Separating tools from trends</h3>
         <dl class="meta"><dt>Tests</dt><dd>Goal, durability, compliance</dd></dl>
         <ul>
-          <li><b>"Skip" is a real answer.</b> Not every new tool fits a benefits campaign.</li>
-          <li><b>Pilots have limits:</b> one live event, one sorter, measured before scaling.</li>
-          <li><b>Lessons go out</b> to the Services so the next campaign starts ahead.</li>
+          <li><b>"Skip" is a real answer,</b> especially on a topic prone to hype.</li>
+          <li><b>Pilots have limits:</b> one live event, measured before scaling.</li>
+          <li><b>Lessons go out</b> to the services so the next milestone starts ahead.</li>
         </ul>
       </aside>
     </div>
 
-    <!-- 6 coordination -->
-    <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" tabindex="0" hidden>
+    <!-- 7 coordination -->
+    <div class="panel" role="tabpanel" id="p6" aria-labelledby="t6" tabindex="0" hidden>
       <div>
         <article class="sheet" data-stamp="Sample">
           <p class="kicker">Coordination and approval</p>
@@ -725,31 +841,31 @@ Questions about your own coverage? Please don't post personal details here. Your
           <div class="tscroll"><table>
             <thead><tr><th>Partner</th><th>Role in the campaign</th></tr></thead>
             <tbody>
-              <tr><td>Office of the Secretary of War, Public Affairs</td><td>Approves the plan and key messages; sets priority against other department news</td></tr>
-              <tr><td>Defense Health Agency, TRICARE communications</td><td>Owns the facts; reviews every post; supplies experts for the live Q&amp;A; runs its own channels, which we amplify rather than duplicate</td></tr>
-              <tr><td>Military Services and combatant command public affairs</td><td>Post the toolkit to their audiences, including overseas, and report local questions back</td></tr>
-              <tr><td>Regional contractors: Humana Military (East), TriWest Healthcare Alliance (West)</td><td>Where individual questions are routed; told in advance when posts go out so call centers can plan</td></tr>
-              <tr><td>Office of Personnel Management, BENEFEDS</td><td>Owns the dental and vision (FEDVIP) facts and dates</td></tr>
+              <tr><td>Office of the Secretary of War, Public Affairs</td><td>Approves the plan, key messages and policy language; sets timing against other department news; handles media queries</td></tr>
+              <tr><td>Project Agincourt</td><td>Owns the facts; reviews every post; provides speakers for the live Q&amp;A</td></tr>
+              <tr><td>Military department public affairs</td><td>Post the toolkit; lead on news about their own specialties and units, which we amplify. The Army's Futures and Autonomous Systems Command is described only as the Army has described it.</td></tr>
+              <tr><td>Joint Staff and combatant command public affairs</td><td>Share with their audiences, including allies and partners; flag regional questions</td></tr>
+              <tr><td>General counsel and legislative affairs</td><td>Review any post that mentions Congress or pending legislation</td></tr>
             </tbody>
           </table></div>
           <h4>Approval flow</h4>
           <ol class="flow">
             <li><div><span class="when">By Oct. 30</span><b>Draft</b><span>Social team drafts the plan, posts, graphics and reply bank.</span></div></li>
-            <li><div><span class="when">By Nov. 3</span><b>Fact check</b><span>TRICARE communications confirms every date, term and link.</span></div></li>
-            <li><div><span class="when">By Nov. 4</span><b>Approve</b><span>Department public affairs approves messages and the reply bank.</span></div></li>
-            <li><div><span class="when">Nov. 4</span><b>Share the toolkit</b><span>Services and commands get posts, graphics, alt text and the reply bank, five days before launch.</span></div></li>
+            <li><div><span class="when">By Nov. 2</span><b>Fact check</b><span>Project Agincourt confirms every fact, term and link.</span></div></li>
+            <li><div><span class="when">By Nov. 3</span><b>Legal review</b><span>General counsel and legislative affairs review posts about Congress.</span></div></li>
+            <li><div><span class="when">Nov. 4</span><b>Approve and share</b><span>Department public affairs approves; services and commands get the toolkit five days before launch.</span></div></li>
             <li><div><span class="when">Nov. 9</span><b>Launch and monitor</b><span>Posts go live; comments are monitored daily, with same-day escalation for anything off-script.</span></div></li>
           </ol>
           <h4>Rules that keep messaging consistent</h4>
-          <p>Same dates and wording everywhere. Link to TRICARE.mil or milConnect, never to third-party summaries. Never ask for personal information in comments. Anything not in the reply bank goes to TRICARE communications before we answer.</p>
+          <p>Same facts and wording everywhere. Explain that Congress must act, but never ask the public to contact Congress; federal anti-lobbying rules bar it. Link to official pages, never to third-party summaries. Anything not in the reply bank goes to department public affairs before we answer.</p>
         </article>
       </div>
       <aside class="notes" aria-label="Notes on coordination">
         <h3>Diplomacy, written down</h3>
-        <dl class="meta"><dt>Owner of facts</dt><dd>TRICARE communications</dd><dt>Owner of tone</dt><dd>Department public affairs</dd></dl>
+        <dl class="meta"><dt>Owner of facts</dt><dd>Project Agincourt</dd><dt>Owner of tone</dt><dd>Department public affairs</dd></dl>
         <ul>
-          <li><b>Amplify, don't compete</b> with the health agency's own channels.</li>
-          <li><b>Warn the call centers</b> before a post that drives calls.</li>
+          <li><b>Services lead on their own news;</b> the department amplifies.</li>
+          <li><b>Don't describe relationships</b> between commands that haven't been announced.</li>
           <li><b>One escalation path</b> for anything the reply bank doesn't cover.</li>
         </ul>
       </aside>
@@ -768,7 +884,7 @@ Questions about your own coverage? Please don't post personal details here. Your
     <div class="method">
       <div>
         <h3>Facts from the source</h3>
-        <p>Every date, eligibility rule and enrollment option comes from TRICARE.mil as published Oct. 27, 2026. Where secondary sources disagreed, the official page won. One September news article listed dental and vision enrollment as ending Dec. 7; TRICARE.mil lists Dec. 14. No performance numbers appear here, because none exist yet.</p>
+        <p>Every fact comes from department announcements as reported Sept. 30–Oct. 22, 2026, including the State of the Force address, the Project Agincourt memo and the Oct. 21 open letter from the project's leaders. Anything not announced is labeled "not decided yet," never guessed. No performance numbers appear here, because none exist.</p>
       </div>
       <div>
         <h3>Standards applied</h3>
@@ -780,16 +896,17 @@ Questions about your own coverage? Please don't post personal details here. Your
       </div>
     </div>
     <ul class="sources">
-      <li><a href="https://www.tricare.mil/About/Changes/OpenSeason" target="_blank" rel="noopener">TRICARE.mil, TRICARE Open Season (updated Oct. 27, 2026)</a></li>
-      <li><a href="https://tricare.mil/Plans/Enroll/OpenSeason" target="_blank" rel="noopener">TRICARE.mil, Enrolling during open season</a></li>
-      <li><a href="https://tricare.mil/FAQs/General/T5_Who" target="_blank" rel="noopener">TRICARE.mil, East and West Region contractors</a></li>
-      <li><a href="https://www.moaa.org/content/publications-and-media/news-articles/2026-news-articles/benefits/tricare,-medicare,-fedvip-open-season-dates-set/" target="_blank" rel="noopener">MOAA, open season dates set, Sept. 22, 2026</a></li>
+      <li><a href="https://www.army.mil/article/295897" target="_blank" rel="noopener">Army.mil, Hegseth delivers "State of the Force" address, outlines series of new initiatives</a></li>
+      <li><a href="https://www.militarytimes.com/news/your-military/2026/10/13/us-army-to-stand-up-command-for-unmanned-and-autonomous-warfare/" target="_blank" rel="noopener">Military Times, Army to stand up command for unmanned and autonomous warfare, Oct. 13, 2026</a></li>
+      <li><a href="https://www.militaryaerospace.com/uncrewed/article/55413585/dods-project-agincourt-aims-to-accelerate-autonomous-warfare-acquisition" target="_blank" rel="noopener">Military Aerospace, Project Agincourt aims to accelerate autonomous warfare acquisition, Oct. 22, 2026</a></li>
+      <li><a href="https://www.irishnews.com/news/uk/hegseth-harks-back-to-battle-of-agincourt-for-us-hi-tech-weapons-overhaul-WCJCPNA6NFJFTH3U4ULUYJSS6I/" target="_blank" rel="noopener">Irish News (PA Media), Hegseth harks back to Battle of Agincourt, Oct. 1, 2026</a></li>
       <li><a href="https://www.plainlanguage.gov/guidelines/" target="_blank" rel="noopener">Federal Plain Language Guidelines</a></li>
       <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">W3C, Web Content Accessibility Guidelines 2.2</a></li>
     </ul>
   </div>
 </section>
 </main>
+
 
 <footer>
   <div class="wrap">
@@ -823,36 +940,37 @@ Questions about your own coverage? Please don't post personal details here. Your
 
   /* ---------- content: editorial calendar ---------- */
   var POSTS=[
-    {d:'2026-11-02',p:'R',t:'Fact check and approval begin',s:'Draft posts, graphics and reply bank to TRICARE communications.',o:'Social team'},
-    {d:'2026-11-04',p:'R',t:'Toolkit to Services and commands',s:'Posts, graphics, alt text and reply bank, five days before launch.',o:'Social team'},
-    {d:'2026-11-05',p:'F',t:'Teaser: open season starts Monday',s:'"Most people won\'t need to do anything. Here\'s how to know."',o:'Social team'},
-    {d:'2026-11-06',p:'I',t:'Story: save the dates',s:'Nov. 9–Dec. 8, with a reminder sticker.',o:'Social team'},
-    {d:'2026-11-09',p:'X',t:'Launch post',s:'Dates, "do nothing" message and Plan Finder link.',o:'Social team'},
-    {d:'2026-11-09',p:'F',t:'Launch post',s:'Three-point plain-language summary with links.',o:'Social team'},
-    {d:'2026-11-09',p:'I',t:'"Which one are you?" carousel',s:'Five slides, one per situation.',o:'Social team'},
+    {d:'2026-11-02',p:'R',t:'Fact check begins',s:'Drafts, graphics and reply bank to Project Agincourt for review.',o:'Social team'},
+    {d:'2026-11-03',p:'R',t:'Legal and legislative review',s:'Every post that mentions Congress reviewed by general counsel and legislative affairs.',o:'Social team'},
+    {d:'2026-11-04',p:'R',t:'Approval and toolkit to services and commands',s:'Posts, graphics, alt text and reply bank, five days before launch.',o:'Social team'},
+    {d:'2026-11-05',p:'I',t:'Story teaser',s:'"A new command, explained. Monday."',o:'Social team'},
+    {d:'2026-11-06',p:'X',t:'Teaser',s:'What the department will explain Monday, and where.',o:'Social team'},
+    {d:'2026-11-09',p:'X',t:'Launch post',s:'What it is, target date, link to the official page.',o:'Social team'},
+    {d:'2026-11-09',p:'F',t:'Launch post',s:'What, why and when, plus what isn\'t decided yet.',o:'Social team'},
+    {d:'2026-11-09',p:'I',t:'"Five things to know" carousel',s:'What, why, how and when in five slides.',o:'Social team'},
     {d:'2026-11-09',p:'Y',t:'60-second explainer',s:'Published with captions; cut into Shorts and Reels.',o:'Video team'},
-    {d:'2026-11-10',p:'X',t:'Thread: three things to know',s:'Do nothing, switch by Dec. 8, enroll if not enrolled.',o:'Social team'},
-    {d:'2026-11-11',p:'A',t:'Hold: Veterans Day',s:'No open season posts; Veterans Day content takes priority.',o:'—',hold:1},
-    {d:'2026-11-12',p:'Y',t:'Short: Prime vs. Select in 30 seconds',s:'Vertical cut; also runs as an Instagram Reel and Facebook video.',o:'Video team'},
+    {d:'2026-11-10',p:'X',t:'Thread: what\'s decided, and what isn\'t',s:'Opens the series; pinned for the campaign.',o:'Social team'},
+    {d:'2026-11-11',p:'A',t:'Hold: Veterans Day',s:'No campaign posts; Veterans Day content takes priority.',o:'—',hold:1},
+    {d:'2026-11-12',p:'Y',t:'Short: cheap and many vs. expensive and few',s:'Why scale and cost drive the new command.',o:'Video team'},
+    {d:'2026-11-13',p:'I',t:'Stories quiz: myth or fact?',s:'Four frames; wrong answers feed the reply bank.',o:'Social team'},
     {d:'2026-11-16',p:'R',t:'Weekly review',s:'Launch-week results, top questions, changes for week 2.',o:'Social team'},
-    {d:'2026-11-16',p:'F',t:'Not enrolled? Here\'s what that means',s:'Priority audience: space-available care only without a plan.',o:'Social team'},
-    {d:'2026-11-18',p:'X',t:'Dental and vision have their own dates',s:'FEDVIP enrollment runs Nov. 9–Dec. 14.',o:'Social team'},
-    {d:'2026-11-19',p:'I',t:'Carousel: three ways to make a change',s:'milConnect, phone or mail.',o:'Social team'},
+    {d:'2026-11-16',p:'F',t:'How a system earns its place',s:'Competitions, exercises and combat performance.',o:'Social team'},
+    {d:'2026-11-17',p:'X',t:'Air, land, sea, undersea and space',s:'The domains in scope, one line each.',o:'Social team'},
+    {d:'2026-11-18',p:'I',t:'Reel: units testing with manufacturers',s:'Official footage, credited.',o:'Video team'},
+    {d:'2026-11-19',p:'F',t:'For industry: how Project Agincourt works',s:'Operators and developers side by side; link to the official contact.',o:'Social team'},
+    {d:'2026-11-20',p:'X',t:'New specialties: what we know',s:'Coming in each military department; details from the services.',o:'Social team, services'},
     {d:'2026-11-23',p:'R',t:'Weekly review',s:'Midpoint check against decision rules.',o:'Social team'},
+    {d:'2026-11-23',p:'Y',t:'Short: "Why Agincourt?"',s:'The 1415 battle behind the project\'s name; also a Reel.',o:'Video team'},
     {d:'2026-11-24',p:'F',t:'Answers to your top questions',s:'Built from the most repeated comments so far.',o:'Social team'},
+    {d:'2026-11-25',p:'X',t:'Your top questions, answered',s:'Short versions of the Facebook answers.',o:'Social team'},
     {d:'2026-11-26',p:'A',t:'Hold: Thanksgiving',s:'No campaign posts.',o:'—',hold:1},
-    {d:'2026-11-30',p:'R',t:'Weekly review',s:'Pick the two best formats for the final week.',o:'Social team'},
-    {d:'2026-11-30',p:'F',t:'Live Q&A announcement',s:'TRICARE experts answer questions Wednesday.',o:'Social team'},
-    {d:'2026-12-02',p:'Y',t:'Live Q&A with TRICARE experts',s:'Also streamed to Facebook; captioned replay.',o:'Video team, health agency'},
-    {d:'2026-12-03',p:'I',t:'Story: countdown sticker',s:'"Open season ends Dec. 8."',o:'Social team'},
-    {d:'2026-12-07',p:'R',t:'Weekly review',s:'Final-day plan and same-day staffing for comments.',o:'Social team'},
-    {d:'2026-12-07',p:'X',t:'Tomorrow is the last day',s:'Priority audience reminder.',o:'Social team'},
-    {d:'2026-12-08',p:'X',t:'Last day',s:'"Ends today" post with milConnect link.',o:'Social team'},
-    {d:'2026-12-08',p:'F',t:'Last day',s:'Plain-language reminder for families.',o:'Social team'},
-    {d:'2026-12-08',p:'I',t:'Story: last day',s:'Link sticker to milConnect.',o:'Social team'},
-    {d:'2026-12-09',p:'X',t:'TRICARE closed; dental and vision still open',s:'FEDVIP runs through Dec. 14.',o:'Social team'},
-    {d:'2026-12-14',p:'F',t:'Last day for dental and vision',s:'FEDVIP enrollment ends today.',o:'Social team'},
-    {d:'2026-12-14',p:'X',t:'Last day for dental and vision',s:'FEDVIP enrollment ends today.',o:'Social team'}
+    {d:'2026-11-30',p:'R',t:'Weekly review',s:'Pick the two best formats for Q&A week.',o:'Social team'},
+    {d:'2026-11-30',p:'F',t:'Live Q&A announcement',s:'Project Agincourt leaders take questions Wednesday.',o:'Social team'},
+    {d:'2026-12-01',p:'I',t:'Story question box',s:'Collect questions for the live Q&A.',o:'Social team'},
+    {d:'2026-12-02',p:'Y',t:'Live Q&A with Project Agincourt leaders',s:'Simulcast to Facebook; captioned replay.',o:'Video team, Project Agincourt'},
+    {d:'2026-12-03',p:'X',t:'Q&A highlight clip',s:'One answer, captioned, linked to the replay.',o:'Video team'},
+    {d:'2026-12-04',p:'I',t:'Carousel: what happens next',s:'The milestones still ahead, without guessing dates.',o:'Social team'},
+    {d:'2026-12-04',p:'R',t:'After-action brief',s:'Results, lessons and handoff to milestone updates.',o:'Social team'}
   ];
   var byDay={}; POSTS.forEach(function(p){ (byDay[p.d]=byDay[p.d]||[]).push(p); });
 
@@ -877,7 +995,7 @@ Questions about your own coverage? Please don't post personal details here. Your
   else { var ti=0; (function tick(){ ti+=2; typed.textContent=full.slice(0,ti); if(ti<full.length) setTimeout(tick,18); else setTimeout(function(){caret.style.display='none';},1600); })(); }
 
   /* ---------- countdown ---------- */
-  var OPEN=D('2026-11-09'), CLOSE=D('2026-12-08'), FED=D('2026-12-14');
+  var START=D('2026-11-02'), END=D('2026-12-06'), STAND=D('2027-10-01');
   var now=new Date(), today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   function days(a,b){ return Math.round((b-a)/864e5); }
   var cd=document.getElementById('countdown');
@@ -887,7 +1005,7 @@ Questions about your own coverage? Please don't post personal details here. Your
     if(reduced){ cd.innerHTML='<span aria-hidden="true">'+n+' '+unit+'</span><small aria-hidden="true">'+sub+'</small>'; return; }
     cd.innerHTML='<span class="calx" aria-hidden="true"><span class="frame"></span><span class="band"></span><span class="ring r1"></span><span class="ring r2"></span><span class="num"></span></span><span aria-hidden="true">'+unit+'</span><small aria-hidden="true">'+sub+'</small>';
     var box=cd.querySelector('.calx'), num=box.querySelector('.num');
-    var from=Math.max(n,Math.min(n+18,30)), total=from-n, cur=from;
+    var from=n+18, total=from-n, cur=from;
     num.textContent=from;
     if(!total || !box.animate){ num.textContent=n; setTimeout(function(){ box.classList.add('done'); },500); return; }
     function dur(i){ var t=i/total; return 95+150*Math.pow(t,2); }   /* quick at first, settling on the last pages */
@@ -908,15 +1026,13 @@ Questions about your own coverage? Please don't post personal details here. Your
     }
     setTimeout(flip,350);
   }
-  if(today<OPEN){ setCount(days(today,OPEN),'day','days','until open season begins'); }
-  else if(today<=CLOSE){ setCount(days(today,CLOSE)+1,'day','days','left, including today'); }
-  else if(today<=FED){ cd.innerHTML='Closed<small>Dental and vision open through Dec. 14</small>'; }
-  else { cd.innerHTML='Closed<small>Changes take effect Jan. 1, 2027</small>'; }
+  if(today<STAND){ setCount(days(today,STAND),'day','days','until the Oct. 1, 2027, target date'); }
+  else { cd.innerHTML='Target date<small>Oct. 1, 2027</small>'; }
 
   /* ---------- hero calendar ---------- */
   var cal=document.getElementById('cal'), note=document.getElementById('dayNote'), cells=[];
-  for(var d=new Date(OPEN); d<=FED; d.setDate(d.getDate()+1)){
-    var k=iso(d), b=document.createElement('button'); b.type='button'; b.className='day'+(d>CLOSE?' ext':''); b.dataset.d=k;
+  for(var d=new Date(START); d<=END; d.setDate(d.getDate()+1)){
+    var k=iso(d), b=document.createElement('button'); b.type='button'; b.className='day'; b.dataset.d=k;
     var list=byDay[k]||[];
     b.setAttribute('aria-label',ap(d)+': '+(list.length?list.length+(list.length===1?' item':' items'):'no posts'));
     b.setAttribute('aria-pressed','false');
@@ -929,7 +1045,7 @@ Questions about your own coverage? Please don't post personal details here. Your
   function showDay(k){
     cells.forEach(function(c){ c.setAttribute('aria-pressed', c.dataset.d===k); });
     var list=byDay[k]||[], dt=D(k);
-    var head='<b>'+ap(dt)+(dt>CLOSE?' · dental and vision only':'')+'</b>';
+    var head='<b>'+ap(dt)+'</b>';
     if(!list.length){ note.innerHTML=head+'<ul><li>No posts. Comments are still monitored daily.</li></ul>'; return; }
     note.innerHTML=head+'<ul>'+list.map(function(p){ return '<li><em>'+PNAME[p.p]+'</em>'+p.t+'</li>'; }).join('')+'</ul>';
   }
@@ -937,7 +1053,7 @@ Questions about your own coverage? Please don't post personal details here. Your
     c.addEventListener('click',function(){ showDay(c.dataset.d); });
     c.addEventListener('keydown',function(e){ var n=null; if(e.key==='ArrowRight') n=i+1; if(e.key==='ArrowLeft') n=i-1; if(e.key==='ArrowDown') n=i+7; if(e.key==='ArrowUp') n=i-7; if(n!==null && cells[n]){ e.preventDefault(); cells[n].focus(); showDay(cells[n].dataset.d); } });
   });
-  var startDay = (today>=OPEN && today<=FED) ? iso(today) : '2026-11-09';
+  var startDay = (today>=START && today<=END) ? iso(today) : '2026-11-09';
   showDay(startDay);
 
   /* ---------- play the campaign ---------- */
@@ -948,7 +1064,7 @@ Questions about your own coverage? Please don't post personal details here. Your
     cells.forEach(function(c){ c.classList.remove('lit'); });
     var step=reduced?0:150, i=0;
     (function next(){
-      if(i>=cells.length){ playing=false; playBtn.classList.remove('running'); playLabel.textContent='Play it again'; lightPhases('2027-01-01'); return; }
+      if(i>=cells.length){ playing=false; playBtn.classList.remove('running'); playLabel.textContent='Play it again'; lightPhases('2027-10-01'); return; }
       var c=cells[i++]; c.classList.add('lit'); showDay(c.dataset.d); lightPhases(c.dataset.d);
       setTimeout(next, step);
     })();
@@ -956,12 +1072,12 @@ Questions about your own coverage? Please don't post personal details here. Your
 
   /* ---------- who needs to act ---------- */
   var WHO=[
-    {k:'Eligible, but not enrolled in a plan',v:'Act by Dec. 8',h:'Enroll by Dec. 8.',p:'If you\'re eligible for TRICARE Prime or TRICARE Select and don\'t enroll, you can get care only at a military hospital or clinic when space is available.',w:'Campaign priority 1. Every final-week post is written for this group.'},
-    {k:'Enrolled, and want a different plan',v:'Act by Dec. 8',h:'Make the change by Dec. 8.',p:'Switch plans, or between individual and family enrollment, on milConnect, by phone with your regional contractor or by mail. The change starts Jan. 1.',w:'Campaign priority 2. Posts point to the Plan Finder before milConnect.'},
-    {k:'Enrolled, and happy with my plan',v:'No action needed',h:'Do nothing.',p:'Your coverage continues automatically in 2027 as long as you\'re still eligible.',w:'Priority 3, and the campaign\'s first message: it prevents unneeded changes and calls.'},
-    {k:'Active-duty service member',v:'Doesn\'t apply',h:'Open season doesn\'t apply to you.',p:'Your eligible family members can review their own options through Dec. 8.',w:'Priority 4. Answered in the reply bank to keep comment threads clear.'},
-    {k:'TRICARE For Life beneficiary',v:'Doesn\'t apply',h:'Open season doesn\'t apply to TRICARE For Life.',p:'Dental and vision coverage through FEDVIP has its own enrollment period, Nov. 9–Dec. 14.',w:'Priority 4, with a separate dental and vision reminder.'},
-    {k:'TRICARE Reserve Select, Retired Reserve or Young Adult',v:'Doesn\'t apply',h:'Open season doesn\'t apply to premium-based plans.',p:'These plans aren\'t part of TRICARE Open Season.',w:'Priority 4. Named on carousel slide 5 so people can find themselves quickly.'}
+    {k:'Service member',v:'Nothing to apply for yet',h:'New specialties are coming. Details aren\'t out yet.',p:'Each military department will create new specialties for autonomous and robotic systems. Your service will announce how to qualify. Until then, your service\'s official channels are the place to watch.',w:'Campaign priority 1. Job questions route to each service, which leads on its own news.'},
+    {k:'General public',v:'Planned, not yet running',h:'A command for drones and robots, targeted for Oct. 1, 2027.',p:'The Autonomous Warfare Command would scale autonomous systems across the joint force. Congress must pass a law to create it; Project Agincourt lays the groundwork now.',w:'Priority 2. The launch posts, explainer and carousel are written for this audience first.'},
+    {k:'Defense industry',v:'Performance decides',h:'Systems earn their place in tests, exercises and combat.',p:'Project Agincourt is building a model that connects units directly with commercial developers. Technical standards and acquisition priorities haven\'t been published.',w:'Priority 3. Social never takes proposals; industry questions route to the project\'s official contact.'},
+    {k:'Military family',v:'No change today',h:'Nothing changes for your family right now.',p:'The command doesn\'t exist yet, and no assignments, locations or jobs have been announced. Watch your service member\'s service channels for updates.',w:'Priority 4. Facebook carries most posts for families and answers their questions in comments.'},
+    {k:'Allies and partners',v:'Fitted to each theater',h:'Built to support regional commanders.',p:'The command would integrate forces the services provide in support of geographic combatant commanders, and solutions can differ by theater.',w:'Priority 5. Combatant command public affairs share regional versions and flag questions.'},
+    {k:'Reporters',v:'Route to press operations',h:'Official answers come from department public affairs.',p:'Social posts link to the official announcement. Questions about leadership, budget or location go to press operations, not comment threads.',w:'Not a social audience to answer directly, but reporters watch these posts. Every line has to hold up in print.'}
   ];
   var wl=document.getElementById('whoList'), wc=document.getElementById('whoCard'), wopts=[];
   function pickWho(i,focus){
@@ -981,7 +1097,7 @@ Questions about your own coverage? Please don't post personal details here. Your
   var ec=document.getElementById('ecList'), weeks={};
   function monday(d){ var x=new Date(d); var g=(x.getDay()+6)%7; x.setDate(x.getDate()-g); return x; }
   POSTS.forEach(function(p){ var m=iso(monday(D(p.d))); (weeks[m]=weeks[m]||[]).push(p); });
-  var WEEKNAME={'2026-11-02':'Prep','2026-11-09':'Launch week','2026-11-16':'Explain','2026-11-23':'Explain','2026-11-30':'Final push','2026-12-07':'Final days','2026-12-14':'Dental and vision close'};
+  var WEEKNAME={'2026-11-02':'Review and toolkit','2026-11-09':'Launch week','2026-11-16':'What, why and how','2026-11-23':'Your questions','2026-11-30':'Live Q&A week'};
   Object.keys(weeks).sort().forEach(function(m){
     var md=D(m), end=new Date(md); end.setDate(end.getDate()+6);
     var wk=document.createElement('div'); wk.className='week';
@@ -1024,15 +1140,45 @@ Questions about your own coverage? Please don't post personal details here. Your
 
   /* ---------- measurement scenarios ---------- */
   var SIM=[
-    {q:'Carousel is saved a lot, but few people click the link',r:'People found it useful but didn\'t act yet. That fits a 30-day window.',a:'Keep the carousel. In the final week, repost slide 4 alone as a Story with a direct link sticker to milConnect.'},
-    {q:'The same question keeps showing up in comments',r:'The posts left a gap, and every repeat question is someone who might not act.',a:'Add the answer to the reply bank today, then answer it in a dedicated post within 24 hours.'},
-    {q:'Most viewers leave the video before the key message',r:'The hook isn\'t holding attention long enough to reach "do nothing."',a:'Re-cut the Short so the answer comes first, in the first five seconds, and test it against the original.'},
-    {q:'Negative comments cluster around contractor phone wait times',r:'This is a service issue the campaign can\'t fix, and it could grow during the final week.',a:'Alert TRICARE communications and department public affairs the same day. Don\'t debate in comments; reply with the approved routing message and point to online options.'}
+    {q:'Explainer reaches a lot of people, but comments ask whether the command is already running',r:'The target date and "not decided yet" aren\'t landing. People are filling the gap themselves.',a:'Pin a reply with the target date. In the next cut, put "Target: Oct. 1, 2027. Congress must act first" in the first five seconds.'},
+    {q:'Comments fill with worry about machines using lethal force',r:'This is the public\'s biggest concern, and it\'s a policy question the reply bank can\'t answer.',a:'Alert department public affairs the same day with examples. Use only cleared language, and propose it as a question for the live Q&A if leadership agrees.'},
+    {q:'Companies keep messaging the accounts to pitch products',r:'Industry interest is high, and social isn\'t the place for it.',a:'Add a routing reply to the reply bank, pin the official contact on Facebook and X and tell Project Agincourt how many pitches came in.'},
+    {q:'The "Why Agincourt?" short outperforms the explainers',r:'History pulls people in. That\'s attention we can point at the facts.',a:'Add an end card linking to the explainer, and make history a recurring format that always ends on one current fact.'}
   ];
   var sq=document.getElementById('simQ'), sa=document.getElementById('simA'), sb=[];
   function pickSim(i){ sb.forEach(function(b,j){ b.setAttribute('aria-pressed',j===i); }); var s=SIM[i]; sa.innerHTML='<span class="lbl">What it means</span><p>'+s.r+'</p><span class="lbl">Recommendation</span><p class="act">'+s.a+'</p>'; }
   SIM.forEach(function(s,i){ var b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=s.q; b.style.textAlign='left'; b.addEventListener('click',function(){ pickSim(i); }); sq.appendChild(b); sb.push(b); });
   pickSim(0);
+
+  /* ---------- myth or fact quiz ---------- */
+  var MF=[
+    {c:'AUTOWARCOM is already up and running.',a:'myth',e:'The target date is Oct. 1, 2027, and Congress must pass a law to create the command first.'},
+    {c:'It\'s only about aerial drones.',a:'myth',e:'Its scope covers air, land, sea, undersea and space, plus software, sensors and communications.'},
+    {c:'Units will test new systems with the companies that build them.',a:'fact',e:'Under Project Agincourt, competitions, exercises and combat performance decide what advances.'},
+    {c:'Each military department will create new specialties.',a:'fact',e:'Details haven\'t been announced. Each service will share them.'}
+  ];
+  var mfq=document.getElementById('mfQuiz');
+  MF.forEach(function(m,i){
+    var c=document.createElement('div'); c.className='mf-card';
+    c.innerHTML='<span class="n">'+(i+1)+' / '+MF.length+'</span><p class="claim">'+m.c+'</p><div class="btns" role="group" aria-label="Myth or fact: '+m.c.replace(/"/g,'&quot;')+'"><button type="button" data-v="myth" aria-pressed="false">Myth</button><button type="button" data-v="fact" aria-pressed="false">Fact</button></div><p class="res" aria-live="polite"></p>';
+    var bs=[].slice.call(c.querySelectorAll('button')), res=c.querySelector('.res');
+    bs.forEach(function(b){ b.addEventListener('click',function(){ bs.forEach(function(x){ x.setAttribute('aria-pressed',x===b); }); var ok=b.dataset.v===m.a; res.innerHTML='<b>'+(ok?'Right: ':'Not quite: ')+m.a+'</b>'+m.e; }); });
+    mfq.appendChild(c);
+  });
+
+  /* ---------- rapid response clock ---------- */
+  var RR=[
+    {q:'Release goes live',l:[['All','Confirm the release or transcript is public. Pull the approved holding post and fill in the blanks from the release text.'],['Approval','Department public affairs on-call approver checks the filled-in template.']]},
+    {q:'+15 minutes',l:[['X','Holding post with a link to the release.'],['All','Pin it. Start social listening on the milestone\'s keywords.']]},
+    {q:'+1 hour',l:[['Facebook','Plain-language summary: what it means, what\'s still being decided.'],['Toolkit','Same text to services and commands so their posts match.']]},
+    {q:'+4 hours',l:[['Instagram','One-slide card and a Story with a link sticker.'],['Reply bank','Add answers to the first repeated questions; flag anything off-script.']]},
+    {q:'+24 hours',l:[['YouTube','Short using official footage or the announcement clip, captioned.'],['Report','First read on reach, questions and sentiment to leadership.']]},
+    {q:'+72 hours',l:[['All','Return to the calendar. Update the explainer\'s pinned comment and the carousel if a fact changed.'],['Lessons','Note what slowed the first hour and fix the template.']]}
+  ];
+  var rq=document.getElementById('rrQ'), ra=document.getElementById('rrA'), rb=[];
+  function pickRR(i){ rb.forEach(function(b,j){ b.setAttribute('aria-pressed',j===i); }); ra.innerHTML='<span class="lbl">'+RR[i].q+'</span><ul class="rr-list">'+RR[i].l.map(function(x){ return '<li><em>'+x[0]+'</em><span>'+x[1]+'</span></li>'; }).join('')+'</ul>'; }
+  RR.forEach(function(r,i){ var b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=r.q; b.addEventListener('click',function(){ pickRR(i); }); rq.appendChild(b); rb.push(b); });
+  pickRR(0);
 
   /* ---------- tabs ---------- */
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
