@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brief → Shelf · A Creative Production Planner</title>
+<meta name="description" content="A creative operations planner: pick a deliverable and an in-market date, and it works backward through every stage to the day the brief is due.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palette matched by eye to the Pale Ale label: green, gold, cream */
+    --g-950:#0b2619; --g-900:#0f3322; --g-800:#15422c; --g-700:#1c5a37; --g-600:#28703f; --g-500:#3a8a51;
+    --gold:#e8b63c; --gold-d:#c38f1c; --cream:#f5ecd4; --cream-2:#ebdfbd; --cream-3:#d9c99c;
+    --ink:#132219; --ink-2:#3d4c40; --alert:#d5562c;
+    --s-recipe:#f5ecd4; --s-mash:#e8b63c; --s-boil:#a8cd6f; --s-lab:#dd8c52; --s-pack:#86bfae; --s-cellar:#fffaf0;
+    --disp:"Big Shoulders Display",Impact,sans-serif;
+    --body:"Instrument Sans",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--g-900);color:var(--cream);font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+  a{color:var(--gold)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+
+  /* ---------- Top bar ---------- */
+  .bar{border-bottom:1px solid rgba(245,236,212,.14)}
+  .bar .wrap{display:flex;justify-content:space-between;align-items:center;height:58px;gap:12px}
+  .mark{font:900 22px/1 var(--disp);letter-spacing:.04em;text-transform:uppercase}
+  .mark b{color:var(--gold)}
+  .bar small{font:400 12px var(--mono);letter-spacing:.08em;color:rgba(245,236,212,.6);text-transform:uppercase}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:56px 0 28px;position:relative;overflow:hidden}
+  .hero h1{font:900 clamp(56px,11vw,150px)/.84 var(--disp);text-transform:uppercase;margin:0;letter-spacing:-.005em}
+  .hero h1 .arrow{color:var(--gold)}
+  .hero h1 .out{-webkit-text-stroke:2px var(--cream);color:transparent}
+  .hero p{max-width:640px;font-size:19px;color:rgba(245,236,212,.82);margin:22px 0 0}
+  .hero .by{margin-top:14px;font:400 13px var(--mono);color:rgba(245,236,212,.55)}
+  .mountains{position:absolute;right:-40px;bottom:0;width:560px;max-width:60%;opacity:.16;pointer-events:none}
+
+  /* ---------- Tap handles ---------- */
+  .sect-label{font:600 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+  .sect-label::after{content:"";flex:1;height:1px;background:rgba(232,182,60,.3)}
+  .taps{display:flex;gap:14px;overflow-x:auto;padding:16px 4px 0;scrollbar-width:thin}
+  .tap{all:unset;cursor:pointer;flex:0 0 132px;display:flex;flex-direction:column;align-items:center;transition:transform .2s}
+  .tap .handle{width:92px;height:168px;border-radius:46px 46px 14px 14px;background:linear-gradient(90deg,#0a1f14,#1a4a30 45%,#0d2a1b);border:1px solid rgba(245,236,212,.18);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:14px 8px;text-align:center;position:relative;box-shadow:inset 0 2px 0 rgba(255,255,255,.06),0 10px 20px rgba(0,0,0,.25);transition:.2s}
+  .tap .handle span{font:800 19px/1 var(--disp);text-transform:uppercase;letter-spacing:.02em;color:var(--cream)}
+  .tap .handle i{font:400 10.5px/1.25 var(--body);font-style:normal;color:rgba(245,236,212,.6);margin-top:8px}
+  .tap .ferrule{width:58px;height:16px;background:linear-gradient(90deg,#8d6a1a,#e8c665 40%,#a47c1d);border-radius:2px}
+  .tap .shank{width:16px;height:16px;background:linear-gradient(90deg,#666,#ddd,#777)}
+  .tap:hover .handle{border-color:var(--gold)}
+  .tap[aria-pressed="true"]{transform:translateY(-10px)}
+  .tap[aria-pressed="true"] .handle{background:linear-gradient(90deg,#b8861a,#f0c859 45%,#c3911f);border-color:#f7dc8c}
+  .tap[aria-pressed="true"] .handle span{color:var(--ink)}
+  .tap[aria-pressed="true"] .handle i{color:rgba(19,34,25,.7)}
+  .tap:focus-visible .handle{outline:3px solid var(--cream);outline-offset:3px}
+  .rail{height:14px;border-radius:7px;background:linear-gradient(180deg,#e9e9e9,#9a9a9a 55%,#5d5d5d);margin-top:-1px;box-shadow:0 6px 14px rgba(0,0,0,.3)}
+
+  /* ---------- Batch ticket ---------- */
+  .ticket{margin:40px 0 0;background:var(--cream);color:var(--ink);border-radius:10px;display:grid;grid-template-columns:340px 1fr;position:relative;
+    -webkit-mask:radial-gradient(circle 14px at 340px 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 340px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+            mask:radial-gradient(circle 14px at 340px 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 340px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+  .ticket .stub{padding:26px 28px;border-right:2px dashed var(--cream-3)}
+  .ticket .main{padding:26px 30px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:center}
+  .tk-label{font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px}
+  .ticket h2{font:900 30px/1 var(--disp);text-transform:uppercase;margin:0 0 4px}
+  .ticket .desc{font-size:13.5px;color:var(--ink-2);margin:0 0 18px}
+  .ticket label{display:block;font-weight:600;font-size:13px;margin:12px 0 5px}
+  .ticket input{font:600 15px var(--mono);padding:9px 10px;border:2px solid var(--ink);border-radius:6px;background:#fffdf6;color:var(--ink);width:100%}
+  .ticket input:focus{outline:3px solid var(--gold);outline-offset:1px}
+  .readout .big{font:900 54px/.9 var(--disp);text-transform:uppercase}
+  .readout .sub{font-size:13px;color:var(--ink-2);margin-top:6px}
+  .stamp{justify-self:center;border:4px double currentColor;border-radius:8px;padding:10px 16px;transform:rotate(-5deg);text-align:center;text-transform:uppercase}
+  .stamp b{display:block;font:900 32px/1 var(--disp);letter-spacing:.03em}
+  .stamp small{display:block;font:600 11px var(--mono);letter-spacing:.06em;margin-top:5px}
+  .stamp.ok{color:var(--g-600)} .stamp.bad{color:var(--alert)}
+  @media (max-width:900px){
+    .ticket{grid-template-columns:1fr;-webkit-mask:none;mask:none}
+    .ticket .stub{border-right:0;border-bottom:2px dashed var(--cream-3)}
+    .ticket .main{grid-template-columns:1fr 1fr}
+    .stamp{grid-column:1/-1}
+  }
+
+  /* ---------- Process line ---------- */
+  .line{margin:46px 0 0}
+  .stages{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;font-size:13px;color:rgba(245,236,212,.75)}
+  .stages span{display:inline-flex;align-items:center;gap:7px}
+  .stages i{width:22px;height:9px;border-radius:5px;display:inline-block}
+  .stages b{font:800 14px var(--disp);letter-spacing:.06em;text-transform:uppercase;color:var(--cream)}
+  .rows{background:var(--g-950);border:1px solid rgba(245,236,212,.1);border-radius:12px;padding:6px 20px 10px}
+  .r{display:grid;grid-template-columns:34px 250px 1fr 92px 128px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(245,236,212,.07)}
+  .r:last-child{border-bottom:0}
+  .r.off .who,.r.off .pipe,.r.off .dates,.r.off .days{opacity:.3}
+  .who b{display:block;font-weight:600;font-size:14.5px;line-height:1.25}
+  .who small{display:block;font-size:12px;color:rgba(245,236,212,.55)}
+  .who em{display:block;font-style:normal;font-size:11.5px;color:var(--s-lab);margin-top:3px}
+  .pipe{position:relative;height:22px;border-radius:11px;background:#081c12;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
+  .fill{position:absolute;top:3px;bottom:3px;border-radius:8px;min-width:8px;display:flex;align-items:center;justify-content:center;font:600 10.5px var(--mono);color:var(--ink);overflow:hidden;white-space:nowrap;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15),inset 0 2px 0 rgba(255,255,255,.35)}
+  .fill.buffer{background:repeating-linear-gradient(-45deg,var(--alert) 0 6px,#e98058 6px 12px);color:#fff}
+  .today{position:absolute;top:-11px;bottom:-11px;border-left:2px dashed var(--gold);z-index:2}
+  .today.first::before{content:"TODAY";position:absolute;top:-16px;left:-20px;font:600 10px var(--mono);letter-spacing:.12em;color:var(--gold)}
+  .days{display:flex;align-items:center;border:1px solid rgba(245,236,212,.25);border-radius:6px;overflow:hidden}
+  .days button{all:unset;cursor:pointer;width:24px;text-align:center;font:600 15px var(--mono);color:var(--gold);padding:5px 0}
+  .days button:hover{background:rgba(232,182,60,.15)}
+  .days input{width:100%;min-width:0;border:0;background:transparent;color:var(--cream);font:600 13px var(--mono);text-align:center;-moz-appearance:textfield;padding:5px 0}
+  .days input::-webkit-inner-spin-button{-webkit-appearance:none}
+  .dates{font:400 12px var(--mono);color:rgba(245,236,212,.75);text-align:right;line-height:1.4}
+  .valve{all:unset;cursor:pointer;width:26px;height:26px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;position:relative}
+  .valve::after{content:"";width:14px;height:3px;background:var(--gold);border-radius:2px;transition:transform .2s}
+  .valve[aria-pressed="true"]{background:var(--gold)}
+  .valve[aria-pressed="true"]::after{background:var(--ink);transform:rotate(90deg)}
+  .valve:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+  .axis{display:grid;grid-template-columns:34px 250px 1fr 92px 128px;gap:14px;padding:8px 0 0}
+  .ticks{display:flex;justify-content:space-between;font:400 11px var(--mono);color:rgba(245,236,212,.5)}
+  .hdr{display:grid;grid-template-columns:34px 250px 1fr 92px 128px;gap:14px;padding:14px 0 8px;font:600 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(245,236,212,.45);border-bottom:1px solid rgba(245,236,212,.12)}
+  .hdr span:last-child{text-align:right}
+  @media (max-width:860px){
+    .hdr,.axis{display:none}
+    .r{grid-template-columns:34px 1fr 92px;grid-template-areas:"v who days" "pipe pipe pipe" "dates dates dates";row-gap:8px}
+    .r .valve{grid-area:v}.r .who{grid-area:who}.r .days{grid-area:days}.r .pipe{grid-area:pipe}.r .dates{grid-area:dates;text-align:left}
+  }
+
+  .tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:center}
+  .btn{all:unset;cursor:pointer;font:700 14px var(--body);padding:11px 18px;border-radius:6px;background:var(--gold);color:var(--ink);border:2px solid var(--gold)}
+  .btn.alt{background:transparent;color:var(--cream);border-color:rgba(245,236,212,.35)}
+  .btn:hover{filter:brightness(1.07)}
+  .btn:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+  .tools .note{font-size:12.5px;color:rgba(245,236,212,.55);margin-left:auto;max-width:440px}
+  @media (max-width:700px){.tools .note{margin-left:0}}
+
+  .recover{margin-top:18px;border:2px solid var(--alert);border-radius:10px;padding:18px 20px;background:rgba(213,86,44,.1)}
+  .recover h3{font:900 24px/1 var(--disp);text-transform:uppercase;margin:0 0 8px;color:#f08a63}
+  .recover ul{margin:0;padding-left:18px}
+  .recover li{margin:5px 0;font-size:14.5px}
+
+  /* ---------- Playbook ---------- */
+  .playbook{background:var(--cream);color:var(--ink);margin-top:70px;padding:64px 0 70px}
+  .playbook .sect-label{color:var(--g-700)}
+  .playbook .sect-label::after{background:rgba(28,90,55,.25)}
+  .playbook h2{font:900 clamp(44px,7vw,84px)/.88 var(--disp);text-transform:uppercase;margin:0;color:var(--g-700)}
+  .playbook .intro{max-width:620px;font-size:17px;color:var(--ink-2);margin:16px 0 0}
+  .gates{display:grid;grid-template-columns:repeat(5,1fr);margin:44px 0 0;position:relative}
+  .gates::before{content:"";position:absolute;left:10%;right:10%;top:27px;height:8px;border-radius:4px;background:var(--g-700)}
+  .gate{text-align:center;position:relative;padding:0 10px}
+  .gate .v{width:62px;height:62px;border-radius:50%;margin:0 auto 14px;background:var(--gold);border:4px solid var(--g-700);display:grid;place-items:center;font:900 26px var(--disp);color:var(--g-900);position:relative}
+  .gate b{display:block;font:800 19px/1.05 var(--disp);text-transform:uppercase;color:var(--g-800)}
+  .gate p{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+  @media (max-width:820px){
+    .gates{grid-template-columns:1fr;gap:18px}
+    .gates::before{left:30px;right:auto;top:10px;bottom:10px;width:8px;height:auto}
+    .gate{display:grid;grid-template-columns:62px 1fr;gap:14px;text-align:left;align-items:center;padding:0}
+    .gate .v{margin:0}
+  }
+  .sheets{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:52px}
+  @media (max-width:820px){.sheets{grid-template-columns:1fr}}
+  .sheet{background:#fffbf0;border:2px solid var(--g-700);border-radius:4px;position:relative;overflow:hidden}
+  .sheet header{background:var(--g-700);color:var(--cream);padding:12px 18px;display:flex;justify-content:space-between;align-items:baseline}
+  .sheet header b{font:900 22px var(--disp);text-transform:uppercase;letter-spacing:.02em}
+  .sheet header small{font:600 11px var(--mono);letter-spacing:.12em;color:var(--gold)}
+  .sheet ol{list-style:none;margin:0;padding:0;counter-reset:n}
+  .sheet li{counter-increment:n;display:grid;grid-template-columns:44px 1fr;border-bottom:1px solid var(--cream-2);font-size:14.5px}
+  .sheet li:last-child{border-bottom:0}
+  .sheet li::before{content:counter(n,decimal-leading-zero);font:600 12px var(--mono);color:var(--g-600);padding:11px 0 0 18px}
+  .sheet li span{padding:10px 18px 10px 0}
+
+  footer{padding:30px 0 44px;font-size:13px;color:rgba(245,236,212,.6)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  .toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:var(--gold);color:var(--ink);font-weight:700;padding:10px 18px;border-radius:6px;opacity:0;transition:.25s;pointer-events:none}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @media print{
+    body{background:#fff;color:#000}
+    .taps,.rail,.tools,.mountains,.valve,.days button{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="mark">Brief <b>→</b> Shelf</div>
+    <small>Creative Ops Planner · Ticket 6715</small>
+  </div>
+</div>
+
+<section class="hero">
+  <svg class="mountains" viewBox="0 0 560 220" aria-hidden="true">
+    <path d="M0 220 L90 110 L140 150 L230 40 L300 120 L350 85 L440 160 L500 120 L560 170 L560 220 Z" fill="#f5ecd4"/>
+    <path d="M230 40 L255 70 L242 68 L230 80 L218 66 L205 72 Z" fill="#0f3322"/>
+  </svg>
+  <div class="wrap">
+    <h1>Brief <span class="arrow">→</span><br><span class="out">Shelf</span></h1>
+    <p>Pick what you're making and when it has to be in market. The planner works backward through creative, review, compliance, vendors, and quality, and tells you the day your brief has to land.</p>
+    <div class="by">Built by <a href="https://aaplanzo.github.io/antonio-planzo-portfolio/" target="_blank" rel="noopener">Antonio Planzo</a> · Sample project for a fictional brewery's winter release</div>
+  </div>
+</section>
+
+<main class="wrap">
+  <p class="sect-label">01 · Pull a handle: what are we making?</p>
+  <div class="taps" id="taps" role="group" aria-label="Deliverable type"></div>
+  <div class="rail"></div>
+
+  <div class="ticket">
+    <div class="stub">
+      <p class="tk-label">Batch ticket</p>
+      <h2 id="tName">—</h2>
+      <p class="desc" id="tDesc"></p>
+      <label for="launch">In-market date</label>
+      <input type="date" id="launch">
+      <label for="buffer">Contingency buffer (business days)</label>
+      <input type="number" id="buffer" min="0" max="30" value="5">
+    </div>
+    <div class="main">
+      <div class="readout">
+        <p class="tk-label">Brief due</p>
+        <div class="big" id="briefDue">—</div>
+        <div class="sub" id="briefSub">—</div>
+      </div>
+      <div class="readout">
+        <p class="tk-label">Total lead time</p>
+        <div class="big" id="lead">—</div>
+        <div class="sub" id="leadSub">—</div>
+      </div>
+      <div class="stamp" id="stamp"><b>—</b><small>—</small></div>
+    </div>
+  </div>
+
+  <section class="line">
+    <p class="sect-label">02 · The production line</p>
+    <div class="stages" id="stages"></div>
+    <div class="rows">
+      <div class="hdr"><span></span><span>Stage &amp; owner</span><span>Timeline</span><span>Biz days</span><span>Window</span></div>
+      <div id="rows"></div>
+      <div class="axis"><span></span><span></span><div class="ticks" id="ticks"></div><span></span><span></span></div>
+    </div>
+    <div id="recover"></div>
+    <div class="tools">
+      <button class="btn" id="copyBtn">Copy plan for stakeholders</button>
+      <button class="btn alt" id="resetBtn">Reset lead times</button>
+      <span class="note">Use the valves to turn stages on or off and the ± buttons to change their length. Lead times are starting assumptions: tune them to your team's capacity and the dates vendors quote you.</span>
+    </div>
+  </section>
+</main>
+
+<section class="playbook">
+  <div class="wrap">
+    <p class="sect-label">03 · Partner playbook</p>
+    <h2>House rules for<br>working with Creative</h2>
+    <p class="intro">The planner tells you when. These tell you how: the five gates every project passes through, what a complete brief looks like, and what "ready for vendor" means.</p>
+
+    <div class="gates">
+      <div class="gate"><div class="v">1</div><div><b>Brief sign-off</b><p>The brand owner and Creative Ops agree on scope, date, and budget. Nothing starts before this.</p></div></div>
+      <div class="gate"><div class="v">2</div><div><b>Concept select</b><p>One route is chosen. Changing direction after this resets the clock.</p></div></div>
+      <div class="gate"><div class="v">3</div><div><b>Copy lock</b><p>Legal, regulatory, and claims copy are final before final art begins.</p></div></div>
+      <div class="gate"><div class="v">4</div><div><b>Release to vendor</b><p>Files are preflighted, the proof is approved, and the estimate is signed.</p></div></div>
+      <div class="gate"><div class="v">5</div><div><b>Quality sign-off</b><p>The press check or line trial passes, and the finished goods match the proof.</p></div></div>
+    </div>
+
+    <div class="sheets">
+      <div class="sheet">
+        <header><b>The recipe: a complete brief</b><small>Bring all 7</small></header>
+        <ol>
+          <li><span><b>Business objective</b>: the one thing this work has to do</span></li>
+          <li><span><b>Audience and channel</b>: who sees it, and where</span></li>
+          <li><span><b>Deliverables</b> with sizes, SKUs, quantities, and languages</span></li>
+          <li><span><b>In-market date</b> and hard gates, such as sales meetings or distributor deadlines</span></li>
+          <li><span><b>Mandatories</b>: legal copy, claims, logos, UPCs, dielines</span></li>
+          <li><span><b>Budget range</b> and cost center</span></li>
+          <li><span><b>Approvers</b> named as people, not departments</span></li>
+        </ol>
+      </div>
+      <div class="sheet">
+        <header><b>Quality: ready for vendor</b><small>Check before release</small></header>
+        <ol>
+          <li><span>Correct dieline, bleed, and color profile; fonts packaged or outlined</span></li>
+          <li><span>Barcodes scanned and verified against the SKU master</span></li>
+          <li><span>Brand standards checked: lockups, color, clear space, type</span></li>
+          <li><span>One consolidated feedback round per review, with no side-channel edits</span></li>
+          <li><span>Proofs approved in writing; press check held for new packaging</span></li>
+          <li><span>Files, proofs, and estimates archived to the shared library at close-out</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Brief → Shelf · a creative operations work sample by Antonio Planzo</span>
+    <span>Lead times are editable planning assumptions. Confirm regulatory and vendor timing on every project.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Plan copied</div>
+
+<script>
+(function(){
+  // Brewhouse names for each creative stage
+  const STAGE = {
+    recipe:{name:"Recipe", what:"Intake & brief", color:"var(--s-recipe)"},
+    mash:  {name:"Mash",   what:"Creative",       color:"var(--s-mash)"},
+    boil:  {name:"Boil",   what:"Review",         color:"var(--s-boil)"},
+    lab:   {name:"Lab",    what:"Compliance",     color:"var(--s-lab)"},
+    pack:  {name:"Package",what:"Vendor & production", color:"var(--s-pack)"},
+    cellar:{name:"Cellar", what:"Quality & ops",  color:"var(--s-cellar)"}
+  };
+
+  // [phase, owner, business days, stage, note]
+  const T = {
+    label_new:{tap:"New Label", sub:"New SKU", name:"New SKU label",
+      desc:"A new beer, from first concept through regulatory approval, the print run, and a line trial.",
+      phases:[
+        ["Intake & brief alignment","Brand mgr + Creative Ops",3,"recipe"],
+        ["Concept design (2–3 routes)","In-house design",10,"mash"],
+        ["Refinement & review (2 rounds)","Design + Brand",8,"boil"],
+        ["Final art, dielines & preflight","Production artist",5,"mash"],
+        ["Internal copy & compliance review","Compliance",5,"lab"],
+        ["Regulatory label approval","Compliance",20,"lab","Placeholder: check current agency processing times"],
+        ["Printer proof & press check","Print vendor + Quality",7,"pack"],
+        ["Print run & delivery to brewery","Print vendor + Supply chain",15,"pack"],
+        ["Packaging line trial & QA sign-off","Quality + Brewing ops",3,"cellar"]],
+      levers:["Run regulatory review in parallel with printer quoting","Have a freelance designer build a second concept route in parallel","Reserve press time as soon as the concept is selected"]},
+    label_refresh:{tap:"Refresh", sub:"Existing label", name:"Label refresh",
+      desc:"A design update on an existing label. Close the regulatory valve if compliance clears it.",
+      phases:[
+        ["Intake & brief alignment","Brand mgr + Creative Ops",2,"recipe"],
+        ["Design update","In-house design",7,"mash"],
+        ["Review (2 rounds)","Design + Brand",5,"boil"],
+        ["Final art & preflight","Production artist",4,"mash"],
+        ["Copy & compliance review","Compliance",4,"lab"],
+        ["Regulatory approval (if required)","Compliance",15,"lab","Confirm with compliance whether the change needs a new approval"],
+        ["Printer proof","Print vendor",5,"pack"],
+        ["Print run & delivery","Print vendor + Supply chain",15,"pack"],
+        ["Line QA sign-off","Quality",2,"cellar"]],
+      levers:["Keep the change to elements that don't trigger re-approval","Reuse existing dielines and plates","Consolidate feedback into a single review round"]},
+    carton:{tap:"Carton", sub:"Variety pack", name:"Variety pack carton",
+      desc:"Secondary packaging. The structure is locked with supply chain before design starts.",
+      phases:[
+        ["Intake & brief alignment","Brand mgr + Creative Ops",3,"recipe"],
+        ["Structure & dieline confirmation","Supply chain + Carton vendor",5,"pack"],
+        ["Concept design","In-house design",10,"mash"],
+        ["Refinement & review (2 rounds)","Design + Brand",8,"boil"],
+        ["Final art & preflight","Production artist",5,"mash"],
+        ["Copy & compliance review","Compliance",5,"lab"],
+        ["Proof & press check","Carton vendor + Quality",7,"pack"],
+        ["Print & converting","Carton vendor",20,"pack"],
+        ["Line fit trial & QA sign-off","Quality + Packaging ops",3,"cellar"]],
+      levers:["Lock the dieline before design so it's never reworked","Ask the vendor for a split shipment: launch volume first","Pre-approve the proof standard so the press check is a formality"]},
+    pos:{tap:"Retail POS", sub:"In-store kit", name:"Retail POS kit",
+      desc:"Case cards, shelf talkers, and tackers, kitted and shipped to distributors.",
+      phases:[
+        ["Intake & brief alignment","Trade marketing + Creative Ops",2,"recipe"],
+        ["Kit design system","In-house design",7,"mash"],
+        ["Brand review","Design + Brand",4,"boil"],
+        ["Sales team feedback","Sales leadership",3,"boil"],
+        ["Final art & preflight","Production artist",4,"mash"],
+        ["Compliance review","Compliance",3,"lab"],
+        ["Vendor quote & proof","POS vendor",5,"pack"],
+        ["Print & kitting","POS vendor",10,"pack"],
+        ["Ship to distributors","Supply chain",10,"cellar"]],
+      levers:["Build from templates so new design is limited to hero pieces","Get the vendor quote during design, not after","Ship direct from the vendor"]},
+    photo:{tap:"Photo Shoot", sub:"Product + lifestyle", name:"Product & lifestyle shoot",
+      desc:"From treatment to retouched selects delivered to the asset library.",
+      phases:[
+        ["Intake & brief alignment","Brand mgr + Creative Ops",3,"recipe"],
+        ["Treatment & shot list","Creative lead",5,"mash"],
+        ["Photographer bid & booking","Creative Ops",5,"pack"],
+        ["Pre-production: location, props, product","Creative Ops + Producer",5,"pack"],
+        ["Shoot days","Photographer + crew",2,"pack"],
+        ["Selects & retouching","Photographer + Retoucher",7,"mash"],
+        ["Review & delivery to asset library","Brand + Creative Ops",3,"boil"]],
+      levers:["Combine shoots so one day covers several briefs","Use a photographer already under a master agreement, so no bid is needed","Retouch launch-critical selects first"]},
+    digital:{tap:"Digital", sub:"Social + email", name:"Digital campaign",
+      desc:"Social, paid, and HTML email assets, built, checked, and scheduled.",
+      phases:[
+        ["Intake & brief alignment","Channel lead + Creative Ops",2,"recipe"],
+        ["Concepts & copy","In-house design + Copy",5,"mash"],
+        ["Review","Brand + Channel lead",4,"boil"],
+        ["Asset production: static, motion, email build","Design + Freelance motion",7,"mash"],
+        ["Compliance review","Compliance",3,"lab"],
+        ["QA: links, rendering, accessibility","Creative Ops",2,"cellar"],
+        ["Scheduling & trafficking","Channel lead",2,"cellar"]],
+      levers:["Produce every size from a single master layout","Send motion work to a freelancer while statics are built in-house","Pre-clear recurring copy blocks with compliance"]},
+    video:{tap:"Video", sub:"Hero + cutdowns", name:"Brand video",
+      desc:"A hero spot and its cutdowns, from script to final deliverables.",
+      phases:[
+        ["Intake & brief alignment","Brand mgr + Creative Ops",3,"recipe"],
+        ["Treatment & script","Creative lead",7,"mash"],
+        ["Script review","Brand + Leadership",5,"boil"],
+        ["Vendor bid & pre-production","Creative Ops + Production co.",10,"pack"],
+        ["Production","Production co.",3,"pack"],
+        ["Edit & post: color, sound, graphics","Editor + Post house",12,"mash"],
+        ["Review rounds","Brand + Leadership",6,"boil"],
+        ["Compliance review","Compliance",3,"lab"],
+        ["Final deliverables & cutdowns","Editor",3,"cellar"]],
+      levers:["Lock the script before bidding","Plan cutdowns into the shoot, not the edit","Set firm feedback windows for each review round"]}
+  };
+
+  // ---------- state ----------
+  const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+  const today=(()=>{const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())})();
+  let S=store.get("b2s_v2")||{};
+  if(!S.type||!T[S.type]) S.type="label_new";
+  if(!S.launch) S.launch=iso(addDays(today,140));
+  if(S.buffer==null) S.buffer=5;
+  S.custom=S.custom||{};
+  const save=()=>store.set("b2s_v2",S);
+
+  function phases(){
+    const c=S.custom[S.type]||{};
+    return T[S.type].phases.map((p,i)=>({i,name:p[0],owner:p[1],stage:p[3],note:p[4]||"",
+      days:c.days&&c.days[i]!=null?c.days[i]:p[2], on:c.on&&c.on[i]!=null?c.on[i]:true}));
+  }
+
+  // ---------- dates ----------
+  function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
+  const wk=d=>{const g=d.getDay();return g===0||g===6};
+  function prevBiz(d){let x=addDays(d,-1);while(wk(x))x=addDays(x,-1);return x}
+  function backBiz(end,n){let x=new Date(end),c=1;while(c<n){x=addDays(x,-1);if(!wk(x))c++}return x}
+  function bizDiff(a,b){let s=1;if(b<a){[a,b]=[b,a];s=-1}let c=0,x=new Date(a);while(x<b){x=addDays(x,1);if(!wk(x))c++}return c*s}
+  function parse(s){const[y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}
+  function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  const fmt=d=>d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+  const fmtS=d=>d.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+
+  function plan(){
+    const launch=parse(S.launch), ph=phases();
+    let cur=prevBiz(launch), buf=null;
+    if(S.buffer>0){const bs=backBiz(cur,S.buffer);buf={start:bs,end:cur};cur=prevBiz(bs)}
+    const act=ph.filter(p=>p.on&&p.days>0);
+    for(let k=act.length-1;k>=0;k--){const p=act[k];p.end=cur;p.start=backBiz(cur,p.days);cur=prevBiz(p.start)}
+    return {launch,ph,act,buf};
+  }
+
+  // ---------- render ----------
+  const $=id=>document.getElementById(id);
+
+  function renderTaps(){
+    $("taps").innerHTML=Object.entries(T).map(([k,t])=>
+      `<button class="tap" data-k="${k}" aria-pressed="${k===S.type}"><div class="handle"><span>${t.tap}</span><i>${t.sub}</i></div><div class="ferrule"></div><div class="shank"></div></button>`).join("");
+    $("taps").querySelectorAll(".tap").forEach(b=>b.onclick=()=>{S.type=b.dataset.k;save();renderTaps();render()});
+  }
+
+  function render(){
+    const t=T[S.type], {launch,ph,act,buf}=plan();
+    $("tName").textContent=t.name; $("tDesc").textContent=t.desc;
+
+    const used=[...new Set(ph.map(p=>p.stage))];
+    $("stages").innerHTML=Object.keys(STAGE).filter(k=>used.includes(k)).map(k=>`<span><i style="background:${STAGE[k].color}"></i><b>${STAGE[k].name}</b> ${STAGE[k].what}</span>`).join("");
+
+    if(!act.length){
+      $("briefDue").textContent="—";$("briefSub").textContent="Open at least one valve";
+      $("lead").textContent="—";$("leadSub").textContent="";
+      $("stamp").className="stamp";$("stamp").innerHTML="<b>No plan</b><small>All stages closed</small>";
+      drawRows(ph,null,null,null);$("recover").innerHTML="";$("ticks").innerHTML="";return;
+    }
+    const brief=act[0].start;
+    const total=act.reduce((s,p)=>s+p.days,0)+Number(S.buffer||0);
+    const fl=bizDiff(today,brief);
+    $("briefDue").textContent=fmtS(brief);
+    $("briefSub").textContent=brief.toLocaleDateString("en-US",{weekday:"long",year:"numeric"});
+    $("lead").textContent=total+" days";
+    $("leadSub").textContent="Business days ≈ "+(Math.round(total/5*10)/10)+" weeks, buffer included";
+
+    const st=$("stamp");
+    if(fl>=0){st.className="stamp ok";st.innerHTML=`<b>On schedule</b><small>${fl===0?"Brief due today":fl+" biz days of runway"}</small>`;$("recover").innerHTML=""}
+    else{
+      st.className="stamp bad";st.innerHTML=`<b>Behind ${Math.abs(fl)}d</b><small>Recovery plan below</small>`;
+      $("recover").innerHTML=`<div class="recover"><h3>Recover ${Math.abs(fl)} business days</h3><ul>${t.levers.map(l=>`<li>${l}</li>`).join("")}<li>Spend the ${S.buffer}-day buffer deliberately, and tell stakeholders about the risk</li><li>Move the in-market date, or launch the core pieces first and phase in the rest</li></ul></div>`;
+    }
+
+    const r0=brief, span=(launch-r0)/864e5+1;
+    const pct=d=>((d-r0)/864e5)/span*100;
+    drawRows(ph,pct,span,buf);
+    if(today>=r0&&today<=launch){
+      const tp=pct(today);
+      $("rows").querySelectorAll(".pipe").forEach((p,i)=>{const m=document.createElement("div");m.className="today"+(i===0?" first":"");m.style.left=tp+"%";p.appendChild(m)});
+    }
+    const tk=[];for(let i=0;i<=4;i++)tk.push(fmtS(addDays(r0,Math.round((span-1)*i/4))));
+    $("ticks").innerHTML=tk.map(x=>`<span>${x}</span>`).join("");
+  }
+
+  function drawRows(ph,pct,span,buf){
+    let h=ph.map(p=>{
+      const s=STAGE[p.stage];
+      let fill="";
+      if(pct&&p.on&&p.start){
+        const w=((p.end-p.start)/864e5+1)/span*100;
+        fill=`<div class="fill" style="left:${pct(p.start)}%;width:${w}%;background:${s.color}" title="${s.name}: ${fmt(p.start)} – ${fmt(p.end)}">${w>8?s.name:""}</div>`;
+      }
+      return `<div class="r ${p.on?"":"off"}">
+        <button class="valve" data-i="${p.i}" aria-pressed="${p.on}" aria-label="${p.on?"Close":"Open"} stage: ${p.name}" title="${p.on?"Close":"Open"} this stage"></button>
+        <div class="who"><b>${p.name}</b><small>${p.owner}</small>${p.note?`<em>${p.note}</em>`:""}</div>
+        <div class="pipe">${fill}</div>
+        <div class="days"><button data-i="${p.i}" data-d="-1" aria-label="One day fewer">−</button><input type="number" min="0" max="120" value="${p.days}" data-i="${p.i}" aria-label="Business days for ${p.name}"><button data-i="${p.i}" data-d="1" aria-label="One day more">+</button></div>
+        <div class="dates">${p.on&&p.start?fmtS(p.start)+" →<br>"+fmtS(p.end):"closed"}</div>
+      </div>`}).join("");
+    if(buf&&pct){
+      const w=((buf.end-buf.start)/864e5+1)/span*100;
+      h+=`<div class="r"><span></span><div class="who"><b>Contingency buffer</b><small>Creative Ops</small></div><div class="pipe"><div class="fill buffer" style="left:${pct(buf.start)}%;width:${w}%">${w>8?"buffer":""}</div></div><div></div><div class="dates">${fmtS(buf.start)} →<br>${fmtS(buf.end)}</div></div>`;
+    }
+    $("rows").innerHTML=h;
+    const c=S.custom[S.type]=S.custom[S.type]||{};
+    const setDays=(i,v)=>{c.days=c.days||{};c.days[i]=Math.max(0,Math.min(120,v|0));save();render()};
+    $("rows").querySelectorAll(".valve").forEach(b=>b.onclick=()=>{c.on=c.on||{};c.on[b.dataset.i]=b.getAttribute("aria-pressed")!=="true";save();render()});
+    $("rows").querySelectorAll(".days button").forEach(b=>b.onclick=()=>{const p=phases()[b.dataset.i];setDays(b.dataset.i,p.days+Number(b.dataset.d))});
+    $("rows").querySelectorAll(".days input").forEach(inp=>inp.onchange=()=>setDays(inp.dataset.i,parseInt(inp.value||0,10)));
+  }
+
+  // ---------- controls ----------
+  $("launch").value=S.launch; $("buffer").value=S.buffer;
+  $("launch").onchange=e=>{if(e.target.value){S.launch=e.target.value;save();render()}};
+  $("buffer").oninput=e=>{S.buffer=Math.max(0,Math.min(30,parseInt(e.target.value||0,10)));save();render()};
+  $("resetBtn").onclick=()=>{delete S.custom[S.type];save();render()};
+  $("copyBtn").onclick=()=>{
+    const t=T[S.type],{launch,act}=plan(); if(!act.length)return;
+    let s=`${t.name.toUpperCase()}: PRODUCTION PLAN\nIn market: ${fmt(launch)}\nBrief due: ${fmt(act[0].start)}\n\n`;
+    act.forEach((p,k)=>{s+=`${String(k+1).padStart(2," ")}. [${STAGE[p.stage].name}] ${p.name}\n    ${fmtS(p.start)} – ${fmtS(p.end)} · ${p.days} biz days · ${p.owner}\n`});
+    s+=`\nBuffer: ${S.buffer} business days before in-market.\nLead times are planning assumptions; confirm vendor and regulatory timing.`;
+    const ok=()=>{const x=$("toast");x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800)};
+    const fb=()=>{const ta=document.createElement("textarea");ta.value=s;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}ta.remove()};
+    try{navigator.clipboard.writeText(s).then(ok,fb)}catch(e){fb()}
+  };
+
+  renderTaps(); render();
+})();
+</script>
+</body>
+</html>
