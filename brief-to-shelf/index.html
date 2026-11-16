@@ -177,6 +177,57 @@
     body{background:#fff;color:#000}
     .taps,.rail,.tools,.mountains,.valve,.days button{display:none}
   }
+  /* ---------- Modes ---------- */
+  .modes{display:inline-flex;border:1px solid rgba(245,236,212,.25);border-radius:8px;overflow:hidden;margin:0 0 10px}
+  .mode{all:unset;cursor:pointer;padding:10px 16px;font:700 13.5px var(--body);color:rgba(245,236,212,.75)}
+  .mode:hover{color:var(--cream)}
+  .mode[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+  .mode:focus-visible{outline:2px solid var(--cream);outline-offset:-3px}
+  .mode-hint{font-size:14px;color:rgba(245,236,212,.68);margin:0 0 4px}
+
+  /* ---------- Campaign rows ---------- */
+  .r.master{cursor:pointer}
+  .r.master:hover .pipe{box-shadow:inset 0 2px 4px rgba(0,0,0,.5),0 0 0 1px rgba(232,182,60,.45)}
+  .r.master .who b{font:800 18px/1.1 var(--disp);text-transform:uppercase;letter-spacing:.02em}
+  .r.master .fill{border-radius:3px}
+  .caret{all:unset;cursor:pointer;width:26px;height:26px;border-radius:6px;border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold);font:700 12px var(--mono);transition:transform .2s}
+  .caret[aria-expanded="true"]{transform:rotate(90deg);background:var(--gold);color:var(--ink)}
+  .caret:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+  .days.total{border:0;justify-content:center;font:600 14px var(--mono);color:var(--gold)}
+  .sub{border-left:3px solid rgba(232,182,60,.4);margin:0 0 10px 12px;padding-left:12px;background:rgba(232,182,60,.03)}
+  .sub .r{grid-template-columns:34px 238px 1fr 92px 128px}
+  @media (max-width:860px){.r.master .caret{grid-area:v}.r.master .total{grid-area:days}.sub{margin-left:4px;padding-left:8px}.sub .r{grid-template-columns:34px 1fr 92px}}
+
+  /* ---------- Capacity ---------- */
+  .capacity{margin-top:46px}
+  .cap-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+  .cap-head h3{font:900 30px/1 var(--disp);text-transform:uppercase;margin:0 0 6px}
+  .cap-sub{font-size:13.5px;color:rgba(245,236,212,.65);margin:0;max-width:640px}
+  .cap-head label{font:600 14px var(--body);display:flex;align-items:center;gap:10px}
+  .cap-head input{width:72px;font:600 16px var(--mono);padding:8px 10px;border-radius:6px;border:2px solid var(--gold);background:var(--g-950);color:var(--cream)}
+  .cap-head input:focus{outline:2px solid var(--cream);outline-offset:2px}
+  .cap-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+  @media (max-width:700px){.cap-stats{grid-template-columns:1fr}}
+  .cs{background:var(--cream);color:var(--ink);border-radius:8px;padding:14px 16px}
+  .cs b{display:block;font:900 34px/1 var(--disp)}
+  .cs b.warn{color:var(--alert)}
+  .cs small{font-size:12.5px;color:var(--ink-2)}
+  .chart{background:var(--g-950);border:1px solid rgba(245,236,212,.1);border-radius:12px;padding:30px 18px 12px}
+  .bars{position:relative;height:190px;display:flex;align-items:flex-end;gap:4px}
+  .col{flex:1;min-width:5px;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
+  .b{background:var(--s-mash);border-radius:0}
+  .col .b:last-child{border-radius:0}
+  .col .b.over{background:repeating-linear-gradient(-45deg,var(--alert) 0 5px,#e98058 5px 10px);border-radius:3px 3px 0 0}
+  .col .b.over[style*="height:0%"]+.b{border-radius:3px 3px 0 0}
+  .capline{position:absolute;left:0;right:0;border-top:2px dashed var(--cream);opacity:.8;z-index:2;pointer-events:none}
+  .capline span{position:absolute;right:0;top:-20px;font:600 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
+  .wks{display:flex;gap:4px;margin-top:8px}
+  .wks span{flex:1;min-width:5px;font:400 10.5px var(--mono);color:rgba(245,236,212,.5);white-space:nowrap;overflow:visible}
+  .capwarn{margin-top:16px;border:2px solid var(--alert);border-radius:10px;padding:16px 20px;background:rgba(213,86,44,.1)}
+  .capwarn h3{font:900 22px/1 var(--disp);text-transform:uppercase;margin:0 0 8px;color:#f08a63}
+  .capwarn ul{margin:0;padding-left:18px}
+  .capwarn li{margin:6px 0;font-size:14px}
+  .capok{margin-top:16px;border:2px solid var(--s-boil);border-radius:10px;padding:14px 18px;color:var(--s-boil);font-weight:600;font-size:14.5px}
 </style>
 </head>
 <body>
@@ -202,12 +253,14 @@
 
 <main class="wrap">
   <p class="sect-label">01 · Pull a handle: what are we making?</p>
+  <div class="modes" role="group" aria-label="Planning mode"><button class="mode" data-m="campaign">Campaign · master template</button><button class="mode" data-m="single">Single deliverable</button></div>
+  <p class="mode-hint" id="modeHint"></p>
   <div class="taps" id="taps" role="group" aria-label="Deliverable type"></div>
   <div class="rail"></div>
 
   <div class="ticket">
     <div class="stub">
-      <p class="tk-label">Batch ticket</p>
+      <p class="tk-label" id="tLabel">Batch ticket</p>
       <h2 id="tName">—</h2>
       <p class="desc" id="tDesc"></p>
       <label for="launch">In-market date</label>
@@ -242,14 +295,25 @@
     <div class="tools">
       <button class="btn" id="copyBtn">Copy plan for stakeholders</button>
       <button class="btn alt" id="resetBtn">Reset lead times</button>
-      <span class="note">Use the valves to turn stages on or off and the ± buttons to change their length. Lead times are starting assumptions: tune them to your team's capacity and the dates vendors quote you.</span>
+      <span class="note">Open a deliverable to see its stages. Use the valves to turn stages on or off and the ± buttons to change their length. Lead times are starting assumptions: tune them to your team's capacity and the dates vendors quote you.</span>
     </div>
+  </section>
+
+  <section class="capacity">
+    <p class="sect-label">03 · Creative capacity</p>
+    <div class="cap-head">
+      <div><h3>In-house design load, week by week</h3><p class="cap-sub">Every creative stage owned by the in-house team books one designer-day per business day; design review rounds book half. Freelance, agency, and vendor stages don't draw on the team.</p></div>
+      <label for="designers">In-house designers <input type="number" id="designers" min="1" max="20" value="2"></label>
+    </div>
+    <div class="cap-stats" id="capStats"></div>
+    <div class="chart" id="capChart"></div>
+    <div id="capFlags"></div>
   </section>
 </main>
 
 <section class="playbook">
   <div class="wrap">
-    <p class="sect-label">03 · Partner playbook</p>
+    <p class="sect-label">04 · Partner playbook</p>
     <h2>House rules for<br>working with Creative</h2>
     <p class="intro">The planner tells you when. These tell you how: the five gates every project passes through, what a complete brief looks like, and what "ready for vendor" means.</p>
 
@@ -404,16 +468,21 @@
   // ---------- state ----------
   const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
   const today=(()=>{const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())})();
-  let S=store.get("b2s_v2")||{};
+  let S=store.get("b2s_v3")||{};
   if(!S.type||!T[S.type]) S.type="label_new";
   if(!S.launch) S.launch=iso(addDays(today,140));
   if(S.buffer==null) S.buffer=5;
+  if(S.mode!=="single"&&S.mode!=="campaign") S.mode="campaign";
+  if(!Array.isArray(S.camp)||!S.camp.filter(k=>T[k]).length) S.camp=["label_new","label_refresh","carton","pos","photo","digital"];
+  S.camp=S.camp.filter(k=>T[k]);
+  if(!S.designers) S.designers=2;
+  S.open=S.open||{};
   S.custom=S.custom||{};
-  const save=()=>store.set("b2s_v2",S);
+  const save=()=>store.set("b2s_v3",S);
 
-  function phases(){
-    const c=S.custom[S.type]||{};
-    return T[S.type].phases.map((p,i)=>({i,name:p[0],owner:p[1],stage:p[3],note:p[4]||"",
+  function phasesOf(k){
+    const c=S.custom[k]||{};
+    return T[k].phases.map((p,i)=>({i,k,name:p[0],owner:p[1],stage:p[3],note:p[4]||"",
       days:c.days&&c.days[i]!=null?c.days[i]:p[2], on:c.on&&c.on[i]!=null?c.on[i]:true}));
   }
 
@@ -427,43 +496,81 @@
   function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
   const fmt=d=>d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
   const fmtS=d=>d.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+  const monday=d=>{const x=new Date(d);const g=x.getDay();x.setDate(x.getDate()-((g+6)%7));return x};
 
-  function plan(){
-    const launch=parse(S.launch), ph=phases();
+  function bufferOf(launch){
     let cur=prevBiz(launch), buf=null;
     if(S.buffer>0){const bs=backBiz(cur,S.buffer);buf={start:bs,end:cur};cur=prevBiz(bs)}
+    return {cur,buf};
+  }
+  function planOf(k){
+    const launch=parse(S.launch), ph=phasesOf(k);
+    let {cur,buf}=bufferOf(launch);
     const act=ph.filter(p=>p.on&&p.days>0);
-    for(let k=act.length-1;k>=0;k--){const p=act[k];p.end=cur;p.start=backBiz(cur,p.days);cur=prevBiz(p.start)}
-    return {launch,ph,act,buf};
+    for(let j=act.length-1;j>=0;j--){const p=act[j];p.end=cur;p.start=backBiz(cur,p.days);cur=prevBiz(p.start)}
+    return {k,t:T[k],launch,ph,act,buf,brief:act.length?act[0].start:null,total:act.reduce((s,p)=>s+p.days,0)};
+  }
+  const list=()=>S.mode==="campaign"?S.camp:[S.type];
+
+  // In-house design load: creative stages owned by in-house staff count fully; design review rounds count half.
+  function loadOf(p){
+    const o=p.owner;
+    if(/Freelance|Editor|Post house|Photographer|Retoucher|Production co|vendor/i.test(o)) return 0;
+    if(p.stage==="mash"&&/In-house|Production artist|Creative lead|^Design/i.test(o)) return 1;
+    if(p.stage==="boil"&&/Design/i.test(o)) return 0.5;
+    return 0;
   }
 
   // ---------- render ----------
   const $=id=>document.getElementById(id);
 
+  function renderModes(){
+    document.querySelectorAll(".mode").forEach(b=>{b.setAttribute("aria-pressed",b.dataset.m===S.mode)});
+    $("modeHint").textContent=S.mode==="campaign"
+      ?"Pull every handle that's part of the launch. One in-market date cascades into a plan for each deliverable."
+      :"Pull one handle to plan a single deliverable.";
+  }
   function renderTaps(){
+    const sel=S.mode==="campaign"?S.camp:[S.type];
     $("taps").innerHTML=Object.entries(T).map(([k,t])=>
-      `<button class="tap" data-k="${k}" aria-pressed="${k===S.type}"><div class="handle"><span>${t.tap}</span><i>${t.sub}</i></div><div class="ferrule"></div><div class="shank"></div></button>`).join("");
-    $("taps").querySelectorAll(".tap").forEach(b=>b.onclick=()=>{S.type=b.dataset.k;save();renderTaps();render()});
+      `<button class="tap" data-k="${k}" aria-pressed="${sel.includes(k)}"><div class="handle"><span>${t.tap}</span><i>${t.sub}</i></div><div class="ferrule"></div><div class="shank"></div></button>`).join("");
+    $("taps").querySelectorAll(".tap").forEach(b=>b.onclick=()=>{
+      const k=b.dataset.k;
+      if(S.mode==="campaign"){
+        if(S.camp.includes(k)){ if(S.camp.length>1) S.camp=S.camp.filter(x=>x!==k); }
+        else S.camp=Object.keys(T).filter(x=>x===k||S.camp.includes(x));
+      } else S.type=k;
+      save();renderTaps();render();
+    });
   }
 
   function render(){
-    const t=T[S.type], {launch,ph,act,buf}=plan();
-    $("tName").textContent=t.name; $("tDesc").textContent=t.desc;
-
-    const used=[...new Set(ph.map(p=>p.stage))];
+    const plans=list().map(planOf).filter(p=>p.act.length);
+    const launch=parse(S.launch);
+    const camp=S.mode==="campaign";
+    if(camp){
+      $("tLabel").textContent="Master ticket";
+      $("tName").textContent="Seasonal launch: "+list().length+" deliverable"+(list().length>1?"s":"");
+      $("tDesc").textContent="One master template. The in-market date cascades into a tactical plan for each deliverable; open any row to see and adjust its stages.";
+    } else {
+      $("tLabel").textContent="Batch ticket";
+      $("tName").textContent=T[S.type].name; $("tDesc").textContent=T[S.type].desc;
+    }
+    const used=[...new Set(list().flatMap(k=>phasesOf(k).map(p=>p.stage)))];
     $("stages").innerHTML=Object.keys(STAGE).filter(k=>used.includes(k)).map(k=>`<span><i style="background:${STAGE[k].color}"></i><b>${STAGE[k].name}</b> ${STAGE[k].what}</span>`).join("");
 
-    if(!act.length){
+    if(!plans.length){
       $("briefDue").textContent="—";$("briefSub").textContent="Open at least one valve";
       $("lead").textContent="—";$("leadSub").textContent="";
       $("stamp").className="stamp";$("stamp").innerHTML="<b>No plan</b><small>All stages closed</small>";
-      drawRows(ph,null,null,null);$("recover").innerHTML="";$("ticks").innerHTML="";return;
+      $("rows").innerHTML="";$("recover").innerHTML="";$("ticks").innerHTML="";renderCapacity([]);return;
     }
-    const brief=act[0].start;
-    const total=act.reduce((s,p)=>s+p.days,0)+Number(S.buffer||0);
+    const driver=plans.reduce((a,b)=>a.brief<=b.brief?a:b);
+    const brief=driver.brief;
+    const total=bizDiff(brief,launch);
     const fl=bizDiff(today,brief);
     $("briefDue").textContent=fmtS(brief);
-    $("briefSub").textContent=brief.toLocaleDateString("en-US",{weekday:"long",year:"numeric"});
+    $("briefSub").textContent=(camp?"Master brief · driven by "+driver.t.name+" · ":"")+brief.toLocaleDateString("en-US",{weekday:"long"})+", "+brief.getFullYear();
     $("lead").textContent=total+" days";
     $("leadSub").textContent="Business days ≈ "+(Math.round(total/5*10)/10)+" weeks, buffer included";
 
@@ -471,63 +578,146 @@
     if(fl>=0){st.className="stamp ok";st.innerHTML=`<b>On schedule</b><small>${fl===0?"Brief due today":fl+" biz days of runway"}</small>`;$("recover").innerHTML=""}
     else{
       st.className="stamp bad";st.innerHTML=`<b>Behind ${Math.abs(fl)}d</b><small>Recovery plan below</small>`;
-      $("recover").innerHTML=`<div class="recover"><h3>Recover ${Math.abs(fl)} business days</h3><ul>${t.levers.map(l=>`<li>${l}</li>`).join("")}<li>Spend the ${S.buffer}-day buffer deliberately, and tell stakeholders about the risk</li><li>Move the in-market date, or launch the core pieces first and phase in the rest</li></ul></div>`;
+      const extra=camp?`<li>Phase in lower-priority deliverables after launch so ${driver.t.name.toLowerCase()} gets the team's full attention</li>`:"";
+      $("recover").innerHTML=`<div class="recover"><h3>Recover ${Math.abs(fl)} business days</h3><ul>${driver.t.levers.map(l=>`<li>${l}</li>`).join("")}${extra}<li>Spend the ${S.buffer}-day buffer deliberately, and tell stakeholders about the risk</li><li>Move the in-market date, or launch the core pieces first and phase in the rest</li></ul></div>`;
     }
 
-    const r0=brief, span=(launch-r0)/864e5+1;
-    const pct=d=>((d-r0)/864e5)/span*100;
-    drawRows(ph,pct,span,buf);
-    if(today>=r0&&today<=launch){
-      const tp=pct(today);
-      $("rows").querySelectorAll(".pipe").forEach((p,i)=>{const m=document.createElement("div");m.className="today"+(i===0?" first":"");m.style.left=tp+"%";p.appendChild(m)});
-    }
-    const tk=[];for(let i=0;i<=4;i++)tk.push(fmtS(addDays(r0,Math.round((span-1)*i/4))));
-    $("ticks").innerHTML=tk.map(x=>`<span>${x}</span>`).join("");
-  }
-
-  function drawRows(ph,pct,span,buf){
-    let h=ph.map(p=>{
-      const s=STAGE[p.stage];
-      let fill="";
-      if(pct&&p.on&&p.start){
-        const w=((p.end-p.start)/864e5+1)/span*100;
-        fill=`<div class="fill" style="left:${pct(p.start)}%;width:${w}%;background:${s.color}" title="${s.name}: ${fmt(p.start)} – ${fmt(p.end)}">${w>8?s.name:""}</div>`;
-      }
-      return `<div class="r ${p.on?"":"off"}">
-        <button class="valve" data-i="${p.i}" aria-pressed="${p.on}" aria-label="${p.on?"Close":"Open"} stage: ${p.name}" title="${p.on?"Close":"Open"} this stage"></button>
-        <div class="who"><b>${p.name}</b><small>${p.owner}</small>${p.note?`<em>${p.note}</em>`:""}</div>
-        <div class="pipe">${fill}</div>
-        <div class="days"><button data-i="${p.i}" data-d="-1" aria-label="One day fewer">−</button><input type="number" min="0" max="120" value="${p.days}" data-i="${p.i}" aria-label="Business days for ${p.name}"><button data-i="${p.i}" data-d="1" aria-label="One day more">+</button></div>
-        <div class="dates">${p.on&&p.start?fmtS(p.start)+" →<br>"+fmtS(p.end):"closed"}</div>
-      </div>`}).join("");
-    if(buf&&pct){
-      const w=((buf.end-buf.start)/864e5+1)/span*100;
+    const span=(launch-brief)/864e5+1;
+    const pct=d=>((d-brief)/864e5)/span*100;
+    const wpct=(a,b)=>((b-a)/864e5+1)/span*100;
+    let h="";
+    if(camp){
+      plans.forEach(P=>{
+        const open=!!S.open[P.k];
+        const segs=P.act.map(p=>`<div class="fill" style="left:${pct(p.start)}%;width:${wpct(p.start,p.end)}%;background:${STAGE[p.stage].color}" title="${p.name}: ${fmt(p.start)} – ${fmt(p.end)}"></div>`).join("");
+        h+=`<div class="r master${open?" open":""}" data-k="${P.k}">
+          <button class="caret" data-k="${P.k}" aria-expanded="${open}" aria-label="${open?"Collapse":"Expand"} ${P.t.name}">▸</button>
+          <div class="who"><b>${P.t.name}</b><small>${P.act.length} stages · brief due ${fmtS(P.brief)}</small></div>
+          <div class="pipe">${segs}</div>
+          <div class="days total">${P.total}d</div>
+          <div class="dates">${fmtS(P.brief)} →<br>${fmtS(P.act[P.act.length-1].end)}</div>
+        </div>`;
+        if(open) h+=`<div class="sub">${rowsHTML(P,pct,wpct)}</div>`;
+      });
+    } else h+=rowsHTML(plans[0],pct,wpct);
+    const buf=plans[0].buf;
+    if(buf){
+      const w=wpct(buf.start,buf.end);
       h+=`<div class="r"><span></span><div class="who"><b>Contingency buffer</b><small>Creative Ops</small></div><div class="pipe"><div class="fill buffer" style="left:${pct(buf.start)}%;width:${w}%">${w>8?"buffer":""}</div></div><div></div><div class="dates">${fmtS(buf.start)} →<br>${fmtS(buf.end)}</div></div>`;
     }
     $("rows").innerHTML=h;
-    const c=S.custom[S.type]=S.custom[S.type]||{};
-    const setDays=(i,v)=>{c.days=c.days||{};c.days[i]=Math.max(0,Math.min(120,v|0));save();render()};
-    $("rows").querySelectorAll(".valve").forEach(b=>b.onclick=()=>{c.on=c.on||{};c.on[b.dataset.i]=b.getAttribute("aria-pressed")!=="true";save();render()});
-    $("rows").querySelectorAll(".days button").forEach(b=>b.onclick=()=>{const p=phases()[b.dataset.i];setDays(b.dataset.i,p.days+Number(b.dataset.d))});
-    $("rows").querySelectorAll(".days input").forEach(inp=>inp.onchange=()=>setDays(inp.dataset.i,parseInt(inp.value||0,10)));
+    bindRows();
+    if(today>=brief&&today<=launch){
+      const tp=pct(today);
+      $("rows").querySelectorAll(".pipe").forEach((p,i)=>{const m=document.createElement("div");m.className="today"+(i===0?" first":"");m.style.left=tp+"%";p.appendChild(m)});
+    }
+    const tk=[];for(let i=0;i<=4;i++)tk.push(fmtS(addDays(brief,Math.round((span-1)*i/4))));
+    $("ticks").innerHTML=tk.map(x=>`<span>${x}</span>`).join("");
+    renderCapacity(plans);
   }
 
+  function rowsHTML(P,pct,wpct){
+    return P.ph.map(p=>{
+      const s=STAGE[p.stage];
+      let fill="";
+      if(p.on&&p.start){
+        const w=wpct(p.start,p.end);
+        fill=`<div class="fill" style="left:${pct(p.start)}%;width:${w}%;background:${s.color}" title="${s.name}: ${fmt(p.start)} – ${fmt(p.end)}">${w>8?s.name:""}</div>`;
+      }
+      return `<div class="r ${p.on?"":"off"}">
+        <button class="valve" data-k="${P.k}" data-i="${p.i}" aria-pressed="${p.on}" aria-label="${p.on?"Close":"Open"} stage: ${p.name}" title="${p.on?"Close":"Open"} this stage"></button>
+        <div class="who"><b>${p.name}</b><small>${p.owner}</small>${p.note?`<em>${p.note}</em>`:""}</div>
+        <div class="pipe">${fill}</div>
+        <div class="days"><button data-k="${P.k}" data-i="${p.i}" data-d="-1" aria-label="One day fewer">−</button><input type="number" min="0" max="120" value="${p.days}" data-k="${P.k}" data-i="${p.i}" aria-label="Business days for ${p.name}"><button data-k="${P.k}" data-i="${p.i}" data-d="1" aria-label="One day more">+</button></div>
+        <div class="dates">${p.on&&p.start?fmtS(p.start)+" →<br>"+fmtS(p.end):"closed"}</div>
+      </div>`}).join("");
+  }
+
+  function bindRows(){
+    const cu=k=>S.custom[k]=S.custom[k]||{};
+    const setDays=(k,i,v)=>{const c=cu(k);c.days=c.days||{};c.days[i]=Math.max(0,Math.min(120,v|0));save();render()};
+    $("rows").querySelectorAll(".valve").forEach(b=>b.onclick=()=>{const c=cu(b.dataset.k);c.on=c.on||{};c.on[b.dataset.i]=b.getAttribute("aria-pressed")!=="true";save();render()});
+    $("rows").querySelectorAll(".days button").forEach(b=>b.onclick=()=>{const p=phasesOf(b.dataset.k)[b.dataset.i];setDays(b.dataset.k,b.dataset.i,p.days+Number(b.dataset.d))});
+    $("rows").querySelectorAll(".days input").forEach(inp=>inp.onchange=()=>setDays(inp.dataset.k,inp.dataset.i,parseInt(inp.value||0,10)));
+    $("rows").querySelectorAll(".r.master").forEach(r=>r.onclick=e=>{
+      if(e.target.closest(".days")) return;
+      const k=r.dataset.k; S.open[k]=!S.open[k]; save(); render();
+    });
+  }
+
+  // ---------- capacity ----------
+  function renderCapacity(plans){
+    const cap=S.designers*5;
+    if(!plans.length){$("capChart").innerHTML="";$("capFlags").innerHTML="";$("capStats").innerHTML="";return}
+    const weeks=new Map();
+    plans.forEach(P=>P.act.forEach(p=>{
+      const L=loadOf(p); if(!L) return;
+      for(let d=new Date(p.start);d<=p.end;d=addDays(d,1)){
+        if(wk(d)) continue;
+        const key=iso(monday(d));
+        if(!weeks.has(key)) weeks.set(key,{load:0,items:new Map()});
+        const w=weeks.get(key); w.load+=L;
+        const nm=(S.mode==="campaign"?P.t.tap+": ":"")+p.name;
+        w.items.set(nm,(w.items.get(nm)||0)+L);
+      }
+    }));
+    const first=monday(plans.reduce((a,b)=>a.brief<=b.brief?a:b).brief), last=monday(parse(S.launch));
+    const rows=[];
+    for(let d=new Date(first);d<=last;d=addDays(d,7)){const key=iso(d);rows.push({d:new Date(d),...(weeks.get(key)||{load:0,items:new Map()})})}
+    const peak=rows.reduce((m,r)=>Math.max(m,r.load),0);
+    const maxV=Math.max(cap*1.3,peak*1.08,1);
+    const over=rows.filter(r=>r.load>cap);
+    const overflow=over.reduce((s,r)=>s+(r.load-cap),0);
+    const capPct=cap/maxV*100;
+    const every=Math.max(1,Math.ceil(rows.length/9));
+    $("capChart").innerHTML=`
+      <div class="bars">
+        <div class="capline" style="bottom:${capPct}%"><span>Capacity · ${cap} designer-days/wk</span></div>
+        ${rows.map(r=>{
+          const under=Math.min(r.load,cap)/maxV*100, ov=Math.max(0,r.load-cap)/maxV*100;
+          const tip=`Week of ${fmtS(r.d)}: ${fmt1(r.load)} of ${cap} designer-days`+(r.items.size?" — "+[...r.items.keys()].join("; "):"");
+          return `<div class="col" title="${tip}"><div class="b over" style="height:${ov}%"></div><div class="b" style="height:${under}%"></div></div>`;
+        }).join("")}
+      </div>
+      <div class="wks">${rows.map((r,i)=>`<span>${i%every===0?fmtS(r.d):""}</span>`).join("")}</div>`;
+    $("capStats").innerHTML=`
+      <div class="cs"><p class="tk-label">Peak week</p><b>${fmt1(peak)} / ${cap}</b><small>designer-days booked vs. available</small></div>
+      <div class="cs"><p class="tk-label">Weeks over capacity</p><b class="${over.length?"warn":""}">${over.length}</b><small>of ${rows.length} weeks in the plan</small></div>
+      <div class="cs"><p class="tk-label">Freelance need</p><b class="${overflow?"warn":""}">${fmt1(overflow)}</b><small>designer-days to route outside the team</small></div>`;
+    if(!over.length){
+      $("capFlags").innerHTML=`<div class="capok">The in-house team stays within capacity at ${S.designers} designer${S.designers>1?"s":""}. No freelance support needed for this plan.</div>`;
+    } else {
+      $("capFlags").innerHTML=`<div class="capwarn"><h3>Resourcing gaps</h3><ul>${over.slice(0,6).map(r=>{
+        const items=[...r.items.entries()].sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
+        return `<li><b>Week of ${fmtS(r.d)}: ${fmt1(r.load-cap)} designer-days over.</b> In play: ${items.join("; ")}. Route the lowest-priority piece to a freelancer or agency, or stagger its start.</li>`;
+      }).join("")}${over.length>6?`<li>Plus ${over.length-6} more week${over.length-6>1?"s":""} over capacity.</li>`:""}</ul></div>`;
+    }
+  }
+  function fmt1(n){return Math.round(n*10)/10}
+
   // ---------- controls ----------
-  $("launch").value=S.launch; $("buffer").value=S.buffer;
+  $("launch").value=S.launch; $("buffer").value=S.buffer; $("designers").value=S.designers;
   $("launch").onchange=e=>{if(e.target.value){S.launch=e.target.value;save();render()}};
   $("buffer").oninput=e=>{S.buffer=Math.max(0,Math.min(30,parseInt(e.target.value||0,10)));save();render()};
-  $("resetBtn").onclick=()=>{delete S.custom[S.type];save();render()};
+  $("designers").oninput=e=>{S.designers=Math.max(1,Math.min(20,parseInt(e.target.value||1,10)));save();render()};
+  document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{S.mode=b.dataset.m;save();renderModes();renderTaps();render()});
+  $("resetBtn").onclick=()=>{list().forEach(k=>delete S.custom[k]);save();render()};
   $("copyBtn").onclick=()=>{
-    const t=T[S.type],{launch,act}=plan(); if(!act.length)return;
-    let s=`${t.name.toUpperCase()}: PRODUCTION PLAN\nIn market: ${fmt(launch)}\nBrief due: ${fmt(act[0].start)}\n\n`;
-    act.forEach((p,k)=>{s+=`${String(k+1).padStart(2," ")}. [${STAGE[p.stage].name}] ${p.name}\n    ${fmtS(p.start)} – ${fmtS(p.end)} · ${p.days} biz days · ${p.owner}\n`});
-    s+=`\nBuffer: ${S.buffer} business days before in-market.\nLead times are planning assumptions; confirm vendor and regulatory timing.`;
+    const plans=list().map(planOf).filter(p=>p.act.length); if(!plans.length)return;
+    const launch=parse(S.launch);
+    const brief=plans.reduce((a,b)=>a.brief<=b.brief?a:b).brief;
+    let s=(S.mode==="campaign"?`SEASONAL LAUNCH: MASTER PRODUCTION PLAN (${plans.length} deliverables)`:`${plans[0].t.name.toUpperCase()}: PRODUCTION PLAN`)+`\nIn market: ${fmt(launch)}\nBrief due: ${fmt(brief)}\n`;
+    plans.forEach(P=>{
+      if(S.mode==="campaign") s+=`\n${P.t.name.toUpperCase()} (brief due ${fmtS(P.brief)})\n`; else s+="\n";
+      P.act.forEach((p,k)=>{s+=`${String(k+1).padStart(2," ")}. [${STAGE[p.stage].name}] ${p.name}\n    ${fmtS(p.start)} – ${fmtS(p.end)} · ${p.days} biz days · ${p.owner}\n`});
+    });
+    s+=`\nBuffer: ${S.buffer} business days before in-market.\nIn-house designers planned: ${S.designers}.\nLead times are planning assumptions; confirm vendor and regulatory timing.`;
     const ok=()=>{const x=$("toast");x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800)};
     const fb=()=>{const ta=document.createElement("textarea");ta.value=s;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}ta.remove()};
     try{navigator.clipboard.writeText(s).then(ok,fb)}catch(e){fb()}
   };
 
-  renderTaps(); render();
+  renderModes(); renderTaps(); render();
 })();
 </script>
 </body>
