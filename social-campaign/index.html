@@ -99,10 +99,6 @@ section + section{border-top:1px solid var(--hair)}
 .btn.running .dot{animation:pulse 1.1s infinite}
 @keyframes pulse{50%{opacity:.25}}
 
-/* title: calendar-tile flip */
-h1.flip .tw{display:inline-block;white-space:nowrap}
-h1.flip.go .tw{animation:tile .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) both;transform-origin:50% 0}
-@keyframes tile{0%{opacity:0;transform:perspective(600px) rotateX(-95deg)}60%{opacity:1}100%{opacity:1;transform:none}}
 
 /* season card */
 .season{border:1px solid var(--line);padding:1.3rem 1.3rem 1.1rem;background:rgba(247,246,243,.025)}
@@ -390,7 +386,6 @@ body.a11y header nav,body.a11y footer{outline:1px solid rgba(240,151,59,.6);outl
 .rr-list em{font-style:normal;font-family:var(--mono);font-size:.74rem;color:var(--mute);padding-top:.15rem}
 @media (prefers-reduced-motion:reduce){
   .caret,.btn.running .dot{animation:none}
-  h1.flip.go .tw{animation:none}
   .day,.ph{transition:none}
 }
 </style>
@@ -978,15 +973,6 @@ Who will lead it, where it will be based and its budget haven't been decided. We
   var hdr=document.getElementById('hdr'), prog=document.getElementById('progress'), top=document.getElementById('top');
   function onScroll(){ var h=document.documentElement; prog.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight||1))+')'; hdr.classList.toggle('light', top.getBoundingClientRect().bottom<60); }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-
-  /* ---------- title flip ---------- */
-  (function(){
-    var h=document.querySelector('h1.flip'); if(!h) return;
-    var txt=h.textContent; h.setAttribute('aria-label',txt); h.textContent='';
-    var box=document.createElement('span'); box.setAttribute('aria-hidden','true');
-    txt.split(' ').forEach(function(w,i){ if(i) box.appendChild(document.createTextNode(' ')); var s=document.createElement('span'); s.className='tw'; s.textContent=w; s.style.setProperty('--d',(i*0.07)+'s'); box.appendChild(s); });
-    h.appendChild(box); if(!reduced) h.classList.add('go');
-  })();
 
   /* ---------- hero typing ---------- */
   var typed=document.getElementById('heroTyped'), caret=document.getElementById('heroCaret');
